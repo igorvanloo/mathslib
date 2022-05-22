@@ -1,0 +1,28 @@
+Metadata-Version: 2.1
+Name: mathslib
+Version: 2.0.0
+Summary: Library of Mathematical functions and Algorithms
+Home-page: https://github.com/igorvanloo/mathslib
+Author: Igor van Loo
+Author-email: igorvanloo@gmail.com
+Project-URL: Bug Reports, https://github.com/igorvanloo/mathslib/issues
+Project-URL: Source, https://github.com/igorvanloo/mathslib
+Keywords: numbertheory,maths,algorithms
+Classifier: Development Status :: 3 - Alpha
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Classifier: Programming Language :: Python :: 3.9
+Requires-Python: >=3.7, <4
+Description-Content-Type: text/markdown
+License-File: LICENSE.txt
+
+# mathslib
+
+ A compilation of Mathematical Functions and Algorithms I have made or come across.
+ 
+ I have used most of these for [Project Euler](https://projecteuler.net/about)
+ 
+ You can see their implementation on my website [ivl-projecteuler](https://www.ivl-projecteuler.com/)

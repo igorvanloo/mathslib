@@ -29,7 +29,7 @@ Various Number Theory functions
 Author: Igor van Loo
 '''
 import math
-from primes import prime_factors, Prime_Sieve
+from .primes import prime_factors, Prime_Sieve
 
 def divisors_of(x, include_x = True):
     '''

@@ -1,0 +1,16 @@
+LICENSE.txt
+README.md
+pyproject.toml
+setup.cfg
+setup.py
+src/mathslib/__init__.py
+src/mathslib/algorithms.py
+src/mathslib/fib.py
+src/mathslib/numtheory.py
+src/mathslib/primes.py
+src/mathslib/simple.py
+src/mathslib.egg-info/PKG-INFO
+src/mathslib.egg-info/SOURCES.txt
+src/mathslib.egg-info/dependency_links.txt
+src/mathslib.egg-info/entry_points.txt
+src/mathslib.egg-info/top_level.txt
