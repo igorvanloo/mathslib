@@ -28,7 +28,21 @@ Fibonacci related functions
 Author: Igor van Loo
 '''
 
-def fibonacci(n): #Finds the nth fibonnaci number
+def fibonacci(n):
+    '''
+    Finds the n-th fibonnaci using matrix exponentiation
+    Credit: https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371
+
+    Parameters
+    ----------
+    n : An integer
+
+    Returns
+    -------
+    The n-th fibonnaci number
+    '''
+    if type(n) != int:
+        return "n must be an integer"
     v1, v2, v3 = 1, 1, 0    # initialise a matrix [[1,1],[1,0]]
     for rec in bin(n)[3:]:  # perform fast exponentiation of the matrix (quickly raise it to the nth power)
         calc = v2*v2
@@ -37,23 +51,54 @@ def fibonacci(n): #Finds the nth fibonnaci number
             v1, v2, v3 = v1+v2, v1, v2  
     return v2
 
-def Fibtill(x):
+def fib_till(limit):
+    '''
+    Finds all fibonnaci number up till a limit
+
+    Parameters
+    ----------
+    limit : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    fibnumbers : A list containing all the fibonacci numbers < x
+
+    '''
+    if type(limit) != int:
+        return "limit must be an integer"
     fibnumbers = []
     n = 1
-    while fibonacci(n) <= x:
+    while fibonacci(n) <= limit:
         fibnumbers.append(fibonacci(n))
         n += 1
     return fibnumbers
 
-def ZeckendorfRepresentation(x, fibnumbers): 
-    rep = []
+def ZeckendorfRepresentation(x):
+    '''
+    Finds the Zeckendorf Representation of x 
+    See here: https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem
+
+    Parameters
+    ----------
+    x : An integer x
+
+    Returns
+    -------
+    zeckrep : A list containing the zeckendorf representation of x
+
+    '''
+    if type(x) != int:
+        return "x must be an integer"
+    zeckrep = []
+    fibs = fib_till(x)[::-1]
+    
     number = x
     count = 0
     while number != 0:
-        if number - fibnumbers[count] >= 0:
-            number -= fibnumbers[count]
-            rep.append(fibnumbers[count])
+        if number - fibs[count] >= 0:
+            number -= fibs[count]
+            zeckrep.append(fibs[count])
             count += 1
         count += 1
-        
-    return rep
+    return zeckrep

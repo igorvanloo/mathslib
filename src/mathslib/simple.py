@@ -31,13 +31,43 @@ Author: Igor van Loo
 '''
 import math
 
-def n_choose_r(n, r): #nCr function
+def n_choose_r(n, r):
+    '''
+    n choose r function
+
+    Parameters
+    ----------
+    n : TYPE
+        DESCRIPTION.
+    r : TYPE
+        DESCRIPTION.
+
+    Returns
+    -------
+    TYPE
+        DESCRIPTION.
+
+    '''
     if r > n:
         return "n must be greter than r"
     else:
         return int(math.factorial(n) / (math.factorial(r) * math.factorial(n-r)))
     
 def numberToBase(n, b):
+    '''
+    Changes n from base 10 to base b
+
+    Parameters
+    ----------
+    n : An integer, number to be changed
+    b : An integer, base in question
+
+    Returns
+    -------
+    n in base b
+    '''
+    if (type(n) != int) or (type(b) != int):
+        return "n and b must be an integer"
     if n == 0:
         return [0]
     digits = []
@@ -47,6 +77,17 @@ def numberToBase(n, b):
     return digits[::-1]
 
 def lcm(a_list):
+    '''
+    Finds the lcm of a list of numbers
+
+    Parameters
+    ----------
+    a_list : A list of numbers
+
+    Returns
+    -------
+    curr : The lcm of all numbers in the list
+    '''
     n = sorted(a_list)
     curr = n.pop(-1)
     while len(n) != 0:
@@ -55,6 +96,21 @@ def lcm(a_list):
     return curr
 
 def ModDivision(a, b, m):
+    '''
+    Finds a/b mod m
+
+    Parameters
+    ----------
+    a : An integer, the numerator
+    b : An integer, the denominator
+    m : An integer, the modulus
+
+    Returns
+    -------
+    answer : a/b mod m
+    '''
+    if (type(a) != int) or (type(b) != int) or (type(m) != int):
+        return "n and b must be an integer"
     try:
         inv = pow(b, -1, m)
     except ValueError:
