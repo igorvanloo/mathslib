@@ -35,13 +35,10 @@ def divisors_of(x, include_x = True):
     '''
     Finds all the divisors of x
 
-    Parameters
-    ----------
-    x : An integer
+    :param x: Integer to be checked
+    :param include_x: If true it will include x as a divisor of x
 
-    Returns
-    -------
-    divisors : a list containing all the divisors of x
+    :returns: list, contains all divisors of x
 
     '''
     if (type(x) != int):
@@ -59,20 +56,19 @@ def divisors_of(x, include_x = True):
     
 def divisor(x, n):
     '''
-    Implementation of Divisor function σ_x(n) (See here: https://en.wikipedia.org/wiki/Divisor_function#Definition)
-
-    Parameters
-    ----------
-    x : An integer,
-        x = 0 - Gives you number of divisors
-        x = 1 - Gives you sum of divisors
-        x = 2 - Gives you sum of divisors squared
-    n : An integer, number to function σ_x of
-
-    Returns
-    -------
-    total : Returns σ_x(n)
-
+    Implementation of `Divisor function 
+    <https://en.wikipedia.org/wiki/Divisor_function#Definition>` *σ* :sub:`x`(n) 
+    
+    :param x: An integer, denotes the power till which the divisors will be summed
+    :param n: An integer, denoted the number to find the divisors of
+    
+    :returns: An integer
+    
+    .. note::
+        * divisor(0, n) = number of divisors of *n*
+        * divisor(1, n) = sum of divisors of *n*
+        * divisor(2, n) = sum of divisors squared of *n*
+        
     '''
     if (type(n) != int) or (type(x) != int):
         return "All values must be integers"

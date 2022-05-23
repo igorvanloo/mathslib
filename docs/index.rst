@@ -11,6 +11,7 @@ Welcome to mathslib's documentation!
    :caption: Contents:
    
    readme
+   installation
    modules
 
 

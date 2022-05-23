@@ -1,13 +1,14 @@
+========
 mathsLib
-********
+========
 
 `mathslib`__ is a compilation of Mathematical Functions and Algorithms I have made or come across.
  I have used most of these for `Project Euler`_.
  
  See my website `ivl-projecteuler.com`_ for their implementation
 
-Modules
--------
+Overview
+--------
 +----------------+------------------------------------------------------------+
 |numtheory.py    | * divisors_of(x, include_x)                                |
 |                | * divisors(x, n)                                           |
