@@ -31,15 +31,15 @@ Author: Igor van Loo
 def fibonacci(n):
     '''
     Finds the n-th fibonnaci using matrix exponentiation
-    Credit: https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371
+    Method is outlined `here <https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371>`_
 
-    Parameters
-    ----------
-    n : An integer
+    :param n: An integer
 
-    Returns
-    -------
-    The n-th fibonnaci number
+    :returns: The n-th fibonnaci number
+    
+    .. code-block:: python
+    
+        fibonacci(100) = 354224848179261915075
     '''
     if type(n) != int:
         return "n must be an integer"
@@ -55,15 +55,15 @@ def fib_till(limit):
     '''
     Finds all fibonnaci number up till a limit
 
-    Parameters
-    ----------
-    limit : TYPE
-        DESCRIPTION.
+    :param limit: An integer
 
-    Returns
-    -------
-    fibnumbers : A list containing all the fibonacci numbers < x
-
+    :returns: A list containing all the fibonacci numbers < limit
+    
+    .. code-block:: python
+    
+        fib_till(100) = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+        sum(fib_till(1000)) = 2583
+        
     '''
     if type(limit) != int:
         return "limit must be an integer"
@@ -76,16 +76,15 @@ def fib_till(limit):
 
 def ZeckendorfRepresentation(x):
     '''
-    Finds the Zeckendorf Representation of x 
-    See here: https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem
+    Finds the `Zeckendorf Representation <https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem>`_ of x 
 
-    Parameters
-    ----------
-    x : An integer x
+    :param x: An integer
 
-    Returns
-    -------
-    zeckrep : A list containing the zeckendorf representation of x
+    :returns: A list containing the zeckendorf representation of x
+    
+    .. code-block:: python
+        
+        ZeckendorfRepresentation(64) = [55, 8, 1]
 
     '''
     if type(x) != int:

@@ -71,15 +71,15 @@
 <div class="viewcode-block" id="fibonacci"><a class="viewcode-back" href="../../mathslib.html#mathslib.fib.fibonacci">[docs]</a><span class="k">def</span> <span class="nf">fibonacci</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Finds the n-th fibonnaci using matrix exponentiation</span>
-<span class="sd">    Credit: https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371</span>
+<span class="sd">    Method is outlined `here &lt;https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371&gt;`_</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : An integer</span>
+<span class="sd">    :param n: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    The n-th fibonnaci number</span>
+<span class="sd">    :returns: The n-th fibonnaci number</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        fibonacci(100) = 354224848179261915075</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
@@ -95,15 +95,15 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Finds all fibonnaci number up till a limit</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    limit : TYPE</span>
-<span class="sd">        DESCRIPTION.</span>
+<span class="sd">    :param limit: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    fibnumbers : A list containing all the fibonacci numbers &lt; x</span>
-
+<span class="sd">    :returns: A list containing all the fibonacci numbers &lt; limit</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        fib_till(100) = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]</span>
+<span class="sd">        sum(fib_till(1000)) = 2583</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;limit must be an integer&quot;</span>
@@ -116,16 +116,15 @@
 
 <div class="viewcode-block" id="ZeckendorfRepresentation"><a class="viewcode-back" href="../../mathslib.html#mathslib.fib.ZeckendorfRepresentation">[docs]</a><span class="k">def</span> <span class="nf">ZeckendorfRepresentation</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Finds the Zeckendorf Representation of x </span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem</span>
+<span class="sd">    Finds the `Zeckendorf Representation &lt;https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem&gt;`_ of x </span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x : An integer x</span>
+<span class="sd">    :param x: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    zeckrep : A list containing the zeckendorf representation of x</span>
+<span class="sd">    :returns: A list containing the zeckendorf representation of x</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        </span>
+<span class="sd">        ZeckendorfRepresentation(64) = [55, 8, 1]</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>

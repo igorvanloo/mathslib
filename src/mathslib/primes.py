@@ -30,26 +30,33 @@ Author: Igor van Loo
 '''
 import math
 
-def Prime_Sieve(limit, block_size = 0, segment = False, values = True):
+def prime_sieve(limit, segment = False, values = True):
     '''
     A prime sieve I made with a few different options
     
-    Parameters
-    ----------
-    limit : The limit up till which the function will generate primes
-    block_size : Decide which length of blocks you would like to cut the sieve into, automatically it is set to sqrt(limit)
-    segment : Decide whether you would like to use a segmented sieve or a regular sieve, it is normally set it False
-    values : If segment == False, if you would like an actual list of prime then values is true, if you would
-            like an array such that array[x] = True if x is prime, then set values = False
 
-    Returns
-    -------
-    Based on above, all primes less than limit or an array such that array[x] = True if x is prime
+    :param limit: The limit up till which the function will generate primes
+    :param segment: Optional boolean value, if segment == True, it will perform a segmented sieve 
+    :param values: Optional boolean value, if values == False, it will return an array such that array[x] = True if x is prime
+
+    :returns: All primes < limit
+    
+    .. code-block:: python
+    
+        prime_sieve(50) = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+        prime_sieve(10, values = False) = [False, False, True, True, False, True, False, True, False, False, False]
+        
+        [i for (i, isprime) in enumerate(prime_sieve(10, values = False)) if isprime] = [2, 3, 5, 7]
+        
     '''
+    if (type(limit) != int) or (type(segment) != bool) or (type(values) != bool):
+        return "n must be an integer"
+    
     if segment:
         primes = []
         sqrtN = int(math.sqrt(limit))
         result = [True]*(sqrtN + 2)
+        result[0] = result[1] = False
         for i in range(2, sqrtN + 1):
             if result[i]:
                 primes.append(i)
@@ -57,11 +64,8 @@ def Prime_Sieve(limit, block_size = 0, segment = False, values = True):
                     result[j] = False
         all_primes = []
         marker = [0]*len(primes)
-        if block_size == 0:
-            block_size = sqrtN
+        block_size = sqrtN
         for k in range(1, limit//block_size):
-            if k % 100 == 0:
-                print(k, limit//block_size)
             block_start = k*block_size + 1
             block_end = (k + 1)*block_size
             curr_result = [True]*block_size
@@ -78,8 +82,14 @@ def Prime_Sieve(limit, block_size = 0, segment = False, values = True):
                     for j in range(marker[p_index] + p, block_end + 1, p):
                         curr_result[j - block_start] = False
                         marker[p_index] = j
-            all_primes += [block_start + i for (i, isprime) in enumerate(curr_result) if isprime]
-        return primes + all_primes
+            if values:
+                all_primes += [block_start + i for (i, isprime) in enumerate(curr_result) if isprime]
+            else:
+                all_primes = all_primes[:block_start + 1] + curr_result
+        if values:
+            return primes + all_primes
+        else:
+            return result[:sqrtN + 1] + all_primes
     else:
        	result = [True] * (limit + 1)
        	result[0] = result[1] = False
@@ -96,15 +106,19 @@ def is_prime(x):
     '''
     A simple is prime function, checks if a number is prime
 
-    Parameters
-    ----------
-    x : The number to be checked
+    :param x: An integer
 
-    Returns
-    -------
-    True if x is prime
-    False if x is not prime
+    :returns: True if x is prime, False otherwise
+    
+    .. code-block:: python
+    
+        is_prime(10) = False
+        is_prime(160517089) = True
+        
     '''
+    if type(x) != int:
+        return "x must be an integer"
+    
     if x <= 1:
         return False
     elif x <= 3:
@@ -112,7 +126,7 @@ def is_prime(x):
     elif x % 2 == 0:
         return False
     else:
-        for i in range(5, int(math.sqrt(x)) + 1, 2):
+        for i in range(3, int(math.sqrt(x)) + 1, 2):
             if x % i == 0:
                 return False
         return True
@@ -121,14 +135,19 @@ def prime_factors(n):
     '''
     Finds all the prime factors of n
 
-    Parameters
-    ----------
-    n : Finds the prime factors of n
+    :param n: An integer
 
-    Returns
-    -------
-    A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime
+    :returns: A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime
+    
+    .. code-block:: python
+        
+        prime_factors(123123) = {3: 1, 7: 1, 11: 1, 13: 1, 41: 1}
+        prime_factors(1123619623) = {7: 1, 160517089: 1}
+        
     '''
+    if type(n) != int:
+        return "n must be an integer"
+    
     factors = {}
     d = 2
     while n > 1:
@@ -151,19 +170,23 @@ def prime_factors(n):
 
 def primepi(limit):
     '''
-    Primepi function is commonly known as Prime Counting Function (see here: https://en.wikipedia.org/wiki/Prime-counting_function)
+    Primepi function is commonly known as `Prime Counting Function <https://en.wikipedia.org/wiki/Prime-counting_function>`_
     
     This function generates an array such that array[x] = primepi(x)
 
-    Parameters
-    ----------
-    limit : An integer, it will generate an array of length limit
+    :param limit: An integer, 
 
-    Returns
-    -------
-    array : array[x] = primepi(x)
+    :returns: An array length limit such that array[x] = primepi(x)
+    
+    .. code-block:: python
+    
+        primepi(10) = [0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]
+        
     '''
-    prime_gen = Prime_Sieve(limit + 50, values = False)
+    if type(limit) != int:
+        return "limit must be an integer"
+    
+    prime_gen = prime_sieve(limit + 50, values = False)
     primes = [x for x in range(len(prime_gen)) if prime_gen[x]]
     array = [0]*(limit+1)
     p_index = 0
@@ -178,15 +201,20 @@ def primepi(limit):
 def sum_of_primes(n):
     '''
     Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler
+    You may view it `here <https://projecteuler.net/thread=10;page=5#111677>`_ once you've completed problem 10
 
-    Parameters
-    ----------
-    n : An integer, will sum primes up till n
+    :param n: An integer
 
-    Returns
-    -------
-    The sum of all primes up till n
+    :returns: The sum of all primes up till n
+    
+    .. code-block:: python
+        
+        sum_of_primes(2*10**6) = 142913828922
+        sum_of_primes(10**10) = 2220822432581729238
     '''
+    if type(n) != int:
+        return "n must be an integer"
+    
     r = int(n ** 0.5)
     assert r * r <= n and (r + 1) ** 2 > n
     V = [n // i for i in range(1, r + 1)]
@@ -201,3 +229,33 @@ def sum_of_primes(n):
                 S[v] -= p * (S[v // p] - sp)
     return S[n]
 
+def fermat_primality_test(n):
+    '''
+    A `Fermat Primality Test <https://en.wikipedia.org/wiki/Fermat_primality_test>`_
+
+    :param n: An integer to be tested
+
+    :returns: True if n is probably prime
+    
+    .. code-block:: python
+    
+        fermat_primality_test(17969800575241) = True #Actually True
+        fermat_primality_test(101101) = True #Wrong 101101 is not prime
+        
+    .. note::
+        This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.
+        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use
+        You can test more terms to make it more and more accurate
+
+    '''
+    if type(n) != int:
+        return "n must be an integer"
+    
+    if n < 10**5:
+        print("switching to is_prime function for safety")
+        return is_prime(n)
+    
+    else: 
+        if pow(4, n - 1, n) == 1 and pow(6, n - 1, n) == 1:
+            return True
+        return False

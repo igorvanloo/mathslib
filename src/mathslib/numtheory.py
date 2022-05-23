@@ -29,7 +29,7 @@ Various Number Theory functions
 Author: Igor van Loo
 '''
 import math
-from .primes import prime_factors, Prime_Sieve
+from .primes import prime_factors, prime_sieve
 
 def divisors_of(x, include_x = True):
     '''
@@ -57,7 +57,7 @@ def divisors_of(x, include_x = True):
 def divisor(x, n):
     '''
     Implementation of `Divisor function 
-    <https://en.wikipedia.org/wiki/Divisor_function#Definition>`_ σ_x(n) 
+    <https://en.wikipedia.org/wiki/Divisor_function#Definition>`_ sigma(x, n) 
     
     :param x: An integer, denotes the power till which the divisors will be summed
     :param n: An integer, denotes the number to find the divisors of
@@ -234,7 +234,7 @@ def legendre_factorial(x):
     '''
     if (type(x) != int):
         return "All values must be integers"
-    primes = Prime_Sieve(x)
+    primes = prime_sieve(x)
     prime_fac = {}
     for y in primes:
         total = 0
@@ -256,7 +256,7 @@ def k_smooth_numbers(max_prime, limit):
     if (type(max_prime) != int) or (type(limit) != int):
         return "All values must be integers"
     k_s_n = [1]
-    p = Prime_Sieve(max_prime)
+    p = prime_sieve(max_prime)
     while len(p) != 0:
         temp_k_s_n = []
         curr_p = p.pop(0)

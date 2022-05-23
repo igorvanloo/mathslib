@@ -71,7 +71,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.divisor">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> σ_x(n)</p>
+<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> sigma:sub:<a href="#id1"><span class="problematic" id="id2">`</span></a>x`(n)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -294,51 +294,124 @@ Note that p - x is also a root.</p>
 <p>Prime related functions</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.primes.Prime_Sieve">
-<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">Prime_Sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#Prime_Sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.Prime_Sieve" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.primes.prime_sieve">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">prime_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#prime_sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.prime_sieve" title="Permalink to this definition">¶</a></dt>
 <dd><p>A prime sieve I made with a few different options</p>
-<p>limit : The limit up till which the function will generate primes
-block_size : Decide which length of blocks you would like to cut the sieve into, automatically it is set to sqrt(limit)
-segment : Decide whether you would like to use a segmented sieve or a regular sieve, it is normally set it False
-values : If segment == False, if you would like an actual list of prime then values is true, if you would</p>
-<blockquote>
-<div><p>like an array such that array[x] = True if x is prime, then set values = False</p>
-</div></blockquote>
-<p>Based on above, all primes less than limit or an array such that array[x] = True if x is prime</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – The limit up till which the function will generate primes</p></li>
+<li><p><strong>segment</strong> – Optional boolean value, if segment == True, it will perform a segmented sieve</p></li>
+<li><p><strong>values</strong> – Optional boolean value, if values == False, it will return an array such that array[x] = True if x is prime</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>All primes &lt; limit</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prime_sieve</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">47</span><span class="p">]</span>
+<span class="n">prime_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+
+<span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">isprime</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prime_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span> <span class="k">if</span> <span class="n">isprime</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.primes.is_prime">
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">is_prime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#is_prime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.is_prime" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple is prime function, checks if a number is prime</p>
-<p>x : The number to be checked</p>
-<p>True if x is prime
-False if x is not prime</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if x is prime, False otherwise</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">is_prime</span><span class="p">(</span><span class="mi">160517089</span><span class="p">)</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.primes.prime_factors">
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">prime_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#prime_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.prime_factors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all the prime factors of n</p>
-<p>n : Finds the prime factors of n</p>
-<p>A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prime_factors</span><span class="p">(</span><span class="mi">123123</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="n">prime_factors</span><span class="p">(</span><span class="mi">1123619623</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span><span class="mi">7</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">160517089</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.primes.primepi">
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">primepi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#primepi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.primepi" title="Permalink to this definition">¶</a></dt>
-<dd><p>Primepi function is commonly known as Prime Counting Function (see here: <a class="reference external" href="https://en.wikipedia.org/wiki/Prime-counting_function">https://en.wikipedia.org/wiki/Prime-counting_function</a>)</p>
+<dd><p>Primepi function is commonly known as <a class="reference external" href="https://en.wikipedia.org/wiki/Prime-counting_function">Prime Counting Function</a></p>
 <p>This function generates an array such that array[x] = primepi(x)</p>
-<p>limit : An integer, it will generate an array of length limit</p>
-<p>array : array[x] = primepi(x)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>limit</strong> – An integer,</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An array length limit such that array[x] = primepi(x)</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.primes.sum_of_primes">
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">sum_of_primes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#sum_of_primes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.sum_of_primes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler</p>
-<p>n : An integer, will sum primes up till n</p>
-<p>The sum of all primes up till n</p>
+<dd><p>Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler
+You may view it <a class="reference external" href="https://projecteuler.net/thread=10;page=5#111677">here</a> once you’ve completed problem 10</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The sum of all primes up till n</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sum_of_primes</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">142913828922</span>
+<span class="n">sum_of_primes</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2220822432581729238</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.fermat_primality_test">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">fermat_primality_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#fermat_primality_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.fermat_primality_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Fermat_primality_test">Fermat Primality Test</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – An integer to be tested</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if n is probably prime</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">17969800575241</span><span class="p">)</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#Actually True</span>
+<span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">101101</span><span class="p">)</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#Wrong 101101 is not prime</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.
+Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use
+You can test more terms to make it more and more accurate</p>
+</div>
 </dd></dl>
 
 </section>
@@ -350,74 +423,160 @@ False if x is not prime</p>
 <dt class="sig sig-object py" id="mathslib.fib.fibonacci">
 <span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">fibonacci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#fibonacci"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.fibonacci" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the n-th fibonnaci using matrix exponentiation
-Credit: <a class="reference external" href="https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371">https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371</a></p>
-<p>n : An integer</p>
-<p>The n-th fibonnaci number</p>
+Method is outlined <a class="reference external" href="https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371">here</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The n-th fibonnaci number</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="mi">354224848179261915075</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.fib.fib_till">
 <span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">fib_till</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#fib_till"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.fib_till" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all fibonnaci number up till a limit</p>
-<dl class="simple">
-<dt>limit<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>limit</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing all the fibonacci numbers &lt; limit</p>
 </dd>
 </dl>
-<p>fibnumbers : A list containing all the fibonacci numbers &lt; x</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fib_till</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">fib_till</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span> <span class="o">=</span> <span class="mi">2583</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.fib.ZeckendorfRepresentation">
 <span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">ZeckendorfRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#ZeckendorfRepresentation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.ZeckendorfRepresentation" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the Zeckendorf Representation of x 
-See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem">https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem</a></p>
-<p>x : An integer x</p>
-<p>zeckrep : A list containing the zeckendorf representation of x</p>
+<dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem">Zeckendorf Representation</a> of x</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list containing the zeckendorf representation of x</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ZeckendorfRepresentation</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
 <section id="module-mathslib.algorithms">
 <span id="mathslib-algorithms-module"></span><h2>mathslib.algorithms module<a class="headerlink" href="#module-mathslib.algorithms" title="Permalink to this headline">¶</a></h2>
-<p>Various known algorithms, graph theory and optimization related</p>
+<p>Various known algorithms. They are graph theory and optimization related</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.algorithms.PrimsAlgorithm">
 <span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">PrimsAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#PrimsAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.PrimsAlgorithm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Prim’s algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.
-See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">https://en.wikipedia.org/wiki/Prim%27s_algorithm</a>
-Implementation is based of Wikipedia</p>
-<p>graph : Takes a matrix input</p>
-<p>The minimum spanning tree for the weighted undirected Graph</p>
+<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim’s algorithm</a>
+It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>matrix</strong> – Takes a <a class="reference external" href="https://en.wikipedia.org/wiki/Adjacency_matrix">Adjacency matrix</a> as input</p>
+</dd>
+<dt class="field-even">Returns Weight</dt>
+<dd class="field-even"><p>The sum of the minimum spanning tree</p>
+</dd>
+<dt class="field-odd">Returns mask</dt>
+<dd class="field-odd"><p>The corresponding Adjacency matrix of the MST</p>
+</dd>
+</dl>
+<p>Example from Project <a class="reference external" href="https://projecteuler.com/107">Euler Problem 107</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="n">PrimsAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">93</span><span class="p">,</span> 
+                          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                           <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                           <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.algorithms.DijkstrasAlgorithm">
 <span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">DijkstrasAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">1,</span> <span class="pre">-</span> <span class="pre">1)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#DijkstrasAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.DijkstrasAlgorithm" title="Permalink to this definition">¶</a></dt>
-<dd><p>Dijkstra’s algorithm is an algorithm for finding the shortest paths between nodes in a graph
-See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a>
-Implementation is based of Wikipedia</p>
-<p>matrix : Takes a matrix input, representing the graph, assumes all nodes are connected</p>
-<p>Shortest path between desired starting and ending node</p>
+<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra’s algorithm</a> 
+It finds the the shortest paths between nodes in a graph</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> – Takes a matrix as imput</p></li>
+<li><p><strong>start_node</strong> – Optional tuple, it is initially set as the top left corner of matrix</p></li>
+<li><p><strong>end_node</strong> – Optional tuple, it is initially set as the bottom right corner of matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Shortest path between desired starting and ending node</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The matrix assumes that each vertex has an edge to it’s neighbour, therefore this is not a widely applicable case</p>
+</div>
+<p>Example from Project <a class="reference external" href="https://projecteuler.com/83">Euler Problem 83</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">131</span><span class="p">,</span> <span class="mi">673</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">201</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">342</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">630</span><span class="p">,</span> <span class="mi">803</span><span class="p">,</span> <span class="mi">746</span><span class="p">,</span> <span class="mi">422</span><span class="p">,</span> <span class="mi">111</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">537</span><span class="p">,</span> <span class="mi">699</span><span class="p">,</span> <span class="mi">497</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">956</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">805</span><span class="p">,</span> <span class="mi">732</span><span class="p">,</span> <span class="mi">524</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">331</span><span class="p">]]</span>
+
+<span class="n">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2297</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.algorithms.KnapSack">
 <span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">KnapSack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#KnapSack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.KnapSack" title="Permalink to this definition">¶</a></dt>
-<dd><p>Given a set of items, each with a weight and a value, determine the number of each item to include in a 
-collection so that the total weight is less than or equal to a given limit and the total value is as 
-large as possible
-See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Knapsack_problem">https://en.wikipedia.org/wiki/Knapsack_problem</a></p>
-<p>values : A list of values
-weights : A list with weight of corresponding values
-n : Number of items (len(values))
-W : Desired weight
-no_values : TYPE, optional</p>
-<blockquote>
-<div><p>Default is True</p>
-</div></blockquote>
-<p>If no_values == True - It returns the optimal sum of weights
-If no_values == False - it returns the entire array, which is used in KnapSackValues to find which values were 
-actually used in the optimal sum</p>
+<dd><p>Implementation of dynamic programming solution to the 0-1 <a class="reference external" href="https://en.wikipedia.org/wiki/Knapsack_problem">Knapsack Problem</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> – A list of values</p></li>
+<li><p><strong>weights</strong> – A list with weight of corresponding values</p></li>
+<li><p><strong>n</strong> – Number of items</p></li>
+<li><p><strong>W</strong> – Desired weight</p></li>
+<li><p><strong>no_values</strong> – Optional boolean value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p>If no_values == True - It returns the optimal sum of weights</p></li>
+<li><p>If no_values == False - it returns the entire array used to build up the solution</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">=</span> <span class="mi">220</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -425,11 +584,27 @@ actually used in the optimal sum</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">KnapSackValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#KnapSackValues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.KnapSackValues" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extension to KnapSack function
 It finds the actual values used to obtain the optimal sum</p>
-<p>values : A list of values
-weights : A list with weight of corresponding values
-n : Number of items (len(values))
-W : Desired weight</p>
-<p>A set with the optimal values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> – A list of values</p></li>
+<li><p><strong>weights</strong> – A list with weight of corresponding values</p></li>
+<li><p><strong>n</strong> – Number of items</p></li>
+<li><p><strong>W</strong> – Desired weight</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A set with the optimal values which form the solution to the knapsack problem</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">120</span><span class="p">]</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+
+<span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">}</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -441,14 +616,15 @@ W : Desired weight</p>
 <dt class="sig sig-object py" id="mathslib.simple.n_choose_r">
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">n_choose_r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#n_choose_r"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.n_choose_r" title="Permalink to this definition">¶</a></dt>
 <dd><p>n choose r function</p>
-<dl class="simple">
-<dt>n<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> – An integer</p></li>
+<li><p><strong>r</strong> – An integer</p></li>
+</ul>
 </dd>
-<dt>r<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
-</dd>
-</dl>
-<dl class="simple">
-<dt>TYPE</dt><dd><p>DESCRIPTION.</p>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>n choose r</p>
 </dd>
 </dl>
 </dd></dl>
@@ -457,27 +633,61 @@ W : Desired weight</p>
 <dt class="sig sig-object py" id="mathslib.simple.numberToBase">
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">numberToBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#numberToBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.numberToBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes n from base 10 to base b</p>
-<p>n : An integer, number to be changed
-b : An integer, base in question</p>
-<p>n in base b</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> – An integer, number to be changed</p></li>
+<li><p><strong>b</strong> – An integer, base in question</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>n in base b</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.simple.lcm">
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">lcm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#lcm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.lcm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the lcm of a list of numbers</p>
-<p>a_list : A list of numbers</p>
-<p>curr : The lcm of all numbers in the list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alist</strong> – A list containing integers</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The lcm of all numbers in the list</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lcm</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">lcm</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="o">=</span> <span class="mi">140</span>
+<span class="n">lcm</span><span class="p">([</span><span class="mi">8345</span><span class="p">,</span> <span class="mi">23579</span><span class="p">,</span> <span class="mi">174</span><span class="p">])</span> <span class="o">=</span> <span class="mi">34237415370</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.simple.ModDivision">
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">ModDivision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#ModDivision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.ModDivision" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds a/b mod m</p>
-<p>a : An integer, the numerator
-b : An integer, the denominator
-m : An integer, the modulus</p>
-<p>answer : a/b mod m</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> – An integer, the numerator</p></li>
+<li><p><strong>b</strong> – An integer, the denominator</p></li>
+<li><p><strong>m</strong> – An integer, the modulus</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a/b mod m</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ModDivision</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>

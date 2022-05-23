@@ -75,17 +75,10 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    n choose r function</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : TYPE</span>
-<span class="sd">        DESCRIPTION.</span>
-<span class="sd">    r : TYPE</span>
-<span class="sd">        DESCRIPTION.</span>
+<span class="sd">    :param n: An integer</span>
+<span class="sd">    :param r: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    TYPE</span>
-<span class="sd">        DESCRIPTION.</span>
+<span class="sd">    :returns: n choose r</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
@@ -97,14 +90,16 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Changes n from base 10 to base b</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : An integer, number to be changed</span>
-<span class="sd">    b : An integer, base in question</span>
+<span class="sd">    :param n: An integer, number to be changed</span>
+<span class="sd">    :param b: An integer, base in question</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    n in base b</span>
+<span class="sd">    :returns: n in base b</span>
+<span class="sd">        </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        numberToBase(10, 2) = [1, 0, 1, 0]</span>
+<span class="sd">        numberToBase(10, 3) = [1, 0, 1]</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;n and b must be an integer&quot;</span>
@@ -120,13 +115,16 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Finds the lcm of a list of numbers</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    a_list : A list of numbers</span>
+<span class="sd">    :param alist: A list containing integers</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    curr : The lcm of all numbers in the list</span>
+<span class="sd">    :returns: The lcm of all numbers in the list</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        lcm([2, 3]) = 6</span>
+<span class="sd">        lcm([2, 4, 5, 7]) = 140</span>
+<span class="sd">        lcm([8345, 23579, 174]) = 34237415370</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a_list</span><span class="p">)</span>
     <span class="n">curr</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -139,15 +137,16 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Finds a/b mod m</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    a : An integer, the numerator</span>
-<span class="sd">    b : An integer, the denominator</span>
-<span class="sd">    m : An integer, the modulus</span>
+<span class="sd">    :param a: An integer, the numerator</span>
+<span class="sd">    :param b: An integer, the denominator</span>
+<span class="sd">    :param m: An integer, the modulus</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    answer : a/b mod m</span>
+<span class="sd">    :returns: a/b mod m</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        ModDivision(8, 4, 5) = 2</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;n and b must be an integer&quot;</span>

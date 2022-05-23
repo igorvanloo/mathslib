@@ -22,7 +22,7 @@ copyright = '2022, Igor van Loo'
 author = 'Igor van Loo'
 
 # The full version, including alpha/beta/rc tags
-release = '2.0.0'
+release = '2.0.2'
 
 
 # -- General configuration ---------------------------------------------------

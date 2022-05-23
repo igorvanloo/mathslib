@@ -70,26 +70,33 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
-<div class="viewcode-block" id="Prime_Sieve"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.Prime_Sieve">[docs]</a><span class="k">def</span> <span class="nf">Prime_Sieve</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">block_size</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">segment</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="prime_sieve"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.prime_sieve">[docs]</a><span class="k">def</span> <span class="nf">prime_sieve</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">segment</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A prime sieve I made with a few different options</span>
 <span class="sd">    </span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    limit : The limit up till which the function will generate primes</span>
-<span class="sd">    block_size : Decide which length of blocks you would like to cut the sieve into, automatically it is set to sqrt(limit)</span>
-<span class="sd">    segment : Decide whether you would like to use a segmented sieve or a regular sieve, it is normally set it False</span>
-<span class="sd">    values : If segment == False, if you would like an actual list of prime then values is true, if you would</span>
-<span class="sd">            like an array such that array[x] = True if x is prime, then set values = False</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Based on above, all primes less than limit or an array such that array[x] = True if x is prime</span>
+<span class="sd">    :param limit: The limit up till which the function will generate primes</span>
+<span class="sd">    :param segment: Optional boolean value, if segment == True, it will perform a segmented sieve </span>
+<span class="sd">    :param values: Optional boolean value, if values == False, it will return an array such that array[x] = True if x is prime</span>
+
+<span class="sd">    :returns: All primes &lt; limit</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        prime_sieve(50) = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]</span>
+<span class="sd">        prime_sieve(10, values = False) = [False, False, True, True, False, True, False, True, False, False, False]</span>
+<span class="sd">        </span>
+<span class="sd">        [i for (i, isprime) in enumerate(prime_sieve(10, values = False)) if isprime] = [2, 3, 5, 7]</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
+    
     <span class="k">if</span> <span class="n">segment</span><span class="p">:</span>
         <span class="n">primes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">sqrtN</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">limit</span><span class="p">))</span>
         <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">sqrtN</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">sqrtN</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
                 <span class="n">primes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -97,11 +104,8 @@
                     <span class="n">result</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
         <span class="n">all_primes</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">marker</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">block_size</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">block_size</span> <span class="o">=</span> <span class="n">sqrtN</span>
+        <span class="n">block_size</span> <span class="o">=</span> <span class="n">sqrtN</span>
         <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">limit</span><span class="o">//</span><span class="n">block_size</span><span class="p">):</span>
-            <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">limit</span><span class="o">//</span><span class="n">block_size</span><span class="p">)</span>
             <span class="n">block_start</span> <span class="o">=</span> <span class="n">k</span><span class="o">*</span><span class="n">block_size</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="n">block_end</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">block_size</span>
             <span class="n">curr_result</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span><span class="o">*</span><span class="n">block_size</span>
@@ -118,8 +122,14 @@
                     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">marker</span><span class="p">[</span><span class="n">p_index</span><span class="p">]</span> <span class="o">+</span> <span class="n">p</span><span class="p">,</span> <span class="n">block_end</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
                         <span class="n">curr_result</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="n">block_start</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
                         <span class="n">marker</span><span class="p">[</span><span class="n">p_index</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span>
-            <span class="n">all_primes</span> <span class="o">+=</span> <span class="p">[</span><span class="n">block_start</span> <span class="o">+</span> <span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">isprime</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">curr_result</span><span class="p">)</span> <span class="k">if</span> <span class="n">isprime</span><span class="p">]</span>
-        <span class="k">return</span> <span class="n">primes</span> <span class="o">+</span> <span class="n">all_primes</span>
+            <span class="k">if</span> <span class="n">values</span><span class="p">:</span>
+                <span class="n">all_primes</span> <span class="o">+=</span> <span class="p">[</span><span class="n">block_start</span> <span class="o">+</span> <span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">isprime</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">curr_result</span><span class="p">)</span> <span class="k">if</span> <span class="n">isprime</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">all_primes</span> <span class="o">=</span> <span class="n">all_primes</span><span class="p">[:</span><span class="n">block_start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">curr_result</span>
+        <span class="k">if</span> <span class="n">values</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">primes</span> <span class="o">+</span> <span class="n">all_primes</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">result</span><span class="p">[:</span><span class="n">sqrtN</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">all_primes</span>
     <span class="k">else</span><span class="p">:</span>
        	<span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">limit</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
        	<span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
@@ -136,15 +146,19 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A simple is prime function, checks if a number is prime</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x : The number to be checked</span>
+<span class="sd">    :param x: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    True if x is prime</span>
-<span class="sd">    False if x is not prime</span>
+<span class="sd">    :returns: True if x is prime, False otherwise</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        is_prime(10) = False</span>
+<span class="sd">        is_prime(160517089) = True</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;x must be an integer&quot;</span>
+    
     <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">:</span>
@@ -152,7 +166,7 @@
     <span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
@@ -161,14 +175,19 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Finds all the prime factors of n</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : Finds the prime factors of n</span>
+<span class="sd">    :param n: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime</span>
+<span class="sd">    :returns: A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        </span>
+<span class="sd">        prime_factors(123123) = {3: 1, 7: 1, 11: 1, 13: 1, 41: 1}</span>
+<span class="sd">        prime_factors(1123619623) = {7: 1, 160517089: 1}</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
+    
     <span class="n">factors</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">d</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
@@ -191,19 +210,23 @@
 
 <div class="viewcode-block" id="primepi"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.primepi">[docs]</a><span class="k">def</span> <span class="nf">primepi</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Primepi function is commonly known as Prime Counting Function (see here: https://en.wikipedia.org/wiki/Prime-counting_function)</span>
+<span class="sd">    Primepi function is commonly known as `Prime Counting Function &lt;https://en.wikipedia.org/wiki/Prime-counting_function&gt;`_</span>
 <span class="sd">    </span>
 <span class="sd">    This function generates an array such that array[x] = primepi(x)</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    limit : An integer, it will generate an array of length limit</span>
+<span class="sd">    :param limit: An integer, </span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    array : array[x] = primepi(x)</span>
+<span class="sd">    :returns: An array length limit such that array[x] = primepi(x)</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        primepi(10) = [0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">prime_gen</span> <span class="o">=</span> <span class="n">Prime_Sieve</span><span class="p">(</span><span class="n">limit</span> <span class="o">+</span> <span class="mi">50</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;limit must be an integer&quot;</span>
+    
+    <span class="n">prime_gen</span> <span class="o">=</span> <span class="n">prime_sieve</span><span class="p">(</span><span class="n">limit</span> <span class="o">+</span> <span class="mi">50</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
     <span class="n">primes</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prime_gen</span><span class="p">))</span> <span class="k">if</span> <span class="n">prime_gen</span><span class="p">[</span><span class="n">x</span><span class="p">]]</span>
     <span class="n">array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">limit</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">p_index</span> <span class="o">=</span> <span class="mi">0</span>
@@ -218,15 +241,20 @@
 <div class="viewcode-block" id="sum_of_primes"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.sum_of_primes">[docs]</a><span class="k">def</span> <span class="nf">sum_of_primes</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler</span>
+<span class="sd">    You may view it `here &lt;https://projecteuler.net/thread=10;page=5#111677&gt;`_ once you&#39;ve completed problem 10</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : An integer, will sum primes up till n</span>
+<span class="sd">    :param n: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    The sum of all primes up till n</span>
+<span class="sd">    :returns: The sum of all primes up till n</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        </span>
+<span class="sd">        sum_of_primes(2*10**6) = 142913828922</span>
+<span class="sd">        sum_of_primes(10**10) = 2220822432581729238</span>
 <span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
+    
     <span class="n">r</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">n</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
     <span class="k">assert</span> <span class="n">r</span> <span class="o">*</span> <span class="n">r</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">&gt;</span> <span class="n">n</span>
     <span class="n">V</span> <span class="o">=</span> <span class="p">[</span><span class="n">n</span> <span class="o">//</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
@@ -241,6 +269,36 @@
                 <span class="n">S</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">-=</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">v</span> <span class="o">//</span> <span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">sp</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">S</span><span class="p">[</span><span class="n">n</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="fermat_primality_test"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.fermat_primality_test">[docs]</a><span class="k">def</span> <span class="nf">fermat_primality_test</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A `Fermat Primality Test &lt;https://en.wikipedia.org/wiki/Fermat_primality_test&gt;`_</span>
+
+<span class="sd">    :param n: An integer to be tested</span>
+
+<span class="sd">    :returns: True if n is probably prime</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        fermat_primality_test(17969800575241) = True #Actually True</span>
+<span class="sd">        fermat_primality_test(101101) = True #Wrong 101101 is not prime</span>
+<span class="sd">        </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.</span>
+<span class="sd">        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use</span>
+<span class="sd">        You can test more terms to make it more and more accurate</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
+    
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;switching to is_prime function for safety&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    
+    <span class="k">else</span><span class="p">:</span> 
+        <span class="k">if</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
 </pre></div>
 
             <div class="clearer"></div>

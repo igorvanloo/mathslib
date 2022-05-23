@@ -35,17 +35,10 @@ def n_choose_r(n, r):
     '''
     n choose r function
 
-    Parameters
-    ----------
-    n : TYPE
-        DESCRIPTION.
-    r : TYPE
-        DESCRIPTION.
+    :param n: An integer
+    :param r: An integer
 
-    Returns
-    -------
-    TYPE
-        DESCRIPTION.
+    :returns: n choose r
 
     '''
     if r > n:
@@ -57,14 +50,16 @@ def numberToBase(n, b):
     '''
     Changes n from base 10 to base b
 
-    Parameters
-    ----------
-    n : An integer, number to be changed
-    b : An integer, base in question
+    :param n: An integer, number to be changed
+    :param b: An integer, base in question
 
-    Returns
-    -------
-    n in base b
+    :returns: n in base b
+        
+    .. code-block:: python
+    
+        numberToBase(10, 2) = [1, 0, 1, 0]
+        numberToBase(10, 3) = [1, 0, 1]
+        
     '''
     if (type(n) != int) or (type(b) != int):
         return "n and b must be an integer"
@@ -80,13 +75,16 @@ def lcm(a_list):
     '''
     Finds the lcm of a list of numbers
 
-    Parameters
-    ----------
-    a_list : A list of numbers
+    :param alist: A list containing integers
 
-    Returns
-    -------
-    curr : The lcm of all numbers in the list
+    :returns: The lcm of all numbers in the list
+    
+    .. code-block:: python
+    
+        lcm([2, 3]) = 6
+        lcm([2, 4, 5, 7]) = 140
+        lcm([8345, 23579, 174]) = 34237415370
+        
     '''
     n = sorted(a_list)
     curr = n.pop(-1)
@@ -99,15 +97,16 @@ def ModDivision(a, b, m):
     '''
     Finds a/b mod m
 
-    Parameters
-    ----------
-    a : An integer, the numerator
-    b : An integer, the denominator
-    m : An integer, the modulus
+    :param a: An integer, the numerator
+    :param b: An integer, the denominator
+    :param m: An integer, the modulus
 
-    Returns
-    -------
-    answer : a/b mod m
+    :returns: a/b mod m
+    
+    .. code-block:: python
+    
+        ModDivision(8, 4, 5) = 2
+        
     '''
     if (type(a) != int) or (type(b) != int) or (type(m) != int):
         return "n and b must be an integer"
