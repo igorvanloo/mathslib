@@ -57,10 +57,10 @@ def divisors_of(x, include_x = True):
 def divisor(x, n):
     '''
     Implementation of `Divisor function 
-    <https://en.wikipedia.org/wiki/Divisor_function#Definition>` *σ* :sub:`x`(n) 
+    <https://en.wikipedia.org/wiki/Divisor_function#Definition >`_ *σ* :sub:`x`(n) 
     
     :param x: An integer, denotes the power till which the divisors will be summed
-    :param n: An integer, denoted the number to find the divisors of
+    :param n: An integer, denotes the number to find the divisors of
     
     :returns: An integer
     
@@ -81,17 +81,16 @@ def divisor(x, n):
 
 def continued_fraction(x):
     '''
-    Finds the continued Fraction of the sqrt(x)
-    See here: https://en.wikipedia.org/wiki/Continued_fraction
+    Finds the `continued Fraction
+    <https://en.wikipedia.org/wiki/Continued_fraction >`_ of the sqrt(x)
 
-    Parameters
-    ----------
-    x : An integer
+    :param x: An integer
 
-    Returns
-    -------
-    temp_list : A list
-                Contains the continued fraction of n
+    :returns: A list containing the continued fraction of n
+    
+    .. note::
+        √19 = [4,2,1,3,1,2,8,2,1,3,1,2,8,...] as per wikipedia
+    
     '''
     if (type(x) != int):
         return "All values must be integers"
@@ -115,17 +114,13 @@ def continued_fraction(x):
 
 def overall_fraction(cf):
     '''
-    Parameters
-    ----------
-    cf : list
-        Takes a list containing the continued fraction of a number, returns the fraction
+    :param cf: A list, this list represents the continued fraction of a number
 
-    Returns
-    -------
-    denominator : TYPE
-        DESCRIPTION.
-    numerator : TYPE
-        DESCRIPTION.
+    :returns numerator: An integer, the numerator of the fraction
+    :returns denominator: An integer, the denominator of the fraction
+    
+    .. note::
+        overall_fraction([4, 2, 6, 7]) = 415, 93
 
     '''
     cf = cf[::-1]
@@ -137,16 +132,12 @@ def overall_fraction(cf):
 
 def phi(n):
     '''
-    Eulers Totient Function counts the positive integers up to a given integer n that are relatively prime to n
-    See here: https://en.wikipedia.org/wiki/Euler%27s_totient_function
+    Implementation of `Eulers Totient Function
+    <https://en.wikipedia.org/wiki/Euler%27s_totient_function >`_ counts the positive integers up to a given integer n that are relatively prime to n
 
-    Parameters
-    ----------
-    n : An integer
+    :param n: An integer
 
-    Returns
-    -------
-    The number of integers, a, less than n, such that gcd(a, n) = 1
+    :returns: An integer, numbers, a, less than n, such that gcd(a, n) = 1
     '''
     if (type(n) != int):
         return "All values must be integers"
@@ -170,17 +161,16 @@ def phi(n):
 
 def Mobius(n):
     '''
-    Finds the mobius function of n
-    See here: https://en.wikipedia.org/wiki/M%C3%B6bius_function
+    Implementation of the 'Mobius function
+    < https://en.wikipedia.org/wiki/M%C3%B6bius_function >`_ of n
 
-    Parameters
-    ----------
-    n : An integer
+    :param n: An integer
 
-    Returns
-    -------
-    returns 0 if n is divisible by p^2
-    otherwise returns (-1)^k, where k is number of distinct prime factors
+    :returns: An integer
+    
+    .. note::
+        * returns 0 if n is divisible by p^2
+        * returns (-1)^k, where k is number of distinct prime factors
     '''
     if (type(n) != int):
         return "All values must be integers"
@@ -203,19 +193,14 @@ def Mobius(n):
 
 def ppt(limit, non_primitive = True):
     '''
-    Generates all Pythagorean Triplets up till the limit
-    See here: https://en.wikipedia.org/wiki/Pythagorean_triple
+    Generates all 'Pythagorean Triplets 
+    <https://en.wikipedia.org/wiki/Pythagorean_triple >`_ up till the limit
 
-    Parameters
-    ----------
-    limit : TYPE
-        DESCRIPTION.
-    non_primitive : Optional
-                    If you want only primitive pythagorean Triplets set this to False
+    :param limit: An integer, will generate all Pythagorean Triplets such that no side is longer than the limit
+    :param non_primitive: Optional boolean value, If True, returns all triplets, if False returns only primitive triplets
 
-    Returns
-    -------
-    triples : A list containing all your desired type of triplets (Based on non_primitive)
+    :returns: A list containing all desired triplets
+    
     '''
     if (type(limit) != int):
         return "All values must be integers"
@@ -234,16 +219,15 @@ def ppt(limit, non_primitive = True):
 
 def legendre_factorial(x):
     '''
-    Implementation of Legendres' Formula
-    See here: https://en.wikipedia.org/wiki/Legendre%27s_formula
+    Implementation of 'Legendres' Formula
+    <https://en.wikipedia.org/wiki/Legendre%27s_formula >`_
 
-    Parameters
-    ----------
-    x : An integer
+    :param x: An integer
 
-    Returns
-    -------
-    Returns a list containing the prime factorisation of x!
+    :returns: A dictionary containing the prime factorisation of x!
+    .. note::
+        * legendre_factorial(6) = {2: 4, 3: 2, 5: 1} as per Wikipedia
+        
     '''
     if (type(x) != int):
         return "All values must be integers"
@@ -258,17 +242,13 @@ def legendre_factorial(x):
 
 def k_smooth_numbers(max_prime, limit):
     '''
-    Find all k ≤ max_prime smooth numbers up till a limit
-    See here: https://en.wikipedia.org/wiki/Smooth_number
+    Find all k ≤ max_prime 'smooth numbers
+    <https://en.wikipedia.org/wiki/Smooth_number >`_ up till a limit
 
-    Parameters
-    ----------
-    max_prime : A prime
-    limit : An integer
+    :param max_prime: The maximum prime allowed
+    :param limit: limit up till which to find max_prime smooth numbers
 
-    Returns
-    -------
-    A list containing all k ≤ max_prime smooth numbers less that limit
+    :returns: A list containing all k ≤ max_prime smooth numbers less that limit
     '''
     if (type(max_prime) != int) or (type(limit) != int):
         return "All values must be integers"
@@ -289,20 +269,19 @@ def k_smooth_numbers(max_prime, limit):
 
 def legendre_symbol(a, p):
     '''
-    Finds the legendre symbol of a/p
-    See here: https://en.wikipedia.org/wiki/Legendre_symbol
-
-    Parameters
-    ----------
-    a : An integer
-    p : An odd prime
-
-    Returns
-    -------
-    Returns the legendre symbol of a/p: 
-    1 if a is a quadratic residue modulo p and p does not divide a
-    -1 if a is a non-quadratic residue modulo p
-    0 if p divides a
+    Finds the 'legendre symbol
+    <https://en.wikipedia.org/wiki/Legendre_symbol >`_ of a/p
+    
+    :param a: An integer
+    :param p: An odd prime
+    
+    :results: The legendre symbol of a/p
+    
+    .. note::
+        * returns 1 if a is a quadratic residue modulo p and p does not divide a
+        * returns -1 if a is a non-quadratic residue modulo p
+        * returns 0 if p divides a
+    
     '''
     if (type(a) != int) or (type(p) != int):
         return "All values must be integers"
@@ -315,23 +294,27 @@ def legendre_symbol(a, p):
 
 def tonelli_shanks(a, p):
     '''
-    Credit to: https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/
-    Implementation of Tonelli Shanks algorithm
-    See here: https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm
+    Credit to: 
+    Implementation of `Tonelli Shanks algorithm
+    <https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm >`_
+    
+    Full credit for this alogrithm goes to 'Eli Bendersky 
+    <https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/ >`_
 
-    Parameters
-    ----------
-    a : An integer
-    p : An integer
+    :param a: An integer
+    :param p: An integer
 
-    Returns
-    -------
-    Solve the congruence of the form:
-        x^2 = a (mod p)
-    And returns x. Note that p - x is also a root.
-
-    0 is returned is no square root exists for
-    these a and p.
+    :returns: solution to x^2 = a (mod p)
+    
+    .. note::
+        This function solves the congruence of the form:
+            x^2 = a (mod p)
+        And returns x. Note that p - x is also a root.
+    
+        0 is returned is no square root exists for
+        these a and p.
+        
+        tonelli_shanks(5, 41) = 28 as per Wikipedia
     '''
     if legendre_symbol(a, p) != 1:
         return 0
@@ -371,18 +354,17 @@ def tonelli_shanks(a, p):
         
 def ChineseRemainderTheorem(a1, a2, n1, n2):
     '''
-    Simple Chinese Remiander Theorem to solve x = a1 mod n1, x = a2 mod n2
+    Simple `Chinese Remiander Theorem
+    <https://en.wikipedia.org/wiki/Chinese_remainder_theorem >`_ to solve x = a1 mod n1, x = a2 mod n2
 
     Parameters
     ----------
-    a1 : An integer
-    a2 : An integer
-    n1 : An integer
-    n2 : An integer
+    :param a1: An integer
+    :param a2: An integer
+    :param n1: An integer
+    :param n2: An integer
 
-    Returns
-    -------
-    Unique solution x = a1 mod n1, x = a2 mod n2
+    :returns: Unique solution x = a1 mod n1, x = a2 mod n2
     '''
     if (type(a1) != int) or (type(a2) != int) or (type(n1) != int) or (type(n2) != int):
         return "All values must be integers"
