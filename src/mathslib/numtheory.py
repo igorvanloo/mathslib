@@ -120,7 +120,7 @@ def overall_fraction(cf):
     :returns denominator: An integer, the denominator of the fraction
     
     .. code-block:: python
-        #As per Wikipedia
+    
         overall_fraction([4, 2, 6, 7]) = 415, 93 
 
     '''
@@ -226,8 +226,9 @@ def legendre_factorial(x):
     :param x: An integer
 
     :returns: A dictionary containing the prime factorisation of x!
+    
     .. code-block:: python
-        #As per Wikipedia
+    
         legendre_factorial(6) = {2: 4, 3: 2, 5: 1} 
         
     '''
@@ -309,15 +310,14 @@ def tonelli_shanks(a, p):
     :returns: solution to x^2 = a (mod p)
     
     .. note::
-        This function solves the congruence of the form:
-            x^2 = a (mod p)
-        And returns x. Note that p - x is also a root.
-    
-        0 is returned is no square root exists for
-        these a and p.
         
-    .. code_block:: python
-        #As per Wikipedia
+        This function solves the congruence of the form x^2 = a (mod p) and returns x. 
+        Note that p - x is also a root.
+    
+        0 is returned if no square root exists for these a and p.
+        
+    .. code-block:: python
+    
         tonelli_shanks(5, 41) = 28 
     '''
     if legendre_symbol(a, p) != 1:

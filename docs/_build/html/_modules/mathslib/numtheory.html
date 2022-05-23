@@ -75,13 +75,10 @@
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Finds all the divisors of x</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x : An integer</span>
+<span class="sd">    :param x: Integer to be checked</span>
+<span class="sd">    :param include_x: Optional boolean value, If true it will include x as a divisor of x</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    divisors : a list containing all the divisors of x</span>
+<span class="sd">    :returns: list, contains all divisors of x</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
@@ -99,20 +96,19 @@
     
 <div class="viewcode-block" id="divisor"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.divisor">[docs]</a><span class="k">def</span> <span class="nf">divisor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Implementation of Divisor function σ_x(n) (See here: https://en.wikipedia.org/wiki/Divisor_function#Definition)</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x : An integer,</span>
-<span class="sd">        x = 0 - Gives you number of divisors</span>
-<span class="sd">        x = 1 - Gives you sum of divisors</span>
-<span class="sd">        x = 2 - Gives you sum of divisors squared</span>
-<span class="sd">    n : An integer, number to function σ_x of</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    total : Returns σ_x(n)</span>
-
+<span class="sd">    Implementation of `Divisor function </span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Divisor_function#Definition&gt;`_ *σ* :sub:`x`(n) </span>
+<span class="sd">    </span>
+<span class="sd">    :param x: An integer, denotes the power till which the divisors will be summed</span>
+<span class="sd">    :param n: An integer, denotes the number to find the divisors of</span>
+<span class="sd">    </span>
+<span class="sd">    :returns: An integer</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        * divisor(0, n) = number of divisors of *n*</span>
+<span class="sd">        * divisor(1, n) = sum of divisors of *n*</span>
+<span class="sd">        * divisor(2, n) = sum of divisors squared of *n*</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -125,17 +121,16 @@
 
 <div class="viewcode-block" id="continued_fraction"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.continued_fraction">[docs]</a><span class="k">def</span> <span class="nf">continued_fraction</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Finds the continued Fraction of the sqrt(x)</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Continued_fraction</span>
+<span class="sd">    Finds the `continued Fraction</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Continued_fraction&gt;`_ of the sqrt(x)</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x : An integer</span>
+<span class="sd">    :param x: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    temp_list : A list</span>
-<span class="sd">                Contains the continued fraction of n</span>
+<span class="sd">    :returns: A list containing the continued fraction of n</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        √19 = [4,2,1,3,1,2,8,2,1,3,1,2,8,...] as per Wikipedia</span>
+<span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -159,17 +154,14 @@
 
 <div class="viewcode-block" id="overall_fraction"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.overall_fraction">[docs]</a><span class="k">def</span> <span class="nf">overall_fraction</span><span class="p">(</span><span class="n">cf</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    cf : list</span>
-<span class="sd">        Takes a list containing the continued fraction of a number, returns the fraction</span>
+<span class="sd">    :param cf: A list, this list represents the continued fraction of a number</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    denominator : TYPE</span>
-<span class="sd">        DESCRIPTION.</span>
-<span class="sd">    numerator : TYPE</span>
-<span class="sd">        DESCRIPTION.</span>
+<span class="sd">    :returns numerator: An integer, the numerator of the fraction</span>
+<span class="sd">    :returns denominator: An integer, the denominator of the fraction</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        #As per Wikipedia</span>
+<span class="sd">        overall_fraction([4, 2, 6, 7]) = 415, 93 </span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">cf</span> <span class="o">=</span> <span class="n">cf</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
@@ -181,16 +173,12 @@
 
 <div class="viewcode-block" id="phi"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.phi">[docs]</a><span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Eulers Totient Function counts the positive integers up to a given integer n that are relatively prime to n</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Euler%27s_totient_function</span>
+<span class="sd">    Implementation of `Eulers Totient Function</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Euler%27s_totient_function&gt;`_ counts the positive integers up to a given integer n that are relatively prime to n</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : An integer</span>
+<span class="sd">    :param n: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    The number of integers, a, less than n, such that gcd(a, n) = 1</span>
+<span class="sd">    :returns: An integer, numbers, a, less than n, such that gcd(a, n) = 1</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -214,17 +202,16 @@
 
 <div class="viewcode-block" id="Mobius"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.Mobius">[docs]</a><span class="k">def</span> <span class="nf">Mobius</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Finds the mobius function of n</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/M%C3%B6bius_function</span>
+<span class="sd">    Implementation of the `Mobius function</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/M%C3%B6bius_function&gt;`_ of n</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    n : An integer</span>
+<span class="sd">    :param n: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    returns 0 if n is divisible by p^2</span>
-<span class="sd">    otherwise returns (-1)^k, where k is number of distinct prime factors</span>
+<span class="sd">    :returns: An integer</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        * returns 0 if n is divisible by p^2</span>
+<span class="sd">        * returns (-1)^k, where k is number of distinct prime factors</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -247,19 +234,14 @@
 
 <div class="viewcode-block" id="ppt"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.ppt">[docs]</a><span class="k">def</span> <span class="nf">ppt</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">non_primitive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Generates all Pythagorean Triplets up till the limit</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Pythagorean_triple</span>
+<span class="sd">    Generates all `Pythagorean Triplets </span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Pythagorean_triple&gt;`_ up till the limit</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    limit : TYPE</span>
-<span class="sd">        DESCRIPTION.</span>
-<span class="sd">    non_primitive : Optional</span>
-<span class="sd">                    If you want only primitive pythagorean Triplets set this to False</span>
+<span class="sd">    :param limit: An integer, will generate all Pythagorean Triplets such that no side is longer than the limit</span>
+<span class="sd">    :param non_primitive: Optional boolean value, If True, returns all triplets, if False returns only primitive triplets</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    triples : A list containing all your desired type of triplets (Based on non_primitive)</span>
+<span class="sd">    :returns: A list containing all desired triplets</span>
+<span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -278,16 +260,16 @@
 
 <div class="viewcode-block" id="legendre_factorial"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.legendre_factorial">[docs]</a><span class="k">def</span> <span class="nf">legendre_factorial</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Implementation of Legendres&#39; Formula</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Legendre%27s_formula</span>
+<span class="sd">    Implementation of `Legendres&#39; Formula</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Legendre%27s_formula&gt;`_</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    x : An integer</span>
+<span class="sd">    :param x: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Returns a list containing the prime factorisation of x!</span>
+<span class="sd">    :returns: A dictionary containing the prime factorisation of x!</span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        #As per Wikipedia</span>
+<span class="sd">        legendre_factorial(6) = {2: 4, 3: 2, 5: 1} </span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -302,17 +284,13 @@
 
 <div class="viewcode-block" id="k_smooth_numbers"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.k_smooth_numbers">[docs]</a><span class="k">def</span> <span class="nf">k_smooth_numbers</span><span class="p">(</span><span class="n">max_prime</span><span class="p">,</span> <span class="n">limit</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Find all k ≤ max_prime smooth numbers up till a limit</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Smooth_number</span>
+<span class="sd">    Find all k ≤ max_prime `smooth numbers</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Smooth_number&gt;`_ up till a limit</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    max_prime : A prime</span>
-<span class="sd">    limit : An integer</span>
+<span class="sd">    :param max_prime: The maximum prime allowed</span>
+<span class="sd">    :param limit: limit up till which to find max_prime smooth numbers</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    A list containing all k ≤ max_prime smooth numbers less that limit</span>
+<span class="sd">    :returns: A list containing all k ≤ max_prime smooth numbers less that limit</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">max_prime</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -333,20 +311,19 @@
 
 <div class="viewcode-block" id="legendre_symbol"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.legendre_symbol">[docs]</a><span class="k">def</span> <span class="nf">legendre_symbol</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Finds the legendre symbol of a/p</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Legendre_symbol</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    a : An integer</span>
-<span class="sd">    p : An odd prime</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Returns the legendre symbol of a/p: </span>
-<span class="sd">    1 if a is a quadratic residue modulo p and p does not divide a</span>
-<span class="sd">    -1 if a is a non-quadratic residue modulo p</span>
-<span class="sd">    0 if p divides a</span>
+<span class="sd">    Finds the `legendre symbol</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Legendre_symbol&gt;`_ of a/p</span>
+<span class="sd">    </span>
+<span class="sd">    :param a: An integer</span>
+<span class="sd">    :param p: An odd prime</span>
+<span class="sd">    </span>
+<span class="sd">    :results: The legendre symbol of a/p</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        * returns 1 if a is a quadratic residue modulo p and p does not divide a</span>
+<span class="sd">        * returns -1 if a is a non-quadratic residue modulo p</span>
+<span class="sd">        * returns 0 if p divides a</span>
+<span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
@@ -359,23 +336,28 @@
 
 <div class="viewcode-block" id="tonelli_shanks"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.tonelli_shanks">[docs]</a><span class="k">def</span> <span class="nf">tonelli_shanks</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Credit to: https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/</span>
-<span class="sd">    Implementation of Tonelli Shanks algorithm</span>
-<span class="sd">    See here: https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm</span>
+<span class="sd">    Credit to: </span>
+<span class="sd">    Implementation of `Tonelli Shanks algorithm</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm&gt;`_</span>
+<span class="sd">    </span>
+<span class="sd">    Full credit for this alogrithm goes to `Eli Bendersky </span>
+<span class="sd">    &lt;https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/&gt;`_</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    a : An integer</span>
-<span class="sd">    p : An integer</span>
+<span class="sd">    :param a: An integer</span>
+<span class="sd">    :param p: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Solve the congruence of the form:</span>
-<span class="sd">        x^2 = a (mod p)</span>
-<span class="sd">    And returns x. Note that p - x is also a root.</span>
-
-<span class="sd">    0 is returned is no square root exists for</span>
-<span class="sd">    these a and p.</span>
+<span class="sd">    :returns: solution to x^2 = a (mod p)</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        </span>
+<span class="sd">        This function solves the congruence of the form x^2 = a (mod p) and returns x. </span>
+<span class="sd">        Note that p - x is also a root.</span>
+<span class="sd">    </span>
+<span class="sd">        0 is returned if no square root exists for these a and p.</span>
+<span class="sd">        </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        tonelli_shanks(5, 41) = 28 </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">legendre_symbol</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="mi">0</span>
@@ -415,18 +397,17 @@
         
 <div class="viewcode-block" id="ChineseRemainderTheorem"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.ChineseRemainderTheorem">[docs]</a><span class="k">def</span> <span class="nf">ChineseRemainderTheorem</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Simple Chinese Remiander Theorem to solve x = a1 mod n1, x = a2 mod n2</span>
+<span class="sd">    Simple `Chinese Remiander Theorem</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Chinese_remainder_theorem&gt;`_ to solve x = a1 mod n1, x = a2 mod n2</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    a1 : An integer</span>
-<span class="sd">    a2 : An integer</span>
-<span class="sd">    n1 : An integer</span>
-<span class="sd">    n2 : An integer</span>
+<span class="sd">    :param a1: An integer</span>
+<span class="sd">    :param a2: An integer</span>
+<span class="sd">    :param n1: An integer</span>
+<span class="sd">    :param n2: An integer</span>
 
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    Unique solution x = a1 mod n1, x = a2 mod n2</span>
+<span class="sd">    :returns: Unique solution to x = a1 mod n1, x = a2 mod n2</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>

@@ -13,7 +13,7 @@ mathslib.numtheory module
     :show-inheritance:
 
 mathslib.primes module
-------------------------
+----------------------
 
 .. automodule:: mathslib.primes
     :members:
@@ -21,7 +21,7 @@ mathslib.primes module
     :show-inheritance:
 
 mathslib.fib module
-------------------------
+-------------------
 
 .. automodule:: mathslib.fib
     :members:
@@ -29,7 +29,7 @@ mathslib.fib module
     :show-inheritance:
 
 mathslib.algorithms module
--------------------------------
+--------------------------
 
 .. automodule:: mathslib.algorithms
     :members:
@@ -37,7 +37,7 @@ mathslib.algorithms module
     :show-inheritance:
     
 mathslib.simple module
--------------------------------
+----------------------
 
 .. automodule:: mathslib.simple
     :members:
