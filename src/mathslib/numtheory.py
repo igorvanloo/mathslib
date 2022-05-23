@@ -36,7 +36,7 @@ def divisors_of(x, include_x = True):
     Finds all the divisors of x
 
     :param x: Integer to be checked
-    :param include_x: If true it will include x as a divisor of x
+    :param include_x: Optional boolean value, If true it will include x as a divisor of x
 
     :returns: list, contains all divisors of x
 
@@ -163,7 +163,7 @@ def phi(n):
 def Mobius(n):
     '''
     Implementation of the `Mobius function
-    < https://en.wikipedia.org/wiki/M%C3%B6bius_function>`_ of n
+    <https://en.wikipedia.org/wiki/M%C3%B6bius_function>`_ of n
 
     :param n: An integer
 
