@@ -88,7 +88,7 @@ def continued_fraction(x):
 
     :returns: A list containing the continued fraction of n
     
-    .. Example::
+    .. note::
         √19 = [4,2,1,3,1,2,8,2,1,3,1,2,8,...] as per Wikipedia
     
     '''
@@ -119,8 +119,9 @@ def overall_fraction(cf):
     :returns numerator: An integer, the numerator of the fraction
     :returns denominator: An integer, the denominator of the fraction
     
-    .. Example::
-        overall_fraction([4, 2, 6, 7]) = 415, 93 as per Wikipedia
+    .. code-block:: python
+        #As per Wikipedia
+        overall_fraction([4, 2, 6, 7]) = 415, 93 
 
     '''
     cf = cf[::-1]
@@ -161,7 +162,7 @@ def phi(n):
 
 def Mobius(n):
     '''
-    Implementation of the 'Mobius function
+    Implementation of the `Mobius function
     < https://en.wikipedia.org/wiki/M%C3%B6bius_function>`_ of n
 
     :param n: An integer
@@ -193,7 +194,7 @@ def Mobius(n):
 
 def ppt(limit, non_primitive = True):
     '''
-    Generates all 'Pythagorean Triplets 
+    Generates all `Pythagorean Triplets 
     <https://en.wikipedia.org/wiki/Pythagorean_triple>`_ up till the limit
 
     :param limit: An integer, will generate all Pythagorean Triplets such that no side is longer than the limit
@@ -219,14 +220,15 @@ def ppt(limit, non_primitive = True):
 
 def legendre_factorial(x):
     '''
-    Implementation of 'Legendres' Formula
+    Implementation of `Legendres' Formula
     <https://en.wikipedia.org/wiki/Legendre%27s_formula>`_
 
     :param x: An integer
 
     :returns: A dictionary containing the prime factorisation of x!
-    .. Example::
-        legendre_factorial(6) = {2: 4, 3: 2, 5: 1} as per Wikipedia
+    .. code-block:: python
+        #As per Wikipedia
+        legendre_factorial(6) = {2: 4, 3: 2, 5: 1} 
         
     '''
     if (type(x) != int):
@@ -242,7 +244,7 @@ def legendre_factorial(x):
 
 def k_smooth_numbers(max_prime, limit):
     '''
-    Find all k ≤ max_prime 'smooth numbers
+    Find all k ≤ max_prime `smooth numbers
     <https://en.wikipedia.org/wiki/Smooth_number>`_ up till a limit
 
     :param max_prime: The maximum prime allowed
@@ -269,7 +271,7 @@ def k_smooth_numbers(max_prime, limit):
 
 def legendre_symbol(a, p):
     '''
-    Finds the 'legendre symbol
+    Finds the `legendre symbol
     <https://en.wikipedia.org/wiki/Legendre_symbol>`_ of a/p
     
     :param a: An integer
@@ -298,7 +300,7 @@ def tonelli_shanks(a, p):
     Implementation of `Tonelli Shanks algorithm
     <https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm>`_
     
-    Full credit for this alogrithm goes to 'Eli Bendersky 
+    Full credit for this alogrithm goes to `Eli Bendersky 
     <https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/>`_
 
     :param a: An integer
@@ -314,8 +316,9 @@ def tonelli_shanks(a, p):
         0 is returned is no square root exists for
         these a and p.
         
-    .. Example::
-        tonelli_shanks(5, 41) = 28 as per Wikipedia
+    .. code_block:: python
+        #As per Wikipedia
+        tonelli_shanks(5, 41) = 28 
     '''
     if legendre_symbol(a, p) != 1:
         return 0
