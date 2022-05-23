@@ -1,5 +1,5 @@
 ========
-mathsLib
+Overview
 ========
 
 `mathslib`__ is a compilation of Mathematical Functions and Algorithms I have made or come across.
@@ -7,8 +7,8 @@ mathsLib
  
  See my website `ivl-projecteuler.com`_ for their implementation
 
-Overview
---------
+Breakdown
+---------
 +----------------+------------------------------------------------------------+
 |numtheory.py    | * divisors_of(x, include_x)                                |
 |                | * divisors(x, n)                                           |

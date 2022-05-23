@@ -57,7 +57,7 @@ def divisors_of(x, include_x = True):
 def divisor(x, n):
     '''
     Implementation of `Divisor function 
-    <https://en.wikipedia.org/wiki/Divisor_function#Definition >`_ *σ* :sub:`x`(n) 
+    <https://en.wikipedia.org/wiki/Divisor_function#Definition>`_ *σ* :sub:`x`(n) 
     
     :param x: An integer, denotes the power till which the divisors will be summed
     :param n: An integer, denotes the number to find the divisors of
@@ -82,14 +82,14 @@ def divisor(x, n):
 def continued_fraction(x):
     '''
     Finds the `continued Fraction
-    <https://en.wikipedia.org/wiki/Continued_fraction >`_ of the sqrt(x)
+    <https://en.wikipedia.org/wiki/Continued_fraction>`_ of the sqrt(x)
 
     :param x: An integer
 
     :returns: A list containing the continued fraction of n
     
-    .. note::
-        √19 = [4,2,1,3,1,2,8,2,1,3,1,2,8,...] as per wikipedia
+    .. Example::
+        √19 = [4,2,1,3,1,2,8,2,1,3,1,2,8,...] as per Wikipedia
     
     '''
     if (type(x) != int):
@@ -119,8 +119,8 @@ def overall_fraction(cf):
     :returns numerator: An integer, the numerator of the fraction
     :returns denominator: An integer, the denominator of the fraction
     
-    .. note::
-        overall_fraction([4, 2, 6, 7]) = 415, 93
+    .. Example::
+        overall_fraction([4, 2, 6, 7]) = 415, 93 as per Wikipedia
 
     '''
     cf = cf[::-1]
@@ -133,7 +133,7 @@ def overall_fraction(cf):
 def phi(n):
     '''
     Implementation of `Eulers Totient Function
-    <https://en.wikipedia.org/wiki/Euler%27s_totient_function >`_ counts the positive integers up to a given integer n that are relatively prime to n
+    <https://en.wikipedia.org/wiki/Euler%27s_totient_function>`_ counts the positive integers up to a given integer n that are relatively prime to n
 
     :param n: An integer
 
@@ -162,7 +162,7 @@ def phi(n):
 def Mobius(n):
     '''
     Implementation of the 'Mobius function
-    < https://en.wikipedia.org/wiki/M%C3%B6bius_function >`_ of n
+    < https://en.wikipedia.org/wiki/M%C3%B6bius_function>`_ of n
 
     :param n: An integer
 
@@ -194,7 +194,7 @@ def Mobius(n):
 def ppt(limit, non_primitive = True):
     '''
     Generates all 'Pythagorean Triplets 
-    <https://en.wikipedia.org/wiki/Pythagorean_triple >`_ up till the limit
+    <https://en.wikipedia.org/wiki/Pythagorean_triple>`_ up till the limit
 
     :param limit: An integer, will generate all Pythagorean Triplets such that no side is longer than the limit
     :param non_primitive: Optional boolean value, If True, returns all triplets, if False returns only primitive triplets
@@ -220,13 +220,13 @@ def ppt(limit, non_primitive = True):
 def legendre_factorial(x):
     '''
     Implementation of 'Legendres' Formula
-    <https://en.wikipedia.org/wiki/Legendre%27s_formula >`_
+    <https://en.wikipedia.org/wiki/Legendre%27s_formula>`_
 
     :param x: An integer
 
     :returns: A dictionary containing the prime factorisation of x!
-    .. note::
-        * legendre_factorial(6) = {2: 4, 3: 2, 5: 1} as per Wikipedia
+    .. Example::
+        legendre_factorial(6) = {2: 4, 3: 2, 5: 1} as per Wikipedia
         
     '''
     if (type(x) != int):
@@ -243,7 +243,7 @@ def legendre_factorial(x):
 def k_smooth_numbers(max_prime, limit):
     '''
     Find all k ≤ max_prime 'smooth numbers
-    <https://en.wikipedia.org/wiki/Smooth_number >`_ up till a limit
+    <https://en.wikipedia.org/wiki/Smooth_number>`_ up till a limit
 
     :param max_prime: The maximum prime allowed
     :param limit: limit up till which to find max_prime smooth numbers
@@ -270,7 +270,7 @@ def k_smooth_numbers(max_prime, limit):
 def legendre_symbol(a, p):
     '''
     Finds the 'legendre symbol
-    <https://en.wikipedia.org/wiki/Legendre_symbol >`_ of a/p
+    <https://en.wikipedia.org/wiki/Legendre_symbol>`_ of a/p
     
     :param a: An integer
     :param p: An odd prime
@@ -296,10 +296,10 @@ def tonelli_shanks(a, p):
     '''
     Credit to: 
     Implementation of `Tonelli Shanks algorithm
-    <https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm >`_
+    <https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm>`_
     
     Full credit for this alogrithm goes to 'Eli Bendersky 
-    <https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/ >`_
+    <https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/>`_
 
     :param a: An integer
     :param p: An integer
@@ -314,6 +314,7 @@ def tonelli_shanks(a, p):
         0 is returned is no square root exists for
         these a and p.
         
+    .. Example::
         tonelli_shanks(5, 41) = 28 as per Wikipedia
     '''
     if legendre_symbol(a, p) != 1:
@@ -355,7 +356,7 @@ def tonelli_shanks(a, p):
 def ChineseRemainderTheorem(a1, a2, n1, n2):
     '''
     Simple `Chinese Remiander Theorem
-    <https://en.wikipedia.org/wiki/Chinese_remainder_theorem >`_ to solve x = a1 mod n1, x = a2 mod n2
+    <https://en.wikipedia.org/wiki/Chinese_remainder_theorem>`_ to solve x = a1 mod n1, x = a2 mod n2
 
     Parameters
     ----------
@@ -364,7 +365,7 @@ def ChineseRemainderTheorem(a1, a2, n1, n2):
     :param n1: An integer
     :param n2: An integer
 
-    :returns: Unique solution x = a1 mod n1, x = a2 mod n2
+    :returns: Unique solution to x = a1 mod n1, x = a2 mod n2
     '''
     if (type(a1) != int) or (type(a2) != int) or (type(n1) != int) or (type(n2) != int):
         return "All values must be integers"
