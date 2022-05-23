@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mathslib.algorithms &#8212; mathslib 2.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for mathslib.algorithms</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This is free and unencumbered software released into the public domain.</span>
+
+<span class="c1"># Anyone is free to copy, modify, publish, use, compile, sell, or</span>
+<span class="c1"># distribute this software, either in source code form or as a compiled</span>
+<span class="c1"># binary, for any purpose, commercial or non-commercial, and by any</span>
+<span class="c1"># means.</span>
+
+<span class="c1"># In jurisdictions that recognize copyright laws, the author or authors</span>
+<span class="c1"># of this software dedicate any and all copyright interest in the</span>
+<span class="c1"># software to the public domain. We make this dedication for the benefit</span>
+<span class="c1"># of the public at large and to the detriment of our heirs and</span>
+<span class="c1"># successors. We intend this dedication to be an overt act of</span>
+<span class="c1"># relinquishment in perpetuity of all present and future rights to this</span>
+<span class="c1"># software under copyright law.</span>
+
+<span class="c1"># THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,</span>
+<span class="c1"># EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF</span>
+<span class="c1"># MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.</span>
+<span class="c1"># IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR</span>
+<span class="c1"># OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,</span>
+<span class="c1"># ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR</span>
+<span class="c1"># OTHER DEALINGS IN THE SOFTWARE.</span>
+
+<span class="c1"># For more information, please refer to &lt;https://unlicense.org&gt;</span>
+
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Various known algorithms, graph theory and optimization related</span>
+
+<span class="sd">Author: Igor van Loo</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<div class="viewcode-block" id="PrimsAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.PrimsAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">PrimsAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Prim&#39;s algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.</span>
+<span class="sd">    See here: https://en.wikipedia.org/wiki/Prim%27s_algorithm</span>
+<span class="sd">    Implementation is based of Wikipedia</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    graph : Takes a matrix input</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    The minimum spanning tree for the weighted undirected Graph</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">dimension</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">Previous_Weight</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">dimension</span><span class="p">)</span> <span class="k">if</span> <span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="n">Tree</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">New_Weight</span> <span class="o">=</span> <span class="mi">0</span>    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">Minimum_edge</span><span class="p">,</span> <span class="n">Corresponding_vertex</span> <span class="o">=</span> <span class="nb">min</span><span class="p">([(</span><span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">],</span> <span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">Tree</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dimension</span><span class="p">)</span> <span class="k">if</span> <span class="n">y</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">Tree</span> <span class="ow">and</span> <span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="n">Tree</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Corresponding_vertex</span><span class="p">)</span>
+        <span class="n">New_Weight</span> <span class="o">+=</span> <span class="n">Minimum_edge</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">Tree</span><span class="p">)</span> <span class="o">==</span> <span class="n">dimension</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">Previous_Weight</span> <span class="o">-</span> <span class="n">New_Weight</span></div>
+
+<div class="viewcode-block" id="DijkstrasAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.DijkstrasAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">end_node</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Dijkstra&#39;s algorithm is an algorithm for finding the shortest paths between nodes in a graph</span>
+<span class="sd">    See here: https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</span>
+<span class="sd">    Implementation is based of Wikipedia</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    matrix : Takes a matrix input, representing the graph, assumes all nodes are connected</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    Shortest path between desired starting and ending node</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">INF</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span>    
+    <span class="n">unvisisted_nodes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
+            <span class="n">unvisisted_nodes</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]</span> <span class="o">=</span> <span class="n">INF</span>
+    <span class="n">unvisisted_nodes</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">[[</span><span class="n">INF</span><span class="p">]</span><span class="o">*</span><span class="n">columns</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">)]</span>
+    <span class="n">mask</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    
+    <span class="k">def</span> <span class="nf">visit_neighbour</span><span class="p">(</span><span class="n">og_x</span><span class="p">,</span> <span class="n">og_y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">unvisisted_nodes</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">rows</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">columns</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">unvisisted_nodes</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">mask</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">],</span> <span class="n">mask</span><span class="p">[</span><span class="n">og_x</span><span class="p">][</span><span class="n">og_y</span><span class="p">]</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>
+    <span class="n">curr</span> <span class="o">=</span> <span class="n">start_node</span> <span class="c1">#Starting node</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">curr</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="n">visit_neighbour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">unvisisted_nodes</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">temp</span><span class="p">:</span>
+                <span class="n">mask</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+                <span class="n">unvisisted_nodes</span><span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)]</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="n">unvisisted_nodes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">curr</span><span class="p">)</span>        
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unvisisted_nodes</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">curr</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">unvisisted_nodes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">unvisisted_nodes</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="k">if</span> <span class="n">end_node</span> <span class="o">==</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">mask</span><span class="p">[</span><span class="n">rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="c1">#Ending node</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">end_node</span>
+        <span class="k">return</span> <span class="n">mask</span><span class="p">[</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">b</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="KnapSack"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.KnapSack">[docs]</a><span class="k">def</span> <span class="nf">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Given a set of items, each with a weight and a value, determine the number of each item to include in a </span>
+<span class="sd">    collection so that the total weight is less than or equal to a given limit and the total value is as </span>
+<span class="sd">    large as possible</span>
+<span class="sd">    See here: https://en.wikipedia.org/wiki/Knapsack_problem</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    values : A list of values</span>
+<span class="sd">    weights : A list with weight of corresponding values</span>
+<span class="sd">    n : Number of items (len(values))</span>
+<span class="sd">    W : Desired weight</span>
+<span class="sd">    no_values : TYPE, optional</span>
+<span class="sd">                Default is True</span>
+<span class="sd">        </span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    If no_values == True - It returns the optimal sum of weights</span>
+<span class="sd">    If no_values == False - it returns the entire array, which is used in KnapSackValues to find which values were </span>
+<span class="sd">    actually used in the optimal sum</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                
+            <span class="k">elif</span> <span class="n">weights</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">j</span><span class="p">:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">j</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">+</span> <span class="n">values</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    
+    <span class="k">if</span> <span class="n">no_values</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">W</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">no_values</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">array</span></div>
+    
+<div class="viewcode-block" id="KnapSackValues"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.KnapSackValues">[docs]</a><span class="k">def</span> <span class="nf">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Extension to KnapSack function</span>
+<span class="sd">    It finds the actual values used to obtain the optimal sum</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    values : A list of values</span>
+<span class="sd">    weights : A list with weight of corresponding values</span>
+<span class="sd">    n : Number of items (len(values))</span>
+<span class="sd">    W : Desired weight</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    A set with the optimal values</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">W</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">W</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]}</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span></div>
+    
+    
+    
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">mathslib</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../readme.html">mathsLib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">mathslib</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Igor van Loo.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

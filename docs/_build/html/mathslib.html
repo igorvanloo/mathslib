@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>mathslib package &#8212; mathslib 2.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="mathslib" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="mathslib-package">
+<h1>mathslib package<a class="headerlink" href="#mathslib-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-mathslib.numtheory">
+<span id="mathslib-numtheory-module"></span><h2>mathslib.numtheory module<a class="headerlink" href="#module-mathslib.numtheory" title="Permalink to this headline">¶</a></h2>
+<p>Various Number Theory functions</p>
+<p>Author: Igor van Loo</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.ChineseRemainderTheorem">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">ChineseRemainderTheorem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#ChineseRemainderTheorem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.ChineseRemainderTheorem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Simple Chinese Remiander Theorem to solve x = a1 mod n1, x = a2 mod n2</p>
+<p>a1 : An integer
+a2 : An integer
+n1 : An integer
+n2 : An integer</p>
+<p>Unique solution x = a1 mod n1, x = a2 mod n2</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.Mobius">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">Mobius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#Mobius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.Mobius" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the mobius function of n
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/M%C3%B6bius_function">https://en.wikipedia.org/wiki/M%C3%B6bius_function</a></p>
+<p>n : An integer</p>
+<p>returns 0 if n is divisible by p^2
+otherwise returns (-1)^k, where k is number of distinct prime factors</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.continued_fraction">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">continued_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#continued_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.continued_fraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the continued Fraction of the sqrt(x)
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Continued_fraction">https://en.wikipedia.org/wiki/Continued_fraction</a></p>
+<p>x : An integer</p>
+<dl class="simple">
+<dt>temp_list<span class="classifier">A list</span></dt><dd><p>Contains the continued fraction of n</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.divisor">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of Divisor function σ_x(n) (See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">https://en.wikipedia.org/wiki/Divisor_function#Definition</a>)</p>
+<dl class="simple">
+<dt>x<span class="classifier">An integer,</span></dt><dd><p>x = 0 - Gives you number of divisors
+x = 1 - Gives you sum of divisors
+x = 2 - Gives you sum of divisors squared</p>
+</dd>
+</dl>
+<p>n : An integer, number to function σ_x of</p>
+<p>total : Returns σ_x(n)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.divisors_of">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisors_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisors_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisors_of" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds all the divisors of x</p>
+<p>x : An integer</p>
+<p>divisors : a list containing all the divisors of x</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.k_smooth_numbers">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">k_smooth_numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_prime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#k_smooth_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.k_smooth_numbers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all k ≤ max_prime smooth numbers up till a limit
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_number">https://en.wikipedia.org/wiki/Smooth_number</a></p>
+<p>max_prime : A prime
+limit : An integer</p>
+<p>A list containing all k ≤ max_prime smooth numbers less that limit</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.legendre_factorial">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">legendre_factorial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#legendre_factorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.legendre_factorial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of Legendres’ Formula
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre%27s_formula">https://en.wikipedia.org/wiki/Legendre%27s_formula</a></p>
+<p>x : An integer</p>
+<p>Returns a list containing the prime factorisation of x!</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.legendre_symbol">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">legendre_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#legendre_symbol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.legendre_symbol" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the legendre symbol of a/p
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre_symbol">https://en.wikipedia.org/wiki/Legendre_symbol</a></p>
+<p>a : An integer
+p : An odd prime</p>
+<p>Returns the legendre symbol of a/p: 
+1 if a is a quadratic residue modulo p and p does not divide a
+-1 if a is a non-quadratic residue modulo p
+0 if p divides a</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.overall_fraction">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">overall_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#overall_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.overall_fraction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="simple">
+<dt>cf<span class="classifier">list</span></dt><dd><p>Takes a list containing the continued fraction of a number, returns the fraction</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>denominator<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+</dd>
+<dt>numerator<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.phi">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">phi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#phi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.phi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Eulers Totient Function counts the positive integers up to a given integer n that are relatively prime to n
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">https://en.wikipedia.org/wiki/Euler%27s_totient_function</a></p>
+<p>n : An integer</p>
+<p>The number of integers, a, less than n, such that gcd(a, n) = 1</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.ppt">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">ppt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_primitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#ppt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.ppt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates all Pythagorean Triplets up till the limit
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Pythagorean_triple">https://en.wikipedia.org/wiki/Pythagorean_triple</a></p>
+<dl class="simple">
+<dt>limit<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+</dd>
+<dt>non_primitive<span class="classifier">Optional</span></dt><dd><p>If you want only primitive pythagorean Triplets set this to False</p>
+</dd>
+</dl>
+<p>triples : A list containing all your desired type of triplets (Based on non_primitive)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.tonelli_shanks">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">tonelli_shanks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#tonelli_shanks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.tonelli_shanks" title="Permalink to this definition">¶</a></dt>
+<dd><p>Credit to: <a class="reference external" href="https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/">https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/</a>
+Implementation of Tonelli Shanks algorithm
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm">https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm</a></p>
+<p>a : An integer
+p : An integer</p>
+<dl class="simple">
+<dt>Solve the congruence of the form:</dt><dd><p>x^2 = a (mod p)</p>
+</dd>
+</dl>
+<p>And returns x. Note that p - x is also a root.</p>
+<p>0 is returned is no square root exists for
+these a and p.</p>
+</dd></dl>
+
+</section>
+<section id="module-mathslib.primes">
+<span id="mathslib-primes-module"></span><h2>mathslib.primes module<a class="headerlink" href="#module-mathslib.primes" title="Permalink to this headline">¶</a></h2>
+<p>Prime related functions</p>
+<p>Author: Igor van Loo</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.Prime_Sieve">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">Prime_Sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">block_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#Prime_Sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.Prime_Sieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>A prime sieve I made with a few different options</p>
+<p>limit : The limit up till which the function will generate primes
+block_size : Decide which length of blocks you would like to cut the sieve into, automatically it is set to sqrt(limit)
+segment : Decide whether you would like to use a segmented sieve or a regular sieve, it is normally set it False
+values : If segment == False, if you would like an actual list of prime then values is true, if you would</p>
+<blockquote>
+<div><p>like an array such that array[x] = True if x is prime, then set values = False</p>
+</div></blockquote>
+<p>Based on above, all primes less than limit or an array such that array[x] = True if x is prime</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.is_prime">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">is_prime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#is_prime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.is_prime" title="Permalink to this definition">¶</a></dt>
+<dd><p>A simple is prime function, checks if a number is prime</p>
+<p>x : The number to be checked</p>
+<p>True if x is prime
+False if x is not prime</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.prime_factors">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">prime_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#prime_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.prime_factors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds all the prime factors of n</p>
+<p>n : Finds the prime factors of n</p>
+<p>A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.primepi">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">primepi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#primepi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.primepi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Primepi function is commonly known as Prime Counting Function (see here: <a class="reference external" href="https://en.wikipedia.org/wiki/Prime-counting_function">https://en.wikipedia.org/wiki/Prime-counting_function</a>)</p>
+<p>This function generates an array such that array[x] = primepi(x)</p>
+<p>limit : An integer, it will generate an array of length limit</p>
+<p>array : array[x] = primepi(x)</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.sum_of_primes">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">sum_of_primes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#sum_of_primes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.sum_of_primes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler</p>
+<p>n : An integer, will sum primes up till n</p>
+<p>The sum of all primes up till n</p>
+</dd></dl>
+
+</section>
+<section id="module-mathslib.fib">
+<span id="mathslib-fib-module"></span><h2>mathslib.fib module<a class="headerlink" href="#module-mathslib.fib" title="Permalink to this headline">¶</a></h2>
+<p>Fibonacci related functions</p>
+<p>Author: Igor van Loo</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.fib.ZeckendorfRepresentation">
+<span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">ZeckendorfRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#ZeckendorfRepresentation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.ZeckendorfRepresentation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the Zeckendorf Representation of x 
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem">https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem</a></p>
+<p>x : An integer x</p>
+<p>zeckrep : A list containing the zeckendorf representation of x</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.fib.fib_till">
+<span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">fib_till</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#fib_till"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.fib_till" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds all fibonnaci number up till a limit</p>
+<dl class="simple">
+<dt>limit<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+</dd>
+</dl>
+<p>fibnumbers : A list containing all the fibonacci numbers &lt; x</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.fib.fibonacci">
+<span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">fibonacci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#fibonacci"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.fibonacci" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the n-th fibonnaci using matrix exponentiation
+Credit: <a class="reference external" href="https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371">https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371</a></p>
+<p>n : An integer</p>
+<p>The n-th fibonnaci number</p>
+</dd></dl>
+
+</section>
+<section id="module-mathslib.algorithms">
+<span id="mathslib-algorithms-module"></span><h2>mathslib.algorithms module<a class="headerlink" href="#module-mathslib.algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Various known algorithms, graph theory and optimization related</p>
+<p>Author: Igor van Loo</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.algorithms.DijkstrasAlgorithm">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">DijkstrasAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(0,</span> <span class="pre">0)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(-</span> <span class="pre">1,</span> <span class="pre">-</span> <span class="pre">1)</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#DijkstrasAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.DijkstrasAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dijkstra’s algorithm is an algorithm for finding the shortest paths between nodes in a graph
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm</a>
+Implementation is based of Wikipedia</p>
+<p>matrix : Takes a matrix input, representing the graph, assumes all nodes are connected</p>
+<p>Shortest path between desired starting and ending node</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.algorithms.KnapSack">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">KnapSack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#KnapSack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.KnapSack" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given a set of items, each with a weight and a value, determine the number of each item to include in a 
+collection so that the total weight is less than or equal to a given limit and the total value is as 
+large as possible
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Knapsack_problem">https://en.wikipedia.org/wiki/Knapsack_problem</a></p>
+<p>values : A list of values
+weights : A list with weight of corresponding values
+n : Number of items (len(values))
+W : Desired weight
+no_values : TYPE, optional</p>
+<blockquote>
+<div><p>Default is True</p>
+</div></blockquote>
+<p>If no_values == True - It returns the optimal sum of weights
+If no_values == False - it returns the entire array, which is used in KnapSackValues to find which values were 
+actually used in the optimal sum</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.algorithms.KnapSackValues">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">KnapSackValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#KnapSackValues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.KnapSackValues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extension to KnapSack function
+It finds the actual values used to obtain the optimal sum</p>
+<p>values : A list of values
+weights : A list with weight of corresponding values
+n : Number of items (len(values))
+W : Desired weight</p>
+<p>A set with the optimal values</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.algorithms.PrimsAlgorithm">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">PrimsAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#PrimsAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.PrimsAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prim’s algorithm is a greedy algorithm that finds a minimum spanning tree for a weighted undirected graph.
+See here: <a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">https://en.wikipedia.org/wiki/Prim%27s_algorithm</a>
+Implementation is based of Wikipedia</p>
+<p>graph : Takes a matrix input</p>
+<p>The minimum spanning tree for the weighted undirected Graph</p>
+</dd></dl>
+
+</section>
+<section id="module-mathslib.simple">
+<span id="mathslib-simple-module"></span><h2>mathslib.simple module<a class="headerlink" href="#module-mathslib.simple" title="Permalink to this headline">¶</a></h2>
+<p>Various simple functions</p>
+<p>Author: Igor van Loo</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.simple.ModDivision">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">ModDivision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#ModDivision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.ModDivision" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds a/b mod m</p>
+<p>a : An integer, the numerator
+b : An integer, the denominator
+m : An integer, the modulus</p>
+<p>answer : a/b mod m</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.simple.lcm">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">lcm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#lcm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.lcm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the lcm of a list of numbers</p>
+<p>a_list : A list of numbers</p>
+<p>curr : The lcm of all numbers in the list</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.simple.n_choose_r">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">n_choose_r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#n_choose_r"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.n_choose_r" title="Permalink to this definition">¶</a></dt>
+<dd><p>n choose r function</p>
+<dl class="simple">
+<dt>n<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+</dd>
+<dt>r<span class="classifier">TYPE</span></dt><dd><p>DESCRIPTION.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>TYPE</dt><dd><p>DESCRIPTION.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.simple.numberToBase">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">numberToBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#numberToBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.numberToBase" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes n from base 10 to base b</p>
+<p>n : An integer, number to be changed
+b : An integer, base in question</p>
+<p>n in base b</p>
+</dd></dl>
+
+</section>
+<section id="module-mathslib">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mathslib" title="Permalink to this headline">¶</a></h2>
+<p>Library of Mathematical functions and Algorithms</p>
+<p>Author: Igor van Loo</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">mathslib</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">mathsLib</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">mathslib</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">mathslib package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">mathslib</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">mathslib</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, Igor van Loo.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/mathslib.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
