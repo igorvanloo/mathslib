@@ -9,7 +9,9 @@ Welcome to mathslib's documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+    
+    readme
+    modules
 
 
 Indices and tables
