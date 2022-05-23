@@ -57,7 +57,7 @@ def divisors_of(x, include_x = True):
 def divisor(x, n):
     '''
     Implementation of `Divisor function 
-    <https://en.wikipedia.org/wiki/Divisor_function#Definition>`_ *σ* :sub:`x`(n) 
+    <https://en.wikipedia.org/wiki/Divisor_function#Definition>`_ σ_x(n) 
     
     :param x: An integer, denotes the power till which the divisors will be summed
     :param n: An integer, denotes the number to find the divisors of

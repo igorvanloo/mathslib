@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
-long_description = (here / "README.md").read_text(encoding="utf-8")
+long_description = (here / "README.rst").read_text(encoding="utf-8")
 
 # Arguments marked as "Required" below must be included for upload to PyPI.
 # Fields marked as "Optional" may be commented out.
@@ -12,7 +12,7 @@ setup(
     version="2.0.0",  # Required
     description="Library of Mathematical functions and Algorithms",  # Optional
     long_description=long_description,  # Optional
-    long_description_content_type="text/markdown",  # Optional
+    long_description_content_type="text/x-rst",  # Optional
     url="https://github.com/igorvanloo/mathslib",  # Optional
     author="Igor van Loo",  # Optional
     author_email="igorvanloo@gmail.com",  # Optional

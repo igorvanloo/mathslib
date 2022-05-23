@@ -2,10 +2,19 @@
 Overview
 ========
 
+.. image:: https://img.shields.io/pypi/v/mathslib.svg
+        :target: https://pypi.python.org/pypi/mathslib
+
+.. image:: https://readthedocs.org/projects/mathslib/badge/?version=latest
+        :target: https://mathslib.readthedocs.io/en/latest/?badge=latest
+        :alt: Documentation Status
+
 `mathslib`__ is a compilation of Mathematical Functions and Algorithms I have made or come across.
- I have used most of these for `Project Euler`_.
+I have used most of these for `Project Euler`_.
  
- See my website `ivl-projecteuler.com`_ for their implementation
+See my website `ivl-projecteuler.com`_ for their implementation
+
+See the full documentation `here`_
 
 Breakdown
 ---------
@@ -43,4 +52,5 @@ Breakdown
 .. _Project Euler: https://projecteuler.net
 .. _ivl-projecteuler.com: https://ivl-projecteuler.com
 .. _mathslib1: https://pypi.python.org/pypi/mathslib
+.. _here: https://mathslib.readthedocs.io/en/latest/index.html
 __ mathslib1_
