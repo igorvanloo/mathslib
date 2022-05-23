@@ -42,3 +42,4 @@ Modules
 .. _Project Euler: https://projecteuler.net
 .. _ivl-projecteuler.com: https://ivl-projecteuler.com
 .. _mathslib1: https://pypi.python.org/pypi/mathslib
+__ mathslib1_
