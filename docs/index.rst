@@ -10,8 +10,8 @@ Welcome to mathslib's documentation!
    :maxdepth: 2
    :caption: Contents:
     
-    readme
-    modules
+   readme
+   modules
 
 
 Indices and tables
