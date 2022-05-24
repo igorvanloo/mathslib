@@ -9,8 +9,7 @@ In the python console you can import functions as you need them
 .. code-block:: python3
 
     from mathslib import divisor
-    div9 = divisor(2, 9)
-    print(div9) #91
+    print(divisor(2, 9)) #91
     
 Otherwise you can import the whole module and use the mathslib. prefix
 
@@ -22,7 +21,7 @@ Otherwise you can import the whole module and use the mathslib. prefix
     print(mathslib.ZeckendorfRepresentation(64)) #[55, 8, 1]
 
 
-Example Solved Project Euler `problem 10 <https://projecteuler.net/problem=10>`_.
+**Example** Solved Project Euler `problem 10 <https://projecteuler.net/problem=10>`_.
          
 .. code-block:: python3
    
