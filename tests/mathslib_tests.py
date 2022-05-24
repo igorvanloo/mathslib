@@ -12,6 +12,56 @@ import mathslib.algorithms as ALGO
 import mathslib.fib as FIB
 import mathslib.simple as S
 
+class TestNumberTheory(TestCase):
+    
+    def test_divisors_of(self):
+        self.assertEqual(NT.divisors_of(15), [1, 3, 5, 15])
+        self.assertEqual(NT.divisors_of(15, include_x = False), [1, 3, 5])
+        
+    def test_divisor(self):
+        self.assertEqual(NT.divisor(0, 9), 3)
+        self.assertEqual(NT.divisor(1, 9), 13)
+        self.assertEqual(NT.divisor(2, 9), 91)
+    
+    def test_continued_fraction(self):
+        self.assertEqual(NT.continued_fraction(19), [4, 2, 1, 3, 1, 2, 8])
+        
+    def test_overall_fraction(self):
+        self.assertEqual(NT.overall_fraction([4, 2, 6, 7]), (415, 93))
+    
+    def test_phi(self):
+        self.assertEqual(NT.phi(20), 8)
+        self.assertEqual(NT.phi(100), 40)
+        
+    def test_mobius(self):
+        self.assertEqual(NT.mobius(10), 1)
+        self.assertEqual(NT.mobius(9), 0)
+        self.assertEqual(NT.mobius(7), -1)
+        
+    def test_ppt(self):
+        self.assertEqual(NT.ppt(20), [[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]])
+        self.assertEqual(NT.ppt(20, False), [[3, 4, 5], [5, 12, 13], [15, 8, 17]])
+        self.assertEqual(len(NT.ppt(100, False)), 16)
+        
+    def test_legendre_factorial(self):
+        self.assertEqual(NT.legendre_factorial(6), {2: 4, 3: 2, 5: 1})
+        self.assertEqual(NT.legendre_factorial(10), {2: 8, 3: 4, 5: 2, 7: 1})
+        
+    def test_k_smooth_numbers(self):
+        self.assertEqual(len(NT.k_smooth_numbers(5, 10**8)), 1105)
+    
+    def test_legendre_symbol(self):
+        self.assertEqual(NT.legendre_symbol(3, 3), 0)
+        self.assertEqual(NT.legendre_symbol(10, 31), 1)
+        self.assertEqual(NT.legendre_symbol(2, 11), -1)
+        
+    def test_tonelli_shanks(self):
+        self.assertEqual(NT.tonelli_shanks(5, 41), 28)
+        
+    def test_chinese_remainder_theorem(self):
+        self.assertEqual(NT.ChineseRemainderTheorem(2, 3, 3, 5), 8)
+        self.assertEqual(NT.ChineseRemainderTheorem(8, 2, 15, 7), 23)
+
 class TestPrimes(TestCase):
     
     def test_prime_sieve(self):
@@ -34,7 +84,7 @@ class TestPrimes(TestCase):
         
     def test_sum_of_primes(self):
         self.assertEqual(P.sum_of_primes(2*10**6), 142913828922)
-        self.assertEqual(P.sum_of_primes(10**10), 2220822432581729238)
+        self.assertEqual(P.sum_of_primes(10**8), 279209790387276)
     
     def test_fermat_primality_test(self):
         self.assertEqual(P.fermat_primality_test(17969800575241), True)

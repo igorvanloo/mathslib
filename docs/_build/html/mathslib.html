@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>mathslib package &#8212; mathslib 2.0.0 documentation</title>
+    <title>mathslib package &#8212; mathslib 2.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="modules.html" title="mathslib"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>
@@ -63,15 +63,19 @@
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list, contains all divisors of x</p>
+<dd class="field-even"><p>A list which contains all divisors of x</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
+<span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">include_x</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.divisor">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> sigma:sub:<a href="#id1"><span class="problematic" id="id2">`</span></a>x`(n)</p>
+<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> sigma(x, n)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -83,13 +87,10 @@
 <dd class="field-even"><p>An integer</p>
 </dd>
 </dl>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<ul class="simple">
-<li><p>divisor(0, n) = number of divisors of <em>n</em></p></li>
-<li><p>divisor(1, n) = sum of divisors of <em>n</em></p></li>
-<li><p>divisor(2, n) = sum of divisors squared of <em>n</em></p></li>
-</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">divisor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">divisor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="n">divisor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">91</span>
+</pre></div>
 </div>
 </dd></dl>
 
@@ -105,9 +106,12 @@
 <dd class="field-even"><p>A list containing the continued fraction of n</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">continued_fraction</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>√19 = [4,2,1,3,1,2,8,2,1,3,1,2,8,…] as per Wikipedia</p>
+<p>The continued fraction may repeat forever, the code stops once it repeats, otherwise once we find the 100th number in the continued fraction</p>
 </div>
 </dd></dl>
 
@@ -125,7 +129,7 @@
 <dd class="field-odd"><p>An integer, the denominator of the fraction</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">overall_fraction</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="o">=</span> <span class="mi">415</span><span class="p">,</span> <span class="mi">93</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">overall_fraction</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="o">=</span> <span class="p">(</span><span class="mi">415</span><span class="p">,</span> <span class="mi">93</span><span class="p">)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -142,11 +146,15 @@
 <dd class="field-even"><p>An integer, numbers, a, less than n, such that gcd(a, n) = 1</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span>
+<span class="n">phi</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="mi">40</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.Mobius">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">Mobius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#Mobius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.Mobius" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.numtheory.mobius">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">mobius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#mobius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.mobius" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the <a class="reference external" href="https://en.wikipedia.org/wiki/M%C3%B6bius_function">Mobius function</a> of n</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -156,10 +164,15 @@
 <dd class="field-even"><p>An integer</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Mobius</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#10 = 2*5, therefore μ(10) = (-1)*(-1) = 1</span>
+<span class="n">Mobius</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#Divisble by 3*3</span>
+<span class="n">Mobius</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">#7 is prime therefore μ(7) = -1</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
-<li><p>returns 0 if n is divisible by p^2</p></li>
+<li><p>returns 0 if n is divisible by p^2, where p is a prime</p></li>
 <li><p>returns (-1)^k, where k is number of distinct prime factors</p></li>
 </ul>
 </div>
@@ -168,7 +181,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.ppt">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">ppt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_primitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#ppt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.ppt" title="Permalink to this definition">¶</a></dt>
-<dd><p>Generates all <a class="reference external" href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean Triplets</a> up till the limit</p>
+<dd><p>Generates all <a class="reference external" href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean Triplets</a> up to the limit</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -180,6 +193,11 @@
 <dd class="field-even"><p>A list containing all desired triplets</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ppt</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">]]</span>
+<span class="n">ppt</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">]]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">ppt</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="o">=</span> <span class="mi">16</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -202,7 +220,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.k_smooth_numbers">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">k_smooth_numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_prime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#k_smooth_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.k_smooth_numbers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Find all k ≤ max_prime <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_number">smooth numbers</a> up till a limit</p>
+<dd><p>Find all k ≤ max_prime <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_number">smooth numbers</a> up to the limit</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -214,6 +232,10 @@
 <dd class="field-even"><p>A list containing all k ≤ max_prime smooth numbers less that limit</p>
 </dd>
 </dl>
+<p>From <a class="reference external" href="https://projecteuler.net/problem=204">Project Euler Problem 204</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">k_smooth_numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1105</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -231,6 +253,11 @@
 <dd class="field-even"><p>The legendre symbol of a/p</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ul class="simple">
@@ -244,8 +271,7 @@
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.tonelli_shanks">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">tonelli_shanks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#tonelli_shanks"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.tonelli_shanks" title="Permalink to this definition">¶</a></dt>
-<dd><p>Credit to: 
-Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm">Tonelli Shanks algorithm</a></p>
+<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm">Tonelli Shanks algorithm</a></p>
 <p>Full credit for this alogrithm goes to <a class="reference external" href="https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/">Eli Bendersky</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -258,14 +284,14 @@ Implementation of <a class="reference external" href="https://en.wikipedia.org/w
 <dd class="field-even"><p>solution to x^2 = a (mod p)</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tonelli_shanks</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span> <span class="o">=</span> <span class="mi">28</span>
+</pre></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function solves the congruence of the form x^2 = a (mod p) and returns x. 
 Note that p - x is also a root.</p>
 <p>0 is returned if no square root exists for these a and p.</p>
-</div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tonelli_shanks</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span> <span class="o">=</span> <span class="mi">28</span> 
-</pre></div>
 </div>
 </dd></dl>
 
@@ -286,6 +312,11 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>Unique solution to x = a1 mod n1, x = a2 mod n2</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#We solve x = 2 mod 3 = 3 mod 5 = 2 mod 7</span>
+<span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1">#First we solve x = 2 mod = 3 mod 5</span>
+<span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="mi">23</span> <span class="c1">#Then we solve x = 8 mod 15 = 2 mod 7</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </section>
@@ -374,8 +405,8 @@ Note that p - x is also a root.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.primes.sum_of_primes">
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">sum_of_primes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#sum_of_primes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.sum_of_primes" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler
-You may view it <a class="reference external" href="https://projecteuler.net/thread=10;page=5#111677">here</a> once you’ve completed problem 10</p>
+<dd><p>Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler</p>
+<p>You may view it <a class="reference external" href="https://projecteuler.net/thread=10;page=5#111677">here</a> once you’ve completed problem 10</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>n</strong> – An integer</p>
@@ -409,8 +440,8 @@ You may view it <a class="reference external" href="https://projecteuler.net/thr
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.
-Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use
-You can test more terms to make it more and more accurate</p>
+Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use.</p>
+<p>You can test more terms to make it more and more accurate</p>
 </div>
 </dd></dl>
 
@@ -627,6 +658,9 @@ It finds the actual values used to obtain the optimal sum</p>
 <dd class="field-even"><p>n choose r</p>
 </dd>
 </dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_choose_r</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="o">=</span> <span class="mi">47129212243960</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="py function">
@@ -755,7 +789,7 @@ It finds the actual values used to obtain the optimal sum</p>
         <li class="right" >
           <a href="modules.html" title="mathslib"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>

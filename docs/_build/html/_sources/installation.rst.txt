@@ -12,7 +12,7 @@ To install mathslib, run this command in your terminal:
 
 .. code-block:: console
 
-    $ pip install prime_sieve
+    $ pip install mathslib
 
 This is the preferred method to install mathslib, as it will always install the most recent stable release.
 

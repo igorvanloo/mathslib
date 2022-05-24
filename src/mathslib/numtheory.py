@@ -38,7 +38,12 @@ def divisors_of(x, include_x = True):
     :param x: Integer to be checked
     :param include_x: Optional boolean value, If true it will include x as a divisor of x
 
-    :returns: list, contains all divisors of x
+    :returns: A list which contains all divisors of x
+    
+    .. code-block:: python
+    
+        divisors_of(15) = [1, 3, 5, 15]
+        divisors_of(15, include_x = False) = [1, 3, 5]
 
     '''
     if (type(x) != int):
@@ -49,10 +54,10 @@ def divisors_of(x, include_x = True):
             divisors.append(i)
             divisors.append(int(x/i))
     if include_x:
-        return divisors
+        return sorted(divisors)
     else:
         divisors.remove(x)
-        return divisors
+        return sorted(divisors)
     
 def divisor(x, n):
     '''
@@ -64,19 +69,26 @@ def divisor(x, n):
     
     :returns: An integer
     
-    .. note::
-        * divisor(0, n) = number of divisors of *n*
-        * divisor(1, n) = sum of divisors of *n*
-        * divisor(2, n) = sum of divisors squared of *n*
+    .. code-block:: python
+    
+        divisor(0, 9) = 3
+        divisor(1, 9) = 13
+        divisor(2, 9) = 91
         
     '''
     if (type(n) != int) or (type(x) != int):
         return "All values must be integers"
-    total = 1
+    
     pf = prime_factors(n)
-    for p in pf:
-        e = pf[p]
-        total *= ((pow(p, x*(e + 1)) - 1)//(pow(p, x) - 1))
+    total = 1
+    if x == 0:
+        for p in pf:
+            e = pf[p]
+            total *= (e + 1)
+    else:
+        for p in pf:
+            e = pf[p]
+            total *= ((pow(p, x*(e + 1)) - 1)//(pow(p, x) - 1))
     return total
 
 def continued_fraction(x):
@@ -88,9 +100,13 @@ def continued_fraction(x):
 
     :returns: A list containing the continued fraction of n
     
-    .. note::
-        √19 = [4,2,1,3,1,2,8,2,1,3,1,2,8,...] as per Wikipedia
+    .. code-block:: python
     
+        continued_fraction(19) = [4, 2, 1, 3, 1, 2, 8]
+    
+    .. note::
+        
+        The continued fraction may repeat forever, the code stops once it repeats, otherwise once we find the 100th number in the continued fraction
     '''
     if (type(x) != int):
         return "All values must be integers"
@@ -103,8 +119,8 @@ def continued_fraction(x):
         dn = int((x - mn**2)/d0)
         an = int(math.floor((math.sqrt(x) + mn) / dn)) #new values
         temp_list.append(an)
-        #if an == 2*math.floor(math.sqrt(x)):
-            #break
+        if an == 2*math.floor(math.sqrt(x)):
+            break
         if len(temp_list) == 100:
             break
         m0 = mn
@@ -121,7 +137,7 @@ def overall_fraction(cf):
     
     .. code-block:: python
     
-        overall_fraction([4, 2, 6, 7]) = 415, 93 
+        overall_fraction([4, 2, 6, 7]) = (415, 93)
 
     '''
     cf = cf[::-1]
@@ -139,6 +155,12 @@ def phi(n):
     :param n: An integer
 
     :returns: An integer, numbers, a, less than n, such that gcd(a, n) = 1
+    
+    .. code-block:: python
+    
+        phi(20) = 8
+        phi(100) = 40
+        
     '''
     if (type(n) != int):
         return "All values must be integers"
@@ -152,7 +174,7 @@ def phi(n):
             count += 1
             n /= d
         if count > 0:
-            phi *= (d**(count-1))*(d-1)
+            phi *= (pow(d, count - 1)*(d-1))
         d = d + 1
         if d*d > n:
             if n > 1: 
@@ -160,7 +182,7 @@ def phi(n):
             break
     return phi
 
-def Mobius(n):
+def mobius(n):
     '''
     Implementation of the `Mobius function
     <https://en.wikipedia.org/wiki/M%C3%B6bius_function>`_ of n
@@ -169,8 +191,14 @@ def Mobius(n):
 
     :returns: An integer
     
+    .. code-block:: python
+    
+        Mobius(10) = 1 #10 = 2*5, therefore μ(10) = (-1)*(-1) = 1
+        Mobius(9) = 0 #Divisble by 3*3
+        Mobius(7) = -1 #7 is prime therefore μ(7) = -1
+    
     .. note::
-        * returns 0 if n is divisible by p^2
+        * returns 0 if n is divisible by p^2, where p is a prime
         * returns (-1)^k, where k is number of distinct prime factors
     '''
     if (type(n) != int):
@@ -190,17 +218,23 @@ def Mobius(n):
             if n > 1: 
                 num_of_primes += 1
             break
-    return (-1)**num_of_primes
+    return pow(-1, num_of_primes)
 
 def ppt(limit, non_primitive = True):
     '''
     Generates all `Pythagorean Triplets 
-    <https://en.wikipedia.org/wiki/Pythagorean_triple>`_ up till the limit
+    <https://en.wikipedia.org/wiki/Pythagorean_triple>`_ up to the limit
 
     :param limit: An integer, will generate all Pythagorean Triplets such that no side is longer than the limit
     :param non_primitive: Optional boolean value, If True, returns all triplets, if False returns only primitive triplets
 
     :returns: A list containing all desired triplets
+    
+    .. code-block:: python
+        
+        ppt(20) = [[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]
+        ppt(20, False) = [[3, 4, 5], [5, 12, 13], [15, 8, 17]]
+        len(ppt(100, False)) = 16
     
     '''
     if (type(limit) != int):
@@ -213,9 +247,12 @@ def ppt(limit, non_primitive = True):
                 b = m**2 - n**2
                 c = 2*m*n
                 p = max(a,b,c)
-                if non_primitive:
-                    for k in range(1,int(limit/p)+1):
-                        triples.append([k*b,k*c,k*a])
+                if p < limit:
+                    if non_primitive:
+                        for k in range(1,int(limit/p)+1):
+                            triples.append([k*b,k*c,k*a])
+                    else:
+                        triples.append([b,c,a])
     return triples
 
 def legendre_factorial(x):
@@ -246,12 +283,18 @@ def legendre_factorial(x):
 def k_smooth_numbers(max_prime, limit):
     '''
     Find all k ≤ max_prime `smooth numbers
-    <https://en.wikipedia.org/wiki/Smooth_number>`_ up till a limit
+    <https://en.wikipedia.org/wiki/Smooth_number>`_ up to the limit
 
     :param max_prime: The maximum prime allowed
     :param limit: limit up till which to find max_prime smooth numbers
 
     :returns: A list containing all k ≤ max_prime smooth numbers less that limit
+    
+    From `Project Euler Problem 204 <https://projecteuler.net/problem=204>`_
+    
+    .. code-block:: python
+    
+        len(k_smooth_numbers(5, 10**8)) = 1105
     '''
     if (type(max_prime) != int) or (type(limit) != int):
         return "All values must be integers"
@@ -280,6 +323,12 @@ def legendre_symbol(a, p):
     
     :results: The legendre symbol of a/p
     
+    .. code-block:: python
+        
+        legendre_symbol(3, 3) = 0
+        legendre_symbol(10, 31) = 1
+        legendre_symbol(2, 11) = -1
+    
     .. note::
         * returns 1 if a is a quadratic residue modulo p and p does not divide a
         * returns -1 if a is a non-quadratic residue modulo p
@@ -297,7 +346,6 @@ def legendre_symbol(a, p):
 
 def tonelli_shanks(a, p):
     '''
-    Credit to: 
     Implementation of `Tonelli Shanks algorithm
     <https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm>`_
     
@@ -309,16 +357,17 @@ def tonelli_shanks(a, p):
 
     :returns: solution to x^2 = a (mod p)
     
+    .. code-block:: python
+    
+        tonelli_shanks(5, 41) = 28
+        
     .. note::
         
         This function solves the congruence of the form x^2 = a (mod p) and returns x. 
         Note that p - x is also a root.
     
         0 is returned if no square root exists for these a and p.
-        
-    .. code-block:: python
-    
-        tonelli_shanks(5, 41) = 28 
+         
     '''
     if legendre_symbol(a, p) != 1:
         return 0
@@ -369,6 +418,12 @@ def ChineseRemainderTheorem(a1, a2, n1, n2):
     :param n2: An integer
 
     :returns: Unique solution to x = a1 mod n1, x = a2 mod n2
+    
+    .. code-block:: python
+        
+        #We solve x = 2 mod 3 = 3 mod 5 = 2 mod 7
+        ChineseRemainderTheorem(2, 3, 3, 5) = 8 #First we solve x = 2 mod = 3 mod 5
+        ChineseRemainderTheorem(8, 2, 15, 7) = 23 #Then we solve x = 8 mod 15 = 2 mod 7
     '''
     if (type(a1) != int) or (type(a2) != int) or (type(n1) != int) or (type(n2) != int):
         return "All values must be integers"

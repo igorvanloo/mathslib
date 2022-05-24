@@ -201,6 +201,7 @@ def primepi(limit):
 def sum_of_primes(n):
     '''
     Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler
+    
     You may view it `here <https://projecteuler.net/thread=10;page=5#111677>`_ once you've completed problem 10
 
     :param n: An integer
@@ -244,7 +245,8 @@ def fermat_primality_test(n):
         
     .. note::
         This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.
-        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use
+        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use. 
+        
         You can test more terms to make it more and more accurate
 
     '''

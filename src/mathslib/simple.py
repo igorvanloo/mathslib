@@ -39,7 +39,11 @@ def n_choose_r(n, r):
     :param r: An integer
 
     :returns: n choose r
-
+    
+    .. code-block:: python
+    
+        n_choose_r(50, 30) = 47129212243960
+        
     '''
     if r > n:
         return "n must be greter than r"
