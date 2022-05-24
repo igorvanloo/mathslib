@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Installation &#8212; mathslib 2.1.0 documentation</title>
+    <title>Usage &#8212; mathslib 2.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -18,7 +18,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="mathslib" href="modules.html" />
-    <link rel="prev" title="Overview" href="readme.html" /> 
+    <link rel="prev" title="Installation" href="installation.html" /> 
   </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
@@ -33,10 +33,10 @@
           <a href="modules.html" title="mathslib"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="readme.html" title="Overview"
+          <a href="installation.html" title="Installation"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Installation</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Usage</a></li> 
       </ul>
     </div>  
 
@@ -45,30 +45,26 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<section id="stable-release">
-<h2>Stable release<a class="headerlink" href="#stable-release" title="Permalink to this headline">¶</a></h2>
-<p>To install mathslib, run this command in your terminal:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install mathslib
+  <section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>In the python console you can import functions as you need them</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mathslib</span> <span class="kn">import</span> <span class="n">divisor</span>
+<span class="n">div9</span> <span class="o">=</span> <span class="n">divisor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">div9</span><span class="p">)</span> <span class="c1">#91</span>
 </pre></div>
 </div>
-<p>or if you wish to update the package</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install mathslib --upgrade
+<p>Otherwise you can import the whole module and use the mathslib. prefix</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">mathslib</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mathslib</span><span class="o">.</span><span class="n">tonelli_shanks</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span> <span class="c1">#28</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mathslib</span><span class="o">.</span><span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mathslib</span><span class="o">.</span><span class="n">ZeckendorfRepresentation</span><span class="p">(</span><span class="mi">64</span><span class="p">))</span> <span class="c1">#[55, 8, 1]</span>
 </pre></div>
 </div>
-<p>This is the preferred method to install mathslib, as it will always install the most recent stable release.</p>
-<p>If you don’t have <a class="reference external" href="https://pip.pypa.io">pip</a> installed, this <a class="reference external" href="http://docs.python-guide.org/en/latest/starting/installation/">Python installation guide</a> can guide
-you through the process.</p>
-</section>
-<section id="from-sources">
-<h2>From sources<a class="headerlink" href="#from-sources" title="Permalink to this headline">¶</a></h2>
-<p>The sources for mathslib can be downloaded from the <a class="reference external" href="https://github.com/igorvanloo/mathslib">Github repo</a>.</p>
-<p>You can either clone the public repository:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone git://github.com/igorvanloo/mathslib
+<p>Example Solved Project Euler <a class="reference external" href="https://projecteuler.net/problem=10">problem 10</a>.</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mathslib</span> <span class="kn">import</span> <span class="n">sum_of_primes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_of_primes</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">))</span> <span class="c1">#142913828922</span>
 </pre></div>
 </div>
-</section>
 </section>
 
 
@@ -78,25 +74,16 @@ you through the process.</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Installation</a><ul>
-<li><a class="reference internal" href="#stable-release">Stable release</a></li>
-<li><a class="reference internal" href="#from-sources">From sources</a></li>
-</ul>
-</li>
-</ul>
-
   <h4>Previous topic</h4>
-  <p class="topless"><a href="readme.html"
-                        title="previous chapter">Overview</a></p>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="modules.html"
                         title="next chapter">mathslib</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/installation.rst.txt"
+      <li><a href="_sources/usage.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
@@ -127,10 +114,10 @@ you through the process.</p>
           <a href="modules.html" title="mathslib"
              >next</a> |</li>
         <li class="right" >
-          <a href="readme.html" title="Overview"
+          <a href="installation.html" title="Installation"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.1.0 documentation</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href="">Installation</a></li> 
+        <li class="nav-item nav-item-this"><a href="">Usage</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
