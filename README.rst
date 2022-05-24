@@ -24,15 +24,18 @@ Breakdown
 |                | * continued_fraction(x)                                    |
 |                | * overall_fraction(x)                                      |
 |                | * phi(x)                                                   |
-|                | * Mobius(x)                                                |
+|                | * mobius(x)                                                |
 |                | * ppt(limit, non_primitive)                                |
 |                | * legendre_factorial(x)                                    |
 |                | * tonelli_shanks(a, p)                                     |
 |                | * ChineseRemainderTheorem(a1, a2, n1, n2)                  |
 +----------------+------------------------------------------------------------+
-|prime.py        | * Prime_Sieve(limit, block_size, segment, values)          |
+|prime.py        | * prime_sieve(limit, block_size, segment, values)          |
 |                | * is_prime(x)                                              |
 |                | * prime_factors(x)                                         |
+|                | * primepi(x)                                               |
+|                | * sum_of_primes(x)                                         |
+|                | * fermat_primality_test(x)                                 |
 +----------------+------------------------------------------------------------+
 |fib.py          | * fibonacci(n)                                             |
 |                | * fib_till(limit)                                          |
