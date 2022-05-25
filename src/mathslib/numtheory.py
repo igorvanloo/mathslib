@@ -98,7 +98,7 @@ def continued_fraction(x):
 
     :param x: An integer
 
-    :returns: A list containing the continued fraction of n
+    :returns: A list containing the continued fraction of x
     
     .. code-block:: python
     

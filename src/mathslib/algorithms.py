@@ -39,7 +39,7 @@ def PrimsAlgorithm(matrix):
     :returns Weight: The sum of the minimum spanning tree
     :returns mask: The corresponding Adjacency matrix of the MST
     
-    Example from Project `Euler Problem 107 <https://projecteuler.com/107>`_
+    Example from Project `Euler Problem 107 <https://projecteuler.net/problem=107>`_
     
     .. code:: python
         
@@ -90,7 +90,7 @@ def DijkstrasAlgorithm(matrix, start_node = (0, 0), end_node = (-1, -1)):
         
         The matrix assumes that each vertex has an edge to it's neighbour, therefore this is not a widely applicable case
         
-    Example from Project `Euler Problem 83 <https://projecteuler.com/83>`_
+    Example from Project `Euler Problem 83 <https://projecteuler.net/problem=83>`_
     
     .. code:: python
     
