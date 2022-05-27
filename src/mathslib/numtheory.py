@@ -42,8 +42,8 @@ def divisors_of(x, include_x = True):
     
     .. code-block:: python
     
-        divisors_of(15) = [1, 3, 5, 15]
-        divisors_of(15, include_x = False) = [1, 3, 5]
+        print(divisors_of(15)) #[1, 3, 5, 15]
+        print(divisors_of(15, include_x = False)) #[1, 3, 5]
 
     '''
     if (type(x) != int):
@@ -71,9 +71,9 @@ def divisor(x, n):
     
     .. code-block:: python
     
-        divisor(0, 9) = 3
-        divisor(1, 9) = 13
-        divisor(2, 9) = 91
+        print(divisor(0, 9)) #3
+        print(divisor(1, 9)) #13
+        print(divisor(2, 9)) #91
         
     '''
     if (type(n) != int) or (type(x) != int):
@@ -102,7 +102,7 @@ def continued_fraction(x):
     
     .. code-block:: python
     
-        continued_fraction(19) = [4, 2, 1, 3, 1, 2, 8]
+        print(continued_fraction(19)) #[4, 2, 1, 3, 1, 2, 8]
     
     .. note::
         
@@ -137,7 +137,7 @@ def overall_fraction(cf):
     
     .. code-block:: python
     
-        overall_fraction([4, 2, 6, 7]) = (415, 93)
+        print(overall_fraction([4, 2, 6, 7])) #(415, 93)
 
     '''
     cf = cf[::-1]
@@ -158,8 +158,8 @@ def phi(n):
     
     .. code-block:: python
     
-        phi(20) = 8
-        phi(100) = 40
+        print(phi(20)) #8
+        print(phi(100)) #40
         
     '''
     if (type(n) != int):
@@ -193,9 +193,9 @@ def mobius(n):
     
     .. code-block:: python
     
-        Mobius(10) = 1 #10 = 2*5, therefore μ(10) = (-1)*(-1) = 1
-        Mobius(9) = 0 #Divisble by 3*3
-        Mobius(7) = -1 #7 is prime therefore μ(7) = -1
+        print(Mobius(10)) #1 - 10 = 2*5, therefore μ(10) = (-1)*(-1) = 1
+        print(Mobius(9)) #0 - Divisble by 3*3
+        print(Mobius(7)) #-1 - 7 is prime therefore μ(7) = -1
     
     .. note::
         * returns 0 if n is divisible by p^2, where p is a prime
@@ -232,9 +232,9 @@ def ppt(limit, non_primitive = True):
     
     .. code-block:: python
         
-        ppt(20) = [[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]
-        ppt(20, False) = [[3, 4, 5], [5, 12, 13], [15, 8, 17]]
-        len(ppt(100, False)) = 16
+        print(ppt(20)) #[[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]
+        print(ppt(20, False)) #[[3, 4, 5], [5, 12, 13], [15, 8, 17]]
+        print(len(ppt(100, False))) #16
     
     '''
     if (type(limit) != int):
@@ -266,7 +266,7 @@ def legendre_factorial(x):
     
     .. code-block:: python
     
-        legendre_factorial(6) = {2: 4, 3: 2, 5: 1} 
+        print(legendre_factorial(6)) #{2: 4, 3: 2, 5: 1} 
         
     '''
     if (type(x) != int):
@@ -294,7 +294,7 @@ def k_smooth_numbers(max_prime, limit):
     
     .. code-block:: python
     
-        len(k_smooth_numbers(5, 10**8)) = 1105
+        print(len(k_smooth_numbers(5, 10**8))) #1105
     '''
     if (type(max_prime) != int) or (type(limit) != int):
         return "All values must be integers"
@@ -325,9 +325,9 @@ def legendre_symbol(a, p):
     
     .. code-block:: python
         
-        legendre_symbol(3, 3) = 0
-        legendre_symbol(10, 31) = 1
-        legendre_symbol(2, 11) = -1
+        print(legendre_symbol(3, 3)) #0
+        print(legendre_symbol(10, 31)) #1
+        print(legendre_symbol(2, 11)) #-1
     
     .. note::
         * returns 1 if a is a quadratic residue modulo p and p does not divide a
@@ -359,7 +359,7 @@ def tonelli_shanks(a, p):
     
     .. code-block:: python
     
-        tonelli_shanks(5, 41) = 28
+        print(tonelli_shanks(5, 41)) #28
         
     .. note::
         
@@ -422,8 +422,11 @@ def ChineseRemainderTheorem(a1, a2, n1, n2):
     .. code-block:: python
         
         #We solve x = 2 mod 3 = 3 mod 5 = 2 mod 7
-        ChineseRemainderTheorem(2, 3, 3, 5) = 8 #First we solve x = 2 mod = 3 mod 5
-        ChineseRemainderTheorem(8, 2, 15, 7) = 23 #Then we solve x = 8 mod 15 = 2 mod 7
+        #First we solve x = 2 mod = 3 mod 5
+        print(ChineseRemainderTheorem(2, 3, 3, 5)) #8 
+        #Then we solve x = 8 mod 15 = 2 mod 7
+        print(ChineseRemainderTheorem(8, 2, 15, 7)) #23 
+        
     '''
     if (type(a1) != int) or (type(a2) != int) or (type(n1) != int) or (type(n2) != int):
         return "All values must be integers"
@@ -436,4 +439,60 @@ def ChineseRemainderTheorem(a1, a2, n1, n2):
     #The unique solution to this system is a1*q*n2 + a2*p*n1 % n1*n2
     return (a1*q*n2+ a2*p*n1) % (n1*n2)
 
+def FrobeniusNumber(*integers):
+    '''
+    Generates the `Frobenius Number <https://en.wikipedia.org/wiki/Coin_problem>`_ for given integers.
+    
+    The below algorithm is based on `Faster Algorithms for Frobenius Numbers <https://www.cis.upenn.edu/~cis511/Frobenius-numbers-Nijenhuis-Wagon.pdf>`_
+    specifically, this is an implementation of their Breadth-First Method which you may find on page 9
+
+    :param: integers
+
+    :returns: Frobenius number 
+    
+    .. code-block:: python3
+    
+        print(FrobeniusNumber(3, 5)) #7
+        print(FrobeniusNumber(6, 9, 20)) #43
+        print(FrobeniusNumber(1000, 1476, 3764, 4864, 4871, 7773)) #47350
+        
+    '''
+    #Set is first sorted
+    A = sorted(integers) 
+    #Initalize n value for future reference
+    n = len(A) 
+    #Initalize a1 and an for readability
+    a1 = A[0]
+    an = A[n - 1]
+    #Step 1
+    #Initalize FIFO queue
+    Q = [0]
+    #Initalize P
+    P = [0]*a1
+    P[0] = n
+    #Initalize S, label vector, in which each currently known minimal path weight to a vertex is stored.
+    S = [a1*an]*a1
+    S[0] = 0
+    #initalize Amod
+    Amod = [a % a1 for a in A]
+    #Step 2
+    while len(Q) != 0:
+        #Step 2a
+        v = Q.pop(0) #Remove the head of Q and set it to the vertex v
+        #Step 2b
+        for j in range(2, P[v] + 1):
+            #Step 2bi
+            u = v + Amod[j - 1]
+            if u >= a1:
+                u -= a1
+            #Step 2bii
+            w = S[v] + A[j - 1]
+            #Step 2biii
+            if w < S[u]:
+                S[u] = w
+                P[u] = j
+                if u not in Q:
+                    Q.append(u)
+    #Step 3
+    return max(S) - a1
 

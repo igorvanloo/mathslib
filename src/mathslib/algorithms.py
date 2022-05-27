@@ -51,14 +51,14 @@ def PrimsAlgorithm(matrix):
                   [0, 0, 31, 19, 0, 0, 27], 
                   [0, 0, 0, 23, 11, 27, 0]]
         
-        PrimsAlgorithm(matrix) = (93, 
-                                  [[0, 16, 12, 0, 0, 0, 0],
-                                   [16, 0, 0, 17, 0, 0, 0],
-                                   [12, 0, 0, 0, 0, 0, 0],
-                                   [0, 17, 0, 0, 18, 19, 0],
-                                   [0, 0, 0, 18, 0, 0, 11],
-                                   [0, 0, 0, 19, 0, 0, 0],
-                                   [0, 0, 0, 0, 11, 0, 0]])
+        print(PrimsAlgorithm(matrix)) #(93, 
+                                      #[[0, 16, 12, 0, 0, 0, 0],
+                                      #[16, 0, 0, 17, 0, 0, 0],
+                                      #[12, 0, 0, 0, 0, 0, 0],
+                                      #[0, 17, 0, 0, 18, 19, 0],
+                                      #[0, 0, 0, 18, 0, 0, 11],
+                                      #[0, 0, 0, 19, 0, 0, 0],
+                                      #[0, 0, 0, 0, 11, 0, 0]])
     
     '''
     dimension = len(matrix)
@@ -100,7 +100,7 @@ def DijkstrasAlgorithm(matrix, start_node = (0, 0), end_node = (-1, -1)):
                  [537, 699, 497, 121, 956],
                  [805, 732, 524, 37, 331]]
         
-        DijkstrasAlgorithm(matrix) = 2297
+        print(DijkstrasAlgorithm(matrix)) #2297
         
     '''
     rows = len(matrix)
@@ -160,7 +160,7 @@ def KnapSack(values, weights, n, W, no_values = True):
         W = 50
         n = len(values)
         
-        KnapSack(values, weights, n, W) = 220
+        print(KnapSack(values, weights, n, W)) #220
     '''
     array = [[0 for _ in range(W + 1)] for _ in range(n + 1)]
         
@@ -199,7 +199,7 @@ def KnapSackValues(values, weights, n, W):
         W = 50
         n = len(values)
         
-        KnapSackValues(values, weights, n, W) = {20, 30}
+        print(KnapSackValues(values, weights, n, W)) #{20, 30}
     
     '''
     array = KnapSack(values, weights, n, W, no_values = False)

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.algorithms &#8212; mathslib 2.0.0 documentation</title>
+    <title>mathslib.algorithms &#8212; mathslib 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
@@ -26,7 +26,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.algorithms</a></li> 
       </ul>
@@ -79,7 +79,7 @@
 <span class="sd">    :returns Weight: The sum of the minimum spanning tree</span>
 <span class="sd">    :returns mask: The corresponding Adjacency matrix of the MST</span>
 <span class="sd">    </span>
-<span class="sd">    Example from Project `Euler Problem 107 &lt;https://projecteuler.com/107&gt;`_</span>
+<span class="sd">    Example from Project `Euler Problem 107 &lt;https://projecteuler.net/problem=107&gt;`_</span>
 <span class="sd">    </span>
 <span class="sd">    .. code:: python</span>
 <span class="sd">        </span>
@@ -91,14 +91,14 @@
 <span class="sd">                  [0, 0, 31, 19, 0, 0, 27], </span>
 <span class="sd">                  [0, 0, 0, 23, 11, 27, 0]]</span>
 <span class="sd">        </span>
-<span class="sd">        PrimsAlgorithm(matrix) = (93, </span>
-<span class="sd">                                  [[0, 16, 12, 0, 0, 0, 0],</span>
-<span class="sd">                                   [16, 0, 0, 17, 0, 0, 0],</span>
-<span class="sd">                                   [12, 0, 0, 0, 0, 0, 0],</span>
-<span class="sd">                                   [0, 17, 0, 0, 18, 19, 0],</span>
-<span class="sd">                                   [0, 0, 0, 18, 0, 0, 11],</span>
-<span class="sd">                                   [0, 0, 0, 19, 0, 0, 0],</span>
-<span class="sd">                                   [0, 0, 0, 0, 11, 0, 0]])</span>
+<span class="sd">        print(PrimsAlgorithm(matrix)) #(93, </span>
+<span class="sd">                                      #[[0, 16, 12, 0, 0, 0, 0],</span>
+<span class="sd">                                      #[16, 0, 0, 17, 0, 0, 0],</span>
+<span class="sd">                                      #[12, 0, 0, 0, 0, 0, 0],</span>
+<span class="sd">                                      #[0, 17, 0, 0, 18, 19, 0],</span>
+<span class="sd">                                      #[0, 0, 0, 18, 0, 0, 11],</span>
+<span class="sd">                                      #[0, 0, 0, 19, 0, 0, 0],</span>
+<span class="sd">                                      #[0, 0, 0, 0, 11, 0, 0]])</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">dimension</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
@@ -130,7 +130,7 @@
 <span class="sd">        </span>
 <span class="sd">        The matrix assumes that each vertex has an edge to it&#39;s neighbour, therefore this is not a widely applicable case</span>
 <span class="sd">        </span>
-<span class="sd">    Example from Project `Euler Problem 83 &lt;https://projecteuler.com/83&gt;`_</span>
+<span class="sd">    Example from Project `Euler Problem 83 &lt;https://projecteuler.net/problem=83&gt;`_</span>
 <span class="sd">    </span>
 <span class="sd">    .. code:: python</span>
 <span class="sd">    </span>
@@ -140,7 +140,7 @@
 <span class="sd">                 [537, 699, 497, 121, 956],</span>
 <span class="sd">                 [805, 732, 524, 37, 331]]</span>
 <span class="sd">        </span>
-<span class="sd">        DijkstrasAlgorithm(matrix) = 2297</span>
+<span class="sd">        print(DijkstrasAlgorithm(matrix)) #2297</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
@@ -200,7 +200,7 @@
 <span class="sd">        W = 50</span>
 <span class="sd">        n = len(values)</span>
 <span class="sd">        </span>
-<span class="sd">        KnapSack(values, weights, n, W) = 220</span>
+<span class="sd">        print(KnapSack(values, weights, n, W)) #220</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">array</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
         
@@ -239,7 +239,7 @@
 <span class="sd">        W = 50</span>
 <span class="sd">        n = len(values)</span>
 <span class="sd">        </span>
-<span class="sd">        KnapSackValues(values, weights, n, W) = {20, 30}</span>
+<span class="sd">        print(KnapSackValues(values, weights, n, W)) #{20, 30}</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">array</span> <span class="o">=</span> <span class="n">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
@@ -283,7 +283,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.algorithms</a></li> 
       </ul>

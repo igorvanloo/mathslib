@@ -39,7 +39,7 @@ def fibonacci(n):
     
     .. code-block:: python
     
-        fibonacci(100) = 354224848179261915075
+        print(fibonacci(100)) #354224848179261915075
     '''
     if type(n) != int:
         return "n must be an integer"
@@ -61,8 +61,8 @@ def fib_till(limit):
     
     .. code-block:: python
     
-        fib_till(100) = [1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
-        sum(fib_till(1000)) = 2583
+        print(fib_till(100)) #[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+        print(sum(fib_till(1000))) #2583
         
     '''
     if type(limit) != int:
@@ -84,7 +84,7 @@ def ZeckendorfRepresentation(x):
     
     .. code-block:: python
         
-        ZeckendorfRepresentation(64) = [55, 8, 1]
+        print(ZeckendorfRepresentation(64)) #[55, 8, 1]
 
     '''
     if type(x) != int:

@@ -43,10 +43,10 @@ def prime_sieve(limit, segment = False, values = True):
     
     .. code-block:: python
     
-        prime_sieve(50) = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
-        prime_sieve(10, values = False) = [False, False, True, True, False, True, False, True, False, False, False]
+        print(prime_sieve(50)) #[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+        print(prime_sieve(10, values = False)) #[False, False, True, True, False, True, False, True, False, False, False]
         
-        [i for (i, isprime) in enumerate(prime_sieve(10, values = False)) if isprime] = [2, 3, 5, 7]
+        print([i for (i, isprime) in enumerate(prime_sieve(10, values = False)) if isprime]) #[2, 3, 5, 7]
         
     '''
     if (type(limit) != int) or (type(segment) != bool) or (type(values) != bool):
@@ -112,8 +112,8 @@ def is_prime(x):
     
     .. code-block:: python
     
-        is_prime(10) = False
-        is_prime(160517089) = True
+        print(is_prime(10)) #False
+        print(is_prime(160517089)) #True
         
     '''
     if type(x) != int:
@@ -141,8 +141,8 @@ def prime_factors(n):
     
     .. code-block:: python
         
-        prime_factors(123123) = {3: 1, 7: 1, 11: 1, 13: 1, 41: 1}
-        prime_factors(1123619623) = {7: 1, 160517089: 1}
+        print(prime_factors(123123)) #{3: 1, 7: 1, 11: 1, 13: 1, 41: 1}
+        print(prime_factors(1123619623)) #{7: 1, 160517089: 1}
         
     '''
     if type(n) != int:
@@ -180,7 +180,7 @@ def primepi(limit):
     
     .. code-block:: python
     
-        primepi(10) = [0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]
+        print(primepi(10)) #[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]
         
     '''
     if type(limit) != int:
@@ -210,8 +210,9 @@ def sum_of_primes(n):
     
     .. code-block:: python
         
-        sum_of_primes(2*10**6) = 142913828922
-        sum_of_primes(10**10) = 2220822432581729238
+        print(sum_of_primes(2*10**6)) #142913828922
+        print(sum_of_primes(10**10)) #2220822432581729238
+        
     '''
     if type(n) != int:
         return "n must be an integer"
@@ -240,8 +241,8 @@ def fermat_primality_test(n):
     
     .. code-block:: python
     
-        fermat_primality_test(17969800575241) = True #Actually True
-        fermat_primality_test(101101) = True #Wrong 101101 is not prime
+        print(fermat_primality_test(17969800575241)) #True and it is actually True
+        print(fermat_primality_test(101101)) #True but it is wrong 101101 is not prime
         
     .. note::
         This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.

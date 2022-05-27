@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>mathslib package &#8212; mathslib 2.1.0 documentation</title>
+    <title>mathslib package &#8212; mathslib 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="modules.html" title="mathslib"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>
@@ -66,8 +66,8 @@
 <dd class="field-even"><p>A list which contains all divisors of x</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
-<span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">include_x</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span> <span class="c1">#[1, 3, 5, 15]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">include_x</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span> <span class="c1">#[1, 3, 5]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -87,9 +87,9 @@
 <dd class="field-even"><p>An integer</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">divisor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">divisor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">13</span>
-<span class="n">divisor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">91</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#13</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#91</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -103,10 +103,10 @@
 <dd class="field-odd"><p><strong>x</strong> – An integer</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list containing the continued fraction of n</p>
+<dd class="field-even"><p>A list containing the continued fraction of x</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">continued_fraction</span><span class="p">(</span><span class="mi">19</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">continued_fraction</span><span class="p">(</span><span class="mi">19</span><span class="p">))</span> <span class="c1">#[4, 2, 1, 3, 1, 2, 8]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -129,7 +129,7 @@
 <dd class="field-odd"><p>An integer, the denominator of the fraction</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">overall_fraction</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="o">=</span> <span class="p">(</span><span class="mi">415</span><span class="p">,</span> <span class="mi">93</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">overall_fraction</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]))</span> <span class="c1">#(415, 93)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -146,8 +146,8 @@
 <dd class="field-even"><p>An integer, numbers, a, less than n, such that gcd(a, n) = 1</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span>
-<span class="n">phi</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="mi">40</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span> <span class="c1">#8</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="c1">#40</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -164,9 +164,9 @@
 <dd class="field-even"><p>An integer</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Mobius</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1">#10 = 2*5, therefore μ(10) = (-1)*(-1) = 1</span>
-<span class="n">Mobius</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1">#Divisble by 3*3</span>
-<span class="n">Mobius</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1">#7 is prime therefore μ(7) = -1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Mobius</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#1 - 10 = 2*5, therefore μ(10) = (-1)*(-1) = 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Mobius</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span> <span class="c1">#0 - Divisble by 3*3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Mobius</span><span class="p">(</span><span class="mi">7</span><span class="p">))</span> <span class="c1">#-1 - 7 is prime therefore μ(7) = -1</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -193,9 +193,9 @@
 <dd class="field-even"><p>A list containing all desired triplets</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ppt</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">]]</span>
-<span class="n">ppt</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">17</span><span class="p">]]</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">ppt</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="o">=</span> <span class="mi">16</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ppt</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span> <span class="c1">#[[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ppt</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="c1">#[[3, 4, 5], [5, 12, 13], [15, 8, 17]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ppt</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="kc">False</span><span class="p">)))</span> <span class="c1">#16</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -212,7 +212,7 @@
 <dd class="field-even"><p>A dictionary containing the prime factorisation of x!</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">legendre_factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span> 
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">legendre_factorial</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span> <span class="c1">#{2: 4, 3: 2, 5: 1} </span>
 </pre></div>
 </div>
 </dd></dl>
@@ -233,7 +233,7 @@
 </dd>
 </dl>
 <p>From <a class="reference external" href="https://projecteuler.net/problem=204">Project Euler Problem 204</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">k_smooth_numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">))</span> <span class="o">=</span> <span class="mi">1105</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">k_smooth_numbers</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">)))</span> <span class="c1">#1105</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -253,9 +253,9 @@
 <dd class="field-even"><p>The legendre symbol of a/p</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">#0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">31</span><span class="p">))</span> <span class="c1">#1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">legendre_symbol</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span> <span class="c1">#-1</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -284,7 +284,7 @@
 <dd class="field-even"><p>solution to x^2 = a (mod p)</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">tonelli_shanks</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">41</span><span class="p">)</span> <span class="o">=</span> <span class="mi">28</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tonelli_shanks</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">41</span><span class="p">))</span> <span class="c1">#28</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -313,8 +313,31 @@ Note that p - x is also a root.</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#We solve x = 2 mod 3 = 3 mod 5 = 2 mod 7</span>
-<span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span> <span class="c1">#First we solve x = 2 mod = 3 mod 5</span>
-<span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">=</span> <span class="mi">23</span> <span class="c1">#Then we solve x = 8 mod 15 = 2 mod 7</span>
+<span class="c1">#First we solve x = 2 mod = 3 mod 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#8 </span>
+<span class="c1">#Then we solve x = 8 mod 15 = 2 mod 7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span> <span class="c1">#23 </span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.FrobeniusNumber">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">FrobeniusNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">integers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#FrobeniusNumber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.FrobeniusNumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates the <a class="reference external" href="https://en.wikipedia.org/wiki/Coin_problem">Frobenius Number</a> for given integers.</p>
+<p>The below algorithm is based on <a class="reference external" href="https://www.cis.upenn.edu/~cis511/Frobenius-numbers-Nijenhuis-Wagon.pdf">Faster Algorithms for Frobenius Numbers</a>
+specifically, this is an implementation of their Breadth-First Method which you may find on page 9</p>
+<dl class="field-list simple">
+<dt class="field-odd">Param</dt>
+<dd class="field-odd"><p>integers</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Frobenius number</p>
+</dd>
+</dl>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">FrobeniusNumber</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">FrobeniusNumber</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">#43</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">FrobeniusNumber</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1476</span><span class="p">,</span> <span class="mi">3764</span><span class="p">,</span> <span class="mi">4864</span><span class="p">,</span> <span class="mi">4871</span><span class="p">,</span> <span class="mi">7773</span><span class="p">))</span> <span class="c1">#47350</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -340,10 +363,10 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>All primes &lt; limit</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prime_sieve</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">47</span><span class="p">]</span>
-<span class="n">prime_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prime_sieve</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span> <span class="c1">#[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prime_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span> <span class="c1">#[False, False, True, True, False, True, False, True, False, False, False]</span>
 
-<span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">isprime</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prime_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span> <span class="k">if</span> <span class="n">isprime</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">isprime</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">prime_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span> <span class="k">if</span> <span class="n">isprime</span><span class="p">])</span> <span class="c1">#[2, 3, 5, 7]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -360,8 +383,8 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>True if x is prime, False otherwise</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_prime</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="n">is_prime</span><span class="p">(</span><span class="mi">160517089</span><span class="p">)</span> <span class="o">=</span> <span class="kc">True</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#False</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_prime</span><span class="p">(</span><span class="mi">160517089</span><span class="p">))</span> <span class="c1">#True</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -378,8 +401,8 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">prime_factors</span><span class="p">(</span><span class="mi">123123</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span><span class="mi">3</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">41</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="n">prime_factors</span><span class="p">(</span><span class="mi">1123619623</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span><span class="mi">7</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">160517089</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prime_factors</span><span class="p">(</span><span class="mi">123123</span><span class="p">))</span> <span class="c1">#{3: 1, 7: 1, 11: 1, 13: 1, 41: 1}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prime_factors</span><span class="p">(</span><span class="mi">1123619623</span><span class="p">))</span> <span class="c1">#{7: 1, 160517089: 1}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -397,7 +420,7 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>An array length limit such that array[x] = primepi(x)</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -415,8 +438,8 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>The sum of all primes up till n</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sum_of_primes</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="o">=</span> <span class="mi">142913828922</span>
-<span class="n">sum_of_primes</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2220822432581729238</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sum_of_primes</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">))</span> <span class="c1">#142913828922</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_of_primes</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#2220822432581729238</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -433,8 +456,8 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>True if n is probably prime</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">17969800575241</span><span class="p">)</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#Actually True</span>
-<span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">101101</span><span class="p">)</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#Wrong 101101 is not prime</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">17969800575241</span><span class="p">))</span> <span class="c1">#True and it is actually True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">101101</span><span class="p">))</span> <span class="c1">#True but it is wrong 101101 is not prime</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -463,7 +486,7 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <dd class="field-even"><p>The n-th fibonnaci number</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="mi">354224848179261915075</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="c1">#354224848179261915075</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -480,8 +503,8 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <dd class="field-even"><p>A list containing all the fibonacci numbers &lt; limit</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fib_till</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">89</span><span class="p">]</span>
-<span class="nb">sum</span><span class="p">(</span><span class="n">fib_till</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span> <span class="o">=</span> <span class="mi">2583</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fib_till</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="c1">#[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">fib_till</span><span class="p">(</span><span class="mi">1000</span><span class="p">)))</span> <span class="c1">#2583</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -498,7 +521,7 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <dd class="field-even"><p>A list containing the zeckendorf representation of x</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ZeckendorfRepresentation</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">55</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ZeckendorfRepresentation</span><span class="p">(</span><span class="mi">64</span><span class="p">))</span> <span class="c1">#[55, 8, 1]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -524,7 +547,7 @@ It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
 <dd class="field-odd"><p>The corresponding Adjacency matrix of the MST</p>
 </dd>
 </dl>
-<p>Example from Project <a class="reference external" href="https://projecteuler.com/107">Euler Problem 107</a></p>
+<p>Example from Project <a class="reference external" href="https://projecteuler.net/problem=107">Euler Problem 107</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
           <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
           <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
@@ -533,14 +556,14 @@ It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span> 
           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 
-<span class="n">PrimsAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">93</span><span class="p">,</span> 
-                          <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                           <span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                           <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
-                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
-                           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">PrimsAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#(93, </span>
+                              <span class="c1">#[[0, 16, 12, 0, 0, 0, 0],</span>
+                              <span class="c1">#[16, 0, 0, 17, 0, 0, 0],</span>
+                              <span class="c1">#[12, 0, 0, 0, 0, 0, 0],</span>
+                              <span class="c1">#[0, 17, 0, 0, 18, 19, 0],</span>
+                              <span class="c1">#[0, 0, 0, 18, 0, 0, 11],</span>
+                              <span class="c1">#[0, 0, 0, 19, 0, 0, 0],</span>
+                              <span class="c1">#[0, 0, 0, 0, 11, 0, 0]])</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -566,14 +589,14 @@ It finds the the shortest paths between nodes in a graph</p>
 <p class="admonition-title">Note</p>
 <p>The matrix assumes that each vertex has an edge to it’s neighbour, therefore this is not a widely applicable case</p>
 </div>
-<p>Example from Project <a class="reference external" href="https://projecteuler.com/83">Euler Problem 83</a></p>
+<p>Example from Project <a class="reference external" href="https://projecteuler.net/problem=83">Euler Problem 83</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">131</span><span class="p">,</span> <span class="mi">673</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">103</span><span class="p">,</span><span class="mi">18</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">201</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">342</span><span class="p">,</span> <span class="mi">965</span><span class="p">,</span> <span class="mi">150</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">630</span><span class="p">,</span> <span class="mi">803</span><span class="p">,</span> <span class="mi">746</span><span class="p">,</span> <span class="mi">422</span><span class="p">,</span> <span class="mi">111</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">537</span><span class="p">,</span> <span class="mi">699</span><span class="p">,</span> <span class="mi">497</span><span class="p">,</span> <span class="mi">121</span><span class="p">,</span> <span class="mi">956</span><span class="p">],</span>
          <span class="p">[</span><span class="mi">805</span><span class="p">,</span> <span class="mi">732</span><span class="p">,</span> <span class="mi">524</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">331</span><span class="p">]]</span>
 
-<span class="n">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2297</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#2297</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -605,7 +628,7 @@ It finds the the shortest paths between nodes in a graph</p>
 <span class="n">W</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
-<span class="n">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">=</span> <span class="mi">220</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span> <span class="c1">#220</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -633,7 +656,7 @@ It finds the actual values used to obtain the optimal sum</p>
 <span class="n">W</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
-<span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">=</span> <span class="p">{</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span> <span class="c1">#{20, 30}</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -658,7 +681,7 @@ It finds the actual values used to obtain the optimal sum</p>
 <dd class="field-even"><p>n choose r</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n_choose_r</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span> <span class="o">=</span> <span class="mi">47129212243960</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">n_choose_r</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span> <span class="c1">#47129212243960</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -678,8 +701,8 @@ It finds the actual values used to obtain the optimal sum</p>
 <dd class="field-even"><p>n in base b</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">#[1, 0, 1, 0]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">#[1, 0, 1]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -696,9 +719,9 @@ It finds the actual values used to obtain the optimal sum</p>
 <dd class="field-even"><p>The lcm of all numbers in the list</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">lcm</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="o">=</span> <span class="mi">6</span>
-<span class="n">lcm</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span> <span class="o">=</span> <span class="mi">140</span>
-<span class="n">lcm</span><span class="p">([</span><span class="mi">8345</span><span class="p">,</span> <span class="mi">23579</span><span class="p">,</span> <span class="mi">174</span><span class="p">])</span> <span class="o">=</span> <span class="mi">34237415370</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">lcm</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span> <span class="c1">#6</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lcm</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">]))</span> <span class="c1">#140</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lcm</span><span class="p">([</span><span class="mi">8345</span><span class="p">,</span> <span class="mi">23579</span><span class="p">,</span> <span class="mi">174</span><span class="p">]))</span> <span class="c1">#34237415370</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -719,7 +742,7 @@ It finds the actual values used to obtain the optimal sum</p>
 <dd class="field-even"><p>a/b mod m</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ModDivision</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ModDivision</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#2</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -789,7 +812,7 @@ It finds the actual values used to obtain the optimal sum</p>
         <li class="right" >
           <a href="modules.html" title="mathslib"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.1.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>

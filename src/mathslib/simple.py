@@ -42,7 +42,7 @@ def n_choose_r(n, r):
     
     .. code-block:: python
     
-        n_choose_r(50, 30) = 47129212243960
+        print(n_choose_r(50, 30)) #47129212243960
         
     '''
     if r > n:
@@ -61,8 +61,8 @@ def numberToBase(n, b):
         
     .. code-block:: python
     
-        numberToBase(10, 2) = [1, 0, 1, 0]
-        numberToBase(10, 3) = [1, 0, 1]
+        print(numberToBase(10, 2)) #[1, 0, 1, 0]
+        print(numberToBase(10, 3)) #[1, 0, 1]
         
     '''
     if (type(n) != int) or (type(b) != int):
@@ -85,9 +85,9 @@ def lcm(a_list):
     
     .. code-block:: python
     
-        lcm([2, 3]) = 6
-        lcm([2, 4, 5, 7]) = 140
-        lcm([8345, 23579, 174]) = 34237415370
+        print(lcm([2, 3])) #6
+        print(lcm([2, 4, 5, 7])) #140
+        print(lcm([8345, 23579, 174])) #34237415370
         
     '''
     n = sorted(a_list)
@@ -109,7 +109,7 @@ def ModDivision(a, b, m):
     
     .. code-block:: python
     
-        ModDivision(8, 4, 5) = 2
+        print(ModDivision(8, 4, 5)) #2
         
     '''
     if (type(a) != int) or (type(b) != int) or (type(m) != int):

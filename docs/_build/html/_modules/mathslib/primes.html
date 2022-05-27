@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.primes &#8212; mathslib 2.0.2 documentation</title>
+    <title>mathslib.primes &#8212; mathslib 2.2.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
@@ -26,7 +26,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.primes</a></li> 
       </ul>
@@ -83,10 +83,10 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        prime_sieve(50) = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]</span>
-<span class="sd">        prime_sieve(10, values = False) = [False, False, True, True, False, True, False, True, False, False, False]</span>
+<span class="sd">        print(prime_sieve(50)) #[2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]</span>
+<span class="sd">        print(prime_sieve(10, values = False)) #[False, False, True, True, False, True, False, True, False, False, False]</span>
 <span class="sd">        </span>
-<span class="sd">        [i for (i, isprime) in enumerate(prime_sieve(10, values = False)) if isprime] = [2, 3, 5, 7]</span>
+<span class="sd">        print([i for (i, isprime) in enumerate(prime_sieve(10, values = False)) if isprime]) #[2, 3, 5, 7]</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">segment</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">bool</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">bool</span><span class="p">):</span>
@@ -152,8 +152,8 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        is_prime(10) = False</span>
-<span class="sd">        is_prime(160517089) = True</span>
+<span class="sd">        print(is_prime(10)) #False</span>
+<span class="sd">        print(is_prime(160517089)) #True</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
@@ -181,8 +181,8 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">        </span>
-<span class="sd">        prime_factors(123123) = {3: 1, 7: 1, 11: 1, 13: 1, 41: 1}</span>
-<span class="sd">        prime_factors(1123619623) = {7: 1, 160517089: 1}</span>
+<span class="sd">        print(prime_factors(123123)) #{3: 1, 7: 1, 11: 1, 13: 1, 41: 1}</span>
+<span class="sd">        print(prime_factors(1123619623)) #{7: 1, 160517089: 1}</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
@@ -220,7 +220,7 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        primepi(10) = [0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
+<span class="sd">        print(primepi(10)) #[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
@@ -250,8 +250,9 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">        </span>
-<span class="sd">        sum_of_primes(2*10**6) = 142913828922</span>
-<span class="sd">        sum_of_primes(10**10) = 2220822432581729238</span>
+<span class="sd">        print(sum_of_primes(2*10**6)) #142913828922</span>
+<span class="sd">        print(sum_of_primes(10**10)) #2220822432581729238</span>
+<span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
@@ -280,8 +281,8 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        fermat_primality_test(17969800575241) = True #Actually True</span>
-<span class="sd">        fermat_primality_test(101101) = True #Wrong 101101 is not prime</span>
+<span class="sd">        print(fermat_primality_test(17969800575241)) #True and it is actually True</span>
+<span class="sd">        print(fermat_primality_test(101101)) #True but it is wrong 101101 is not prime</span>
 <span class="sd">        </span>
 <span class="sd">    .. note::</span>
 <span class="sd">        This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.</span>
@@ -332,7 +333,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.0.2 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.primes</a></li> 
       </ul>

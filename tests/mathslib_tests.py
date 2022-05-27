@@ -61,6 +61,11 @@ class TestNumberTheory(TestCase):
     def test_chinese_remainder_theorem(self):
         self.assertEqual(NT.ChineseRemainderTheorem(2, 3, 3, 5), 8)
         self.assertEqual(NT.ChineseRemainderTheorem(8, 2, 15, 7), 23)
+    
+    def test_frobenius_number(self):
+        self.assertEqual(NT.FrobeniusNumber(3, 5), 7)
+        self.assertEqual(NT.FrobeniusNumber(6, 9, 20), 43)
+        self.assertEqual(NT.FrobeniusNumber(1000, 1476, 3764, 4864, 4871, 7773), 47350)
 
 class TestPrimes(TestCase):
     
