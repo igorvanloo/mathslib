@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.primes &#8212; mathslib 2.2.0 documentation</title>
+    <title>mathslib.primes &#8212; mathslib 2.3.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
@@ -26,7 +26,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.primes</a></li> 
       </ul>
@@ -271,11 +271,12 @@
                 <span class="n">S</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">-=</span> <span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">v</span> <span class="o">//</span> <span class="n">p</span><span class="p">]</span> <span class="o">-</span> <span class="n">sp</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">S</span><span class="p">[</span><span class="n">n</span><span class="p">]</span></div>
 
-<div class="viewcode-block" id="fermat_primality_test"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.fermat_primality_test">[docs]</a><span class="k">def</span> <span class="nf">fermat_primality_test</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<div class="viewcode-block" id="fermat_primality_test"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.fermat_primality_test">[docs]</a><span class="k">def</span> <span class="nf">fermat_primality_test</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">tests</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A `Fermat Primality Test &lt;https://en.wikipedia.org/wiki/Fermat_primality_test&gt;`_</span>
 
-<span class="sd">    :param n: An integer to be tested</span>
+<span class="sd">    :param n: The integer to be tested</span>
+<span class="sd">    :param tests: Optional, Number of tests to make. The default is 2</span>
 
 <span class="sd">    :returns: True if n is probably prime</span>
 <span class="sd">    </span>
@@ -283,25 +284,108 @@
 <span class="sd">    </span>
 <span class="sd">        print(fermat_primality_test(17969800575241)) #True and it is actually True</span>
 <span class="sd">        print(fermat_primality_test(101101)) #True but it is wrong 101101 is not prime</span>
+<span class="sd">        print(fermat_primality_test(101101, 6)) #False, after using 6 tests we see that it is not prime</span>
 <span class="sd">        </span>
 <span class="sd">    .. note::</span>
 <span class="sd">        This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.</span>
-<span class="sd">        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use. </span>
+<span class="sd">        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use, and hence if n &lt; 10^5 the</span>
+<span class="sd">        program will automatically use the is_prime function</span>
 <span class="sd">        </span>
-<span class="sd">        You can test more terms to make it more and more accurate</span>
+<span class="sd">        You can test more terms to make it more accurate</span>
 
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
         <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
-    
     <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;switching to is_prime function for safety&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">is_prime</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-    
     <span class="k">else</span><span class="p">:</span> 
-        <span class="k">if</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="kc">False</span></div>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">tests</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span><span class="p">),</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span></div>
+    
+<div class="viewcode-block" id="miller"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.miller">[docs]</a><span class="k">def</span> <span class="nf">miller</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">millerrabin</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">numoftests</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    The `Miller Primality Test &lt;https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test&gt;`_</span>
+<span class="sd">    with the option to use the `Miller-Rabin test &lt;https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test&gt;`_</span>
+
+<span class="sd">    :param n: The integer to be tested</span>
+<span class="sd">    :param millerrabin: Optional, default False. Decides with the use Miller-Rabin or Miller primality test </span>
+<span class="sd">    :param numoftests: Optional, default is 2. If millerrabin is True, it uses numoftests bases</span>
+
+<span class="sd">    :returns: True if n is probably prime, False if n is not prime</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        print(miller(17969800575241)) #True</span>
+<span class="sd">        print(miller(101101)) #False</span>
+<span class="sd">        print(len([x for x in range(1, 10**6) if miller(x, True, 1)])) #78544, 46 more primes than needed</span>
+<span class="sd">        print(len([x for x in range(1, 10**6) if miller(x, True, 2)])) #78498, correct now</span>
+<span class="sd">        </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        Automatically uses the Miller Primality Test to get an exact an answer if n &lt; 3317044064679887385961981 and swaps</span>
+<span class="sd">        to using the first 17 primes, but no longer guarantees a correct answer. You may optionally use a regular miller-rabin test</span>
+<span class="sd">        with a specified number of tests</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;n must be an integer&quot;</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">millerrabin</span><span class="p">:</span>
+        <span class="c1">#Uses https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Testing_against_small_sets_of_bases </span>
+        <span class="c1">#to minimise bases to check, this version relies on the fact that The Riemann Hypothesis is true</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">1373653</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">9080191</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">73</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">25326001</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">4759123141</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">61</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">2152302898747</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3474749660383</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">341550071728321</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3825123056546413051</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">318665857834031151167461</span><span class="p">:</span> <span class="c1"># &lt; 2^64</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">37</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">n</span> <span class="o">&lt;</span> <span class="mi">3317044064679887385961981</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">41</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">37</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">59</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1">#If we want to use miller rabin test it finds random integers in the correct range as bases</span>
+        <span class="n">numoftests</span> <span class="o">%=</span> <span class="n">n</span>
+        <span class="n">tests</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">numoftests</span><span class="p">)]</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">d</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1">#Divide 2 until no longer divisible</span>
+        <span class="n">d</span> <span class="o">//=</span> <span class="mi">2</span>
+        <span class="n">r</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1">#n = 2^r*d + 1</span>
+    <span class="k">def</span> <span class="nf">is_composite</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+        <span class="c1">#Finds out if a number is a composite one</span>
+        <span class="k">if</span> <span class="nb">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="o">**</span><span class="n">i</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tests</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">is_composite</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span></div>
 </pre></div>
 
             <div class="clearer"></div>
@@ -333,7 +417,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.primes</a></li> 
       </ul>

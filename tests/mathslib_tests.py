@@ -94,6 +94,14 @@ class TestPrimes(TestCase):
     def test_fermat_primality_test(self):
         self.assertEqual(P.fermat_primality_test(17969800575241), True)
         self.assertEqual(P.fermat_primality_test(101101), True)
+        self.assertEqual(P.fermat_primality_test(101101, 6), False)
+        self.assertEqual(P.fermat_primality_test(3), True)
+        
+    def miller_primality_test(self):
+        self.assertEqual(P.miller(17969800575241), True)
+        self.assertEqual(P.miller(101101), False)
+        self.assertEqual(len([x for x in range(1, 10**6) if P.miller(x, True, 1)]), 78544)
+        self.assertEqual(len([x for x in range(1, 10**6) if P.miller(x, True, 2)]), 78498)
         
 class TestSimple(TestCase):
     

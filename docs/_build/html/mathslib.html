@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>mathslib package &#8212; mathslib 2.2.0 documentation</title>
+    <title>mathslib package &#8212; mathslib 2.3.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="modules.html" title="mathslib"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>
@@ -446,11 +446,14 @@ specifically, this is an implementation of their Breadth-First Method which you 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.primes.fermat_primality_test">
-<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">fermat_primality_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#fermat_primality_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.fermat_primality_test" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">fermat_primality_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#fermat_primality_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.fermat_primality_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Fermat_primality_test">Fermat Primality Test</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>n</strong> – An integer to be tested</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> – The integer to be tested</p></li>
+<li><p><strong>tests</strong> – Optional, Number of tests to make. The default is 2</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>True if n is probably prime</p>
@@ -458,13 +461,46 @@ specifically, this is an implementation of their Breadth-First Method which you 
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">17969800575241</span><span class="p">))</span> <span class="c1">#True and it is actually True</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">101101</span><span class="p">))</span> <span class="c1">#True but it is wrong 101101 is not prime</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fermat_primality_test</span><span class="p">(</span><span class="mi">101101</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">#False, after using 6 tests we see that it is not prime</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.
-Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use.</p>
-<p>You can test more terms to make it more and more accurate</p>
+Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use, and hence if n &lt; 10^5 the
+program will automatically use the is_prime function</p>
+<p>You can test more terms to make it more accurate</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.miller">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">miller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">millerrabin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numoftests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#miller"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.miller" title="Permalink to this definition">¶</a></dt>
+<dd><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test">Miller Primality Test</a>
+with the option to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test">Miller-Rabin test</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> – The integer to be tested</p></li>
+<li><p><strong>millerrabin</strong> – Optional, default False. Decides with the use Miller-Rabin or Miller primality test</p></li>
+<li><p><strong>numoftests</strong> – Optional, default is 2. If millerrabin is True, it uses numoftests bases</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if n is probably prime, False if n is not prime</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">miller</span><span class="p">(</span><span class="mi">17969800575241</span><span class="p">))</span> <span class="c1">#True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">miller</span><span class="p">(</span><span class="mi">101101</span><span class="p">))</span> <span class="c1">#False</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">miller</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]))</span> <span class="c1">#78544, 46 more primes than needed</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">miller</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]))</span> <span class="c1">#78498, correct now</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Automatically uses the Miller Primality Test to get an exact an answer if n &lt; 3317044064679887385961981 and swaps
+to using the first 17 primes, but no longer guarantees a correct answer. You may optionally use a regular miller-rabin test
+with a specified number of tests</p>
 </div>
 </dd></dl>
 
@@ -812,7 +848,7 @@ It finds the actual values used to obtain the optimal sum</p>
         <li class="right" >
           <a href="modules.html" title="mathslib"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.3.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>

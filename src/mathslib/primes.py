@@ -231,11 +231,12 @@ def sum_of_primes(n):
                 S[v] -= p * (S[v // p] - sp)
     return S[n]
 
-def fermat_primality_test(n):
+def fermat_primality_test(n, tests = 2):
     '''
     A `Fermat Primality Test <https://en.wikipedia.org/wiki/Fermat_primality_test>`_
 
-    :param n: An integer to be tested
+    :param n: The integer to be tested
+    :param tests: Optional, Number of tests to make. The default is 2
 
     :returns: True if n is probably prime
     
@@ -243,22 +244,105 @@ def fermat_primality_test(n):
     
         print(fermat_primality_test(17969800575241)) #True and it is actually True
         print(fermat_primality_test(101101)) #True but it is wrong 101101 is not prime
+        print(fermat_primality_test(101101, 6)) #False, after using 6 tests we see that it is not prime
         
     .. note::
         This function will always guess a prime correctly due to Fermats Theorem, but may guess a composite to be a prime.
-        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use. 
+        Therefore, it is very useful when we test large numbers, otherwise it is dangerous to use, and hence if n < 10^5 the
+        program will automatically use the is_prime function
         
-        You can test more terms to make it more and more accurate
+        You can test more terms to make it more accurate
 
     '''
     if type(n) != int:
         return "n must be an integer"
-    
     if n < 10**5:
-        print("switching to is_prime function for safety")
         return is_prime(n)
-    
     else: 
-        if pow(4, n - 1, n) == 1 and pow(6, n - 1, n) == 1:
-            return True
+        for x in range(tests):
+            if pow(2*(x + 2), n - 1, n) != 1:
+                return False
+        return True
+    
+def miller(n, millerrabin = False, numoftests = 2):
+    '''
+    The `Miller Primality Test <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test>`_
+    with the option to use the `Miller-Rabin test <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>`_
+
+    :param n: The integer to be tested
+    :param millerrabin: Optional, default False. Decides with the use Miller-Rabin or Miller primality test 
+    :param numoftests: Optional, default is 2. If millerrabin is True, it uses numoftests bases
+
+    :returns: True if n is probably prime, False if n is not prime
+    
+    .. code-block:: python
+    
+        print(miller(17969800575241)) #True
+        print(miller(101101)) #False
+        print(len([x for x in range(1, 10**6) if miller(x, True, 1)])) #78544, 46 more primes than needed
+        print(len([x for x in range(1, 10**6) if miller(x, True, 2)])) #78498, correct now
+        
+    .. note::
+        Automatically uses the Miller Primality Test to get an exact an answer if n < 3317044064679887385961981 and swaps
+        to using the first 17 primes, but no longer guarantees a correct answer. You may optionally use a regular miller-rabin test
+        with a specified number of tests
+
+    '''
+    if type(n) != int:
+        return "n must be an integer"
+    if n == 1:
         return False
+    if n == 2:
+        return True
+    if n == 3:
+        return True
+    if n % 2 == 0:
+        return False
+    if not millerrabin:
+        #Uses https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Testing_against_small_sets_of_bases 
+        #to minimise bases to check, this version relies on the fact that The Riemann Hypothesis is true
+        if n < 1373653:
+            tests = [2, 3]
+        elif n < 9080191:
+            tests = [31, 73]
+        elif n < 25326001:
+            tests = [2, 3, 5]
+        elif n < 4759123141:
+            tests = [2, 7, 61]
+        elif n < 2152302898747:
+            tests = [2, 3, 5, 7, 11]
+        elif n < 3474749660383:
+            tests = [2, 3, 5, 7, 11, 13]
+        elif n < 341550071728321:
+            tests = [2, 3, 5, 7, 11, 13, 17]
+        elif n < 3825123056546413051:
+            tests = [2, 3, 5, 7, 11, 13, 17, 19, 23]
+        elif n < 318665857834031151167461: # < 2^64
+            tests = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37]
+        elif n < 3317044064679887385961981:
+            tests = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41]
+        else:
+            tests = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59]
+    else:
+        #If we want to use miller rabin test it finds random integers in the correct range as bases
+        numoftests %= n
+        tests = [x for x in range(2, 2 + numoftests)]
+    d = n - 1
+    r = 0
+    while d % 2 == 0:
+        #Divide 2 until no longer divisible
+        d //= 2
+        r += 1
+    #n = 2^r*d + 1
+    def is_composite(a):
+        #Finds out if a number is a composite one
+        if pow(a, d, n) == 1:
+            return False
+        for i in range(r):
+            if pow(a, 2**i * d, n) == n-1:
+                return False
+        return True
+    for k in tests:
+        if is_composite(k):
+            return False
+    return True
