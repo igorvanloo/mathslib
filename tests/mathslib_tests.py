@@ -4,7 +4,7 @@ Test for all modules
 Author: Igor van Loo
 '''
 
-from unittest import TestCase, main
+import unittest
 
 import mathslib.primes as P
 import mathslib.numtheory as NT
@@ -12,7 +12,7 @@ import mathslib.algorithms as ALGO
 import mathslib.fib as FIB
 import mathslib.simple as S
 
-class TestNumberTheory(TestCase):
+class TestNumberTheory(unittest.TestCase):
     
     def test_divisors_of(self):
         self.assertEqual(NT.divisors_of(15), [1, 3, 5, 15])
@@ -67,7 +67,7 @@ class TestNumberTheory(TestCase):
         self.assertEqual(NT.FrobeniusNumber(6, 9, 20), 43)
         self.assertEqual(NT.FrobeniusNumber(1000, 1476, 3764, 4864, 4871, 7773), 47350)
 
-class TestPrimes(TestCase):
+class TestPrimes(unittest.TestCase):
     
     def test_prime_sieve(self):
         test_prime = P.prime_sieve(100)
@@ -97,13 +97,13 @@ class TestPrimes(TestCase):
         self.assertEqual(P.fermat_primality_test(101101, 6), False)
         self.assertEqual(P.fermat_primality_test(3), True)
         
-    def miller_primality_test(self):
+    def test_miller_primality_test(self):
         self.assertEqual(P.miller(17969800575241), True)
         self.assertEqual(P.miller(101101), False)
-        self.assertEqual(len([x for x in range(1, 10**6) if P.miller(x, True, 1)]), 78544)
-        self.assertEqual(len([x for x in range(1, 10**6) if P.miller(x, True, 2)]), 78498)
+        self.assertEqual(len([x for x in range(1, 10**5) if P.miller(x, True, 1)]), 9608)
+        self.assertEqual(len([x for x in range(1, 10**5) if P.miller(x, True, 2)]), 9592)
         
-class TestSimple(TestCase):
+class TestSimple(unittest.TestCase):
     
     def test_n_choose_r(self):
         self.assertEqual(S.n_choose_r(50, 30), 47129212243960)
@@ -119,7 +119,7 @@ class TestSimple(TestCase):
     def test_mod_division(self):
         self.assertEqual(S.ModDivision(8, 4, 5), 2)
         
-class TestFib(TestCase):
+class TestFib(unittest.TestCase):
     
     def test_fibonacci(self):
         self.assertEqual(FIB.fibonacci(100), 354224848179261915075)
@@ -131,7 +131,7 @@ class TestFib(TestCase):
     def test_zeckendorf(self):
         self.assertEqual(FIB.ZeckendorfRepresentation(64), [55, 8, 1])
 
-class TestAlgorithms(TestCase):
+class TestAlgorithms(unittest.TestCase):
     
     def test_Prims(self):
         matrix = [[0, 16, 12, 21, 0, 0, 0], 
@@ -173,6 +173,6 @@ class TestAlgorithms(TestCase):
         n = len(values)
         
         self.assertEqual(ALGO.KnapSackValues(values, weights, n, W), {20, 30})
-        
-if __name__ == '__main__':
-    main()
+
+if __name__ == "__main__":
+    unittest.main()

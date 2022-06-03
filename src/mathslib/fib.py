@@ -30,12 +30,12 @@ Author: Igor van Loo
 
 def fibonacci(n):
     '''
-    Finds the n-th fibonnaci using matrix exponentiation
+    Finds the n-th Fibonacci using matrix exponentiation
     Method is outlined `here <https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371>`_
 
     :param n: An integer
 
-    :returns: The n-th fibonnaci number
+    :returns: The n-th Fibonacci number
     
     .. code-block:: python
     
@@ -53,7 +53,7 @@ def fibonacci(n):
 
 def fib_till(limit):
     '''
-    Finds all fibonnaci number up till a limit
+    Finds all Fibonacci number up till a limit
 
     :param limit: An integer
 
