@@ -37,6 +37,17 @@ Breakdown
 |                | * sum_of_primes(x)                                         |
 |                | * fermat_primality_test(x)                                 |
 +----------------+------------------------------------------------------------+
+|linalg.py       | * GaussJordanElimination(matrix, augmentedpart)            |
+|                | * solve(M, b)                                              |
+|                | * inverse(matrix)                                          |
+|                | * determinant(matrix)                                      |
+|                | * matrix_addition(A, B, subtract)                          |
+|                | * identity(l, val)                                         |
+|                | * concatenate(A, B)                                        |
+|                | * argmax(alist)                                            |
+|                | * fillmatrix(size, val)                                    |
+|                | * matrix_mul(A, B)                                         |
++----------------+------------------------------------------------------------+
 |fib.py          | * fibonacci(n)                                             |
 |                | * fib_till(limit)                                          |
 |                | * ZeckendorfRepresentation(x)                              |

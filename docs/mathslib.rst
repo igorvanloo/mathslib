@@ -19,6 +19,14 @@ mathslib.primes module
     :members:
     :undoc-members:
     :show-inheritance:
+    
+mathslib.linalg module
+----------------------
+
+.. automodule:: mathslib.linalg
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 mathslib.fib module
 -------------------

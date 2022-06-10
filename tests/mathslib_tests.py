@@ -11,7 +11,67 @@ import mathslib.numtheory as NT
 import mathslib.algorithms as ALGO
 import mathslib.fib as FIB
 import mathslib.simple as S
+import mathslib.linalg as LA
 
+class TestLinearAlgebra(unittest.TestCase):
+    
+    def test_GaussJordanElimination(self):
+        matrix = [[2, 1, -1],
+                  [-3, -1, 2],
+                  [-2, 1, 2]]
+        self.assertEqual(LA.GaussJordanElimination(matrix), True)
+    
+    def test_solve(self):
+        matrix = [[2, 1, -1],
+                  [-3, -1, 2],
+                  [-2, 1, 2]]
+        b = [[8],
+             [-11],
+             [-3]]
+        self.assertEqual(LA.solve(matrix, b), [[2.0], [3.0], [-1.0]])
+    
+    def test_inverse(self):
+        matrix = [[1, -1, 0], 
+                  [-8, 9, -1], 
+                  [-9, 0, 10]]
+        self.assertEqual(LA.inverse(matrix), [[90.0, 10.0, 1.0], [89.0, 10.0, 1.0], [81.0, 9.0, 1.0]])
+    
+    def test_determinant(self):
+        matrix = [[7, -1, 0], 
+                  [-8, 9, -1], 
+                  [-9, 0, 10]]
+        self.assertEqual(LA.determinant(matrix), 541.0)
+        
+    def test_matrix_addition(self):
+        matrix = [[1, 0, 0], 
+                  [0, 1, 0], 
+                  [0, 0, 1]]
+        self.assertEqual(LA.matrix_addition(matrix, matrix), [[2, 0, 0], [0, 2, 0], [0, 0, 2]])
+        self.assertEqual(LA.matrix_addition(matrix, matrix, True), [[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+    
+    def test_identity(self):
+        self.assertEqual(LA.identity(2), [[1, 0], [0, 1]])
+        self.assertEqual(LA.identity(2, 5), [[5, 0], [0, 5]])
+    
+    def test_concatenate_matrix(self):
+        A = [[1, 0],
+             [0, 1]]
+        self.assertEqual(LA.concatenate(A, A), [[1, 0, 1, 0], [0, 1, 0, 1]])
+        
+    def test_argmax(self):
+        self.assertEqual(LA.argmax([1, 3, 2]), 1)
+        
+    def test_fillmatrix(self):
+        self.assertEqual(LA.fillmatrix((2, 2)), [[0, 0], [0, 0]])
+        self.assertEqual(LA.fillmatrix((2, 3)), [[0, 0, 0], [0, 0, 0]])
+    
+    def test_matrixmul(self):
+        A = [[2, 0], 
+             [0, 2]]
+        B = [[1, 2], 
+             [3, 1]]
+        self.assertEqual(LA.matrix_mul(A, B), [[2, 4], [6, 2]])
+    
 class TestNumberTheory(unittest.TestCase):
     
     def test_divisors_of(self):

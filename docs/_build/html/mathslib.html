@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>mathslib package &#8212; mathslib 2.3.0 documentation</title>
+    <title>mathslib package &#8212; mathslib 2.4.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -31,7 +31,7 @@
         <li class="right" >
           <a href="modules.html" title="mathslib"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>
@@ -505,6 +505,239 @@ with a specified number of tests</p>
 </dd></dl>
 
 </section>
+<section id="module-mathslib.linalg">
+<span id="mathslib-linalg-module"></span><h2>mathslib.linalg module<a class="headerlink" href="#module-mathslib.linalg" title="Permalink to this headline">¶</a></h2>
+<p>Various Linear Algebra Functions</p>
+<p>Author: Igor van Loo</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.GaussJordanElimination">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">GaussJordanElimination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentedpart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#GaussJordanElimination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.GaussJordanElimination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">Gauss Jordan Elimination on the given matrix</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>matrix</strong> – Matrix to perform Algoithm on</p></li>
+<li><p><strong>augmentedpart</strong> – Optional addition, will attach the augmented part onto the matrix and then perform the algorithm</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if algorithm was successful, false otherwise</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+          <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+          <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">GaussJordanElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#True</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function simply performs the Gauss Jordan Algorithm, it is used with with solve and inverse to solve Ax = b, and the find
+the inverse of a matrix</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.solve">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.solve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the solution, x, to the equation Mx = b</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>M</strong> – A Matrix</p></li>
+<li><p><strong>b</strong> – A Vector</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Vector x, or an error message</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+          <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+          <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">8</span><span class="p">],</span>
+     <span class="p">[</span><span class="o">-</span><span class="mi">11</span><span class="p">],</span>
+     <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">solve</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span> <span class="c1">#[[2.0], [3.0], [-1.0]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.inverse">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.inverse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the inverse of the given matrix by performing Gauss Jordan Elimination</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>matrix</strong> – Matrix to be inverted</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Inverted matrix, or an error message</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+          <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> 
+          <span class="p">[</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">inverse</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#[[90.0, 10.0, 1.0], [89.0, 10.0, 1.0], [81.0, 9.0, 1.0]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.determinant">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">determinant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#determinant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.determinant" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the determinant of a matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>matrix</strong> – Matrix</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>det(Matrix)</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+          <span class="p">[</span><span class="o">-</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> 
+          <span class="p">[</span><span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">determinant</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#541.0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.matrix_addition">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">matrix_addition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtract</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#matrix_addition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.matrix_addition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs matrix addition/subtraction on matrix A</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – First Matrix</p></li>
+<li><p><strong>B</strong> – Second Matrix</p></li>
+<li><p><strong>subtract</strong> – If True, will perform matrix subtraction</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A + B</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix_addition</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="p">))</span> <span class="c1">#[[2, 0, 0], [0, 2, 0], [0, 0, 2]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix_addition</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">matrix</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span> <span class="c1">#[[0, 0, 0], [0, 0, 0], [0, 0, 0]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.identity">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.identity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generats an Square Identity Matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>l</strong> – Size of matrix</p></li>
+<li><p><strong>val</strong> – diagonal values, default is 1</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>val * identity matrix of size l</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="c1">#[[1, 0], [0, 1]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">identity</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#[[5, 0], [0, 5]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.concatenate">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#concatenate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.concatenate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenates 2 matrices, A and B</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – First Matrix</p></li>
+<li><p><strong>B</strong> – Second Matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A concatenated with B</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">concatenate</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span> <span class="c1">#[[1, 0, 1, 0], [0, 1, 0, 1]]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is a helper function for inverse and solve</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.argmax">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">argmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#argmax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.argmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Arg_max">argmax</a> of a list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>alist</strong> – A list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>the arg max of the list</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">argmax</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]))</span> <span class="c1">#1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.fillmatrix">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">fillmatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#fillmatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.fillmatrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fills a matrix with a value</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size</strong> – A tuple, denoted (width, height) of matrix</p></li>
+<li><p><strong>val</strong> – Value to fill matrix with, default is 0</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A matrix</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fillmatrix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span> <span class="c1">#[[0, 0], [0, 0]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fillmatrix</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)))</span> <span class="c1">#[[0, 0, 0], [0, 0, 0]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.linalg.matrix_mul">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">matrix_mul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#matrix_mul"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.matrix_mul" title="Permalink to this definition">¶</a></dt>
+<dd><p>Matrix multplication of 2 matrices, A and B</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>A</strong> – First Matrix</p></li>
+<li><p><strong>B</strong> – Second Matrix</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Matrix AB</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+     <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matrix_mul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span> <span class="c1">#[[2, 4], [6, 2]]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
 <section id="module-mathslib.fib">
 <span id="mathslib-fib-module"></span><h2>mathslib.fib module<a class="headerlink" href="#module-mathslib.fib" title="Permalink to this headline">¶</a></h2>
 <p>Fibonacci related functions</p>
@@ -512,14 +745,14 @@ with a specified number of tests</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.fib.fibonacci">
 <span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">fibonacci</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#fibonacci"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.fibonacci" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the n-th fibonnaci using matrix exponentiation
+<dd><p>Finds the n-th Fibonacci using matrix exponentiation
 Method is outlined <a class="reference external" href="https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371">here</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>n</strong> – An integer</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The n-th fibonnaci number</p>
+<dd class="field-even"><p>The n-th Fibonacci number</p>
 </dd>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fibonacci</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span> <span class="c1">#354224848179261915075</span>
@@ -530,7 +763,7 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.fib.fib_till">
 <span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">fib_till</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#fib_till"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.fib_till" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds all fibonnaci number up till a limit</p>
+<dd><p>Finds all Fibonacci number up till a limit</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>limit</strong> – An integer</p>
@@ -804,6 +1037,7 @@ It finds the actual values used to obtain the optimal sum</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-mathslib.numtheory">mathslib.numtheory module</a></li>
 <li><a class="reference internal" href="#module-mathslib.primes">mathslib.primes module</a></li>
+<li><a class="reference internal" href="#module-mathslib.linalg">mathslib.linalg module</a></li>
 <li><a class="reference internal" href="#module-mathslib.fib">mathslib.fib module</a></li>
 <li><a class="reference internal" href="#module-mathslib.algorithms">mathslib.algorithms module</a></li>
 <li><a class="reference internal" href="#module-mathslib.simple">mathslib.simple module</a></li>
@@ -848,7 +1082,7 @@ It finds the actual values used to obtain the optimal sum</p>
         <li class="right" >
           <a href="modules.html" title="mathslib"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>
