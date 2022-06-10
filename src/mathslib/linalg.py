@@ -34,7 +34,7 @@ def GaussJordanElimination(matrix, augmentedpart = None):
     Performs `Gauss Jordan Elimination on the given matrix <https://en.wikipedia.org/wiki/Gaussian_elimination>`_
 
     :param matrix: Matrix to perform Algoithm on
-    :param augmentedpart: Optional addition, will attach the augmented part onto the matrix and then perform the algorithm
+    :param augmentedpart: Optional argument, will attach the augmented part onto the matrix and then perform the algorithm
 
     :returns: True if algorithm was successful, false otherwise
     
