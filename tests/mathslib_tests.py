@@ -97,6 +97,14 @@ class TestNumberTheory(unittest.TestCase):
         self.assertEqual(NT.mobius(10), 1)
         self.assertEqual(NT.mobius(9), 0)
         self.assertEqual(NT.mobius(7), -1)
+    
+    def test_mobius_k_sieve(limit, k):
+        self.assertEqualprint(NT.mobius_k_sieve(10, 2), [0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1])
+        self.assertEqualprint(mobius_k_sieve(10, 3), [0, 1, -1, -1, -1, -1, 1, -1, 0, -1, 1])
+    
+    def test_count_k_free(n, k):
+        self.assertEqual(NT.count_kfree(1000, 2), 608)
+        self.assertEqual(NT.count_kfree(1000, 3), 832)
         
     def test_ppt(self):
         self.assertEqual(NT.ppt(20), [[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]])
@@ -109,6 +117,10 @@ class TestNumberTheory(unittest.TestCase):
         
     def test_k_smooth_numbers(self):
         self.assertEqual(len(NT.k_smooth_numbers(5, 10**8)), 1105)
+        
+    def test_k_powerful(self):
+        self.assertEqual(k_powerful(2, 10^2), 14)
+        self.assertEqual(k_powerful(2, 10^2, False), [1, 4, 8, 9, 16, 25, 27, 32, 36, 49, 64, 72, 81, 100])
     
     def test_legendre_symbol(self):
         self.assertEqual(NT.legendre_symbol(3, 3), 0)

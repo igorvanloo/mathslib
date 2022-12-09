@@ -220,6 +220,59 @@ def mobius(n):
             break
     return pow(-1, num_of_primes)
 
+def mobius_k_sieve(limit, k):
+    '''
+    A sieve for the Generalized `Mobius function
+    <https://en.wikipedia.org/wiki/M%C3%B6bius_function>`_, the mathematics of this function can be read
+    in the following `PDF <https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-32/issue-1/M%C3%B6bius-functions-of-order-k/pjm/1102977519.pdf>`_
+
+    :param limit: An integer
+    :param k: An integer
+
+    :returns: An array where array[x] = μ(k, x)
+    
+    .. code-block:: python
+    
+        print(mobius_k_sieve(10, 2)) #[0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1]
+        print(mobius_k_sieve(10, 3)) #[0, 1, -1, -1, -1, -1, 1, -1, 0, -1, 1]
+    
+    '''
+    isprime = [1]*(limit + 1)
+    isprime[0] = isprime[1] = 0
+    mob = [0] + [1]*(limit)
+    for p in range(2, limit + 1):
+        if isprime[p]:
+            mob[p] *= -1
+            for i in range(2*p, limit + 1, p):
+                isprime[i] = 0
+                mob[i] *= -1
+            sq = pow(p, k)
+            if sq <= limit:
+                for j in range(sq, limit + 1, sq):
+                    mob[j] = 0
+    return mob
+
+def count_k_free(n, k):
+    '''
+    A function that counts the integers ≤ n which are k-power free.
+    count_k_free(n, 2) would count the number of squarefree integers.
+    
+    :param n: An integer
+    :param k: An integer
+    
+    :returns: The number of integers ≤ n which are k-power free
+    
+    From `Project Euler Problem 193 <https://projecteuler.net/problem=193>`_
+    
+    .. code-block:: python
+    
+        print(count_k_free(2**50, 2)) #684465067343069
+        
+    '''
+    sq = math.floor(n**(1/k))
+    _, mobius_k = mobius_k_sieve(sq, 2)
+    return sum([mobius_k[i]*(n//pow(i, k)) for i in range(1, sq + 1)])
+
 def ppt(limit, non_primitive = True):
     '''
     Generates all `Pythagorean Triplets 
@@ -313,6 +366,62 @@ def k_smooth_numbers(max_prime, limit):
         k_s_n += temp_k_s_n
     return k_s_n
 
+def k_powerful(k, limit, count = True):
+    '''
+    Find all `k-powerful numbers
+    <https://en.wikipedia.org/wiki/Powerful_number>`_ less than or equal to upper_bound.
+    Inspired by `Rosetta <https://rosettacode.org/wiki/Powerful_numbers#Python>`_
+
+    :param k: k, representing k-powerful
+    :param limit: limit up till which to k-powerful numbers
+    :param count: Optional, Boolean
+
+    :returns: if count is True, it counts the number of k-powerful numbers, otherwise it will return them as a list
+        
+    .. code-block:: python
+    
+        print(kpowerful(2, 10^2)) #14
+        print(kpowerful(2, 10^2, False)) #[1, 4, 8, 9, 16, 25, 27, 32, 36, 49, 64, 72, 81, 100]
+    '''
+    def prime_powers(k, limit):
+        ub = int(math.pow(limit, 1/k) + .5)
+        res = [(1,)]
+        for p in prime_sieve(ub):
+            a = [p**k]
+            u = limit // a[-1]
+            while u >= p:
+                a.append(a[-1]*p)
+                u //= p
+            res.append(tuple(a))
+        return res
+    ps = prime_powers(k, limit)
+    l = len(ps)
+    def generate(primeIndex, ub):
+        if count:
+            res = 0
+        else:
+            res = []
+        for p in ps[primeIndex]:
+            u = ub//p
+            if not u:
+                break
+            if count:
+                res += 1
+            else:
+                res += [p]
+            for j in range(primeIndex + 1, l):
+                if u < ps[j][0]:
+                    break
+                if count:
+                    res += generate(j, u)
+                else:
+                    res += [p*x for x in generate(j, u)]
+        return res
+    if count:
+        return generate(0, limit)
+    else:
+        return sorted(generate(0, limit))
+    
 def legendre_symbol(a, p):
     '''
     Finds the `legendre symbol

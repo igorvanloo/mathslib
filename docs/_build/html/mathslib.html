@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>mathslib package &#8212; mathslib 2.4.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -13,6 +13,7 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="genindex.html" />
@@ -43,12 +44,12 @@
           <div class="body" role="main">
             
   <section id="mathslib-package">
-<h1>mathslib package<a class="headerlink" href="#mathslib-package" title="Permalink to this headline">¶</a></h1>
+<h1>mathslib package<a class="headerlink" href="#mathslib-package" title="Permalink to this heading">¶</a></h1>
 <section id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
 </section>
 <section id="module-mathslib.numtheory">
-<span id="mathslib-numtheory-module"></span><h2>mathslib.numtheory module<a class="headerlink" href="#module-mathslib.numtheory" title="Permalink to this headline">¶</a></h2>
+<span id="mathslib-numtheory-module"></span><h2>mathslib.numtheory module<a class="headerlink" href="#module-mathslib.numtheory" title="Permalink to this heading">¶</a></h2>
 <p>Various Number Theory functions</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
@@ -56,13 +57,13 @@
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisors_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisors_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisors_of" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all the divisors of x</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – Integer to be checked</p></li>
 <li><p><strong>include_x</strong> – Optional boolean value, If true it will include x as a divisor of x</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list which contains all divisors of x</p>
 </dd>
 </dl>
@@ -77,13 +78,13 @@
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> sigma(x, n)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>x</strong> – An integer, denotes the power till which the divisors will be summed</p></li>
 <li><p><strong>n</strong> – An integer, denotes the number to find the divisors of</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An integer</p>
 </dd>
 </dl>
@@ -99,10 +100,10 @@
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">continued_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#continued_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.continued_fraction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Continued_fraction">continued Fraction</a> of the sqrt(x)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list containing the continued fraction of x</p>
 </dd>
 </dl>
@@ -119,13 +120,13 @@
 <dt class="sig sig-object py" id="mathslib.numtheory.overall_fraction">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">overall_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#overall_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.overall_fraction" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>cf</strong> – A list, this list represents the continued fraction of a number</p>
 </dd>
-<dt class="field-even">Returns numerator</dt>
+<dt class="field-even">Returns numerator<span class="colon">:</span></dt>
 <dd class="field-even"><p>An integer, the numerator of the fraction</p>
 </dd>
-<dt class="field-odd">Returns denominator</dt>
+<dt class="field-odd">Returns denominator<span class="colon">:</span></dt>
 <dd class="field-odd"><p>An integer, the denominator of the fraction</p>
 </dd>
 </dl>
@@ -139,10 +140,10 @@
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">phi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#phi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.phi" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%27s_totient_function">Eulers Totient Function</a> counts the positive integers up to a given integer n that are relatively prime to n</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An integer, numbers, a, less than n, such that gcd(a, n) = 1</p>
 </dd>
 </dl>
@@ -157,10 +158,10 @@
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">mobius</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#mobius"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.mobius" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the <a class="reference external" href="https://en.wikipedia.org/wiki/M%C3%B6bius_function">Mobius function</a> of n</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An integer</p>
 </dd>
 </dl>
@@ -179,17 +180,61 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.mobius_k_sieve">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">mobius_k_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#mobius_k_sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.mobius_k_sieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>A sieve for the Generalized <a class="reference external" href="https://en.wikipedia.org/wiki/M%C3%B6bius_function">Mobius function</a>, the mathematics of this function can be read
+in the following <a class="reference external" href="https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-32/issue-1/M%C3%B6bius-functions-of-order-k/pjm/1102977519.pdf">PDF</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>limit</strong> – An integer</p></li>
+<li><p><strong>k</strong> – An integer</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An array where array[x] = μ(k, x)</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mobius_k_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">#[0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mobius_k_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">#[0, 1, -1, -1, -1, -1, 1, -1, 0, -1, 1]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.count_k_free">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">count_k_free</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#count_k_free"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.count_k_free" title="Permalink to this definition">¶</a></dt>
+<dd><p>A function that counts the integers ≤ n which are k-power free.
+count_k_free(n, 2) would count the number of squarefree integers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n</strong> – An integer</p></li>
+<li><p><strong>k</strong> – An integer</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The number of integers ≤ n which are k-power free</p>
+</dd>
+</dl>
+<p>From <a class="reference external" href="https://projecteuler.net/problem=193">Project Euler Problem 193</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">count_k_free</span><span class="p">(</span><span class="mi">2</span><span class="o">**</span><span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">#684465067343069</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.ppt">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">ppt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_primitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#ppt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.ppt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates all <a class="reference external" href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean Triplets</a> up to the limit</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>limit</strong> – An integer, will generate all Pythagorean Triplets such that no side is longer than the limit</p></li>
 <li><p><strong>non_primitive</strong> – Optional boolean value, If True, returns all triplets, if False returns only primitive triplets</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list containing all desired triplets</p>
 </dd>
 </dl>
@@ -205,10 +250,10 @@
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">legendre_factorial</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#legendre_factorial"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.legendre_factorial" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre%27s_formula">Legendres’ Formula</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary containing the prime factorisation of x!</p>
 </dd>
 </dl>
@@ -222,13 +267,13 @@
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">k_smooth_numbers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_prime</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#k_smooth_numbers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.k_smooth_numbers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find all k ≤ max_prime <a class="reference external" href="https://en.wikipedia.org/wiki/Smooth_number">smooth numbers</a> up to the limit</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>max_prime</strong> – The maximum prime allowed</p></li>
 <li><p><strong>limit</strong> – limit up till which to find max_prime smooth numbers</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list containing all k ≤ max_prime smooth numbers less that limit</p>
 </dd>
 </dl>
@@ -239,17 +284,40 @@
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.k_powerful">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">k_powerful</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">k</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">count</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#k_powerful"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.k_powerful" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find all <a class="reference external" href="https://en.wikipedia.org/wiki/Powerful_number">k-powerful numbers</a> less than or equal to upper_bound.
+Inspired by <a class="reference external" href="https://rosettacode.org/wiki/Powerful_numbers#Python">Rosetta</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>k</strong> – k, representing k-powerful</p></li>
+<li><p><strong>limit</strong> – limit up till which to k-powerful numbers</p></li>
+<li><p><strong>count</strong> – Optional, Boolean</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>if count is True, it counts the number of k-powerful numbers, otherwise it will return them as a list</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">kpowerful</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="o">^</span><span class="mi">2</span><span class="p">))</span> <span class="c1">#14</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kpowerful</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="c1">#[1, 4, 8, 9, 16, 25, 27, 32, 36, 49, 64, 72, 81, 100]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.legendre_symbol">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">legendre_symbol</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#legendre_symbol"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.legendre_symbol" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Legendre_symbol">legendre symbol</a> of a/p</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> – An integer</p></li>
 <li><p><strong>p</strong> – An odd prime</p></li>
 </ul>
 </dd>
-<dt class="field-even">Results</dt>
+<dt class="field-even">Results<span class="colon">:</span></dt>
 <dd class="field-even"><p>The legendre symbol of a/p</p>
 </dd>
 </dl>
@@ -274,13 +342,13 @@
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Tonelli%E2%80%93Shanks_algorithm">Tonelli Shanks algorithm</a></p>
 <p>Full credit for this alogrithm goes to <a class="reference external" href="https://eli.thegreenplace.net/2009/03/07/computing-modular-square-roots-in-python/">Eli Bendersky</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> – An integer</p></li>
 <li><p><strong>p</strong> – An integer</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>solution to x^2 = a (mod p)</p>
 </dd>
 </dl>
@@ -300,7 +368,7 @@ Note that p - x is also a root.</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">ChineseRemainderTheorem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#ChineseRemainderTheorem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.ChineseRemainderTheorem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple <a class="reference external" href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem">Chinese Remiander Theorem</a> to solve x = a1 mod n1, x = a2 mod n2</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a1</strong> – An integer</p></li>
 <li><p><strong>a2</strong> – An integer</p></li>
@@ -308,7 +376,7 @@ Note that p - x is also a root.</p>
 <li><p><strong>n2</strong> – An integer</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Unique solution to x = a1 mod n1, x = a2 mod n2</p>
 </dd>
 </dl>
@@ -328,10 +396,10 @@ Note that p - x is also a root.</p>
 <p>The below algorithm is based on <a class="reference external" href="https://www.cis.upenn.edu/~cis511/Frobenius-numbers-Nijenhuis-Wagon.pdf">Faster Algorithms for Frobenius Numbers</a>
 specifically, this is an implementation of their Breadth-First Method which you may find on page 9</p>
 <dl class="field-list simple">
-<dt class="field-odd">Param</dt>
+<dt class="field-odd">Param<span class="colon">:</span></dt>
 <dd class="field-odd"><p>integers</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Frobenius number</p>
 </dd>
 </dl>
@@ -344,7 +412,7 @@ specifically, this is an implementation of their Breadth-First Method which you 
 
 </section>
 <section id="module-mathslib.primes">
-<span id="mathslib-primes-module"></span><h2>mathslib.primes module<a class="headerlink" href="#module-mathslib.primes" title="Permalink to this headline">¶</a></h2>
+<span id="mathslib-primes-module"></span><h2>mathslib.primes module<a class="headerlink" href="#module-mathslib.primes" title="Permalink to this heading">¶</a></h2>
 <p>Prime related functions</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
@@ -352,14 +420,14 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">prime_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#prime_sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.prime_sieve" title="Permalink to this definition">¶</a></dt>
 <dd><p>A prime sieve I made with a few different options</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>limit</strong> – The limit up till which the function will generate primes</p></li>
 <li><p><strong>segment</strong> – Optional boolean value, if segment == True, it will perform a segmented sieve</p></li>
 <li><p><strong>values</strong> – Optional boolean value, if values == False, it will return an array such that array[x] = True if x is prime</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>All primes &lt; limit</p>
 </dd>
 </dl>
@@ -376,10 +444,10 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">is_prime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#is_prime"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.is_prime" title="Permalink to this definition">¶</a></dt>
 <dd><p>A simple is prime function, checks if a number is prime</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if x is prime, False otherwise</p>
 </dd>
 </dl>
@@ -394,10 +462,10 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">prime_factors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#prime_factors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.prime_factors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all the prime factors of n</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A dictionary containing the prime divisors as keys and value as the corresponding exponent of the prime</p>
 </dd>
 </dl>
@@ -413,10 +481,10 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <dd><p>Primepi function is commonly known as <a class="reference external" href="https://en.wikipedia.org/wiki/Prime-counting_function">Prime Counting Function</a></p>
 <p>This function generates an array such that array[x] = primepi(x)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>limit</strong> – An integer,</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>An array length limit such that array[x] = primepi(x)</p>
 </dd>
 </dl>
@@ -431,10 +499,10 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <dd><p>Ultra fast sum of Primes made by Lucy The HedgeHog on Project Euler</p>
 <p>You may view it <a class="reference external" href="https://projecteuler.net/thread=10;page=5#111677">here</a> once you’ve completed problem 10</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The sum of all primes up till n</p>
 </dd>
 </dl>
@@ -449,13 +517,13 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">fermat_primality_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#fermat_primality_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.fermat_primality_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Fermat_primality_test">Fermat Primality Test</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n</strong> – The integer to be tested</p></li>
 <li><p><strong>tests</strong> – Optional, Number of tests to make. The default is 2</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if n is probably prime</p>
 </dd>
 </dl>
@@ -479,14 +547,14 @@ program will automatically use the is_prime function</p>
 <dd><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test">Miller Primality Test</a>
 with the option to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test">Miller-Rabin test</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n</strong> – The integer to be tested</p></li>
 <li><p><strong>millerrabin</strong> – Optional, default False. Decides with the use Miller-Rabin or Miller primality test</p></li>
 <li><p><strong>numoftests</strong> – Optional, default is 2. If millerrabin is True, it uses numoftests bases</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if n is probably prime, False if n is not prime</p>
 </dd>
 </dl>
@@ -506,7 +574,7 @@ with a specified number of tests</p>
 
 </section>
 <section id="module-mathslib.linalg">
-<span id="mathslib-linalg-module"></span><h2>mathslib.linalg module<a class="headerlink" href="#module-mathslib.linalg" title="Permalink to this headline">¶</a></h2>
+<span id="mathslib-linalg-module"></span><h2>mathslib.linalg module<a class="headerlink" href="#module-mathslib.linalg" title="Permalink to this heading">¶</a></h2>
 <p>Various Linear Algebra Functions</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
@@ -514,13 +582,13 @@ with a specified number of tests</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">GaussJordanElimination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentedpart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#GaussJordanElimination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.GaussJordanElimination" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">Gauss Jordan Elimination on the given matrix</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>matrix</strong> – Matrix to perform Algoithm on</p></li>
-<li><p><strong>augmentedpart</strong> – Optional addition, will attach the augmented part onto the matrix and then perform the algorithm</p></li>
+<li><p><strong>augmentedpart</strong> – Optional argument, will attach the augmented part onto the matrix and then perform the algorithm</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>True if algorithm was successful, false otherwise</p>
 </dd>
 </dl>
@@ -542,13 +610,13 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">solve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">M</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#solve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.solve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the solution, x, to the equation Mx = b</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>M</strong> – A Matrix</p></li>
 <li><p><strong>b</strong> – A Vector</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The Vector x, or an error message</p>
 </dd>
 </dl>
@@ -568,10 +636,10 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">inverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#inverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.inverse" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the inverse of the given matrix by performing Gauss Jordan Elimination</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>matrix</strong> – Matrix to be inverted</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Inverted matrix, or an error message</p>
 </dd>
 </dl>
@@ -588,10 +656,10 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">determinant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#determinant"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.determinant" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the determinant of a matrix</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>matrix</strong> – Matrix</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>det(Matrix)</p>
 </dd>
 </dl>
@@ -608,14 +676,14 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">matrix_addition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subtract</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#matrix_addition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.matrix_addition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs matrix addition/subtraction on matrix A</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> – First Matrix</p></li>
 <li><p><strong>B</strong> – Second Matrix</p></li>
 <li><p><strong>subtract</strong> – If True, will perform matrix subtraction</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A + B</p>
 </dd>
 </dl>
@@ -633,13 +701,13 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">identity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">l</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#identity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.identity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generats an Square Identity Matrix</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>l</strong> – Size of matrix</p></li>
 <li><p><strong>val</strong> – diagonal values, default is 1</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>val * identity matrix of size l</p>
 </dd>
 </dl>
@@ -654,13 +722,13 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">concatenate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#concatenate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.concatenate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Concatenates 2 matrices, A and B</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> – First Matrix</p></li>
 <li><p><strong>B</strong> – Second Matrix</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A concatenated with B</p>
 </dd>
 </dl>
@@ -680,10 +748,10 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">argmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alist</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#argmax"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.argmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Arg_max">argmax</a> of a list</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>alist</strong> – A list</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>the arg max of the list</p>
 </dd>
 </dl>
@@ -697,13 +765,13 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">fillmatrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#fillmatrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.fillmatrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fills a matrix with a value</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>size</strong> – A tuple, denoted (width, height) of matrix</p></li>
 <li><p><strong>val</strong> – Value to fill matrix with, default is 0</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A matrix</p>
 </dd>
 </dl>
@@ -718,13 +786,13 @@ the inverse of a matrix</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">matrix_mul</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">B</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#matrix_mul"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.matrix_mul" title="Permalink to this definition">¶</a></dt>
 <dd><p>Matrix multplication of 2 matrices, A and B</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>A</strong> – First Matrix</p></li>
 <li><p><strong>B</strong> – Second Matrix</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Matrix AB</p>
 </dd>
 </dl>
@@ -739,7 +807,7 @@ the inverse of a matrix</p>
 
 </section>
 <section id="module-mathslib.fib">
-<span id="mathslib-fib-module"></span><h2>mathslib.fib module<a class="headerlink" href="#module-mathslib.fib" title="Permalink to this headline">¶</a></h2>
+<span id="mathslib-fib-module"></span><h2>mathslib.fib module<a class="headerlink" href="#module-mathslib.fib" title="Permalink to this heading">¶</a></h2>
 <p>Fibonacci related functions</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
@@ -748,10 +816,10 @@ the inverse of a matrix</p>
 <dd><p>Finds the n-th Fibonacci using matrix exponentiation
 Method is outlined <a class="reference external" href="https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371">here</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>n</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The n-th Fibonacci number</p>
 </dd>
 </dl>
@@ -765,10 +833,10 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">fib_till</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#fib_till"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.fib_till" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds all Fibonacci number up till a limit</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>limit</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list containing all the fibonacci numbers &lt; limit</p>
 </dd>
 </dl>
@@ -783,10 +851,10 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">ZeckendorfRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#ZeckendorfRepresentation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.ZeckendorfRepresentation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem">Zeckendorf Representation</a> of x</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>x</strong> – An integer</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A list containing the zeckendorf representation of x</p>
 </dd>
 </dl>
@@ -797,7 +865,7 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 
 </section>
 <section id="module-mathslib.algorithms">
-<span id="mathslib-algorithms-module"></span><h2>mathslib.algorithms module<a class="headerlink" href="#module-mathslib.algorithms" title="Permalink to this headline">¶</a></h2>
+<span id="mathslib-algorithms-module"></span><h2>mathslib.algorithms module<a class="headerlink" href="#module-mathslib.algorithms" title="Permalink to this heading">¶</a></h2>
 <p>Various known algorithms. They are graph theory and optimization related</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
@@ -806,13 +874,13 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim’s algorithm</a>
 It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>matrix</strong> – Takes a <a class="reference external" href="https://en.wikipedia.org/wiki/Adjacency_matrix">Adjacency matrix</a> as input</p>
 </dd>
-<dt class="field-even">Returns Weight</dt>
+<dt class="field-even">Returns Weight<span class="colon">:</span></dt>
 <dd class="field-even"><p>The sum of the minimum spanning tree</p>
 </dd>
-<dt class="field-odd">Returns mask</dt>
+<dt class="field-odd">Returns mask<span class="colon">:</span></dt>
 <dd class="field-odd"><p>The corresponding Adjacency matrix of the MST</p>
 </dd>
 </dl>
@@ -843,14 +911,14 @@ It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra’s algorithm</a> 
 It finds the the shortest paths between nodes in a graph</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>matrix</strong> – Takes a matrix as imput</p></li>
 <li><p><strong>start_node</strong> – Optional tuple, it is initially set as the top left corner of matrix</p></li>
 <li><p><strong>end_node</strong> – Optional tuple, it is initially set as the bottom right corner of matrix</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>Shortest path between desired starting and ending node</p>
 </dd>
 </dl>
@@ -875,7 +943,7 @@ It finds the the shortest paths between nodes in a graph</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">KnapSack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#KnapSack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.KnapSack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of dynamic programming solution to the 0-1 <a class="reference external" href="https://en.wikipedia.org/wiki/Knapsack_problem">Knapsack Problem</a></p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>values</strong> – A list of values</p></li>
 <li><p><strong>weights</strong> – A list with weight of corresponding values</p></li>
@@ -884,7 +952,7 @@ It finds the the shortest paths between nodes in a graph</p>
 <li><p><strong>no_values</strong> – Optional boolean value</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><ul class="simple">
 <li><p>If no_values == True - It returns the optimal sum of weights</p></li>
 <li><p>If no_values == False - it returns the entire array used to build up the solution</p></li>
@@ -908,7 +976,7 @@ It finds the the shortest paths between nodes in a graph</p>
 <dd><p>Extension to KnapSack function
 It finds the actual values used to obtain the optimal sum</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>values</strong> – A list of values</p></li>
 <li><p><strong>weights</strong> – A list with weight of corresponding values</p></li>
@@ -916,7 +984,7 @@ It finds the actual values used to obtain the optimal sum</p>
 <li><p><strong>W</strong> – Desired weight</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>A set with the optimal values which form the solution to the knapsack problem</p>
 </dd>
 </dl>
@@ -932,7 +1000,7 @@ It finds the actual values used to obtain the optimal sum</p>
 
 </section>
 <section id="module-mathslib.simple">
-<span id="mathslib-simple-module"></span><h2>mathslib.simple module<a class="headerlink" href="#module-mathslib.simple" title="Permalink to this headline">¶</a></h2>
+<span id="mathslib-simple-module"></span><h2>mathslib.simple module<a class="headerlink" href="#module-mathslib.simple" title="Permalink to this heading">¶</a></h2>
 <p>Various simple functions</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
@@ -940,13 +1008,13 @@ It finds the actual values used to obtain the optimal sum</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">n_choose_r</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#n_choose_r"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.n_choose_r" title="Permalink to this definition">¶</a></dt>
 <dd><p>n choose r function</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n</strong> – An integer</p></li>
 <li><p><strong>r</strong> – An integer</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>n choose r</p>
 </dd>
 </dl>
@@ -960,13 +1028,13 @@ It finds the actual values used to obtain the optimal sum</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">numberToBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#numberToBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.numberToBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes n from base 10 to base b</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>n</strong> – An integer, number to be changed</p></li>
 <li><p><strong>b</strong> – An integer, base in question</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>n in base b</p>
 </dd>
 </dl>
@@ -981,10 +1049,10 @@ It finds the actual values used to obtain the optimal sum</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">lcm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a_list</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#lcm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.lcm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the lcm of a list of numbers</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>alist</strong> – A list containing integers</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>The lcm of all numbers in the list</p>
 </dd>
 </dl>
@@ -1000,14 +1068,14 @@ It finds the actual values used to obtain the optimal sum</p>
 <span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">ModDivision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#ModDivision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.ModDivision" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds a/b mod m</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>a</strong> – An integer, the numerator</p></li>
 <li><p><strong>b</strong> – An integer, the denominator</p></li>
 <li><p><strong>m</strong> – An integer, the modulus</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>a/b mod m</p>
 </dd>
 </dl>
@@ -1018,7 +1086,7 @@ It finds the actual values used to obtain the optimal sum</p>
 
 </section>
 <section id="module-mathslib">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mathslib" title="Permalink to this headline">¶</a></h2>
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-mathslib" title="Permalink to this heading">¶</a></h2>
 <p>Library of Mathematical functions and Algorithms</p>
 <p>Author: Igor van Loo</p>
 </section>
@@ -1031,8 +1099,9 @@ It finds the actual values used to obtain the optimal sum</p>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">mathslib package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-mathslib.numtheory">mathslib.numtheory module</a></li>
@@ -1046,9 +1115,12 @@ It finds the actual values used to obtain the optimal sum</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="modules.html"
-                        title="previous chapter">mathslib</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="modules.html"
+                          title="previous chapter">mathslib</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1065,7 +1137,7 @@ It finds the actual values used to obtain the optimal sum</p>
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -1089,7 +1161,7 @@ It finds the actual values used to obtain the optimal sum</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Igor van Loo.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>
