@@ -255,7 +255,8 @@ def mobius_k_sieve(limit, k):
 def count_k_free(n, k):
     '''
     A function that counts the integers ≤ n which are k-power free.
-    count_k_free(n, 2) would count the number of squarefree integers.
+    count_k_free(n, 2) would count the number of squarefree integers. 
+    The mechanics of this function come from this `PDF <https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-32/issue-1/M%C3%B6bius-functions-of-order-k/pjm/1102977519.pdf>`_
     
     :param n: An integer
     :param k: An integer
@@ -270,7 +271,7 @@ def count_k_free(n, k):
         
     '''
     sq = math.floor(n**(1/k))
-    _, mobius_k = mobius_k_sieve(sq, 2)
+    mobius_k = mobius_k_sieve(sq, 2)
     return sum([mobius_k[i]*(n//pow(i, k)) for i in range(1, sq + 1)])
 
 def ppt(limit, non_primitive = True):

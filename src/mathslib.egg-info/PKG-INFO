@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mathslib
-Version: 2.4.0
+Version: 2.5.0
 Summary: Library of Mathematical functions and Algorithms
 Home-page: https://github.com/igorvanloo/mathslib
 Author: Igor van Loo
@@ -57,6 +57,17 @@ Breakdown
 |                | * primepi(x)                                               |
 |                | * sum_of_primes(x)                                         |
 |                | * fermat_primality_test(x)                                 |
++----------------+------------------------------------------------------------+
+|linalg.py       | * GaussJordanElimination(matrix, augmentedpart)            |
+|                | * solve(M, b)                                              |
+|                | * inverse(matrix)                                          |
+|                | * determinant(matrix)                                      |
+|                | * matrix_addition(A, B, subtract)                          |
+|                | * identity(l, val)                                         |
+|                | * concatenate(A, B)                                        |
+|                | * argmax(alist)                                            |
+|                | * fillmatrix(size, val)                                    |
+|                | * matrix_mul(A, B)                                         |
 +----------------+------------------------------------------------------------+
 |fib.py          | * fibonacci(n)                                             |
 |                | * fib_till(limit)                                          |

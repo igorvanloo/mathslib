@@ -25,10 +25,15 @@ Breakdown
 |                | * overall_fraction(x)                                      |
 |                | * phi(x)                                                   |
 |                | * mobius(x)                                                |
+|                | * mobius_k_sieve(limit, k)                                 |
+|                | * count_k_free(n, k)                                       |
 |                | * ppt(limit, non_primitive)                                |
+|                | * k_smooth_numbers(max_prime, limit)                       |
+|                | * k_powerful(k, limit, count)                              |
 |                | * legendre_factorial(x)                                    |
 |                | * tonelli_shanks(a, p)                                     |
 |                | * ChineseRemainderTheorem(a1, a2, n1, n2)                  |
+|                | * FrobeniusNumber(*integers)                               |
 +----------------+------------------------------------------------------------+
 |prime.py        | * prime_sieve(limit, block_size, segment, values)          |
 |                | * is_prime(x)                                              |
@@ -36,6 +41,7 @@ Breakdown
 |                | * primepi(x)                                               |
 |                | * sum_of_primes(x)                                         |
 |                | * fermat_primality_test(x)                                 |
+|                | * miller(n, millerrabin, numoftests)                       |
 +----------------+------------------------------------------------------------+
 |linalg.py       | * GaussJordanElimination(matrix, augmentedpart)            |
 |                | * solve(M, b)                                              |
