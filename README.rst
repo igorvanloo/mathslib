@@ -33,7 +33,7 @@ Breakdown
 |                | * legendre_factorial(x)                                    |
 |                | * tonelli_shanks(a, p)                                     |
 |                | * ChineseRemainderTheorem(a1, a2, n1, n2)                  |
-|                | * FrobeniusNumber(\*integers)                               |
+|                | * FrobeniusNumber(\*integers)                              |
 +----------------+------------------------------------------------------------+
 |prime.py        | * prime_sieve(limit, block_size, segment, values)          |
 |                | * is_prime(x)                                              |
