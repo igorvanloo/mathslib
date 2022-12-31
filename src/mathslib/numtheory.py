@@ -195,7 +195,7 @@ def phi_sieve(n):
     .. code-block:: python
     
         print(phi(10)) #[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]
-        print(phi(20)[10:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]
+        print(phi(20)[11:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]
         
     '''
     phi = [i for i in range(n + 1)]

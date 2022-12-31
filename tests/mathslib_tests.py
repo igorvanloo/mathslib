@@ -95,7 +95,7 @@ class TestNumberTheory(unittest.TestCase):
     
     def test_phi_sieve(self):
         self.assertEqual(NT.phi_sieve(10), [0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4])
-        self.assertEqual(NT.phi_sieve(20)[10:], [10, 4, 12, 6, 8, 8, 16, 6, 18, 8])
+        self.assertEqual(NT.phi_sieve(20)[11:], [10, 4, 12, 6, 8, 8, 16, 6, 18, 8])
         
     def test_mobius(self):
         self.assertEqual(NT.mobius(10), 1)
