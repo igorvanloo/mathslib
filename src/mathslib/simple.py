@@ -75,6 +75,33 @@ def numberToBase(n, b):
         n //= b
     return digits[::-1]
 
+def ExtendedEuclideanAlgorithm(a, b):
+    '''
+    Standard `Extended Euclidean Algorithm
+    <https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode>`_
+
+    :param a: An integer
+    :param b: An integer
+
+    :returns: A tuple (g, s, t) where gcd(a, b) = g = as + bt
+    
+    .. code-block:: python
+    
+        print(ExtendedEuclideanAlgorithm(240, 46)) #(2, -9, 47)
+
+    '''
+    old_r, r = a, b
+    old_s, s = 1, 0
+    while r != 0:
+        q = old_r // r
+        old_r, r = r, old_r - q*r
+        old_s, s = s, old_s - q*s 
+    if b != 0:
+        bezout_t = (old_r - old_s*a) // b
+    else:
+        bezout_t = 0
+    return old_r, old_s, bezout_t
+
 def lcm(a_list):
     '''
     Finds the lcm of a list of numbers

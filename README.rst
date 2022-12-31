@@ -24,6 +24,7 @@ Breakdown
 |                | * continued_fraction(x)                                    |
 |                | * overall_fraction(x)                                      |
 |                | * phi(x)                                                   |
+|                | * phi_sieve(x)                                             |
 |                | * mobius(x)                                                |
 |                | * mobius_k_sieve(limit, k)                                 |
 |                | * count_k_free(n, k)                                       |
@@ -33,6 +34,7 @@ Breakdown
 |                | * legendre_factorial(x)                                    |
 |                | * tonelli_shanks(a, p)                                     |
 |                | * ChineseRemainderTheorem(a1, a2, n1, n2)                  |
+|                | * Generalised_CRT(a1, a2, n1, n2)                          |
 |                | * FrobeniusNumber(\*integers)                              |
 +----------------+------------------------------------------------------------+
 |prime.py        | * prime_sieve(limit, block_size, segment, values)          |
@@ -65,6 +67,7 @@ Breakdown
 +----------------+------------------------------------------------------------+
 |simple.py       | * n_choose_r(n, r)                                         | 
 |                | * numberToBase(n, b)                                       |
+|                | * ExtendedEuclideanAlgorithm(n, b)                         |
 |                | * lcm(a_list)                                              |
 |                | * ModDivision(a, b, m)                                     |
 +----------------+------------------------------------------------------------+

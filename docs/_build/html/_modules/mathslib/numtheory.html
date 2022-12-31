@@ -71,6 +71,7 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">.primes</span> <span class="kn">import</span> <span class="n">prime_factors</span><span class="p">,</span> <span class="n">prime_sieve</span>
+<span class="kn">from</span> <span class="nn">.simple</span> <span class="kn">import</span> <span class="n">ExtendedEuclideanAlgorithm</span>
 
 <div class="viewcode-block" id="divisors_of"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.divisors_of">[docs]</a><span class="k">def</span> <span class="nf">divisors_of</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">include_x</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -223,6 +224,29 @@
             <span class="k">break</span>
     <span class="k">return</span> <span class="n">phi</span></div>
 
+<div class="viewcode-block" id="phi_sieve"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.phi_sieve">[docs]</a><span class="k">def</span> <span class="nf">phi_sieve</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A sieve for `Eulers Totient Function</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Euler%27s_totient_function&gt;`_ which counts the positive integers up to a given integer n that are relatively prime to n</span>
+
+<span class="sd">    :param n: An integer</span>
+
+<span class="sd">    :returns: An array, where array[x] = phi(x)</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        print(phi(10)) #[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]</span>
+<span class="sd">        print(phi(20)[10:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">phi</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">==</span> <span class="n">p</span><span class="p">:</span>
+            <span class="n">phi</span><span class="p">[</span><span class="n">p</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
+                <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">//</span> <span class="n">p</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">phi</span></div>
+
 <div class="viewcode-block" id="mobius"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.mobius">[docs]</a><span class="k">def</span> <span class="nf">mobius</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of the `Mobius function</span>
@@ -296,7 +320,8 @@
 <div class="viewcode-block" id="count_k_free"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.count_k_free">[docs]</a><span class="k">def</span> <span class="nf">count_k_free</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A function that counts the integers ≤ n which are k-power free.</span>
-<span class="sd">    count_k_free(n, 2) would count the number of squarefree integers.</span>
+<span class="sd">    count_k_free(n, 2) would count the number of squarefree integers. </span>
+<span class="sd">    The mechanics of this function come from this `PDF &lt;https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-32/issue-1/M%C3%B6bius-functions-of-order-k/pjm/1102977519.pdf&gt;`_</span>
 <span class="sd">    </span>
 <span class="sd">    :param n: An integer</span>
 <span class="sd">    :param k: An integer</span>
@@ -311,7 +336,7 @@
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">sq</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">k</span><span class="p">))</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">mobius_k</span> <span class="o">=</span> <span class="n">mobius_k_sieve</span><span class="p">(</span><span class="n">sq</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">mobius_k</span> <span class="o">=</span> <span class="n">mobius_k_sieve</span><span class="p">(</span><span class="n">sq</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">mobius_k</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="nb">pow</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span></div>
 
 <div class="viewcode-block" id="ppt"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.ppt">[docs]</a><span class="k">def</span> <span class="nf">ppt</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">non_primitive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
@@ -557,11 +582,8 @@
         
 <div class="viewcode-block" id="ChineseRemainderTheorem"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.ChineseRemainderTheorem">[docs]</a><span class="k">def</span> <span class="nf">ChineseRemainderTheorem</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Simple `Chinese Remiander Theorem</span>
-<span class="sd">    &lt;https://en.wikipedia.org/wiki/Chinese_remainder_theorem&gt;`_ to solve x = a1 mod n1, x = a2 mod n2</span>
+<span class="sd">    Simple `Chinese Remiander Theorem &lt;https://en.wikipedia.org/wiki/Chinese_remainder_theorem&gt;`__ to solve x = a1 mod n1, x = a2 mod n2</span>
 
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
 <span class="sd">    :param a1: An integer</span>
 <span class="sd">    :param a2: An integer</span>
 <span class="sd">    :param n1: An integer</span>
@@ -588,6 +610,32 @@
     <span class="n">p</span><span class="p">,</span> <span class="n">q</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n2</span><span class="p">),</span> <span class="nb">pow</span><span class="p">(</span><span class="n">n2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n1</span><span class="p">)</span>
     <span class="c1">#The unique solution to this system is a1*q*n2 + a2*p*n1 % n1*n2</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="n">n2</span><span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="n">n1</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">n2</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Generalised_CRT"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.Generalised_CRT">[docs]</a><span class="k">def</span> <span class="nf">Generalised_CRT</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A generalised `Chinese Remiander Theorem &lt;https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Generalization_to_non-coprime_moduli&gt;`__ which solves for non-coprime moduli</span>
+
+<span class="sd">    :param a1: An integer</span>
+<span class="sd">    :param a2: An integer</span>
+<span class="sd">    :param n1: An integer</span>
+<span class="sd">    :param n2: An integer</span>
+
+<span class="sd">    :returns: Unique solution to x = a1 mod n1, x = a2 mod n2</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        </span>
+<span class="sd">        print(Generalised_CRT(2, 3, 3, 5)) #8, note that we can use ChineseRemainderTheorem function for this case</span>
+<span class="sd">        print(Generalised_CRT(2, 4, 4, 6)) #10</span>
+<span class="sd">        print(Generalised_CRT(3, 4, 4, 6)) #&#39;No solution&#39;</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">ExtendedEuclideanAlgorithm</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">g</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">n2</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">n1</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">n2</span><span class="p">)</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">n2</span><span class="p">)</span><span class="o">//</span><span class="n">g</span>
+    <span class="k">if</span> <span class="n">a1</span> <span class="o">%</span> <span class="n">g</span> <span class="o">!=</span> <span class="n">a2</span> <span class="o">%</span> <span class="n">g</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;No solution&quot;</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">a1</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">n2</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">n1</span><span class="p">)</span><span class="o">//</span><span class="n">g</span><span class="p">)</span> <span class="o">%</span> <span class="n">M</span></div>
 
 <div class="viewcode-block" id="FrobeniusNumber"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.FrobeniusNumber">[docs]</a><span class="k">def</span> <span class="nf">FrobeniusNumber</span><span class="p">(</span><span class="o">*</span><span class="n">integers</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>

@@ -1,17 +1,18 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.simple &#8212; mathslib 2.2.0 documentation</title>
+    <title>mathslib.simple &#8212; mathslib 2.4.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -26,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.simple</a></li> 
       </ul>
@@ -115,6 +116,33 @@
         <span class="n">n</span> <span class="o">//=</span> <span class="n">b</span>
     <span class="k">return</span> <span class="n">digits</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span></div>
 
+<div class="viewcode-block" id="ExtendedEuclideanAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.simple.ExtendedEuclideanAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">ExtendedEuclideanAlgorithm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Standard `Extended Euclidean Algorithm</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode&gt;`_</span>
+
+<span class="sd">    :param a: An integer</span>
+<span class="sd">    :param b: An integer</span>
+
+<span class="sd">    :returns: A tuple (g, s, t) where gcd(a, b) = g = as + bt</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        print(ExtendedEuclideanAlgorithm(240, 46)) #(2, -9, 47)</span>
+
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">old_r</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+    <span class="n">old_s</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="n">r</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">old_r</span> <span class="o">//</span> <span class="n">r</span>
+        <span class="n">old_r</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">r</span><span class="p">,</span> <span class="n">old_r</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">r</span>
+        <span class="n">old_s</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">s</span><span class="p">,</span> <span class="n">old_s</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">s</span> 
+    <span class="k">if</span> <span class="n">b</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">bezout_t</span> <span class="o">=</span> <span class="p">(</span><span class="n">old_r</span> <span class="o">-</span> <span class="n">old_s</span><span class="o">*</span><span class="n">a</span><span class="p">)</span> <span class="o">//</span> <span class="n">b</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">bezout_t</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">old_r</span><span class="p">,</span> <span class="n">old_s</span><span class="p">,</span> <span class="n">bezout_t</span></div>
+
 <div class="viewcode-block" id="lcm"><a class="viewcode-back" href="../../mathslib.html#mathslib.simple.lcm">[docs]</a><span class="k">def</span> <span class="nf">lcm</span><span class="p">(</span><span class="n">a_list</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Finds the lcm of a list of numbers</span>
@@ -181,7 +209,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -195,14 +223,14 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.simple</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Igor van Loo.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

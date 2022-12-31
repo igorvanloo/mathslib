@@ -31,7 +31,7 @@ Author: Igor van Loo
 def fibonacci(n):
     '''
     Finds the n-th Fibonacci using matrix exponentiation
-    Method is outlined `here <https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371>`_
+    Method is outlined `here <https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371>`__
 
     :param n: An integer
 

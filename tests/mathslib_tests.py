@@ -92,6 +92,10 @@ class TestNumberTheory(unittest.TestCase):
     def test_phi(self):
         self.assertEqual(NT.phi(20), 8)
         self.assertEqual(NT.phi(100), 40)
+    
+    def test_phi_sieve(self):
+        self.assertEqual(NT.phi_sieve(10), [0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4])
+        self.assertEqual(NT.phi_sieve(20)[10:], [10, 4, 12, 6, 8, 8, 16, 6, 18, 8])
         
     def test_mobius(self):
         self.assertEqual(NT.mobius(10), 1)
@@ -133,7 +137,12 @@ class TestNumberTheory(unittest.TestCase):
     def test_chinese_remainder_theorem(self):
         self.assertEqual(NT.ChineseRemainderTheorem(2, 3, 3, 5), 8)
         self.assertEqual(NT.ChineseRemainderTheorem(8, 2, 15, 7), 23)
-    
+        
+    def test_generalised_crt(self):
+        self.assertEqual(NT.Generalised_CRT(2, 3, 3, 5), 8)
+        self.assertEqual(NT.Generalised_CRT(2, 4, 4, 6), 10)
+        self.assertEqual(NT.Generalised_CRT(3, 4, 4, 6), 'No solution')
+        
     def test_frobenius_number(self):
         self.assertEqual(NT.FrobeniusNumber(3, 5), 7)
         self.assertEqual(NT.FrobeniusNumber(6, 9, 20), 43)
@@ -184,6 +193,9 @@ class TestSimple(unittest.TestCase):
         self.assertEqual(S.numberToBase(10, 2), [1, 0, 1, 0])
         self.assertEqual(S.numberToBase(10, 3), [1, 0, 1])
     
+    def test_ExtendedEuclideanAlgorithm(self):
+        self.assertEqual(S.ExtendedEuclideanAlgorithm(240, 46), (2, -9, 47))
+        
     def test_lcm(self):
         self.assertEqual(S.lcm([2,3]), 6)
         self.assertEqual(S.lcm([8345, 23579, 174]), 34237415370)

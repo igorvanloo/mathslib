@@ -30,6 +30,7 @@ Author: Igor van Loo
 '''
 import math
 from .primes import prime_factors, prime_sieve
+from .simple import ExtendedEuclideanAlgorithm
 
 def divisors_of(x, include_x = True):
     '''
@@ -180,6 +181,29 @@ def phi(n):
             if n > 1: 
                 phi *= int(n - 1)
             break
+    return phi
+
+def phi_sieve(n):
+    '''
+    A sieve for `Eulers Totient Function
+    <https://en.wikipedia.org/wiki/Euler%27s_totient_function>`_ which counts the positive integers up to a given integer n that are relatively prime to n
+
+    :param n: An integer
+
+    :returns: An array, where array[x] = phi(x)
+    
+    .. code-block:: python
+    
+        print(phi(10)) #[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]
+        print(phi(20)[10:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]
+        
+    '''
+    phi = [i for i in range(n + 1)]
+    for p in range(2, n + 1):
+        if phi[p] == p:
+            phi[p] -= 1
+            for i in range(2*p, n + 1, p):
+                phi[i] -= (phi[i] // p)
     return phi
 
 def mobius(n):
@@ -517,11 +541,8 @@ def tonelli_shanks(a, p):
         
 def ChineseRemainderTheorem(a1, a2, n1, n2):
     '''
-    Simple `Chinese Remiander Theorem
-    <https://en.wikipedia.org/wiki/Chinese_remainder_theorem>`_ to solve x = a1 mod n1, x = a2 mod n2
+    Simple `Chinese Remiander Theorem <https://en.wikipedia.org/wiki/Chinese_remainder_theorem>`__ to solve x = a1 mod n1, x = a2 mod n2
 
-    Parameters
-    ----------
     :param a1: An integer
     :param a2: An integer
     :param n1: An integer
@@ -548,6 +569,32 @@ def ChineseRemainderTheorem(a1, a2, n1, n2):
     p, q = pow(n1, -1, n2), pow(n2, -1, n1)
     #The unique solution to this system is a1*q*n2 + a2*p*n1 % n1*n2
     return (a1*q*n2+ a2*p*n1) % (n1*n2)
+
+def Generalised_CRT(a1, a2, n1, n2):
+    '''
+    A generalised `Chinese Remiander Theorem <https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Generalization_to_non-coprime_moduli>`__ which solves for non-coprime moduli
+
+    :param a1: An integer
+    :param a2: An integer
+    :param n1: An integer
+    :param n2: An integer
+
+    :returns: Unique solution to x = a1 mod n1, x = a2 mod n2
+    
+    .. code-block:: python
+        
+        print(Generalised_CRT(2, 3, 3, 5)) #8, note that we can use ChineseRemainderTheorem function for this case
+        print(Generalised_CRT(2, 4, 4, 6)) #10
+        print(Generalised_CRT(3, 4, 4, 6)) #'No solution'
+        
+    '''
+    g, u, v = ExtendedEuclideanAlgorithm(n1, n2)
+    if g == 1:
+        return (a1*v*n2 + a2*u*n1) % (n1*n2)
+    M = (n1*n2)//g
+    if a1 % g != a2 % g:
+        return "No solution"
+    return ((a1*v*n2 + a2*u*n1)//g) % M
 
 def FrobeniusNumber(*integers):
     '''
