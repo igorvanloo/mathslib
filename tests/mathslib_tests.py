@@ -235,13 +235,31 @@ class TestAlgorithms(unittest.TestCase):
                                    [0, 0, 0, 0, 11, 0, 0]]))
     
     def test_Dijkstras(self):
-        matrix = [[131, 673, 234, 103,18],
-                 [201, 96, 342, 965, 150],
-                 [630, 803, 746, 422, 111],
-                 [537, 699, 497, 121, 956],
-                 [805, 732, 524, 37, 331]]
-        self.assertEqual(ALGO.DijkstrasAlgorithm(matrix), 2297)
+        g = [[[1, 7], [2, 9], [5, 14]],
+             [[0, 7], [2, 10], [3, 15]],
+             [[0, 9], [1, 10], [3, 11], [5, 2]],
+             [[1, 15], [2, 11], [4, 6]],
+             [[3, 6], [5, 9]],
+             [[0, 14], [2, 2], [4, 9]]
+            ]
+        
+        self.assertEqual(ALGO.DijkstrasAlgorithm(g), [0, 7, 9, 20, 20, 11])
     
+    def test_FloydWarshall(self):
+        g = [[[1, 7], [2, 9], [5, 14]],
+             [[0, 7], [2, 10], [3, 15]],
+             [[0, 9], [1, 10], [3, 11], [5, 2]],
+             [[1, 15], [2, 11], [4, 6]],
+             [[3, 6], [5, 9]],
+             [[0, 14], [2, 2], [4, 9]]
+            ]
+        
+        self.assertEqual(ALGO.FloydWarshallAlgorithm(g), [[0, 7, 9, 20, 20, 11],
+                                                          [7, 0, 10, 15, 21, 12],
+                                                          [9, 10, 0, 11, 11, 2],
+                                                          [20, 15, 11, 0, 6, 13],
+                                                          [20, 21, 11, 6, 0, 9],
+                                                          [11, 12, 2, 13, 9, 0]])
     def test_KnapSack(self):
         values = [60, 100, 120]
         weights = [10, 20, 30]
@@ -257,6 +275,20 @@ class TestAlgorithms(unittest.TestCase):
         n = len(values)
         
         self.assertEqual(ALGO.KnapSackValues(values, weights, n, W), {20, 30})
+    
+    def test_BFSSearch(self):
+        G = [[4, 1], [0, 5], [6, 3], [2, 7],
+             [0, 8], [1, 6], [2, 5, 10], [3, 11],
+             [4, 9], [8, 13], [6], [7, 15],
+             [13], [9, 12, 14], [13, 15], [11, 14] ]
+        self.assertEqual(ALGO.BFSSearch(G), [0, 4, 8, 9, 13, 14, 15])
+        
+    def test_DFSSearch(self):
+        G = [[4, 1], [0, 5], [6, 3], [2, 7],
+             [0, 8], [1, 6], [2, 5, 10], [3, 11],
+             [4, 9], [8, 13], [6], [7, 15],
+             [13], [9, 12, 14], [13, 15], [11, 14] ]
+        self.assertEqual(ALGO.DFSSearch(G), [0, 1, 5, 6, 2, 3, 7, 11, 15])
 
 if __name__ == "__main__":
     unittest.main()

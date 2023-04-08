@@ -192,6 +192,24 @@
         <span class="n">answer</span> <span class="o">=</span> <span class="p">(</span><span class="n">inv</span> <span class="o">*</span> <span class="n">a</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>
     <span class="k">return</span> <span class="n">answer</span></div>
 
+<div class="viewcode-block" id="IsClockwise"><a class="viewcode-back" href="../../mathslib.html#mathslib.simple.IsClockwise">[docs]</a><span class="k">def</span> <span class="nf">IsClockwise</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Finds if 3 points a going to b going to c are in clockwise order. It is used in convex</span>
+<span class="sd">    hull algorithm</span>
+
+<span class="sd">    :param a: A tuple, representing a point in 2D</span>
+<span class="sd">    :param b: A tuple, representing a point in 2D</span>
+<span class="sd">    :param c: A tuple, representing a point in 2D</span>
+
+<span class="sd">    :returns: True if point are in clockwise direction, otherwise False</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">ax</span><span class="p">,</span> <span class="n">ay</span> <span class="o">=</span> <span class="n">a</span>
+    <span class="n">bx</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="n">b</span>
+    <span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cy</span> <span class="o">-</span> <span class="n">ay</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">bx</span> <span class="o">-</span> <span class="n">ax</span><span class="p">)</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">by</span> <span class="o">-</span> <span class="n">ay</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">cx</span> <span class="o">-</span> <span class="n">ax</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">return</span> <span class="kc">False</span></div>
 </pre></div>
 
             <div class="clearer"></div>

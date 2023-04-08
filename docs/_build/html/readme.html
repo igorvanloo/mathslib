@@ -65,6 +65,7 @@ I have used most of these for <a class="reference external" href="https://projec
 <li><p>continued_fraction(x)</p></li>
 <li><p>overall_fraction(x)</p></li>
 <li><p>phi(x)</p></li>
+<li><p>phi_sieve(x)</p></li>
 <li><p>mobius(x)</p></li>
 <li><p>mobius_k_sieve(limit, k)</p></li>
 <li><p>count_k_free(n, k)</p></li>
@@ -74,6 +75,7 @@ I have used most of these for <a class="reference external" href="https://projec
 <li><p>legendre_factorial(x)</p></li>
 <li><p>tonelli_shanks(a, p)</p></li>
 <li><p>ChineseRemainderTheorem(a1, a2, n1, n2)</p></li>
+<li><p>Generalised_CRT(a1, a2, n1, n2)</p></li>
 <li><p>FrobeniusNumber(*integers)</p></li>
 </ul>
 </td>
@@ -116,9 +118,14 @@ I have used most of these for <a class="reference external" href="https://projec
 <tr class="row-odd"><td><p>algorithms.py</p></td>
 <td><ul class="simple">
 <li><p>PrimsAlgorithm(matrix)</p></li>
-<li><p>DijkstrasAlgorithm(matrix, start_node, end_node)</p></li>
+<li><p>DijkstrasAlgorithm(graph, start_node, INFINITY)</p></li>
+<li><p>FloydWarshallAlgorithm(graph, INFINITY)</p></li>
 <li><p>KnapSack(values, weights, n, W, no_values)</p></li>
 <li><p>KnapSackValues(values, weights, n, W, no_values)</p></li>
+<li><p>BFSSearch(g, start_node, end_node)</p></li>
+<li><p>DFSSearch(g, start_node, end_node)</p></li>
+<li><p>ConvexHullGiftWrapping(pts)</p></li>
+<li><p>ConvexHullDC(pts)</p></li>
 </ul>
 </td>
 </tr>
@@ -126,8 +133,10 @@ I have used most of these for <a class="reference external" href="https://projec
 <td><ul class="simple">
 <li><p>n_choose_r(n, r)</p></li>
 <li><p>numberToBase(n, b)</p></li>
+<li><p>ExtendedEuclideanAlgorithm(n, b)</p></li>
 <li><p>lcm(a_list)</p></li>
 <li><p>ModDivision(a, b, m)</p></li>
+<li><p>IsClockwise(a, b, c)</p></li>
 </ul>
 </td>
 </tr>

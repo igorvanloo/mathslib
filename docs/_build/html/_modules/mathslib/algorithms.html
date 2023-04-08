@@ -1,17 +1,18 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.algorithms &#8212; mathslib 2.2.0 documentation</title>
+    <title>mathslib.algorithms &#8212; mathslib 2.4.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -26,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.algorithms</a></li> 
       </ul>
@@ -69,6 +70,9 @@
 
 <span class="sd">Author: Igor van Loo</span>
 <span class="sd">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">.simple</span> <span class="kn">import</span> <span class="n">IsClockwise</span>
+
 <div class="viewcode-block" id="PrimsAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.PrimsAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">PrimsAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of `Prim&#39;s algorithm &lt;https://en.wikipedia.org/wiki/Prim%27s_algorithm&gt;`_</span>
@@ -115,69 +119,104 @@
             <span class="k">break</span>
     <span class="k">return</span> <span class="n">Weight</span><span class="p">,</span> <span class="n">mask</span></div>
 
-<div class="viewcode-block" id="DijkstrasAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.DijkstrasAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">end_node</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)):</span>
+<div class="viewcode-block" id="DijkstrasAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.DijkstrasAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">INFINITY</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of `Dijkstra&#39;s algorithm &lt;https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm&gt;`_ </span>
 <span class="sd">    It finds the the shortest paths between nodes in a graph</span>
 
-<span class="sd">    :param matrix: Takes a matrix as imput</span>
-<span class="sd">    :param start_node: Optional tuple, it is initially set as the top left corner of matrix</span>
-<span class="sd">    :param end_node: Optional tuple, it is initially set as the bottom right corner of matrix</span>
+<span class="sd">    :param graph: Takes an adjacency list as input</span>
+<span class="sd">    :param start_node: Optional tuple, default is node 0.</span>
+<span class="sd">    :param INFINITY: Optional integer, default is 10^10. It is used to set the &quot;Infinty&quot; value</span>
 
-<span class="sd">    :returns: Shortest path between desired starting and ending node</span>
-<span class="sd">    </span>
-<span class="sd">    .. note::</span>
+<span class="sd">    :returns: Shortest path between start_node and all other nodes</span>
 <span class="sd">        </span>
-<span class="sd">        The matrix assumes that each vertex has an edge to it&#39;s neighbour, therefore this is not a widely applicable case</span>
-<span class="sd">        </span>
-<span class="sd">    Example from Project `Euler Problem 83 &lt;https://projecteuler.net/problem=83&gt;`_</span>
+<span class="sd">    Example from the wikipedia page</span>
 <span class="sd">    </span>
 <span class="sd">    .. code:: python</span>
 <span class="sd">    </span>
-<span class="sd">        matrix = [[131, 673, 234, 103,18],</span>
-<span class="sd">                 [201, 96, 342, 965, 150],</span>
-<span class="sd">                 [630, 803, 746, 422, 111],</span>
-<span class="sd">                 [537, 699, 497, 121, 956],</span>
-<span class="sd">                 [805, 732, 524, 37, 331]]</span>
+<span class="sd">        g = [[[1, 7], [2, 9], [5, 14]],</span>
+<span class="sd">             [[0, 7], [2, 10], [3, 15]],</span>
+<span class="sd">             [[0, 9], [1, 10], [3, 11], [5, 2]],</span>
+<span class="sd">             [[1, 15], [2, 11], [4, 6]],</span>
+<span class="sd">             [[3, 6], [5, 9]],</span>
+<span class="sd">             [[0, 14], [2, 2], [4, 9]]</span>
+<span class="sd">            ]</span>
 <span class="sd">        </span>
-<span class="sd">        print(DijkstrasAlgorithm(matrix)) #2297</span>
+<span class="sd">        print(DijkstrasAlgorithm(g)) #[0, 7, 9, 20, 20, 11]</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        </span>
+<span class="sd">        A quick comment on this adjacency list. The way it works is for example g[i] contains all the nodes</span>
+<span class="sd">        node i is connected to. For example, using the above graph g[0] = [[1, 7], [2, 9], [5, 14]] means node 0 is connected to nodes</span>
+<span class="sd">        1, 2, and 5 and the weight between the edges are 7, 9, and 14 respectively</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">rows</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
-    <span class="n">columns</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="n">INF</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">8</span>    
-    <span class="n">unvisisted_nodes</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">columns</span><span class="p">):</span>
-            <span class="n">unvisisted_nodes</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)]</span> <span class="o">=</span> <span class="n">INF</span>
-    <span class="n">unvisisted_nodes</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>    
-    <span class="n">mask</span> <span class="o">=</span> <span class="p">[[</span><span class="n">INF</span><span class="p">]</span><span class="o">*</span><span class="n">columns</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">rows</span><span class="p">)]</span>
-    <span class="n">mask</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>  
-    
-    <span class="k">def</span> <span class="nf">visit_neighbour</span><span class="p">(</span><span class="n">og_x</span><span class="p">,</span> <span class="n">og_y</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">unvisisted_nodes</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="n">rows</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">y</span> <span class="o">&gt;=</span> <span class="n">columns</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="ow">in</span> <span class="n">unvisisted_nodes</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">mask</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">],</span> <span class="n">mask</span><span class="p">[</span><span class="n">og_x</span><span class="p">][</span><span class="n">og_y</span><span class="p">]</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>
-        
-    <span class="n">curr</span> <span class="o">=</span> <span class="n">start_node</span> <span class="c1">#Starting node</span>
-    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">curr</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="ow">in</span> <span class="p">((</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
-            <span class="n">temp</span> <span class="o">=</span> <span class="n">visit_neighbour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">unvisisted_nodes</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">temp</span><span class="p">:</span>
-                <span class="n">mask</span><span class="p">[</span><span class="n">a</span><span class="p">][</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
-                <span class="n">unvisisted_nodes</span><span class="p">[(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)]</span> <span class="o">=</span> <span class="n">temp</span>
-        <span class="n">unvisisted_nodes</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">curr</span><span class="p">)</span>        
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">unvisisted_nodes</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">curr</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">unvisisted_nodes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">unvisisted_nodes</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">[</span><span class="n">INFINITY</span><span class="p">]</span><span class="o">*</span><span class="n">n</span>
+    <span class="n">D</span><span class="p">[</span><span class="n">start_node</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cloud</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="nb">min</span><span class="p">((</span><span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="k">if</span> <span class="n">cloud</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">cloud</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>        
+        <span class="k">for</span> <span class="n">b</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="n">cloud</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">t</span> <span class="o">=</span> <span class="n">D</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">+</span> <span class="n">w</span>
+                <span class="k">if</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">D</span><span class="p">[</span><span class="n">b</span><span class="p">]:</span>
+                    <span class="n">D</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">cloud</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">D</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">!=</span> <span class="n">INFINITY</span><span class="p">:</span>
+                    <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">break</span>
+        <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
             <span class="k">break</span>
-    <span class="k">if</span> <span class="n">end_node</span> <span class="o">==</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">mask</span><span class="p">[</span><span class="n">rows</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">columns</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="c1">#Ending node</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">end_node</span>
-        <span class="k">return</span> <span class="n">mask</span><span class="p">[</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">b</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span></div>
+    <span class="k">return</span> <span class="n">D</span></div>
+
+<div class="viewcode-block" id="FloydWarshallAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.FloydWarshallAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">FloydWarshallAlgorithm</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">INFINITY</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation of the `Floyd-Warshall algorithm &lt;https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm&gt;`_ </span>
+<span class="sd">    It finds the the shortest paths between every node in the graph to every node in the graph</span>
+
+<span class="sd">    :param graph: Takes an adjacency list as input</span>
+<span class="sd">    :param INFINITY: Optional integer, default is 10^10. It is used to set the &quot;Infinty&quot; value</span>
+
+<span class="sd">    :returns: Shortest path between every node to every node</span>
+<span class="sd">        </span>
+<span class="sd">    Example from the wikipedia page</span>
+<span class="sd">    </span>
+<span class="sd">    .. code:: python</span>
+<span class="sd">    </span>
+<span class="sd">        g = [[[1, 7], [2, 9], [5, 14]],</span>
+<span class="sd">             [[0, 7], [2, 10], [3, 15]],</span>
+<span class="sd">             [[0, 9], [1, 10], [3, 11], [5, 2]],</span>
+<span class="sd">             [[1, 15], [2, 11], [4, 6]],</span>
+<span class="sd">             [[3, 6], [5, 9]],</span>
+<span class="sd">             [[0, 14], [2, 2], [4, 9]]</span>
+<span class="sd">            ]</span>
+<span class="sd">        </span>
+<span class="sd">        print(FloydWarshallAlgorithm(g)) #[[0, 7, 9, 20, 20, 11],</span>
+<span class="sd">                                          # [7, 0, 10, 15, 21, 12],</span>
+<span class="sd">                                          # [9, 10, 0, 11, 11, 2],</span>
+<span class="sd">                                          # [20, 15, 11, 0, 6, 13],</span>
+<span class="sd">                                          # [20, 21, 11, 6, 0, 9],</span>
+<span class="sd">                                          # [11, 12, 2, 13, 9, 0]]</span>
+<span class="sd">    .. note::</span>
+<span class="sd">        </span>
+<span class="sd">        This process is like applying Dijkstras Algorithm on every node</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">[[[</span> <span class="n">INFINITY</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">]</span>
+    <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">e</span><span class="p">,</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">v</span><span class="p">]:</span>
+            <span class="n">D</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">v</span><span class="p">][</span><span class="n">e</span><span class="p">]</span> <span class="o">=</span> <span class="n">w</span>            
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+                <span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">D</span><span class="p">[</span><span class="n">n</span><span class="p">][:][:]</span></div>
 
 <div class="viewcode-block" id="KnapSack"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.KnapSack">[docs]</a><span class="k">def</span> <span class="nf">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -249,8 +288,205 @@
         <span class="k">return</span> <span class="p">{</span><span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]}</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span></div>
+
+<div class="viewcode-block" id="BFSSearch"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.BFSSearch">[docs]</a><span class="k">def</span> <span class="nf">BFSSearch</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation of `Breadth First Search &lt;https://en.wikipedia.org/wiki/Breadth-first_search&gt;`_</span>
+
+<span class="sd">    :param g: An `Adjacency List &lt;https://en.wikipedia.org/wiki/Adjacency_list&gt;`_</span>
+<span class="sd">    :param start_node: Optional, pick your start node. Default is 1st node</span>
+<span class="sd">    :param end_node: Optional, pick your end node. Default is last node</span>
+
+<span class="sd">    :returns: A list of nodes which create a path from your start_node to end_node if it exists</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        </span>
+<span class="sd">        G = [[4, 1], [0, 5], [6, 3], [2, 7],</span>
+<span class="sd">             [0, 8], [1, 6], [2, 5, 10], [3, 11],</span>
+<span class="sd">             [4, 9], [8, 13], [6], [7, 15],</span>
+<span class="sd">             [13], [9, 12, 14], [13, 15], [11, 14] ]</span>
+<span class="sd">        </span>
+<span class="sd">        print(BFSSearch(G)) #[0, 4, 8, 9, 13, 14, 15]</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        </span>
+<span class="sd">        A quick comment on adjacency lists. The way it works is for example G[i] contains all the nodes</span>
+<span class="sd">        node i is connected to. For example using the above graph G[0] = [4, 1] means node 0 is connected to nodes 1, and 4.</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">end_node</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">end_node</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        
+    <span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">))]</span> 
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_node</span><span class="p">]</span> 
+    <span class="n">queue</span> <span class="o">=</span> <span class="p">[(</span><span class="n">start_node</span><span class="p">,</span> <span class="n">path</span><span class="p">)]</span> 
+    <span class="k">while</span> <span class="n">queue</span> <span class="o">!=</span> <span class="p">[]:</span>
+        <span class="n">curr_v</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">vertices</span><span class="p">[</span><span class="n">curr_v</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span> 
+            <span class="n">vertices</span><span class="p">[</span><span class="n">curr_v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">curr_v</span> <span class="o">==</span> <span class="n">end_node</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">path</span>
+            
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g</span><span class="p">[</span><span class="n">curr_v</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">vertices</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">new_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                    <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">new_path</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="DFSSearch"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.DFSSearch">[docs]</a><span class="k">def</span> <span class="nf">DFSSearch</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation of `Depth First Search &lt;https://en.wikipedia.org/wiki/Depth-first_search&gt;`_</span>
+
+<span class="sd">    :param g: An `Adjacency List &lt;https://en.wikipedia.org/wiki/Adjacency_list&gt;`_</span>
+<span class="sd">    :param start_node: Optional, pick your start node. Default is 1st node</span>
+<span class="sd">    :param end_node: Optional, pick your end node. Default is last node</span>
+
+<span class="sd">    :returns: A list of nodes which create a path from your start_node to end_node if it exists</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        </span>
+<span class="sd">        G = [[4, 1], [0, 5], [6, 3], [2, 7],</span>
+<span class="sd">             [0, 8], [1, 6], [2, 5, 10], [3, 11],</span>
+<span class="sd">             [4, 9], [8, 13], [6], [7, 15],</span>
+<span class="sd">             [13], [9, 12, 14], [13, 15], [11, 14] ]</span>
+<span class="sd">        </span>
+<span class="sd">        print(DFSSearch(G)) #[0, 1, 5, 6, 2, 3, 7, 11, 15]</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="n">end_node</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">end_node</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        
+    <span class="n">vertices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">g</span><span class="p">))]</span>
+    <span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="n">start_node</span><span class="p">]</span>
+    <span class="n">stack</span> <span class="o">=</span> <span class="p">[(</span><span class="n">start_node</span><span class="p">,</span> <span class="n">path</span><span class="p">)]</span>
+    <span class="k">while</span> <span class="n">stack</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">curr_v</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">vertices</span><span class="p">[</span><span class="n">curr_v</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">vertices</span><span class="p">[</span><span class="n">curr_v</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">curr_v</span> <span class="o">==</span> <span class="n">end_node</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">path</span>
+            
+            <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">g</span><span class="p">[</span><span class="n">curr_v</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">vertices</span><span class="p">[</span><span class="n">v</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">new_path</span> <span class="o">=</span> <span class="n">path</span> <span class="o">+</span> <span class="p">[</span><span class="n">v</span><span class="p">]</span>
+                    <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">new_path</span><span class="p">))</span>
+    <span class="k">return</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="ConvexHullGiftWrapping"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.ConvexHullGiftWrapping">[docs]</a><span class="k">def</span> <span class="nf">ConvexHullGiftWrapping</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation of the Convex Hull `Gift Wrapping Algorithm &lt;https://en.wikipedia.org/wiki/Gift_wrapping_algorithm&gt;`_</span>
+<span class="sd">    </span>
+<span class="sd">    :param pts: A list containing 2D points</span>
+<span class="sd">        </span>
+<span class="sd">    :returns: A list of points consisting of the convex hull starting from leftmost point going around</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">lp</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span> 
+    <span class="n">convex_hull</span> <span class="o">=</span> <span class="p">[</span><span class="n">lp</span><span class="p">]</span>
+    <span class="n">hull_not_finished</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">hull_not_finished</span><span class="p">:</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">convex_hull</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+        <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">q</span> <span class="o">!=</span> <span class="n">p</span><span class="p">:</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="kc">True</span> 
+                <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="n">q</span><span class="p">):</span>
+                        <span class="k">if</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                            <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
+                            <span class="k">break</span>    
+                <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">q</span> <span class="o">==</span> <span class="n">lp</span><span class="p">:</span>
+                        <span class="n">hull_not_finished</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">convex_hull</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">convex_hull</span></div>
+
+<div class="viewcode-block" id="ConvexHullDC"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.ConvexHullDC">[docs]</a><span class="k">def</span> <span class="nf">ConvexHullDC</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Implementation of the Convex Hull Divide and conquer Algorithm</span>
+<span class="sd">    </span>
+<span class="sd">    :param pts: A list containing 2D points</span>
+<span class="sd">        </span>
+<span class="sd">    :returns: A list of points consisting of the convex hull starting from leftmost point going around</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">x_sort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pts</span><span class="p">)</span>
     
+    <span class="k">def</span> <span class="nf">divideCH</span><span class="p">(</span><span class="n">alist</span><span class="p">):</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span> <span class="c1">#Length of alist</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ConvexHullGiftWrapping</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+        <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span><span class="o">//</span><span class="mi">2</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">divideCH</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="n">divideCH</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>
+        <span class="k">return</span> <span class="n">mergeCH</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">mergeCH</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+        <span class="n">top_r</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">left</span><span class="p">)</span> 
+        <span class="n">top_l</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">right</span><span class="p">)</span> 
+        <span class="n">bot_r</span> <span class="o">=</span> <span class="n">top_r</span>
+        <span class="n">bot_l</span> <span class="o">=</span> <span class="n">top_l</span>
+            
+        <span class="n">curr_right_index</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">top_l</span><span class="p">)</span>
+        <span class="n">curr_left_index</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">top_r</span><span class="p">)</span>
+        
+        <span class="n">hull_copy</span> <span class="o">=</span> <span class="n">left</span><span class="p">[:</span><span class="n">curr_left_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">right</span><span class="p">[</span><span class="n">curr_right_index</span><span class="p">:]</span> <span class="o">+</span> <span class="n">right</span><span class="p">[</span><span class="n">curr_right_index</span><span class="p">:</span><span class="n">curr_right_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">left</span><span class="p">[</span><span class="n">curr_left_index</span><span class="p">:]</span>
+        <span class="n">len_h</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">hull_copy</span><span class="p">)</span>
+        
+        <span class="n">top_r_index</span> <span class="o">=</span> <span class="n">curr_left_index</span>
+        <span class="n">top_l_index</span> <span class="o">=</span> <span class="n">top_r_index</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">bot_l_index</span> <span class="o">=</span> <span class="n">top_l_index</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+        <span class="n">bot_r_index</span> <span class="o">=</span> <span class="n">bot_l_index</span> <span class="o">+</span> <span class="mi">1</span>
+        
+        <span class="n">prev_r</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">prev_l</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">prev_r</span> <span class="o">=</span> <span class="n">top_r</span>
+            <span class="n">prev_l</span> <span class="o">=</span> <span class="n">top_l</span>
+            <span class="k">while</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">top_r</span><span class="p">,</span> <span class="n">top_l</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_l_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">top_l_index</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">top_l</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_l_index</span><span class="p">]</span>
+
+            <span class="k">while</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">top_l</span><span class="p">,</span> <span class="n">top_r</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_r_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]):</span>
+                <span class="n">top_r_index</span> <span class="o">-=</span> <span class="mi">1</span>            
+                <span class="n">top_r</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_r_index</span><span class="p">]</span>
+            
+            <span class="k">if</span> <span class="n">top_r</span> <span class="o">==</span> <span class="n">prev_r</span> <span class="ow">and</span> <span class="n">top_l</span> <span class="o">==</span> <span class="n">prev_l</span><span class="p">:</span>
+                <span class="k">break</span>
+        
+        <span class="n">prev_r</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">prev_l</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">prev_r</span> <span class="o">=</span> <span class="n">bot_r</span>
+            <span class="n">prev_l</span> <span class="o">=</span> <span class="n">bot_l</span>
+            
+            <span class="k">while</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">bot_r</span><span class="p">,</span> <span class="n">bot_l</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_l_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]):</span>
+                <span class="n">bot_l_index</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="n">bot_l</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_l_index</span><span class="p">]</span>
+                
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">bot_r_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">len_h</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">bot_l</span><span class="p">,</span> <span class="n">bot_r</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_r_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                        <span class="n">bot_r_index</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="n">bot_r</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_r_index</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">bot_r_index</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>     
+            <span class="k">if</span> <span class="n">bot_r</span> <span class="o">==</span> <span class="n">prev_r</span> <span class="ow">and</span> <span class="n">bot_l</span> <span class="o">==</span> <span class="n">prev_l</span><span class="p">:</span>
+                <span class="k">break</span>
+        
+        <span class="k">if</span> <span class="n">bot_r_index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">convex_hull</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">top_r_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_l_index</span><span class="p">:</span><span class="n">bot_l_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">convex_hull</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">top_r_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_l_index</span><span class="p">:</span><span class="n">bot_l_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_r_index</span><span class="p">:]</span>
+        <span class="k">return</span> <span class="n">convex_hull</span> 
     
+    <span class="k">return</span> <span class="n">divideCH</span><span class="p">(</span><span class="n">x_sort</span><span class="p">)</span></div>
+
+  
     
 </pre></div>
 
@@ -269,7 +505,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -283,14 +519,14 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.2.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.algorithms</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Igor van Loo.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

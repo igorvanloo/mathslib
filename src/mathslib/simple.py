@@ -151,3 +151,21 @@ def ModDivision(a, b, m):
         answer = (inv * a) % m
     return answer
 
+def IsClockwise(a,b,c):
+    '''
+    Finds if 3 points a going to b going to c are in clockwise order. It is used in convex
+    hull algorithm
+
+    :param a: A tuple, representing a point in 2D
+    :param b: A tuple, representing a point in 2D
+    :param c: A tuple, representing a point in 2D
+
+    :returns: True if point are in clockwise direction, otherwise False
+        
+    '''
+    ax, ay = a
+    bx, by = b
+    cx, cy = c
+    if (cy - ay)*(bx - ax) < (by - ay)*(cx - ax):
+        return True
+    return False

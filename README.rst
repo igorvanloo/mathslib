@@ -61,15 +61,21 @@ Breakdown
 |                | * ZeckendorfRepresentation(x)                              |
 +----------------+------------------------------------------------------------+
 |algorithms.py   | * PrimsAlgorithm(matrix)                                   |
-|                | * DijkstrasAlgorithm(matrix, start_node, end_node)         |
+|                | * DijkstrasAlgorithm(graph, start_node, INFINITY)          |
+|                | * FloydWarshallAlgorithm(graph, INFINITY)                  |
 |                | * KnapSack(values, weights, n, W, no_values)               |
 |                | * KnapSackValues(values, weights, n, W, no_values)         |
+|                | * BFSSearch(g, start_node, end_node)                       |
+|                | * DFSSearch(g, start_node, end_node)                       |
+|                | * ConvexHullGiftWrapping(pts)                              |
+|                | * ConvexHullDC(pts)                                        |
 +----------------+------------------------------------------------------------+
 |simple.py       | * n_choose_r(n, r)                                         | 
 |                | * numberToBase(n, b)                                       |
 |                | * ExtendedEuclideanAlgorithm(n, b)                         |
 |                | * lcm(a_list)                                              |
 |                | * ModDivision(a, b, m)                                     |
+|                | * IsClockwise(a, b, c)                                     |
 +----------------+------------------------------------------------------------+
 
 .. _Project Euler: https://projecteuler.net

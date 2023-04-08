@@ -29,6 +29,9 @@ Various known algorithms. They are graph theory and optimization related
 
 Author: Igor van Loo
 '''
+
+from .simple import IsClockwise
+
 def PrimsAlgorithm(matrix):
     '''
     Implementation of `Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`_
@@ -75,69 +78,104 @@ def PrimsAlgorithm(matrix):
             break
     return Weight, mask
 
-def DijkstrasAlgorithm(matrix, start_node = (0, 0), end_node = (-1, -1)):
+def DijkstrasAlgorithm(graph, start_node = 0, INFINITY = 10**10):
     '''
     Implementation of `Dijkstra's algorithm <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`_ 
     It finds the the shortest paths between nodes in a graph
 
-    :param matrix: Takes a matrix as imput
-    :param start_node: Optional tuple, it is initially set as the top left corner of matrix
-    :param end_node: Optional tuple, it is initially set as the bottom right corner of matrix
+    :param graph: Takes an adjacency list as input
+    :param start_node: Optional tuple, default is node 0.
+    :param INFINITY: Optional integer, default is 10^10. It is used to set the "Infinty" value
 
-    :returns: Shortest path between desired starting and ending node
-    
-    .. note::
+    :returns: Shortest path between start_node and all other nodes
         
-        The matrix assumes that each vertex has an edge to it's neighbour, therefore this is not a widely applicable case
-        
-    Example from Project `Euler Problem 83 <https://projecteuler.net/problem=83>`_
+    Example from the wikipedia page
     
     .. code:: python
     
-        matrix = [[131, 673, 234, 103,18],
-                 [201, 96, 342, 965, 150],
-                 [630, 803, 746, 422, 111],
-                 [537, 699, 497, 121, 956],
-                 [805, 732, 524, 37, 331]]
+        g = [[[1, 7], [2, 9], [5, 14]],
+             [[0, 7], [2, 10], [3, 15]],
+             [[0, 9], [1, 10], [3, 11], [5, 2]],
+             [[1, 15], [2, 11], [4, 6]],
+             [[3, 6], [5, 9]],
+             [[0, 14], [2, 2], [4, 9]]
+            ]
         
-        print(DijkstrasAlgorithm(matrix)) #2297
+        print(DijkstrasAlgorithm(g)) #[0, 7, 9, 20, 20, 11]
+    
+    .. note::
+        
+        A quick comment on this adjacency list. The way it works is for example g[i] contains all the nodes
+        node i is connected to. For example, using the above graph g[0] = [[1, 7], [2, 9], [5, 14]] means node 0 is connected to nodes
+        1, 2, and 5 and the weight between the edges are 7, 9, and 14 respectively
         
     '''
-    rows = len(matrix)
-    columns = len(matrix[0])
-    INF = 10**8    
-    unvisisted_nodes = dict()
-    for x in range(rows):
-        for y in range(columns):
-            unvisisted_nodes[(x, y)] = INF
-    unvisisted_nodes[(0, 0)] = matrix[0][0]    
-    mask = [[INF]*columns for i in range(rows)]
-    mask[0][0] = matrix[0][0]  
-    
-    def visit_neighbour(og_x, og_y, x, y, unvisisted_nodes):
-        if x < 0 or x >= rows or y < 0 or y >= columns:
-            return False
-        if (x, y) in unvisisted_nodes:
-            return min(mask[x][y], mask[og_x][og_y] + matrix[x][y])
-        
-    curr = start_node #Starting node
-    while True:
-        x, y = curr
-        for (a, b) in ((x + 1, y), (x, y+ 1), (x - 1, y), (x, y - 1)):
-            temp = visit_neighbour(x, y, a, b, unvisisted_nodes)
-            if temp:
-                mask[a][b] = temp
-                unvisisted_nodes[(a, b)] = temp
-        unvisisted_nodes.pop(curr)        
-        if len(unvisisted_nodes) != 0:
-            curr = min(unvisisted_nodes, key=unvisisted_nodes.get)
-        else:
+    n = len(graph)
+    D = [INFINITY]*n
+    D[start_node] = 0
+    cloud = [False for i in range(n)]
+    for i in range(n):
+        _, v = min((D[i], i) for i in range(n) if cloud[i] == False)
+        cloud[v] = True        
+        for b, w in graph[v]:
+            if cloud[b] == False:
+                t = D[v] + w
+                if t < D[b]:
+                    D[b] = t
+        flag = True
+        for i in range(n):
+            if cloud[i] == False:
+                if D[i] != INFINITY:
+                    flag = False
+                    break
+        if flag:
             break
-    if end_node == (-1, -1):
-        return mask[rows - 1][columns - 1] #Ending node
-    else:
-        a, b = end_node
-        return mask[a - 1][b - 1]
+    return D
+
+def FloydWarshallAlgorithm(graph, INFINITY = 10**10):
+    '''
+    Implementation of the `Floyd-Warshall algorithm <https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm>`_ 
+    It finds the the shortest paths between every node in the graph to every node in the graph
+
+    :param graph: Takes an adjacency list as input
+    :param INFINITY: Optional integer, default is 10^10. It is used to set the "Infinty" value
+
+    :returns: Shortest path between every node to every node
+        
+    Example from the wikipedia page
+    
+    .. code:: python
+    
+        g = [[[1, 7], [2, 9], [5, 14]],
+             [[0, 7], [2, 10], [3, 15]],
+             [[0, 9], [1, 10], [3, 11], [5, 2]],
+             [[1, 15], [2, 11], [4, 6]],
+             [[3, 6], [5, 9]],
+             [[0, 14], [2, 2], [4, 9]]
+            ]
+        
+        print(FloydWarshallAlgorithm(g)) #[[0, 7, 9, 20, 20, 11],
+                                          # [7, 0, 10, 15, 21, 12],
+                                          # [9, 10, 0, 11, 11, 2],
+                                          # [20, 15, 11, 0, 6, 13],
+                                          # [20, 21, 11, 6, 0, 9],
+                                          # [11, 12, 2, 13, 9, 0]]
+    .. note::
+        
+        This process is like applying Dijkstras Algorithm on every node
+        
+    '''
+    n = len(graph)
+    D = [[[ INFINITY for i in range(n) ] for j in range(n) ] for k in range(n+1) ]
+    for v in range(n):
+        D[0][v][v] = 0
+        for e, w in graph[v]:
+            D[0][v][e] = w            
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                D[k+1][i][j] = min(D[k][i][j], D[k][i][k] + D[k][k][j])
+    return D[n][:][:]
 
 def KnapSack(values, weights, n, W, no_values = True):
     '''
@@ -209,6 +247,203 @@ def KnapSackValues(values, weights, n, W):
         return {weights[n - 1]}.union(KnapSackValues(values, weights, n - 1, W - weights[n - 1]))
     else:
         return KnapSackValues(values, weights, n - 1, W - weights[n - 1])
+
+def BFSSearch(g, start_node = 0, end_node = False):
+    '''
+    Implementation of `Breadth First Search <https://en.wikipedia.org/wiki/Breadth-first_search>`_
+
+    :param g: An `Adjacency List <https://en.wikipedia.org/wiki/Adjacency_list>`_
+    :param start_node: Optional, pick your start node. Default is 1st node
+    :param end_node: Optional, pick your end node. Default is last node
+
+    :returns: A list of nodes which create a path from your start_node to end_node if it exists
     
+    .. code-block:: python
+        
+        G = [[4, 1], [0, 5], [6, 3], [2, 7],
+             [0, 8], [1, 6], [2, 5, 10], [3, 11],
+             [4, 9], [8, 13], [6], [7, 15],
+             [13], [9, 12, 14], [13, 15], [11, 14] ]
+        
+        print(BFSSearch(G)) #[0, 4, 8, 9, 13, 14, 15]
     
+    .. note::
+        
+        A quick comment on adjacency lists. The way it works is for example G[i] contains all the nodes
+        node i is connected to. For example using the above graph G[0] = [4, 1] means node 0 is connected to nodes 1, and 4.
+        
+    '''
+    if end_node == False:
+        end_node = len(g) - 1
+        
+    vertices = [0 for _ in range(len(g))] 
+    path = [start_node] 
+    queue = [(start_node, path)] 
+    while queue != []:
+        curr_v, path = queue.pop(0)
+        
+        if vertices[curr_v] != 1: 
+            vertices[curr_v] = 1
+            if curr_v == end_node:
+                return path
+            
+            for v in g[curr_v]:
+                if vertices[v] != 1:
+                    new_path = path + [v]
+                    queue.append((v, new_path))
+    return []
+
+def DFSSearch(g, start_node = 0, end_node = False):
+    '''
+    Implementation of `Depth First Search <https://en.wikipedia.org/wiki/Depth-first_search>`_
+
+    :param g: An `Adjacency List <https://en.wikipedia.org/wiki/Adjacency_list>`_
+    :param start_node: Optional, pick your start node. Default is 1st node
+    :param end_node: Optional, pick your end node. Default is last node
+
+    :returns: A list of nodes which create a path from your start_node to end_node if it exists
+    
+    .. code-block:: python
+        
+        G = [[4, 1], [0, 5], [6, 3], [2, 7],
+             [0, 8], [1, 6], [2, 5, 10], [3, 11],
+             [4, 9], [8, 13], [6], [7, 15],
+             [13], [9, 12, 14], [13, 15], [11, 14] ]
+        
+        print(DFSSearch(G)) #[0, 1, 5, 6, 2, 3, 7, 11, 15]
+    
+    '''
+    if end_node == False:
+        end_node = len(g) - 1
+        
+    vertices = [0 for _ in range(len(g))]
+    path = [start_node]
+    stack = [(start_node, path)]
+    while stack != None:
+        curr_v, path = stack.pop(-1)
+        
+        if vertices[curr_v] != 1:
+            vertices[curr_v] = 1
+            if curr_v == end_node:
+                return path
+            
+            for v in g[curr_v]:
+                if vertices[v] != 1:
+                    new_path = path + [v]
+                    stack.append((v, new_path))
+    return []
+
+def ConvexHullGiftWrapping(pts):
+    '''
+    Implementation of the Convex Hull `Gift Wrapping Algorithm <https://en.wikipedia.org/wiki/Gift_wrapping_algorithm>`_
+    
+    :param pts: A list containing 2D points
+        
+    :returns: A list of points consisting of the convex hull starting from leftmost point going around
+        
+    '''
+    lp = min(pts) 
+    convex_hull = [lp]
+    hull_not_finished = True
+    while hull_not_finished:
+        p = convex_hull[-1] 
+        for q in pts:
+            if q != p:
+                flag = True 
+                for r in pts:
+                    if (r != p) and (r != q):
+                        if IsClockwise(p, q, r) == False:
+                            flag = False
+                            break    
+                if flag:
+                    if q == lp:
+                        hull_not_finished = False
+                    else:
+                        convex_hull.append(q)
+    return convex_hull
+
+def ConvexHullDC(pts):
+    '''
+    Implementation of the Convex Hull Divide and conquer Algorithm
+    
+    :param pts: A list containing 2D points
+        
+    :returns: A list of points consisting of the convex hull starting from leftmost point going around
+        
+    '''
+    x_sort = sorted(pts)
+    
+    def divideCH(alist):
+        l = len(alist) #Length of alist
+        if l <= 5:
+            return ConvexHullGiftWrapping(alist)
+        mid = l//2
+        left = divideCH(alist[:mid])
+        right = divideCH(alist[mid:])
+        return mergeCH(left, right)
+
+    def mergeCH(left, right):
+        top_r = max(left) 
+        top_l = min(right) 
+        bot_r = top_r
+        bot_l = top_l
+            
+        curr_right_index = right.index(top_l)
+        curr_left_index = left.index(top_r)
+        
+        hull_copy = left[:curr_left_index + 1] + right[curr_right_index:] + right[curr_right_index:curr_right_index + 1] + left[curr_left_index:]
+        len_h = len(hull_copy)
+        
+        top_r_index = curr_left_index
+        top_l_index = top_r_index + 1
+        bot_l_index = top_l_index + len(right)
+        bot_r_index = bot_l_index + 1
+        
+        prev_r = None
+        prev_l = None
+        while True:
+            prev_r = top_r
+            prev_l = top_l
+            while IsClockwise(top_r, top_l, hull_copy[top_l_index + 1]) == False:
+                top_l_index += 1
+                top_l = hull_copy[top_l_index]
+
+            while IsClockwise(top_l, top_r, hull_copy[top_r_index - 1]):
+                top_r_index -= 1            
+                top_r = hull_copy[top_r_index]
+            
+            if top_r == prev_r and top_l == prev_l:
+                break
+        
+        prev_r = None
+        prev_l = None
+        while True:
+            prev_r = bot_r
+            prev_l = bot_l
+            
+            while IsClockwise(bot_r, bot_l, hull_copy[bot_l_index - 1]):
+                bot_l_index -= 1
+                bot_l = hull_copy[bot_l_index]
+                
+            while True:
+                if bot_r_index + 1 < len_h:
+                    if IsClockwise(bot_l, bot_r, hull_copy[bot_r_index + 1]) == False:
+                        bot_r_index += 1
+                        bot_r = hull_copy[bot_r_index]
+                    else:
+                        break
+                else:
+                    bot_r_index = -1     
+            if bot_r == prev_r and bot_l == prev_l:
+                break
+        
+        if bot_r_index == 0:
+            convex_hull = hull_copy[0:top_r_index + 1] + hull_copy[top_l_index:bot_l_index + 1]
+        else:
+            convex_hull = hull_copy[0:top_r_index + 1] + hull_copy[top_l_index:bot_l_index + 1] + hull_copy[bot_r_index:]
+        return convex_hull 
+    
+    return divideCH(x_sort)
+
+  
     
