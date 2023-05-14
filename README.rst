@@ -9,7 +9,9 @@ Overview
         :target: https://mathslib.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-`mathslib`__ is a compilation of Mathematical Functions and Algorithms I have made or come across.
+`mathslib`__ is a compilation of Mathematical Functions and Algorithms. Unless credit was given all
+of the functions were written by me. Relevant articles are also linked where the implementation is complex.
+
 I have used most of these for `Project Euler`_.
  
 See my website `ivl-projecteuler.com`_ for their implementation
@@ -33,19 +35,20 @@ Breakdown
 |                | * k_powerful(k, limit, count)                              |
 |                | * legendre_factorial(x)                                    |
 |                | * tonelli_shanks(a, p)                                     |
-|                | * ChineseRemainderTheorem(a1, a2, n1, n2)                  |
-|                | * Generalised_CRT(a1, a2, n1, n2)                          |
-|                | * FrobeniusNumber(\*integers)                              |
+|                | * chinese_remainder_theorem(a1, a2, n1, n2)                |
+|                | * generalised_CRT(a1, a2, n1, n2)                          |
+|                | * frobenius_number(\*integers)                             |
 +----------------+------------------------------------------------------------+
 |prime.py        | * prime_sieve(limit, block_size, segment, values)          |
 |                | * is_prime(x)                                              |
 |                | * prime_factors(x)                                         |
 |                | * primepi(x)                                               |
+|                | * primepi_sieve(x)                                         |
 |                | * sum_of_primes(x)                                         |
 |                | * fermat_primality_test(x)                                 |
-|                | * miller(n, millerrabin, numoftests)                       |
+|                | * miller_primality_test(n, millerrabin, numoftests)        |
 +----------------+------------------------------------------------------------+
-|linalg.py       | * GaussJordanElimination(matrix, augmentedpart)            |
+|linalg.py       | * gauss_jordan_elimination(matrix, augmentedpart)          |
 |                | * solve(M, b)                                              |
 |                | * inverse(matrix)                                          |
 |                | * determinant(matrix)                                      |
@@ -58,24 +61,25 @@ Breakdown
 +----------------+------------------------------------------------------------+
 |fib.py          | * fibonacci(n)                                             |
 |                | * fib_till(limit)                                          |
-|                | * ZeckendorfRepresentation(x)                              |
+|                | * zeckendorf_representation(x)                             |
 +----------------+------------------------------------------------------------+
-|algorithms.py   | * PrimsAlgorithm(matrix)                                   |
-|                | * DijkstrasAlgorithm(graph, start_node, INFINITY)          |
-|                | * FloydWarshallAlgorithm(graph, INFINITY)                  |
-|                | * KnapSack(values, weights, n, W, no_values)               |
-|                | * KnapSackValues(values, weights, n, W, no_values)         |
-|                | * BFSSearch(g, start_node, end_node)                       |
-|                | * DFSSearch(g, start_node, end_node)                       |
-|                | * ConvexHullGiftWrapping(pts)                              |
-|                | * ConvexHullDC(pts)                                        |
+|algorithms.py   | * prims_algorithm(matrix)                                  |
+|                | * dijkstras_algorithm(graph, start_node, INFINITY)         |
+|                | * floyd_warshall_algorithm(graph, INFINITY)                |
+|                | * knap_sack(values, weights, n, W, no_values)              |
+|                | * knap_sack_values(values, weights, n, W, no_values)       |
+|                | * BFS(g, start_node, end_node)                             |
+|                | * DFS(g, start_node, end_node)                             |
+|                | * convex_hull_gift_wrapping(pts)                           |
+|                | * convex_hull_DC(pts)                                      |
 +----------------+------------------------------------------------------------+
 |simple.py       | * n_choose_r(n, r)                                         | 
-|                | * numberToBase(n, b)                                       |
-|                | * ExtendedEuclideanAlgorithm(n, b)                         |
+|                | * number_to_base(n, b)                                     |
+|                | * extended_euclidean_algorithm(n, b)                       |
 |                | * lcm(a_list)                                              |
-|                | * ModDivision(a, b, m)                                     |
-|                | * IsClockwise(a, b, c)                                     |
+|                | * mod_division(a, b, m)                                    |
+|                | * bisect(alist, goal)                                      |
+|                | * is_clockwise(a, b, c)                                    |
 +----------------+------------------------------------------------------------+
 
 .. _Project Euler: https://projecteuler.net

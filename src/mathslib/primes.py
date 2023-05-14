@@ -168,7 +168,64 @@ def prime_factors(n):
             break
     return factors
 
-def primepi(limit):
+def primepi(x):
+    '''
+    Primepi function is commonly known as `Prime Counting Function <https://en.wikipedia.org/wiki/Prime-counting_function>`_
+    
+    This function computes primepi(x) based on the `Meissel-Lehmer Method <https://mathworld.wolfram.com/LehmersFormula.html>`_
+    
+    The following `article <https://acgan.sh/posts/2016-12-23-prime-counting.html>`_ by Adithya Ganesh helped me a lot in understanding and implementing this function
+    
+    :param x: An integer
+
+    :returns: primepi(x)
+    
+    .. code-block:: python
+    
+        print(primepi(10**6)) #78498
+        print(primepi(10**7)) #664579
+        print(primepi(10**8)) #5761455
+        print(primepi(10**9)) #50847534
+        
+    '''
+    limit = int(math.sqrt(x))
+    primes = prime_sieve(limit)
+    array = primepi_sieve(limit)
+    
+    phiCache = {}
+    def phi(x, a):
+        if (x, a) in phiCache:
+            return phiCache[(x, a)]
+        if a == 0:
+            return int(x)
+        if a == 1:
+            return int(x) - x//2
+        result = phi(x, a - 1) - phi(int(x / primes[a - 1]), a - 1)
+        phiCache[(x, a)] = result
+        return result
+    
+    piCache = {}
+    def pi(x):
+        if int(x) in piCache:
+            return piCache[int(x)]
+        if x <= limit:
+            return array[math.floor(x)]
+        a = pi(pow(x, 1/4))
+        b = pi(pow(x, 1/2))
+        c = pi(pow(x, 1/3))
+        result = phi(int(x), int(a)) + ((b + a - 2) * (b - a + 1))//2
+        for i in range(a + 1, b + 1):
+            w = x / primes[i - 1]
+            result -= pi(w)
+            if i <= c:
+                bi = pi(int(math.sqrt(w)))
+                for j in range(i, bi + 1):
+                    result -= (pi(w / primes[j - 1]) - j + 1)
+        piCache[int(x)] = result
+        return int(result)
+    return int(pi(x))
+
+def primepi_sieve(limit):
     '''
     Primepi function is commonly known as `Prime Counting Function <https://en.wikipedia.org/wiki/Prime-counting_function>`_
     
@@ -180,7 +237,7 @@ def primepi(limit):
     
     .. code-block:: python
     
-        print(primepi(10)) #[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]
+        print(primepi_sieve(10)) #[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]
         
     '''
     if type(limit) != int:
@@ -264,7 +321,7 @@ def fermat_primality_test(n, tests = 2):
                 return False
         return True
     
-def miller(n, millerrabin = False, numoftests = 2):
+def miller_primality_test(n, millerrabin = False, numoftests = 2):
     '''
     The `Miller Primality Test <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test>`_
     with the option to use the `Miller-Rabin test <https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test>`_
@@ -277,10 +334,10 @@ def miller(n, millerrabin = False, numoftests = 2):
     
     .. code-block:: python
     
-        print(miller(17969800575241)) #True
-        print(miller(101101)) #False
-        print(len([x for x in range(1, 10**6) if miller(x, True, 1)])) #78544, 46 more primes than needed
-        print(len([x for x in range(1, 10**6) if miller(x, True, 2)])) #78498, correct now
+        print(miller_primality_test(17969800575241)) #True
+        print(miller_primality_test(101101)) #False
+        print(len([x for x in range(1, 10**6) if miller_primality_test(x, True, 1)])) #78544, 46 more primes than needed
+        print(len([x for x in range(1, 10**6) if miller_primality_test(x, True, 2)])) #78498, correct now
         
     .. note::
         Automatically uses the Miller Primality Test to get an exact an answer if n < 3317044064679887385961981 and swaps

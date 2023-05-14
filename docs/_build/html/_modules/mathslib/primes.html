@@ -1,17 +1,18 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.primes &#8212; mathslib 2.3.0 documentation</title>
+    <title>mathslib.primes &#8212; mathslib 2.4.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -26,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.primes</a></li> 
       </ul>
@@ -208,7 +209,64 @@
             <span class="k">break</span>
     <span class="k">return</span> <span class="n">factors</span></div>
 
-<div class="viewcode-block" id="primepi"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.primepi">[docs]</a><span class="k">def</span> <span class="nf">primepi</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
+<div class="viewcode-block" id="primepi"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.primepi">[docs]</a><span class="k">def</span> <span class="nf">primepi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Primepi function is commonly known as `Prime Counting Function &lt;https://en.wikipedia.org/wiki/Prime-counting_function&gt;`_</span>
+<span class="sd">    </span>
+<span class="sd">    This function computes primepi(x) based on the `Meissel-Lehmer Method &lt;https://mathworld.wolfram.com/LehmersFormula.html&gt;`_</span>
+<span class="sd">    </span>
+<span class="sd">    The following `article &lt;https://acgan.sh/posts/2016-12-23-prime-counting.html&gt;`_ by Adithya Ganesh helped me a lot in understanding and implementing this function</span>
+<span class="sd">    </span>
+<span class="sd">    :param x: An integer</span>
+
+<span class="sd">    :returns: primepi(x)</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        print(primepi(10**6)) #78498</span>
+<span class="sd">        print(primepi(10**7)) #664579</span>
+<span class="sd">        print(primepi(10**8)) #5761455</span>
+<span class="sd">        print(primepi(10**9)) #50847534</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">limit</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">primes</span> <span class="o">=</span> <span class="n">prime_sieve</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">primepi_sieve</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span>
+    
+    <span class="n">phiCache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="ow">in</span> <span class="n">phiCache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">phiCache</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="o">//</span><span class="mi">2</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">primes</span><span class="p">[</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">phiCache</span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span>
+    
+    <span class="n">piCache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">pi</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">in</span> <span class="n">piCache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">piCache</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">array</span><span class="p">[</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">pi</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">))</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">pi</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">pi</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">phi</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span> <span class="o">+</span> <span class="p">((</span><span class="n">b</span> <span class="o">+</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">//</span><span class="mi">2</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="n">primes</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">result</span> <span class="o">-=</span> <span class="n">pi</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">c</span><span class="p">:</span>
+                <span class="n">bi</span> <span class="o">=</span> <span class="n">pi</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span><span class="p">)))</span>
+                <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">bi</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                    <span class="n">result</span> <span class="o">-=</span> <span class="p">(</span><span class="n">pi</span><span class="p">(</span><span class="n">w</span> <span class="o">/</span> <span class="n">primes</span><span class="p">[</span><span class="n">j</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">piCache</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">pi</span><span class="p">(</span><span class="n">x</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="primepi_sieve"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.primepi_sieve">[docs]</a><span class="k">def</span> <span class="nf">primepi_sieve</span><span class="p">(</span><span class="n">limit</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Primepi function is commonly known as `Prime Counting Function &lt;https://en.wikipedia.org/wiki/Prime-counting_function&gt;`_</span>
 <span class="sd">    </span>
@@ -220,7 +278,7 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        print(primepi(10)) #[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
+<span class="sd">        print(primepi_sieve(10)) #[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">:</span>
@@ -304,7 +362,7 @@
                 <span class="k">return</span> <span class="kc">False</span>
         <span class="k">return</span> <span class="kc">True</span></div>
     
-<div class="viewcode-block" id="miller"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.miller">[docs]</a><span class="k">def</span> <span class="nf">miller</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">millerrabin</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">numoftests</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
+<div class="viewcode-block" id="miller_primality_test"><a class="viewcode-back" href="../../mathslib.html#mathslib.primes.miller_primality_test">[docs]</a><span class="k">def</span> <span class="nf">miller_primality_test</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">millerrabin</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">numoftests</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    The `Miller Primality Test &lt;https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test&gt;`_</span>
 <span class="sd">    with the option to use the `Miller-Rabin test &lt;https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test&gt;`_</span>
@@ -317,10 +375,10 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        print(miller(17969800575241)) #True</span>
-<span class="sd">        print(miller(101101)) #False</span>
-<span class="sd">        print(len([x for x in range(1, 10**6) if miller(x, True, 1)])) #78544, 46 more primes than needed</span>
-<span class="sd">        print(len([x for x in range(1, 10**6) if miller(x, True, 2)])) #78498, correct now</span>
+<span class="sd">        print(miller_primality_test(17969800575241)) #True</span>
+<span class="sd">        print(miller_primality_test(101101)) #False</span>
+<span class="sd">        print(len([x for x in range(1, 10**6) if miller_primality_test(x, True, 1)])) #78544, 46 more primes than needed</span>
+<span class="sd">        print(len([x for x in range(1, 10**6) if miller_primality_test(x, True, 2)])) #78498, correct now</span>
 <span class="sd">        </span>
 <span class="sd">    .. note::</span>
 <span class="sd">        Automatically uses the Miller Primality Test to get an exact an answer if n &lt; 3317044064679887385961981 and swaps</span>
@@ -403,7 +461,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -417,14 +475,14 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.3.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.primes</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Igor van Loo.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>
 </html>

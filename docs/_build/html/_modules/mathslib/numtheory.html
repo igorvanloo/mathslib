@@ -71,7 +71,7 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">from</span> <span class="nn">.primes</span> <span class="kn">import</span> <span class="n">prime_factors</span><span class="p">,</span> <span class="n">prime_sieve</span>
-<span class="kn">from</span> <span class="nn">.simple</span> <span class="kn">import</span> <span class="n">ExtendedEuclideanAlgorithm</span>
+<span class="kn">from</span> <span class="nn">.simple</span> <span class="kn">import</span> <span class="n">extended_euclidean_algorithm</span>
 
 <div class="viewcode-block" id="divisors_of"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.divisors_of">[docs]</a><span class="k">def</span> <span class="nf">divisors_of</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">include_x</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -580,7 +580,7 @@
         <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span> <span class="o">%</span> <span class="n">p</span>
         <span class="n">r</span> <span class="o">=</span> <span class="n">m</span></div>
         
-<div class="viewcode-block" id="ChineseRemainderTheorem"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.ChineseRemainderTheorem">[docs]</a><span class="k">def</span> <span class="nf">ChineseRemainderTheorem</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+<div class="viewcode-block" id="chinese_remainder_theorem"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.chinese_remainder_theorem">[docs]</a><span class="k">def</span> <span class="nf">chinese_remainder_theorem</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Simple `Chinese Remiander Theorem &lt;https://en.wikipedia.org/wiki/Chinese_remainder_theorem&gt;`__ to solve x = a1 mod n1, x = a2 mod n2</span>
 
@@ -595,9 +595,9 @@
 <span class="sd">        </span>
 <span class="sd">        #We solve x = 2 mod 3 = 3 mod 5 = 2 mod 7</span>
 <span class="sd">        #First we solve x = 2 mod = 3 mod 5</span>
-<span class="sd">        print(ChineseRemainderTheorem(2, 3, 3, 5)) #8 </span>
+<span class="sd">        print(chinese_remainder_theorem(2, 3, 3, 5)) #8 </span>
 <span class="sd">        #Then we solve x = 8 mod 15 = 2 mod 7</span>
-<span class="sd">        print(ChineseRemainderTheorem(8, 2, 15, 7)) #23 </span>
+<span class="sd">        print(chinese_remainder_theorem(8, 2, 15, 7)) #23 </span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a2</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n2</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
@@ -611,7 +611,7 @@
     <span class="c1">#The unique solution to this system is a1*q*n2 + a2*p*n1 % n1*n2</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">q</span><span class="o">*</span><span class="n">n2</span><span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">p</span><span class="o">*</span><span class="n">n1</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">n2</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="Generalised_CRT"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.Generalised_CRT">[docs]</a><span class="k">def</span> <span class="nf">Generalised_CRT</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+<div class="viewcode-block" id="generalised_CRT"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.generalised_CRT">[docs]</a><span class="k">def</span> <span class="nf">generalised_CRT</span><span class="p">(</span><span class="n">a1</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A generalised `Chinese Remiander Theorem &lt;https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Generalization_to_non-coprime_moduli&gt;`__ which solves for non-coprime moduli</span>
 
@@ -624,12 +624,12 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">        </span>
-<span class="sd">        print(Generalised_CRT(2, 3, 3, 5)) #8, note that we can use ChineseRemainderTheorem function for this case</span>
-<span class="sd">        print(Generalised_CRT(2, 4, 4, 6)) #10</span>
-<span class="sd">        print(Generalised_CRT(3, 4, 4, 6)) #&#39;No solution&#39;</span>
+<span class="sd">        print(generalised_CRT(2, 3, 3, 5)) #8, note that we can use ChineseRemainderTheorem function for this case</span>
+<span class="sd">        print(generalised_CRT(2, 4, 4, 6)) #10</span>
+<span class="sd">        print(generalised_CRT(3, 4, 4, 6)) #&#39;No solution&#39;</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">g</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">ExtendedEuclideanAlgorithm</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">extended_euclidean_algorithm</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">g</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">a1</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">n2</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">n1</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">n2</span><span class="p">)</span>
     <span class="n">M</span> <span class="o">=</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">n2</span><span class="p">)</span><span class="o">//</span><span class="n">g</span>
@@ -637,7 +637,7 @@
         <span class="k">return</span> <span class="s2">&quot;No solution&quot;</span>
     <span class="k">return</span> <span class="p">((</span><span class="n">a1</span><span class="o">*</span><span class="n">v</span><span class="o">*</span><span class="n">n2</span> <span class="o">+</span> <span class="n">a2</span><span class="o">*</span><span class="n">u</span><span class="o">*</span><span class="n">n1</span><span class="p">)</span><span class="o">//</span><span class="n">g</span><span class="p">)</span> <span class="o">%</span> <span class="n">M</span></div>
 
-<div class="viewcode-block" id="FrobeniusNumber"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.FrobeniusNumber">[docs]</a><span class="k">def</span> <span class="nf">FrobeniusNumber</span><span class="p">(</span><span class="o">*</span><span class="n">integers</span><span class="p">):</span>
+<div class="viewcode-block" id="frobenius_number"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.frobenius_number">[docs]</a><span class="k">def</span> <span class="nf">frobenius_number</span><span class="p">(</span><span class="o">*</span><span class="n">integers</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Generates the `Frobenius Number &lt;https://en.wikipedia.org/wiki/Coin_problem&gt;`_ for given integers.</span>
 <span class="sd">    </span>
@@ -650,9 +650,9 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python3</span>
 <span class="sd">    </span>
-<span class="sd">        print(FrobeniusNumber(3, 5)) #7</span>
-<span class="sd">        print(FrobeniusNumber(6, 9, 20)) #43</span>
-<span class="sd">        print(FrobeniusNumber(1000, 1476, 3764, 4864, 4871, 7773)) #47350</span>
+<span class="sd">        print(frobenius_number(3, 5)) #7</span>
+<span class="sd">        print(frobenius_number(6, 9, 20)) #43</span>
+<span class="sd">        print(frobenius_number(1000, 1476, 3764, 4864, 4871, 7773)) #47350</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1">#Set is first sorted</span>

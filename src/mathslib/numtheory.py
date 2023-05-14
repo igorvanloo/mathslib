@@ -30,7 +30,7 @@ Author: Igor van Loo
 '''
 import math
 from .primes import prime_factors, prime_sieve
-from .simple import ExtendedEuclideanAlgorithm
+from .simple import extended_euclidean_algorithm
 
 def divisors_of(x, include_x = True):
     '''
@@ -539,7 +539,7 @@ def tonelli_shanks(a, p):
         b = (b * g) % p
         r = m
         
-def ChineseRemainderTheorem(a1, a2, n1, n2):
+def chinese_remainder_theorem(a1, a2, n1, n2):
     '''
     Simple `Chinese Remiander Theorem <https://en.wikipedia.org/wiki/Chinese_remainder_theorem>`__ to solve x = a1 mod n1, x = a2 mod n2
 
@@ -554,9 +554,9 @@ def ChineseRemainderTheorem(a1, a2, n1, n2):
         
         #We solve x = 2 mod 3 = 3 mod 5 = 2 mod 7
         #First we solve x = 2 mod = 3 mod 5
-        print(ChineseRemainderTheorem(2, 3, 3, 5)) #8 
+        print(chinese_remainder_theorem(2, 3, 3, 5)) #8 
         #Then we solve x = 8 mod 15 = 2 mod 7
-        print(ChineseRemainderTheorem(8, 2, 15, 7)) #23 
+        print(chinese_remainder_theorem(8, 2, 15, 7)) #23 
         
     '''
     if (type(a1) != int) or (type(a2) != int) or (type(n1) != int) or (type(n2) != int):
@@ -570,7 +570,7 @@ def ChineseRemainderTheorem(a1, a2, n1, n2):
     #The unique solution to this system is a1*q*n2 + a2*p*n1 % n1*n2
     return (a1*q*n2+ a2*p*n1) % (n1*n2)
 
-def Generalised_CRT(a1, a2, n1, n2):
+def generalised_CRT(a1, a2, n1, n2):
     '''
     A generalised `Chinese Remiander Theorem <https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Generalization_to_non-coprime_moduli>`__ which solves for non-coprime moduli
 
@@ -583,12 +583,12 @@ def Generalised_CRT(a1, a2, n1, n2):
     
     .. code-block:: python
         
-        print(Generalised_CRT(2, 3, 3, 5)) #8, note that we can use ChineseRemainderTheorem function for this case
-        print(Generalised_CRT(2, 4, 4, 6)) #10
-        print(Generalised_CRT(3, 4, 4, 6)) #'No solution'
+        print(generalised_CRT(2, 3, 3, 5)) #8, note that we can use ChineseRemainderTheorem function for this case
+        print(generalised_CRT(2, 4, 4, 6)) #10
+        print(generalised_CRT(3, 4, 4, 6)) #'No solution'
         
     '''
-    g, u, v = ExtendedEuclideanAlgorithm(n1, n2)
+    g, u, v = extended_euclidean_algorithm(n1, n2)
     if g == 1:
         return (a1*v*n2 + a2*u*n1) % (n1*n2)
     M = (n1*n2)//g
@@ -596,7 +596,7 @@ def Generalised_CRT(a1, a2, n1, n2):
         return "No solution"
     return ((a1*v*n2 + a2*u*n1)//g) % M
 
-def FrobeniusNumber(*integers):
+def frobenius_number(*integers):
     '''
     Generates the `Frobenius Number <https://en.wikipedia.org/wiki/Coin_problem>`_ for given integers.
     
@@ -609,9 +609,9 @@ def FrobeniusNumber(*integers):
     
     .. code-block:: python3
     
-        print(FrobeniusNumber(3, 5)) #7
-        print(FrobeniusNumber(6, 9, 20)) #43
-        print(FrobeniusNumber(1000, 1476, 3764, 4864, 4871, 7773)) #47350
+        print(frobenius_number(3, 5)) #7
+        print(frobenius_number(6, 9, 20)) #43
+        print(frobenius_number(1000, 1476, 3764, 4864, 4871, 7773)) #47350
         
     '''
     #Set is first sorted

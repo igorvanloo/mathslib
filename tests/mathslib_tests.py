@@ -19,7 +19,7 @@ class TestLinearAlgebra(unittest.TestCase):
         matrix = [[2, 1, -1],
                   [-3, -1, 2],
                   [-2, 1, 2]]
-        self.assertEqual(LA.GaussJordanElimination(matrix), True)
+        self.assertEqual(LA.gauss_jordan_elimination(matrix), True)
     
     def test_solve(self):
         matrix = [[2, 1, -1],
@@ -135,18 +135,18 @@ class TestNumberTheory(unittest.TestCase):
         self.assertEqual(NT.tonelli_shanks(5, 41), 28)
         
     def test_chinese_remainder_theorem(self):
-        self.assertEqual(NT.ChineseRemainderTheorem(2, 3, 3, 5), 8)
-        self.assertEqual(NT.ChineseRemainderTheorem(8, 2, 15, 7), 23)
+        self.assertEqual(NT.chinese_remainder_theorem(2, 3, 3, 5), 8)
+        self.assertEqual(NT.chinese_remainder_theorem(8, 2, 15, 7), 23)
         
     def test_generalised_crt(self):
-        self.assertEqual(NT.Generalised_CRT(2, 3, 3, 5), 8)
-        self.assertEqual(NT.Generalised_CRT(2, 4, 4, 6), 10)
-        self.assertEqual(NT.Generalised_CRT(3, 4, 4, 6), 'No solution')
+        self.assertEqual(NT.generalised_CRT(2, 3, 3, 5), 8)
+        self.assertEqual(NT.generalised_CRT(2, 4, 4, 6), 10)
+        self.assertEqual(NT.generalised_CRT(3, 4, 4, 6), 'No solution')
         
     def test_frobenius_number(self):
-        self.assertEqual(NT.FrobeniusNumber(3, 5), 7)
-        self.assertEqual(NT.FrobeniusNumber(6, 9, 20), 43)
-        self.assertEqual(NT.FrobeniusNumber(1000, 1476, 3764, 4864, 4871, 7773), 47350)
+        self.assertEqual(NT.frobenius_number(3, 5), 7)
+        self.assertEqual(NT.frobenius_number(6, 9, 20), 43)
+        self.assertEqual(NT.frobenius_number(1000, 1476, 3764, 4864, 4871, 7773), 47350)
 
 class TestPrimes(unittest.TestCase):
     
@@ -164,9 +164,15 @@ class TestPrimes(unittest.TestCase):
     def test_prime_factors(self):
         self.assertEqual(P.prime_factors(123123), {3: 1, 7: 1, 11: 1, 13: 1, 41: 1})
         self.assertEqual(P.prime_factors(1123619623), {7: 1, 160517089: 1})
-        
+    
     def test_primepi(self):
-        self.assertEqual(P.primepi(10), [0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4])
+        self.assertEqual(P.primepi(10**6), 78498)
+        self.assertEqual(P.primepi(10**7), 664579)
+        self.assertEqual(P.primepi(10**8), 5761455)
+        self.assertEqual(P.primepi(10**9), 50847534)
+        
+    def test_primepi_sieve(self):
+        self.assertEqual(P.primepi_sieve(10), [0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4])
         
     def test_sum_of_primes(self):
         self.assertEqual(P.sum_of_primes(2*10**6), 142913828922)
@@ -179,10 +185,10 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(P.fermat_primality_test(3), True)
         
     def test_miller_primality_test(self):
-        self.assertEqual(P.miller(17969800575241), True)
-        self.assertEqual(P.miller(101101), False)
-        self.assertEqual(len([x for x in range(1, 10**5) if P.miller(x, True, 1)]), 9608)
-        self.assertEqual(len([x for x in range(1, 10**5) if P.miller(x, True, 2)]), 9592)
+        self.assertEqual(P.miller_primality_test(17969800575241), True)
+        self.assertEqual(P.miller_primality_test(101101), False)
+        self.assertEqual(len([x for x in range(1, 10**5) if P.miller_primality_test(x, True, 1)]), 9608)
+        self.assertEqual(len([x for x in range(1, 10**5) if P.miller_primality_test(x, True, 2)]), 9592)
         
 class TestSimple(unittest.TestCase):
     
@@ -190,18 +196,21 @@ class TestSimple(unittest.TestCase):
         self.assertEqual(S.n_choose_r(50, 30), 47129212243960)
         
     def test_numbertobase(self):
-        self.assertEqual(S.numberToBase(10, 2), [1, 0, 1, 0])
-        self.assertEqual(S.numberToBase(10, 3), [1, 0, 1])
+        self.assertEqual(S.number_to_base(10, 2), [1, 0, 1, 0])
+        self.assertEqual(S.number_to_base(10, 3), [1, 0, 1])
     
     def test_ExtendedEuclideanAlgorithm(self):
-        self.assertEqual(S.ExtendedEuclideanAlgorithm(240, 46), (2, -9, 47))
+        self.assertEqual(S.extended_euclidean_algorithm(240, 46), (2, -9, 47))
         
     def test_lcm(self):
         self.assertEqual(S.lcm([2,3]), 6)
         self.assertEqual(S.lcm([8345, 23579, 174]), 34237415370)
         
     def test_mod_division(self):
-        self.assertEqual(S.ModDivision(8, 4, 5), 2)
+        self.assertEqual(S.mod_division(8, 4, 5), 2)
+        
+    def test_bisect(self):
+        self.assertEqual(S.bisect([2,3,5,7], 6), 3)
         
 class TestFib(unittest.TestCase):
     
@@ -213,7 +222,7 @@ class TestFib(unittest.TestCase):
         self.assertEqual(sum(FIB.fib_till(1000)), 2583)
     
     def test_zeckendorf(self):
-        self.assertEqual(FIB.ZeckendorfRepresentation(64), [55, 8, 1])
+        self.assertEqual(FIB.zeckendorf_representation(64), [55, 8, 1])
 
 class TestAlgorithms(unittest.TestCase):
     
@@ -225,7 +234,7 @@ class TestAlgorithms(unittest.TestCase):
                   [0, 20, 0, 18, 0, 0, 11], 
                   [0, 0, 31, 19, 0, 0, 27], 
                   [0, 0, 0, 23, 11, 27, 0]]
-        self.assertEqual(ALGO.PrimsAlgorithm(matrix), (93, 
+        self.assertEqual(ALGO.prims_algorithm(matrix), (93, 
                                   [[0, 16, 12, 0, 0, 0, 0],
                                    [16, 0, 0, 17, 0, 0, 0],
                                    [12, 0, 0, 0, 0, 0, 0],
@@ -243,7 +252,7 @@ class TestAlgorithms(unittest.TestCase):
              [[0, 14], [2, 2], [4, 9]]
             ]
         
-        self.assertEqual(ALGO.DijkstrasAlgorithm(g), [0, 7, 9, 20, 20, 11])
+        self.assertEqual(ALGO.dijkstras_algorithm(g), [0, 7, 9, 20, 20, 11])
     
     def test_FloydWarshall(self):
         g = [[[1, 7], [2, 9], [5, 14]],
@@ -254,7 +263,7 @@ class TestAlgorithms(unittest.TestCase):
              [[0, 14], [2, 2], [4, 9]]
             ]
         
-        self.assertEqual(ALGO.FloydWarshallAlgorithm(g), [[0, 7, 9, 20, 20, 11],
+        self.assertEqual(ALGO.floyd_warshall_algorithm(g), [[0, 7, 9, 20, 20, 11],
                                                           [7, 0, 10, 15, 21, 12],
                                                           [9, 10, 0, 11, 11, 2],
                                                           [20, 15, 11, 0, 6, 13],
@@ -266,7 +275,7 @@ class TestAlgorithms(unittest.TestCase):
         W = 50
         n = len(values)
         
-        self.assertEqual(ALGO.KnapSack(values, weights, n, W), 220)
+        self.assertEqual(ALGO.knap_sack(values, weights, n, W), 220)
     
     def test_KnapSackValues(self):
         values = [60, 100, 120]
@@ -274,21 +283,21 @@ class TestAlgorithms(unittest.TestCase):
         W = 50
         n = len(values)
         
-        self.assertEqual(ALGO.KnapSackValues(values, weights, n, W), {20, 30})
+        self.assertEqual(ALGO.knap_sack_values(values, weights, n, W), {20, 30})
     
     def test_BFSSearch(self):
         G = [[4, 1], [0, 5], [6, 3], [2, 7],
              [0, 8], [1, 6], [2, 5, 10], [3, 11],
              [4, 9], [8, 13], [6], [7, 15],
              [13], [9, 12, 14], [13, 15], [11, 14] ]
-        self.assertEqual(ALGO.BFSSearch(G), [0, 4, 8, 9, 13, 14, 15])
+        self.assertEqual(ALGO.BFS(G), [0, 4, 8, 9, 13, 14, 15])
         
     def test_DFSSearch(self):
         G = [[4, 1], [0, 5], [6, 3], [2, 7],
              [0, 8], [1, 6], [2, 5, 10], [3, 11],
              [4, 9], [8, 13], [6], [7, 15],
              [13], [9, 12, 14], [13, 15], [11, 14] ]
-        self.assertEqual(ALGO.DFSSearch(G), [0, 1, 5, 6, 2, 3, 7, 11, 15])
+        self.assertEqual(ALGO.DFS(G), [0, 1, 5, 6, 2, 3, 7, 11, 15])
 
 if __name__ == "__main__":
     unittest.main()

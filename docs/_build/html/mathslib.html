@@ -383,8 +383,8 @@ Note that p - x is also a root.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.ChineseRemainderTheorem">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">ChineseRemainderTheorem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#ChineseRemainderTheorem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.ChineseRemainderTheorem" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.numtheory.chinese_remainder_theorem">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">chinese_remainder_theorem</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#chinese_remainder_theorem"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.chinese_remainder_theorem" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simple <a class="reference external" href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem">Chinese Remiander Theorem</a> to solve x = a1 mod n1, x = a2 mod n2</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -401,16 +401,16 @@ Note that p - x is also a root.</p>
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#We solve x = 2 mod 3 = 3 mod 5 = 2 mod 7</span>
 <span class="c1">#First we solve x = 2 mod = 3 mod 5</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#8 </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chinese_remainder_theorem</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#8 </span>
 <span class="c1">#Then we solve x = 8 mod 15 = 2 mod 7</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">ChineseRemainderTheorem</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span> <span class="c1">#23 </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chinese_remainder_theorem</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span> <span class="c1">#23 </span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.Generalised_CRT">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">Generalised_CRT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#Generalised_CRT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.Generalised_CRT" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.numtheory.generalised_CRT">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">generalised_CRT</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#generalised_CRT"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.generalised_CRT" title="Permalink to this definition">¶</a></dt>
 <dd><p>A generalised <a class="reference external" href="https://en.wikipedia.org/wiki/Chinese_remainder_theorem#Generalization_to_non-coprime_moduli">Chinese Remiander Theorem</a> which solves for non-coprime moduli</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -425,16 +425,16 @@ Note that p - x is also a root.</p>
 <dd class="field-even"><p>Unique solution to x = a1 mod n1, x = a2 mod n2</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">Generalised_CRT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#8, note that we can use ChineseRemainderTheorem function for this case</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Generalised_CRT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">#10</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Generalised_CRT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">#&#39;No solution&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">generalised_CRT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#8, note that we can use ChineseRemainderTheorem function for this case</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">generalised_CRT</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">#10</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">generalised_CRT</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">#&#39;No solution&#39;</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.FrobeniusNumber">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">FrobeniusNumber</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">integers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#FrobeniusNumber"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.FrobeniusNumber" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.numtheory.frobenius_number">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">frobenius_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">integers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#frobenius_number"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.frobenius_number" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates the <a class="reference external" href="https://en.wikipedia.org/wiki/Coin_problem">Frobenius Number</a> for given integers.</p>
 <p>The below algorithm is based on <a class="reference external" href="https://www.cis.upenn.edu/~cis511/Frobenius-numbers-Nijenhuis-Wagon.pdf">Faster Algorithms for Frobenius Numbers</a>
 specifically, this is an implementation of their Breadth-First Method which you may find on page 9</p>
@@ -446,9 +446,9 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <dd class="field-even"><p>Frobenius number</p>
 </dd>
 </dl>
-<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">FrobeniusNumber</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#7</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">FrobeniusNumber</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">#43</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">FrobeniusNumber</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1476</span><span class="p">,</span> <span class="mi">3764</span><span class="p">,</span> <span class="mi">4864</span><span class="p">,</span> <span class="mi">4871</span><span class="p">,</span> <span class="mi">7773</span><span class="p">))</span> <span class="c1">#47350</span>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">frobenius_number</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#7</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">frobenius_number</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="c1">#43</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">frobenius_number</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1476</span><span class="p">,</span> <span class="mi">3764</span><span class="p">,</span> <span class="mi">4864</span><span class="p">,</span> <span class="mi">4871</span><span class="p">,</span> <span class="mi">7773</span><span class="p">))</span> <span class="c1">#47350</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -520,7 +520,29 @@ specifically, this is an implementation of their Breadth-First Method which you 
 
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.primes.primepi">
-<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">primepi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#primepi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.primepi" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">primepi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#primepi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.primepi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Primepi function is commonly known as <a class="reference external" href="https://en.wikipedia.org/wiki/Prime-counting_function">Prime Counting Function</a></p>
+<p>This function computes primepi(x) based on the <a class="reference external" href="https://mathworld.wolfram.com/LehmersFormula.html">Meissel-Lehmer Method</a></p>
+<p>The following <a class="reference external" href="https://acgan.sh/posts/2016-12-23-prime-counting.html">article</a> by Adithya Ganesh helped me a lot in understanding and implementing this function</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>primepi(x)</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">))</span> <span class="c1">#78498</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">7</span><span class="p">))</span> <span class="c1">#664579</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">8</span><span class="p">))</span> <span class="c1">#5761455</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">9</span><span class="p">))</span> <span class="c1">#50847534</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.primepi_sieve">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">primepi_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#primepi_sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.primepi_sieve" title="Permalink to this definition">¶</a></dt>
 <dd><p>Primepi function is commonly known as <a class="reference external" href="https://en.wikipedia.org/wiki/Prime-counting_function">Prime Counting Function</a></p>
 <p>This function generates an array such that array[x] = primepi(x)</p>
 <dl class="field-list simple">
@@ -531,7 +553,7 @@ specifically, this is an implementation of their Breadth-First Method which you 
 <dd class="field-even"><p>An array length limit such that array[x] = primepi(x)</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primepi</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">primepi_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#[0, 0, 1, 2, 2, 3, 3, 4, 4, 4, 4]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -585,8 +607,8 @@ program will automatically use the is_prime function</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.primes.miller">
-<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">miller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">millerrabin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numoftests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#miller"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.miller" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.primes.miller_primality_test">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">miller_primality_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">millerrabin</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numoftests</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#miller_primality_test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.miller_primality_test" title="Permalink to this definition">¶</a></dt>
 <dd><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test#Miller_test">Miller Primality Test</a>
 with the option to use the <a class="reference external" href="https://en.wikipedia.org/wiki/Miller%E2%80%93Rabin_primality_test">Miller-Rabin test</a></p>
 <dl class="field-list simple">
@@ -601,10 +623,10 @@ with the option to use the <a class="reference external" href="https://en.wikipe
 <dd class="field-even"><p>True if n is probably prime, False if n is not prime</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">miller</span><span class="p">(</span><span class="mi">17969800575241</span><span class="p">))</span> <span class="c1">#True</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">miller</span><span class="p">(</span><span class="mi">101101</span><span class="p">))</span> <span class="c1">#False</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">miller</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]))</span> <span class="c1">#78544, 46 more primes than needed</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">miller</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]))</span> <span class="c1">#78498, correct now</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">miller_primality_test</span><span class="p">(</span><span class="mi">17969800575241</span><span class="p">))</span> <span class="c1">#True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">miller_primality_test</span><span class="p">(</span><span class="mi">101101</span><span class="p">))</span> <span class="c1">#False</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">miller_primality_test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]))</span> <span class="c1">#78544, 46 more primes than needed</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span> <span class="k">if</span> <span class="n">miller_primality_test</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mi">2</span><span class="p">)]))</span> <span class="c1">#78498, correct now</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -621,8 +643,8 @@ with a specified number of tests</p>
 <p>Various Linear Algebra Functions</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.linalg.GaussJordanElimination">
-<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">GaussJordanElimination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentedpart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#GaussJordanElimination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.GaussJordanElimination" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.linalg.gauss_jordan_elimination">
+<span class="sig-prename descclassname"><span class="pre">mathslib.linalg.</span></span><span class="sig-name descname"><span class="pre">gauss_jordan_elimination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">augmentedpart</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/linalg.html#gauss_jordan_elimination"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.linalg.gauss_jordan_elimination" title="Permalink to this definition">¶</a></dt>
 <dd><p>Performs <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_elimination">Gauss Jordan Elimination on the given matrix</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -638,7 +660,7 @@ with a specified number of tests</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
           <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
           <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">GaussJordanElimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#True</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">gauss_jordan_elimination</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#True</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -890,8 +912,8 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.fib.ZeckendorfRepresentation">
-<span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">ZeckendorfRepresentation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#ZeckendorfRepresentation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.ZeckendorfRepresentation" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.fib.zeckendorf_representation">
+<span class="sig-prename descclassname"><span class="pre">mathslib.fib.</span></span><span class="sig-name descname"><span class="pre">zeckendorf_representation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/fib.html#zeckendorf_representation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.fib.zeckendorf_representation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem">Zeckendorf Representation</a> of x</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -901,7 +923,7 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <dd class="field-even"><p>A list containing the zeckendorf representation of x</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ZeckendorfRepresentation</span><span class="p">(</span><span class="mi">64</span><span class="p">))</span> <span class="c1">#[55, 8, 1]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">zeckendorf_representation</span><span class="p">(</span><span class="mi">64</span><span class="p">))</span> <span class="c1">#[55, 8, 1]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -912,8 +934,8 @@ Method is outlined <a class="reference external" href="https://stackoverflow.com
 <p>Various known algorithms. They are graph theory and optimization related</p>
 <p>Author: Igor van Loo</p>
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.PrimsAlgorithm">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">PrimsAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#PrimsAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.PrimsAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.prims_algorithm">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">prims_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">matrix</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#prims_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.prims_algorithm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Prim%27s_algorithm">Prim’s algorithm</a>
 It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
 <dl class="field-list simple">
@@ -936,7 +958,7 @@ It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">27</span><span class="p">],</span> 
           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">PrimsAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#(93, </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prims_algorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">))</span> <span class="c1">#(93, </span>
                               <span class="c1">#[[0, 16, 12, 0, 0, 0, 0],</span>
                               <span class="c1">#[16, 0, 0, 17, 0, 0, 0],</span>
                               <span class="c1">#[12, 0, 0, 0, 0, 0, 0],</span>
@@ -949,8 +971,8 @@ It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.DijkstrasAlgorithm">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">DijkstrasAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">INFINITY</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#DijkstrasAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.DijkstrasAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.dijkstras_algorithm">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">dijkstras_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">INFINITY</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#dijkstras_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.dijkstras_algorithm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm">Dijkstra’s algorithm</a> 
 It finds the the shortest paths between nodes in a graph</p>
 <dl class="field-list simple">
@@ -974,7 +996,7 @@ It finds the the shortest paths between nodes in a graph</p>
      <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
     <span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="c1">#[0, 7, 9, 20, 20, 11]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dijkstras_algorithm</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="c1">#[0, 7, 9, 20, 20, 11]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -986,8 +1008,8 @@ node i is connected to. For example, using the above graph g[0] = [[1, 7], [2, 9
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.FloydWarshallAlgorithm">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">FloydWarshallAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">INFINITY</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#FloydWarshallAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.FloydWarshallAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.floyd_warshall_algorithm">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">floyd_warshall_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">graph</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">INFINITY</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10000000000</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#floyd_warshall_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.floyd_warshall_algorithm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm">Floyd-Warshall algorithm</a> 
 It finds the the shortest paths between every node in the graph to every node in the graph</p>
 <dl class="field-list simple">
@@ -1010,7 +1032,7 @@ It finds the the shortest paths between every node in the graph to every node in
      <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">]]</span>
     <span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">FloydWarshallAlgorithm</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="c1">#[[0, 7, 9, 20, 20, 11],</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">floyd_warshall_algorithm</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="c1">#[[0, 7, 9, 20, 20, 11],</span>
                                   <span class="c1"># [7, 0, 10, 15, 21, 12],</span>
                                   <span class="c1"># [9, 10, 0, 11, 11, 2],</span>
                                   <span class="c1"># [20, 15, 11, 0, 6, 13],</span>
@@ -1025,8 +1047,8 @@ It finds the the shortest paths between every node in the graph to every node in
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.KnapSack">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">KnapSack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#KnapSack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.KnapSack" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.knap_sack">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">knap_sack</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">no_values</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#knap_sack"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.knap_sack" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of dynamic programming solution to the 0-1 <a class="reference external" href="https://en.wikipedia.org/wiki/Knapsack_problem">Knapsack Problem</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1051,14 +1073,14 @@ It finds the the shortest paths between every node in the graph to every node in
 <span class="n">W</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span> <span class="c1">#220</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">knap_sack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span> <span class="c1">#220</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.KnapSackValues">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">KnapSackValues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#KnapSackValues"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.KnapSackValues" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.knap_sack_values">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">knap_sack_values</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weights</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">W</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#knap_sack_values"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.knap_sack_values" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extension to KnapSack function
 It finds the actual values used to obtain the optimal sum</p>
 <dl class="field-list simple">
@@ -1079,14 +1101,14 @@ It finds the actual values used to obtain the optimal sum</p>
 <span class="n">W</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span> <span class="c1">#{20, 30}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">knap_sack_values</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">))</span> <span class="c1">#{20, 30}</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.BFSSearch">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">BFSSearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#BFSSearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.BFSSearch" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.BFS">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">BFS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#BFS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.BFS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">Breadth First Search</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1105,7 +1127,7 @@ It finds the actual values used to obtain the optimal sum</p>
      <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">BFSSearch</span><span class="p">(</span><span class="n">G</span><span class="p">))</span> <span class="c1">#[0, 4, 8, 9, 13, 14, 15]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">BFS</span><span class="p">(</span><span class="n">G</span><span class="p">))</span> <span class="c1">#[0, 4, 8, 9, 13, 14, 15]</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1116,8 +1138,8 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.DFSSearch">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">DFSSearch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#DFSSearch"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.DFSSearch" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.DFS">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">DFS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">g</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">end_node</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#DFS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.DFS" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Depth-first_search">Depth First Search</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1137,14 +1159,14 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
      <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">],</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span>
      <span class="p">[</span><span class="mi">13</span><span class="p">],</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">],</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">]</span> <span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">DFSSearch</span><span class="p">(</span><span class="n">G</span><span class="p">))</span> <span class="c1">#[0, 1, 5, 6, 2, 3, 7, 11, 15]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">DFS</span><span class="p">(</span><span class="n">G</span><span class="p">))</span> <span class="c1">#[0, 1, 5, 6, 2, 3, 7, 11, 15]</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.ConvexHullGiftWrapping">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">ConvexHullGiftWrapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#ConvexHullGiftWrapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.ConvexHullGiftWrapping" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.convex_hull_gift_wrapping">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">convex_hull_gift_wrapping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#convex_hull_gift_wrapping"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.convex_hull_gift_wrapping" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the Convex Hull <a class="reference external" href="https://en.wikipedia.org/wiki/Gift_wrapping_algorithm">Gift Wrapping Algorithm</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1157,8 +1179,8 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.algorithms.ConvexHullDC">
-<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">ConvexHullDC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#ConvexHullDC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.ConvexHullDC" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.algorithms.convex_hull_DC">
+<span class="sig-prename descclassname"><span class="pre">mathslib.algorithms.</span></span><span class="sig-name descname"><span class="pre">convex_hull_DC</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pts</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/algorithms.html#convex_hull_DC"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.algorithms.convex_hull_DC" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implementation of the Convex Hull Divide and conquer Algorithm</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1196,8 +1218,8 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.simple.numberToBase">
-<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">numberToBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#numberToBase"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.numberToBase" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.simple.number_to_base">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">number_to_base</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#number_to_base"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.number_to_base" title="Permalink to this definition">¶</a></dt>
 <dd><p>Changes n from base 10 to base b</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1210,15 +1232,15 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
 <dd class="field-even"><p>n in base b</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">#[1, 0, 1, 0]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">numberToBase</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">#[1, 0, 1]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">number_to_base</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">#[1, 0, 1, 0]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">number_to_base</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> <span class="c1">#[1, 0, 1]</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.simple.ExtendedEuclideanAlgorithm">
-<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">ExtendedEuclideanAlgorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#ExtendedEuclideanAlgorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.ExtendedEuclideanAlgorithm" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.simple.extended_euclidean_algorithm">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">extended_euclidean_algorithm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#extended_euclidean_algorithm"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.extended_euclidean_algorithm" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard <a class="reference external" href="https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode">Extended Euclidean Algorithm</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1231,7 +1253,7 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
 <dd class="field-even"><p>A tuple (g, s, t) where gcd(a, b) = g = as + bt</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ExtendedEuclideanAlgorithm</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">46</span><span class="p">))</span> <span class="c1">#(2, -9, 47)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">extended_euclidean_algorithm</span><span class="p">(</span><span class="mi">240</span><span class="p">,</span> <span class="mi">46</span><span class="p">))</span> <span class="c1">#(2, -9, 47)</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -1256,8 +1278,8 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.simple.ModDivision">
-<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">ModDivision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#ModDivision"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.ModDivision" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.simple.mod_division">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">mod_division</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">m</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#mod_division"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.mod_division" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds a/b mod m</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1271,14 +1293,34 @@ node i is connected to. For example using the above graph G[0] = [4, 1] means no
 <dd class="field-even"><p>a/b mod m</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ModDivision</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#2</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">mod_division</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span> <span class="c1">#2</span>
 </pre></div>
 </div>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.simple.IsClockwise">
-<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">IsClockwise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#IsClockwise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.IsClockwise" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.simple.bisect">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">bisect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">goal</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#bisect"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.bisect" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is equivalent to bisect_right from the bisect module</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>alist</strong> – A list</p></li>
+<li><p><strong>goal</strong> – A number</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>index i of A such that A[i - 1] &lt; g &lt;= A[i]</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bisect</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="mi">6</span><span class="p">))</span> <span class="c1">#3 since A[2] = 5 &lt; 6 &lt;= A[3] = 7</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.simple.is_clockwise">
+<span class="sig-prename descclassname"><span class="pre">mathslib.simple.</span></span><span class="sig-name descname"><span class="pre">is_clockwise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">c</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/simple.html#is_clockwise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.simple.is_clockwise" title="Permalink to this definition">¶</a></dt>
 <dd><p>Finds if 3 points a going to b going to c are in clockwise order. It is used in convex
 hull algorithm</p>
 <dl class="field-list simple">

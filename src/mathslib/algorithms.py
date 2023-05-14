@@ -30,9 +30,9 @@ Various known algorithms. They are graph theory and optimization related
 Author: Igor van Loo
 '''
 
-from .simple import IsClockwise
+from .simple import is_clockwise
 
-def PrimsAlgorithm(matrix):
+def prims_algorithm(matrix):
     '''
     Implementation of `Prim's algorithm <https://en.wikipedia.org/wiki/Prim%27s_algorithm>`_
     It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.
@@ -54,7 +54,7 @@ def PrimsAlgorithm(matrix):
                   [0, 0, 31, 19, 0, 0, 27], 
                   [0, 0, 0, 23, 11, 27, 0]]
         
-        print(PrimsAlgorithm(matrix)) #(93, 
+        print(prims_algorithm(matrix)) #(93, 
                                       #[[0, 16, 12, 0, 0, 0, 0],
                                       #[16, 0, 0, 17, 0, 0, 0],
                                       #[12, 0, 0, 0, 0, 0, 0],
@@ -78,7 +78,7 @@ def PrimsAlgorithm(matrix):
             break
     return Weight, mask
 
-def DijkstrasAlgorithm(graph, start_node = 0, INFINITY = 10**10):
+def dijkstras_algorithm(graph, start_node = 0, INFINITY = 10**10):
     '''
     Implementation of `Dijkstra's algorithm <https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm>`_ 
     It finds the the shortest paths between nodes in a graph
@@ -101,7 +101,7 @@ def DijkstrasAlgorithm(graph, start_node = 0, INFINITY = 10**10):
              [[0, 14], [2, 2], [4, 9]]
             ]
         
-        print(DijkstrasAlgorithm(g)) #[0, 7, 9, 20, 20, 11]
+        print(dijkstras_algorithm(g)) #[0, 7, 9, 20, 20, 11]
     
     .. note::
         
@@ -132,7 +132,7 @@ def DijkstrasAlgorithm(graph, start_node = 0, INFINITY = 10**10):
             break
     return D
 
-def FloydWarshallAlgorithm(graph, INFINITY = 10**10):
+def floyd_warshall_algorithm(graph, INFINITY = 10**10):
     '''
     Implementation of the `Floyd-Warshall algorithm <https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm>`_ 
     It finds the the shortest paths between every node in the graph to every node in the graph
@@ -154,7 +154,7 @@ def FloydWarshallAlgorithm(graph, INFINITY = 10**10):
              [[0, 14], [2, 2], [4, 9]]
             ]
         
-        print(FloydWarshallAlgorithm(g)) #[[0, 7, 9, 20, 20, 11],
+        print(floyd_warshall_algorithm(g)) #[[0, 7, 9, 20, 20, 11],
                                           # [7, 0, 10, 15, 21, 12],
                                           # [9, 10, 0, 11, 11, 2],
                                           # [20, 15, 11, 0, 6, 13],
@@ -177,7 +177,7 @@ def FloydWarshallAlgorithm(graph, INFINITY = 10**10):
                 D[k+1][i][j] = min(D[k][i][j], D[k][i][k] + D[k][k][j])
     return D[n][:][:]
 
-def KnapSack(values, weights, n, W, no_values = True):
+def knap_sack(values, weights, n, W, no_values = True):
     '''
     Implementation of dynamic programming solution to the 0-1 `Knapsack Problem <https://en.wikipedia.org/wiki/Knapsack_problem>`_
     
@@ -198,7 +198,7 @@ def KnapSack(values, weights, n, W, no_values = True):
         W = 50
         n = len(values)
         
-        print(KnapSack(values, weights, n, W)) #220
+        print(knap_sack(values, weights, n, W)) #220
     '''
     array = [[0 for _ in range(W + 1)] for _ in range(n + 1)]
         
@@ -218,7 +218,7 @@ def KnapSack(values, weights, n, W, no_values = True):
     if no_values == False:
         return array
     
-def KnapSackValues(values, weights, n, W):
+def knap_sack_values(values, weights, n, W):
     '''
     Extension to KnapSack function
     It finds the actual values used to obtain the optimal sum
@@ -237,18 +237,18 @@ def KnapSackValues(values, weights, n, W):
         W = 50
         n = len(values)
         
-        print(KnapSackValues(values, weights, n, W)) #{20, 30}
+        print(knap_sack_values(values, weights, n, W)) #{20, 30}
     
     '''
-    array = KnapSack(values, weights, n, W, no_values = False)
+    array = knap_sack(values, weights, n, W, no_values = False)
     if n == 0:
         return {}
     if array[n][W] > array[n - 1][W]:
-        return {weights[n - 1]}.union(KnapSackValues(values, weights, n - 1, W - weights[n - 1]))
+        return {weights[n - 1]}.union(knap_sack_values(values, weights, n - 1, W - weights[n - 1]))
     else:
-        return KnapSackValues(values, weights, n - 1, W - weights[n - 1])
+        return knap_sack_values(values, weights, n - 1, W - weights[n - 1])
 
-def BFSSearch(g, start_node = 0, end_node = False):
+def BFS(g, start_node = 0, end_node = False):
     '''
     Implementation of `Breadth First Search <https://en.wikipedia.org/wiki/Breadth-first_search>`_
 
@@ -265,7 +265,7 @@ def BFSSearch(g, start_node = 0, end_node = False):
              [4, 9], [8, 13], [6], [7, 15],
              [13], [9, 12, 14], [13, 15], [11, 14] ]
         
-        print(BFSSearch(G)) #[0, 4, 8, 9, 13, 14, 15]
+        print(BFS(G)) #[0, 4, 8, 9, 13, 14, 15]
     
     .. note::
         
@@ -293,7 +293,7 @@ def BFSSearch(g, start_node = 0, end_node = False):
                     queue.append((v, new_path))
     return []
 
-def DFSSearch(g, start_node = 0, end_node = False):
+def DFS(g, start_node = 0, end_node = False):
     '''
     Implementation of `Depth First Search <https://en.wikipedia.org/wiki/Depth-first_search>`_
 
@@ -310,7 +310,7 @@ def DFSSearch(g, start_node = 0, end_node = False):
              [4, 9], [8, 13], [6], [7, 15],
              [13], [9, 12, 14], [13, 15], [11, 14] ]
         
-        print(DFSSearch(G)) #[0, 1, 5, 6, 2, 3, 7, 11, 15]
+        print(DFS(G)) #[0, 1, 5, 6, 2, 3, 7, 11, 15]
     
     '''
     if end_node == False:
@@ -333,7 +333,7 @@ def DFSSearch(g, start_node = 0, end_node = False):
                     stack.append((v, new_path))
     return []
 
-def ConvexHullGiftWrapping(pts):
+def convex_hull_gift_wrapping(pts):
     '''
     Implementation of the Convex Hull `Gift Wrapping Algorithm <https://en.wikipedia.org/wiki/Gift_wrapping_algorithm>`_
     
@@ -352,7 +352,7 @@ def ConvexHullGiftWrapping(pts):
                 flag = True 
                 for r in pts:
                     if (r != p) and (r != q):
-                        if IsClockwise(p, q, r) == False:
+                        if is_clockwise(p, q, r) == False:
                             flag = False
                             break    
                 if flag:
@@ -362,7 +362,7 @@ def ConvexHullGiftWrapping(pts):
                         convex_hull.append(q)
     return convex_hull
 
-def ConvexHullDC(pts):
+def convex_hull_DC(pts):
     '''
     Implementation of the Convex Hull Divide and conquer Algorithm
     
@@ -376,7 +376,7 @@ def ConvexHullDC(pts):
     def divideCH(alist):
         l = len(alist) #Length of alist
         if l <= 5:
-            return ConvexHullGiftWrapping(alist)
+            return convex_hull_gift_wrapping(alist)
         mid = l//2
         left = divideCH(alist[:mid])
         right = divideCH(alist[mid:])
@@ -404,11 +404,11 @@ def ConvexHullDC(pts):
         while True:
             prev_r = top_r
             prev_l = top_l
-            while IsClockwise(top_r, top_l, hull_copy[top_l_index + 1]) == False:
+            while is_clockwise(top_r, top_l, hull_copy[top_l_index + 1]) == False:
                 top_l_index += 1
                 top_l = hull_copy[top_l_index]
 
-            while IsClockwise(top_l, top_r, hull_copy[top_r_index - 1]):
+            while is_clockwise(top_l, top_r, hull_copy[top_r_index - 1]):
                 top_r_index -= 1            
                 top_r = hull_copy[top_r_index]
             
@@ -421,13 +421,13 @@ def ConvexHullDC(pts):
             prev_r = bot_r
             prev_l = bot_l
             
-            while IsClockwise(bot_r, bot_l, hull_copy[bot_l_index - 1]):
+            while is_clockwise(bot_r, bot_l, hull_copy[bot_l_index - 1]):
                 bot_l_index -= 1
                 bot_l = hull_copy[bot_l_index]
                 
             while True:
                 if bot_r_index + 1 < len_h:
-                    if IsClockwise(bot_l, bot_r, hull_copy[bot_r_index + 1]) == False:
+                    if is_clockwise(bot_l, bot_r, hull_copy[bot_r_index + 1]) == False:
                         bot_r_index += 1
                         bot_r = hull_copy[bot_r_index]
                     else:

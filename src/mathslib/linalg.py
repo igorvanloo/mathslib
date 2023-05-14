@@ -29,7 +29,7 @@ Various Linear Algebra Functions
 Author: Igor van Loo
 '''
 
-def GaussJordanElimination(matrix, augmentedpart = None):
+def gauss_jordan_elimination(matrix, augmentedpart = None):
     '''
     Performs `Gauss Jordan Elimination on the given matrix <https://en.wikipedia.org/wiki/Gaussian_elimination>`_
 
@@ -43,7 +43,7 @@ def GaussJordanElimination(matrix, augmentedpart = None):
         matrix = [[2, 1, -1],
                   [-3, -1, 2],
                   [-2, 1, 2]]
-        print(GaussJordanElimination(matrix)) #True
+        print(gauss_jordan_elimination(matrix)) #True
     
     .. note::
         
@@ -116,7 +116,7 @@ def solve(M, b):
         return "b must be a vector"
     if m != len(b):
         return "Impossible to solve"
-    if GaussJordanElimination(M, b):
+    if gauss_jordan_elimination(M, b):
         return [M[x][n:] for x in range(m)]
     else:
         return "No solution, or infinite solutions"
@@ -142,7 +142,7 @@ def inverse(matrix):
     m, n = len(matrix), len(matrix[0])
     if m != n:
         return "Must be a square matrix"
-    if GaussJordanElimination(matrix, identity(m)):
+    if gauss_jordan_elimination(matrix, identity(m)):
         return [matrix[x][m:] for x in range(m)]
     else:
         return "Matrix is not invertible"

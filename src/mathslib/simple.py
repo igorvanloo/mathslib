@@ -45,12 +45,14 @@ def n_choose_r(n, r):
         print(n_choose_r(50, 30)) #47129212243960
         
     '''
+    if (type(n) != int) or (type(r) != int):
+        return "n and r must be an integers"
     if r > n:
         return "n must be greter than r"
     else:
         return int(math.factorial(n) / (math.factorial(r) * math.factorial(n-r)))
     
-def numberToBase(n, b):
+def number_to_base(n, b):
     '''
     Changes n from base 10 to base b
 
@@ -61,8 +63,8 @@ def numberToBase(n, b):
         
     .. code-block:: python
     
-        print(numberToBase(10, 2)) #[1, 0, 1, 0]
-        print(numberToBase(10, 3)) #[1, 0, 1]
+        print(number_to_base(10, 2)) #[1, 0, 1, 0]
+        print(number_to_base(10, 3)) #[1, 0, 1]
         
     '''
     if (type(n) != int) or (type(b) != int):
@@ -75,7 +77,7 @@ def numberToBase(n, b):
         n //= b
     return digits[::-1]
 
-def ExtendedEuclideanAlgorithm(a, b):
+def extended_euclidean_algorithm(a, b):
     '''
     Standard `Extended Euclidean Algorithm
     <https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode>`_
@@ -87,9 +89,11 @@ def ExtendedEuclideanAlgorithm(a, b):
     
     .. code-block:: python
     
-        print(ExtendedEuclideanAlgorithm(240, 46)) #(2, -9, 47)
+        print(extended_euclidean_algorithm(240, 46)) #(2, -9, 47)
 
     '''
+    if (type(a) != int) or (type(b) != int):
+        return "a and b must be integers"
     old_r, r = a, b
     old_s, s = 1, 0
     while r != 0:
@@ -124,7 +128,7 @@ def lcm(a_list):
         curr = int(abs(curr*temp)/math.gcd(curr, temp))
     return curr
 
-def ModDivision(a, b, m):
+def mod_division(a, b, m):
     '''
     Finds a/b mod m
 
@@ -136,7 +140,7 @@ def ModDivision(a, b, m):
     
     .. code-block:: python
     
-        print(ModDivision(8, 4, 5)) #2
+        print(mod_division(8, 4, 5)) #2
         
     '''
     if (type(a) != int) or (type(b) != int) or (type(m) != int):
@@ -151,7 +155,31 @@ def ModDivision(a, b, m):
         answer = (inv * a) % m
     return answer
 
-def IsClockwise(a,b,c):
+def bisect(alist, goal):
+    '''
+    This function is equivalent to bisect_right from the bisect module
+
+    :param alist: A list
+    :param goal: A number
+
+    :returns: index i of A such that A[i - 1] < g <= A[i]
+    
+    .. code-block:: python
+    
+        print(bisect([2, 3, 5, 7], 6)) #3 since A[2] = 5 < 6 <= A[3] = 7
+        
+    '''
+    lo = 0
+    hi = len(alist)
+    while lo < hi:
+        mid = (lo + hi)//2
+        if goal < alist[mid]:
+            hi = mid
+        else:
+            lo = mid + 1
+    return lo
+
+def is_clockwise(a,b,c):
     '''
     Finds if 3 points a going to b going to c are in clockwise order. It is used in convex
     hull algorithm

@@ -74,7 +74,7 @@ def fib_till(limit):
         n += 1
     return fibnumbers
 
-def ZeckendorfRepresentation(x):
+def zeckendorf_representation(x):
     '''
     Finds the `Zeckendorf Representation <https://en.wikipedia.org/wiki/Zeckendorf%27s_theorem>`_ of x 
 
@@ -84,7 +84,7 @@ def ZeckendorfRepresentation(x):
     
     .. code-block:: python
         
-        print(ZeckendorfRepresentation(64)) #[55, 8, 1]
+        print(zeckendorf_representation(64)) #[55, 8, 1]
 
     '''
     if type(x) != int:

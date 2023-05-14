@@ -50,8 +50,9 @@
 <h1>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">¶</a></h1>
 <a class="reference external image-reference" href="https://pypi.python.org/pypi/mathslib"><img alt="https://img.shields.io/pypi/v/mathslib.svg" src="https://img.shields.io/pypi/v/mathslib.svg" /></a>
 <a class="reference external image-reference" href="https://mathslib.readthedocs.io/en/latest/?badge=latest"><img alt="Documentation Status" src="https://readthedocs.org/projects/mathslib/badge/?version=latest" /></a>
-<p><a class="reference external" href="https://pypi.python.org/pypi/mathslib">mathslib</a> is a compilation of Mathematical Functions and Algorithms I have made or come across.
-I have used most of these for <a class="reference external" href="https://projecteuler.net">Project Euler</a>.</p>
+<p><a class="reference external" href="https://pypi.python.org/pypi/mathslib">mathslib</a> is a compilation of Mathematical Functions and Algorithms. Unless credit was given all
+of the functions were written by me. Relevant articles are also linked where the implementation is complex.</p>
+<p>I have used most of these for <a class="reference external" href="https://projecteuler.net">Project Euler</a>.</p>
 <p>See my website <a class="reference external" href="https://ivl-projecteuler.com">ivl-projecteuler.com</a> for their implementation</p>
 <p>See the full documentation <a class="reference external" href="https://mathslib.readthedocs.io/en/latest/index.html">here</a></p>
 <section id="breakdown">
@@ -74,9 +75,9 @@ I have used most of these for <a class="reference external" href="https://projec
 <li><p>k_powerful(k, limit, count)</p></li>
 <li><p>legendre_factorial(x)</p></li>
 <li><p>tonelli_shanks(a, p)</p></li>
-<li><p>ChineseRemainderTheorem(a1, a2, n1, n2)</p></li>
-<li><p>Generalised_CRT(a1, a2, n1, n2)</p></li>
-<li><p>FrobeniusNumber(*integers)</p></li>
+<li><p>chinese_remainder_theorem(a1, a2, n1, n2)</p></li>
+<li><p>generalised_CRT(a1, a2, n1, n2)</p></li>
+<li><p>frobenius_number(*integers)</p></li>
 </ul>
 </td>
 </tr>
@@ -86,15 +87,16 @@ I have used most of these for <a class="reference external" href="https://projec
 <li><p>is_prime(x)</p></li>
 <li><p>prime_factors(x)</p></li>
 <li><p>primepi(x)</p></li>
+<li><p>primepi_sieve(x)</p></li>
 <li><p>sum_of_primes(x)</p></li>
 <li><p>fermat_primality_test(x)</p></li>
-<li><p>miller(n, millerrabin, numoftests)</p></li>
+<li><p>miller_primality_test(n, millerrabin, numoftests)</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p>linalg.py</p></td>
 <td><ul class="simple">
-<li><p>GaussJordanElimination(matrix, augmentedpart)</p></li>
+<li><p>gauss_jordan_elimination(matrix, augmentedpart)</p></li>
 <li><p>solve(M, b)</p></li>
 <li><p>inverse(matrix)</p></li>
 <li><p>determinant(matrix)</p></li>
@@ -111,32 +113,33 @@ I have used most of these for <a class="reference external" href="https://projec
 <td><ul class="simple">
 <li><p>fibonacci(n)</p></li>
 <li><p>fib_till(limit)</p></li>
-<li><p>ZeckendorfRepresentation(x)</p></li>
+<li><p>zeckendorf_representation(x)</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-odd"><td><p>algorithms.py</p></td>
 <td><ul class="simple">
-<li><p>PrimsAlgorithm(matrix)</p></li>
-<li><p>DijkstrasAlgorithm(graph, start_node, INFINITY)</p></li>
-<li><p>FloydWarshallAlgorithm(graph, INFINITY)</p></li>
-<li><p>KnapSack(values, weights, n, W, no_values)</p></li>
-<li><p>KnapSackValues(values, weights, n, W, no_values)</p></li>
-<li><p>BFSSearch(g, start_node, end_node)</p></li>
-<li><p>DFSSearch(g, start_node, end_node)</p></li>
-<li><p>ConvexHullGiftWrapping(pts)</p></li>
-<li><p>ConvexHullDC(pts)</p></li>
+<li><p>prims_algorithm(matrix)</p></li>
+<li><p>dijkstras_algorithm(graph, start_node, INFINITY)</p></li>
+<li><p>floyd_warshall_algorithm(graph, INFINITY)</p></li>
+<li><p>knap_sack(values, weights, n, W, no_values)</p></li>
+<li><p>knap_sack_values(values, weights, n, W, no_values)</p></li>
+<li><p>BFS(g, start_node, end_node)</p></li>
+<li><p>DFS(g, start_node, end_node)</p></li>
+<li><p>convex_hull_gift_wrapping(pts)</p></li>
+<li><p>convex_hull_DC(pts)</p></li>
 </ul>
 </td>
 </tr>
 <tr class="row-even"><td><p>simple.py</p></td>
 <td><ul class="simple">
 <li><p>n_choose_r(n, r)</p></li>
-<li><p>numberToBase(n, b)</p></li>
-<li><p>ExtendedEuclideanAlgorithm(n, b)</p></li>
+<li><p>number_to_base(n, b)</p></li>
+<li><p>extended_euclidean_algorithm(n, b)</p></li>
 <li><p>lcm(a_list)</p></li>
-<li><p>ModDivision(a, b, m)</p></li>
-<li><p>IsClockwise(a, b, c)</p></li>
+<li><p>mod_division(a, b, m)</p></li>
+<li><p>bisect(alist, goal)</p></li>
+<li><p>is_clockwise(a, b, c)</p></li>
 </ul>
 </td>
 </tr>

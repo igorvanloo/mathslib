@@ -71,9 +71,9 @@
 <span class="sd">Author: Igor van Loo</span>
 <span class="sd">&#39;&#39;&#39;</span>
 
-<span class="kn">from</span> <span class="nn">.simple</span> <span class="kn">import</span> <span class="n">IsClockwise</span>
+<span class="kn">from</span> <span class="nn">.simple</span> <span class="kn">import</span> <span class="n">is_clockwise</span>
 
-<div class="viewcode-block" id="PrimsAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.PrimsAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">PrimsAlgorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<div class="viewcode-block" id="prims_algorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.prims_algorithm">[docs]</a><span class="k">def</span> <span class="nf">prims_algorithm</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of `Prim&#39;s algorithm &lt;https://en.wikipedia.org/wiki/Prim%27s_algorithm&gt;`_</span>
 <span class="sd">    It finds a Minimum Spanning Tree (MST) for a weighted undirected graph.</span>
@@ -95,7 +95,7 @@
 <span class="sd">                  [0, 0, 31, 19, 0, 0, 27], </span>
 <span class="sd">                  [0, 0, 0, 23, 11, 27, 0]]</span>
 <span class="sd">        </span>
-<span class="sd">        print(PrimsAlgorithm(matrix)) #(93, </span>
+<span class="sd">        print(prims_algorithm(matrix)) #(93, </span>
 <span class="sd">                                      #[[0, 16, 12, 0, 0, 0, 0],</span>
 <span class="sd">                                      #[16, 0, 0, 17, 0, 0, 0],</span>
 <span class="sd">                                      #[12, 0, 0, 0, 0, 0, 0],</span>
@@ -119,7 +119,7 @@
             <span class="k">break</span>
     <span class="k">return</span> <span class="n">Weight</span><span class="p">,</span> <span class="n">mask</span></div>
 
-<div class="viewcode-block" id="DijkstrasAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.DijkstrasAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">DijkstrasAlgorithm</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">INFINITY</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">):</span>
+<div class="viewcode-block" id="dijkstras_algorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.dijkstras_algorithm">[docs]</a><span class="k">def</span> <span class="nf">dijkstras_algorithm</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">INFINITY</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of `Dijkstra&#39;s algorithm &lt;https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm&gt;`_ </span>
 <span class="sd">    It finds the the shortest paths between nodes in a graph</span>
@@ -142,7 +142,7 @@
 <span class="sd">             [[0, 14], [2, 2], [4, 9]]</span>
 <span class="sd">            ]</span>
 <span class="sd">        </span>
-<span class="sd">        print(DijkstrasAlgorithm(g)) #[0, 7, 9, 20, 20, 11]</span>
+<span class="sd">        print(dijkstras_algorithm(g)) #[0, 7, 9, 20, 20, 11]</span>
 <span class="sd">    </span>
 <span class="sd">    .. note::</span>
 <span class="sd">        </span>
@@ -173,7 +173,7 @@
             <span class="k">break</span>
     <span class="k">return</span> <span class="n">D</span></div>
 
-<div class="viewcode-block" id="FloydWarshallAlgorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.FloydWarshallAlgorithm">[docs]</a><span class="k">def</span> <span class="nf">FloydWarshallAlgorithm</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">INFINITY</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">):</span>
+<div class="viewcode-block" id="floyd_warshall_algorithm"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.floyd_warshall_algorithm">[docs]</a><span class="k">def</span> <span class="nf">floyd_warshall_algorithm</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">INFINITY</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">10</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of the `Floyd-Warshall algorithm &lt;https://en.wikipedia.org/wiki/Floyd%E2%80%93Warshall_algorithm&gt;`_ </span>
 <span class="sd">    It finds the the shortest paths between every node in the graph to every node in the graph</span>
@@ -195,7 +195,7 @@
 <span class="sd">             [[0, 14], [2, 2], [4, 9]]</span>
 <span class="sd">            ]</span>
 <span class="sd">        </span>
-<span class="sd">        print(FloydWarshallAlgorithm(g)) #[[0, 7, 9, 20, 20, 11],</span>
+<span class="sd">        print(floyd_warshall_algorithm(g)) #[[0, 7, 9, 20, 20, 11],</span>
 <span class="sd">                                          # [7, 0, 10, 15, 21, 12],</span>
 <span class="sd">                                          # [9, 10, 0, 11, 11, 2],</span>
 <span class="sd">                                          # [20, 15, 11, 0, 6, 13],</span>
@@ -218,7 +218,7 @@
                 <span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span> <span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">i</span><span class="p">][</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">D</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">D</span><span class="p">[</span><span class="n">n</span><span class="p">][:][:]</span></div>
 
-<div class="viewcode-block" id="KnapSack"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.KnapSack">[docs]</a><span class="k">def</span> <span class="nf">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="knap_sack"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.knap_sack">[docs]</a><span class="k">def</span> <span class="nf">knap_sack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of dynamic programming solution to the 0-1 `Knapsack Problem &lt;https://en.wikipedia.org/wiki/Knapsack_problem&gt;`_</span>
 <span class="sd">    </span>
@@ -239,7 +239,7 @@
 <span class="sd">        W = 50</span>
 <span class="sd">        n = len(values)</span>
 <span class="sd">        </span>
-<span class="sd">        print(KnapSack(values, weights, n, W)) #220</span>
+<span class="sd">        print(knap_sack(values, weights, n, W)) #220</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">array</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">W</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
         
@@ -259,7 +259,7 @@
     <span class="k">if</span> <span class="n">no_values</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">array</span></div>
     
-<div class="viewcode-block" id="KnapSackValues"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.KnapSackValues">[docs]</a><span class="k">def</span> <span class="nf">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
+<div class="viewcode-block" id="knap_sack_values"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.knap_sack_values">[docs]</a><span class="k">def</span> <span class="nf">knap_sack_values</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Extension to KnapSack function</span>
 <span class="sd">    It finds the actual values used to obtain the optimal sum</span>
@@ -278,18 +278,18 @@
 <span class="sd">        W = 50</span>
 <span class="sd">        n = len(values)</span>
 <span class="sd">        </span>
-<span class="sd">        print(KnapSackValues(values, weights, n, W)) #{20, 30}</span>
+<span class="sd">        print(knap_sack_values(values, weights, n, W)) #{20, 30}</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">array</span> <span class="o">=</span> <span class="n">KnapSack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">knap_sack</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">no_values</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="p">{}</span>
     <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">n</span><span class="p">][</span><span class="n">W</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">][</span><span class="n">W</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">{</span><span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]}</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]}</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">knap_sack_values</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">KnapSackValues</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="n">knap_sack_values</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">W</span> <span class="o">-</span> <span class="n">weights</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span></div>
 
-<div class="viewcode-block" id="BFSSearch"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.BFSSearch">[docs]</a><span class="k">def</span> <span class="nf">BFSSearch</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="BFS"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.BFS">[docs]</a><span class="k">def</span> <span class="nf">BFS</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of `Breadth First Search &lt;https://en.wikipedia.org/wiki/Breadth-first_search&gt;`_</span>
 
@@ -306,7 +306,7 @@
 <span class="sd">             [4, 9], [8, 13], [6], [7, 15],</span>
 <span class="sd">             [13], [9, 12, 14], [13, 15], [11, 14] ]</span>
 <span class="sd">        </span>
-<span class="sd">        print(BFSSearch(G)) #[0, 4, 8, 9, 13, 14, 15]</span>
+<span class="sd">        print(BFS(G)) #[0, 4, 8, 9, 13, 14, 15]</span>
 <span class="sd">    </span>
 <span class="sd">    .. note::</span>
 <span class="sd">        </span>
@@ -334,7 +334,7 @@
                     <span class="n">queue</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">new_path</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">[]</span></div>
 
-<div class="viewcode-block" id="DFSSearch"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.DFSSearch">[docs]</a><span class="k">def</span> <span class="nf">DFSSearch</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="DFS"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.DFS">[docs]</a><span class="k">def</span> <span class="nf">DFS</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">start_node</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">end_node</span> <span class="o">=</span> <span class="kc">False</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of `Depth First Search &lt;https://en.wikipedia.org/wiki/Depth-first_search&gt;`_</span>
 
@@ -351,7 +351,7 @@
 <span class="sd">             [4, 9], [8, 13], [6], [7, 15],</span>
 <span class="sd">             [13], [9, 12, 14], [13, 15], [11, 14] ]</span>
 <span class="sd">        </span>
-<span class="sd">        print(DFSSearch(G)) #[0, 1, 5, 6, 2, 3, 7, 11, 15]</span>
+<span class="sd">        print(DFS(G)) #[0, 1, 5, 6, 2, 3, 7, 11, 15]</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">end_node</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
@@ -374,7 +374,7 @@
                     <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">v</span><span class="p">,</span> <span class="n">new_path</span><span class="p">))</span>
     <span class="k">return</span> <span class="p">[]</span></div>
 
-<div class="viewcode-block" id="ConvexHullGiftWrapping"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.ConvexHullGiftWrapping">[docs]</a><span class="k">def</span> <span class="nf">ConvexHullGiftWrapping</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
+<div class="viewcode-block" id="convex_hull_gift_wrapping"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.convex_hull_gift_wrapping">[docs]</a><span class="k">def</span> <span class="nf">convex_hull_gift_wrapping</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of the Convex Hull `Gift Wrapping Algorithm &lt;https://en.wikipedia.org/wiki/Gift_wrapping_algorithm&gt;`_</span>
 <span class="sd">    </span>
@@ -393,7 +393,7 @@
                 <span class="n">flag</span> <span class="o">=</span> <span class="kc">True</span> 
                 <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">pts</span><span class="p">:</span>
                     <span class="k">if</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">r</span> <span class="o">!=</span> <span class="n">q</span><span class="p">):</span>
-                        <span class="k">if</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                        <span class="k">if</span> <span class="n">is_clockwise</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
                             <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
                             <span class="k">break</span>    
                 <span class="k">if</span> <span class="n">flag</span><span class="p">:</span>
@@ -403,7 +403,7 @@
                         <span class="n">convex_hull</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">convex_hull</span></div>
 
-<div class="viewcode-block" id="ConvexHullDC"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.ConvexHullDC">[docs]</a><span class="k">def</span> <span class="nf">ConvexHullDC</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
+<div class="viewcode-block" id="convex_hull_DC"><a class="viewcode-back" href="../../mathslib.html#mathslib.algorithms.convex_hull_DC">[docs]</a><span class="k">def</span> <span class="nf">convex_hull_DC</span><span class="p">(</span><span class="n">pts</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Implementation of the Convex Hull Divide and conquer Algorithm</span>
 <span class="sd">    </span>
@@ -417,7 +417,7 @@
     <span class="k">def</span> <span class="nf">divideCH</span><span class="p">(</span><span class="n">alist</span><span class="p">):</span>
         <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span> <span class="c1">#Length of alist</span>
         <span class="k">if</span> <span class="n">l</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">ConvexHullGiftWrapping</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">convex_hull_gift_wrapping</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
         <span class="n">mid</span> <span class="o">=</span> <span class="n">l</span><span class="o">//</span><span class="mi">2</span>
         <span class="n">left</span> <span class="o">=</span> <span class="n">divideCH</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="n">mid</span><span class="p">])</span>
         <span class="n">right</span> <span class="o">=</span> <span class="n">divideCH</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="n">mid</span><span class="p">:])</span>
@@ -445,11 +445,11 @@
         <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
             <span class="n">prev_r</span> <span class="o">=</span> <span class="n">top_r</span>
             <span class="n">prev_l</span> <span class="o">=</span> <span class="n">top_l</span>
-            <span class="k">while</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">top_r</span><span class="p">,</span> <span class="n">top_l</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_l_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">is_clockwise</span><span class="p">(</span><span class="n">top_r</span><span class="p">,</span> <span class="n">top_l</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_l_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
                 <span class="n">top_l_index</span> <span class="o">+=</span> <span class="mi">1</span>
                 <span class="n">top_l</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_l_index</span><span class="p">]</span>
 
-            <span class="k">while</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">top_l</span><span class="p">,</span> <span class="n">top_r</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_r_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]):</span>
+            <span class="k">while</span> <span class="n">is_clockwise</span><span class="p">(</span><span class="n">top_l</span><span class="p">,</span> <span class="n">top_r</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_r_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]):</span>
                 <span class="n">top_r_index</span> <span class="o">-=</span> <span class="mi">1</span>            
                 <span class="n">top_r</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">top_r_index</span><span class="p">]</span>
             
@@ -462,13 +462,13 @@
             <span class="n">prev_r</span> <span class="o">=</span> <span class="n">bot_r</span>
             <span class="n">prev_l</span> <span class="o">=</span> <span class="n">bot_l</span>
             
-            <span class="k">while</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">bot_r</span><span class="p">,</span> <span class="n">bot_l</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_l_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]):</span>
+            <span class="k">while</span> <span class="n">is_clockwise</span><span class="p">(</span><span class="n">bot_r</span><span class="p">,</span> <span class="n">bot_l</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_l_index</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]):</span>
                 <span class="n">bot_l_index</span> <span class="o">-=</span> <span class="mi">1</span>
                 <span class="n">bot_l</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_l_index</span><span class="p">]</span>
                 
             <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
                 <span class="k">if</span> <span class="n">bot_r_index</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">&lt;</span> <span class="n">len_h</span><span class="p">:</span>
-                    <span class="k">if</span> <span class="n">IsClockwise</span><span class="p">(</span><span class="n">bot_l</span><span class="p">,</span> <span class="n">bot_r</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_r_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">is_clockwise</span><span class="p">(</span><span class="n">bot_l</span><span class="p">,</span> <span class="n">bot_r</span><span class="p">,</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_r_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
                         <span class="n">bot_r_index</span> <span class="o">+=</span> <span class="mi">1</span>
                         <span class="n">bot_r</span> <span class="o">=</span> <span class="n">hull_copy</span><span class="p">[</span><span class="n">bot_r_index</span><span class="p">]</span>
                     <span class="k">else</span><span class="p">:</span>
