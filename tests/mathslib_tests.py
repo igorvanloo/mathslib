@@ -100,7 +100,7 @@ class TestNumberTheory(unittest.TestCase):
     def test_phi_sum(self):
         self.assertEqual(NT.phi_sum(10**7), 30396356427242)
         self.assertEqual(NT.phi_sum(10**4), sum(NT.phi_sieve(10**4)))
-        self.assertEqual(NT.phi_sum(10**4), sum(NT.phi(i) for i in range(1, 10**4)))
+        self.assertEqual(NT.phi_sum(10**4), sum(NT.phi(i) for i in range(1, 10**4 + 1)))
         
     def test_mobius(self):
         self.assertEqual(NT.mobius(10), 1)

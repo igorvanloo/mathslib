@@ -221,7 +221,7 @@ def phi_sum(n):
     .. code-block:: python
     
         print(phi_sum(10**4)) #30397486
-        print(sum(phi(i) for i in range(1, 10**4))) #30397486
+        print(sum(phi(i) for i in range(1, 10**4 + 1))) #30397486
         print(sum(phi_sieve(10**4))) #30397486
         
     '''
