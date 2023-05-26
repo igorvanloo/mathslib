@@ -194,8 +194,8 @@ def phi_sieve(n):
     
     .. code-block:: python
     
-        print(phi(10)) #[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]
-        print(phi(20)[11:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]
+        print(phi_sieve(10)) #[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]
+        print(phi_sieve(20)[11:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]
         
     '''
     phi = [i for i in range(n + 1)]
@@ -205,6 +205,57 @@ def phi_sieve(n):
             for i in range(2*p, n + 1, p):
                 phi[i] -= (phi[i] // p)
     return phi
+
+def phi_sum(n):
+    '''
+    Computes the `Totient Summatory Function
+    <https://en.wikipedia.org/wiki/Totient_summatory_function>`_
+    
+    The algorithm is based on `Overview of Project Euler Problem 351 <https://projecteuler.net/overview=0351>`_
+    specifically, this is an implementation of Algorithm 6, which you may view after Solving Problem 351
+
+    :param n: An integer
+
+    :returns: sum of phi(x) where x goes from 1 to n
+    
+    .. code-block:: python
+    
+        print(phi_sum(10**4)) #30397486
+        print(sum(phi(i) for i in range(1, 10**4))) #30397486
+        print(sum(phi_sieve(10**4))) #30397486
+        
+    '''
+    L = int(math.sqrt(n))
+    v = [0]*(L + 1)
+    bigV = [0]*(n//L + 1)
+    
+    for x in range(1, L + 1):
+        res = (x*(x + 1))//2
+        for g in range(2, int(math.sqrt(x)) + 1):
+            res -= v[x//g]
+        
+        for z in range(1, int(math.sqrt(x)) + 1):
+            if x//z != z:
+                res -= (x//z - x//(z + 1))*v[z]
+        
+        v[x] = res
+    
+    for x in range(n//L, 0, -1):
+        k = n//x
+        res = (k*(k + 1))//2
+        
+        for g in range(2, int(math.sqrt(k)) + 1):
+            if k//g <= L:
+                res -= v[k//g]
+            else:
+                res -= bigV[x*g]
+        
+        for z in range(1, int(math.sqrt(k)) + 1):
+            if z != k//z:
+                res -= (k//z - k//(z + 1))*v[z]
+        bigV[x] = res
+        
+    return bigV[1]
 
 def mobius(n):
     '''

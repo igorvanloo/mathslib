@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mathslib
-Version: 2.8.0
+Version: 2.9.0
 Summary: Library of Mathematical functions and Algorithms
 Home-page: https://github.com/igorvanloo/mathslib
 Author: Igor van Loo
@@ -48,6 +48,7 @@ Breakdown
 |                | * overall_fraction(x)                                      |
 |                | * phi(x)                                                   |
 |                | * phi_sieve(x)                                             |
+|                | * phi_sum(x)                                               |
 |                | * mobius(x)                                                |
 |                | * mobius_k_sieve(limit, k)                                 |
 |                | * count_k_free(n, k)                                       |

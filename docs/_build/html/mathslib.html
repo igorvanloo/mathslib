@@ -165,8 +165,29 @@
 <dd class="field-even"><p>An array, where array[x] = phi(x)</p>
 </dd>
 </dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="mi">20</span><span class="p">)[</span><span class="mi">11</span><span class="p">:])</span> <span class="c1">#[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">phi_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">phi_sieve</span><span class="p">(</span><span class="mi">20</span><span class="p">)[</span><span class="mi">11</span><span class="p">:])</span> <span class="c1">#[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.phi_sum">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">phi_sum</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#phi_sum"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.phi_sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the <a class="reference external" href="https://en.wikipedia.org/wiki/Totient_summatory_function">Totient Summatory Function</a></p>
+<p>The algorithm is based on <a class="reference external" href="https://projecteuler.net/overview=0351">Overview of Project Euler Problem 351</a>
+specifically, this is an implementation of Algorithm 6, which you may view after Solving Problem 351</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>sum of phi(x) where x goes from 1 to n</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">phi_sum</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">))</span> <span class="c1">#30397486</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">phi</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)))</span> <span class="c1">#30397486</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">phi_sieve</span><span class="p">(</span><span class="mi">10</span><span class="o">**</span><span class="mi">4</span><span class="p">)))</span> <span class="c1">#30397486</span>
 </pre></div>
 </div>
 </dd></dl>

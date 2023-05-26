@@ -235,8 +235,8 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        print(phi(10)) #[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]</span>
-<span class="sd">        print(phi(20)[11:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]</span>
+<span class="sd">        print(phi_sieve(10)) #[0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]</span>
+<span class="sd">        print(phi_sieve(20)[11:]) #[10, 4, 12, 6, 8, 8, 16, 6, 18, 8]</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">phi</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
@@ -246,6 +246,57 @@
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">p</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
                 <span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-=</span> <span class="p">(</span><span class="n">phi</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">//</span> <span class="n">p</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">phi</span></div>
+
+<div class="viewcode-block" id="phi_sum"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.phi_sum">[docs]</a><span class="k">def</span> <span class="nf">phi_sum</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Computes the `Totient Summatory Function</span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Totient_summatory_function&gt;`_</span>
+<span class="sd">    </span>
+<span class="sd">    The algorithm is based on `Overview of Project Euler Problem 351 &lt;https://projecteuler.net/overview=0351&gt;`_</span>
+<span class="sd">    specifically, this is an implementation of Algorithm 6, which you may view after Solving Problem 351</span>
+
+<span class="sd">    :param n: An integer</span>
+
+<span class="sd">    :returns: sum of phi(x) where x goes from 1 to n</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">    </span>
+<span class="sd">        print(phi_sum(10**4)) #30397486</span>
+<span class="sd">        print(sum(phi(i) for i in range(1, 10**4))) #30397486</span>
+<span class="sd">        print(sum(phi_sieve(10**4))) #30397486</span>
+<span class="sd">        </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">L</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">bigV</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="n">L</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">L</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">//</span><span class="mi">2</span>
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">-=</span> <span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="o">//</span><span class="n">g</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">x</span><span class="o">//</span><span class="n">z</span> <span class="o">!=</span> <span class="n">z</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">-=</span> <span class="p">(</span><span class="n">x</span><span class="o">//</span><span class="n">z</span> <span class="o">-</span> <span class="n">x</span><span class="o">//</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>
+        
+        <span class="n">v</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="n">L</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">n</span><span class="o">//</span><span class="n">x</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">//</span><span class="mi">2</span>
+        
+        <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">k</span><span class="o">//</span><span class="n">g</span> <span class="o">&lt;=</span> <span class="n">L</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">-=</span> <span class="n">v</span><span class="p">[</span><span class="n">k</span><span class="o">//</span><span class="n">g</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">-=</span> <span class="n">bigV</span><span class="p">[</span><span class="n">x</span><span class="o">*</span><span class="n">g</span><span class="p">]</span>
+        
+        <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">z</span> <span class="o">!=</span> <span class="n">k</span><span class="o">//</span><span class="n">z</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">-=</span> <span class="p">(</span><span class="n">k</span><span class="o">//</span><span class="n">z</span> <span class="o">-</span> <span class="n">k</span><span class="o">//</span><span class="p">(</span><span class="n">z</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span><span class="o">*</span><span class="n">v</span><span class="p">[</span><span class="n">z</span><span class="p">]</span>
+        <span class="n">bigV</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span>
+        
+    <span class="k">return</span> <span class="n">bigV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span></div>
 
 <div class="viewcode-block" id="mobius"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.mobius">[docs]</a><span class="k">def</span> <span class="nf">mobius</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>

@@ -27,6 +27,7 @@ Breakdown
 |                | * overall_fraction(x)                                      |
 |                | * phi(x)                                                   |
 |                | * phi_sieve(x)                                             |
+|                | * phi_sum(x)                                               |
 |                | * mobius(x)                                                |
 |                | * mobius_k_sieve(limit, k)                                 |
 |                | * count_k_free(n, k)                                       |
