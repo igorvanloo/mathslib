@@ -20,6 +20,14 @@ mathslib.primes module
     :undoc-members:
     :show-inheritance:
     
+mathslib.divisors module
+------------------------
+
+.. automodule:: mathslib.divisors
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    
 mathslib.linalg module
 ----------------------
 

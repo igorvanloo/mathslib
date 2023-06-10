@@ -29,124 +29,8 @@ Various Number Theory functions
 Author: Igor van Loo
 '''
 import math
-from .primes import prime_factors, prime_sieve
+from .primes import prime_sieve
 from .simple import extended_euclidean_algorithm
-
-def divisors_of(x, include_x = True):
-    '''
-    Finds all the divisors of x
-
-    :param x: Integer to be checked
-    :param include_x: Optional boolean value, If true it will include x as a divisor of x
-
-    :returns: A list which contains all divisors of x
-    
-    .. code-block:: python
-    
-        print(divisors_of(15)) #[1, 3, 5, 15]
-        print(divisors_of(15, include_x = False)) #[1, 3, 5]
-
-    '''
-    if (type(x) != int):
-        return "All values must be integers"
-    divisors = []
-    for i in range(1, int(math.sqrt(x)) + 1):
-        if x % i == 0:
-            divisors.append(i)
-            divisors.append(int(x/i))
-    if include_x:
-        return sorted(divisors)
-    else:
-        divisors.remove(x)
-        return sorted(divisors)
-    
-def divisor(x, n):
-    '''
-    Implementation of `Divisor function 
-    <https://en.wikipedia.org/wiki/Divisor_function#Definition>`_ sigma(x, n) 
-    
-    :param x: An integer, denotes the power till which the divisors will be summed
-    :param n: An integer, denotes the number to find the divisors of
-    
-    :returns: An integer
-    
-    .. code-block:: python
-    
-        print(divisor(0, 9)) #3
-        print(divisor(1, 9)) #13
-        print(divisor(2, 9)) #91
-        
-    '''
-    if (type(n) != int) or (type(x) != int):
-        return "All values must be integers"
-    
-    pf = prime_factors(n)
-    total = 1
-    if x == 0:
-        for p in pf:
-            e = pf[p]
-            total *= (e + 1)
-    else:
-        for p in pf:
-            e = pf[p]
-            total *= ((pow(p, x*(e + 1)) - 1)//(pow(p, x) - 1))
-    return total
-
-def continued_fraction(x):
-    '''
-    Finds the `continued Fraction
-    <https://en.wikipedia.org/wiki/Continued_fraction>`_ of the sqrt(x)
-
-    :param x: An integer
-
-    :returns: A list containing the continued fraction of x
-    
-    .. code-block:: python
-    
-        print(continued_fraction(19)) #[4, 2, 1, 3, 1, 2, 8]
-    
-    .. note::
-        
-        The continued fraction may repeat forever, the code stops once it repeats, otherwise once we find the 100th number in the continued fraction
-    '''
-    if (type(x) != int):
-        return "All values must be integers"
-    m0 = 0
-    d0 = 1
-    a0 = math.floor(math.sqrt(x)) #These are the starting values
-    temp_list = [a0]
-    while True:
-        mn = int(d0*a0 - m0) 
-        dn = int((x - mn**2)/d0)
-        an = int(math.floor((math.sqrt(x) + mn) / dn)) #new values
-        temp_list.append(an)
-        if an == 2*math.floor(math.sqrt(x)):
-            break
-        if len(temp_list) == 100:
-            break
-        m0 = mn
-        d0 = dn
-        a0 = an #Replace values
-    return temp_list
-
-def overall_fraction(cf):
-    '''
-    :param cf: A list, this list represents the continued fraction of a number
-
-    :returns numerator: An integer, the numerator of the fraction
-    :returns denominator: An integer, the denominator of the fraction
-    
-    .. code-block:: python
-    
-        print(overall_fraction([4, 2, 6, 7])) #(415, 93)
-
-    '''
-    cf = cf[::-1]
-    denominator = 1
-    numerator = cf[0]
-    for x in range(1,len(cf)):
-        numerator, denominator = cf[x]*numerator + denominator, numerator
-    return numerator, denominator
 
 def phi(n):
     '''
@@ -349,7 +233,7 @@ def count_k_free(n, k):
     mobius_k = mobius_k_sieve(sq, 2)
     return sum([mobius_k[i]*(n//pow(i, k)) for i in range(1, sq + 1)])
 
-def ppt(limit, non_primitive = True):
+def pythagoren_triples(limit, non_primitive = True):
     '''
     Generates all `Pythagorean Triplets 
     <https://en.wikipedia.org/wiki/Pythagorean_triple>`_ up to the limit
@@ -703,4 +587,60 @@ def frobenius_number(*integers):
                     Q.append(u)
     #Step 3
     return max(S) - a1
+
+def continued_fraction(x):
+    '''
+    Finds the `continued Fraction
+    <https://en.wikipedia.org/wiki/Continued_fraction>`_ of the sqrt(x)
+
+    :param x: An integer
+
+    :returns: A list containing the continued fraction of x
+    
+    .. code-block:: python
+    
+        print(continued_fraction(19)) #[4, 2, 1, 3, 1, 2, 8]
+    
+    .. note::
+        
+        The continued fraction may repeat forever, the code stops once it repeats, otherwise once we find the 100th number in the continued fraction
+    '''
+    if (type(x) != int):
+        return "All values must be integers"
+    m0 = 0
+    d0 = 1
+    a0 = math.floor(math.sqrt(x)) #These are the starting values
+    temp_list = [a0]
+    while True:
+        mn = int(d0*a0 - m0) 
+        dn = int((x - mn**2)/d0)
+        an = int(math.floor((math.sqrt(x) + mn) / dn)) #new values
+        temp_list.append(an)
+        if an == 2*math.floor(math.sqrt(x)):
+            break
+        if len(temp_list) == 100:
+            break
+        m0 = mn
+        d0 = dn
+        a0 = an #Replace values
+    return temp_list
+
+def overall_fraction(cf):
+    '''
+    :param cf: A list, this list represents the continued fraction of a number
+
+    :returns numerator: An integer, the numerator of the fraction
+    :returns denominator: An integer, the denominator of the fraction
+    
+    .. code-block:: python
+    
+        print(overall_fraction([4, 2, 6, 7])) #(415, 93)
+
+    '''
+    cf = cf[::-1]
+    denominator = 1
+    numerator = cf[0]
+    for x in range(1,len(cf)):
+        numerator, denominator = cf[x]*numerator + denominator, numerator
+    return numerator, denominator
 

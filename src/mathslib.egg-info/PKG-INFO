@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mathslib
-Version: 2.9.0
+Version: 3.0.0
 Summary: Library of Mathematical functions and Algorithms
 Home-page: https://github.com/igorvanloo/mathslib
 Author: Igor van Loo
@@ -42,11 +42,7 @@ See the full documentation `here`_
 Breakdown
 ---------
 +----------------+------------------------------------------------------------+
-|numtheory.py    | * divisors_of(x, include_x)                                |
-|                | * divisors(x, n)                                           |
-|                | * continued_fraction(x)                                    |
-|                | * overall_fraction(x)                                      |
-|                | * phi(x)                                                   |
+|numtheory.py    | * phi(x)                                                   |
 |                | * phi_sieve(x)                                             |
 |                | * phi_sum(x)                                               |
 |                | * mobius(x)                                                |
@@ -60,15 +56,22 @@ Breakdown
 |                | * chinese_remainder_theorem(a1, a2, n1, n2)                |
 |                | * generalised_CRT(a1, a2, n1, n2)                          |
 |                | * frobenius_number(\*integers)                             |
+|                | * continued_fraction(x)                                    |
+|                | * overall_fraction(x)                                      |
 +----------------+------------------------------------------------------------+
-|prime.py        | * prime_sieve(limit, block_size, segment, values)          |
+|primes.py       | * prime_sieve(limit, block_size, segment, values)          |
 |                | * is_prime(x)                                              |
 |                | * prime_factors(x)                                         |
+|                | * spf_sieve(x)                                             |
 |                | * primepi(x)                                               |
 |                | * primepi_sieve(x)                                         |
 |                | * sum_of_primes(x)                                         |
 |                | * fermat_primality_test(x)                                 |
 |                | * miller_primality_test(n, millerrabin, numoftests)        |
++----------------+------------------------------------------------------------+
+|divisors.py     | * divisors(x, proper)                                      |
+|                | * divisor(x, n)                                            |
+|                | * divisor_sieve(x, n)                                      |
 +----------------+------------------------------------------------------------+
 |linalg.py       | * gauss_jordan_elimination(matrix, augmentedpart)          |
 |                | * solve(M, b)                                              |

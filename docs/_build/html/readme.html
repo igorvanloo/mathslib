@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Overview &#8212; mathslib 2.4.0 documentation</title>
+    <title>Overview &#8212; mathslib 3.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to mathslib’s documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.4.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 3.0.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Overview</a></li> 
       </ul>
     </div>  
@@ -61,10 +61,6 @@ of the functions were written by me. Relevant articles are also linked where the
 <tbody>
 <tr class="row-odd"><td><p>numtheory.py</p></td>
 <td><ul class="simple">
-<li><p>divisors_of(x, include_x)</p></li>
-<li><p>divisors(x, n)</p></li>
-<li><p>continued_fraction(x)</p></li>
-<li><p>overall_fraction(x)</p></li>
 <li><p>phi(x)</p></li>
 <li><p>phi_sieve(x)</p></li>
 <li><p>phi_sum(x)</p></li>
@@ -79,14 +75,17 @@ of the functions were written by me. Relevant articles are also linked where the
 <li><p>chinese_remainder_theorem(a1, a2, n1, n2)</p></li>
 <li><p>generalised_CRT(a1, a2, n1, n2)</p></li>
 <li><p>frobenius_number(*integers)</p></li>
+<li><p>continued_fraction(x)</p></li>
+<li><p>overall_fraction(x)</p></li>
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p>prime.py</p></td>
+<tr class="row-even"><td><p>primes.py</p></td>
 <td><ul class="simple">
 <li><p>prime_sieve(limit, block_size, segment, values)</p></li>
 <li><p>is_prime(x)</p></li>
 <li><p>prime_factors(x)</p></li>
+<li><p>spf_sieve(x)</p></li>
 <li><p>primepi(x)</p></li>
 <li><p>primepi_sieve(x)</p></li>
 <li><p>sum_of_primes(x)</p></li>
@@ -95,7 +94,15 @@ of the functions were written by me. Relevant articles are also linked where the
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>linalg.py</p></td>
+<tr class="row-odd"><td><p>divisors.py</p></td>
+<td><ul class="simple">
+<li><p>divisors(x, proper)</p></li>
+<li><p>divisor(x, n)</p></li>
+<li><p>divisor_sieve(x, n)</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>linalg.py</p></td>
 <td><ul class="simple">
 <li><p>gauss_jordan_elimination(matrix, augmentedpart)</p></li>
 <li><p>solve(M, b)</p></li>
@@ -110,7 +117,7 @@ of the functions were written by me. Relevant articles are also linked where the
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p>fib.py</p></td>
+<tr class="row-odd"><td><p>fib.py</p></td>
 <td><ul class="simple">
 <li><p>fibonacci(n)</p></li>
 <li><p>fib_till(limit)</p></li>
@@ -118,7 +125,7 @@ of the functions were written by me. Relevant articles are also linked where the
 </ul>
 </td>
 </tr>
-<tr class="row-odd"><td><p>algorithms.py</p></td>
+<tr class="row-even"><td><p>algorithms.py</p></td>
 <td><ul class="simple">
 <li><p>prims_algorithm(matrix)</p></li>
 <li><p>dijkstras_algorithm(graph, start_node, INFINITY)</p></li>
@@ -132,7 +139,7 @@ of the functions were written by me. Relevant articles are also linked where the
 </ul>
 </td>
 </tr>
-<tr class="row-even"><td><p>simple.py</p></td>
+<tr class="row-odd"><td><p>simple.py</p></td>
 <td><ul class="simple">
 <li><p>n_choose_r(n, r)</p></li>
 <li><p>number_to_base(n, b)</p></li>
@@ -212,12 +219,12 @@ of the functions were written by me. Relevant articles are also linked where the
         <li class="right" >
           <a href="index.html" title="Welcome to mathslib’s documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.4.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 3.0.0 documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Overview</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Igor van Loo.
+        &#169; Copyright 2023, Igor van Loo.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

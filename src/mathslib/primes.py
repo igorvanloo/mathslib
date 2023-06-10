@@ -168,6 +168,30 @@ def prime_factors(n):
             break
     return factors
 
+def spf_sieve(N):
+    '''
+    A smallest prime factor sieve. 
+
+    :param N: An integer
+
+    :returns: An array such that array[x] = smallest prime factor of x
+    
+    .. code-block:: python
+    
+        print(spf_sieve(10)) #[0, 1, 2, 3, 2, 5, 2, 7, 2, 3, 2]
+        
+    '''
+    if type(N) != int:
+        return "n must be an integer"
+    
+    spf = [i for i in range(N + 1)]
+    
+    for i in range(2, int(math.sqrt(N)) + 1):
+        if spf[i] == i:
+            for j in range(i*i, N + 1, i):
+                spf[j] = i
+    return spf
+
 def primepi(x):
     '''
     Primepi function is commonly known as `Prime Counting Function <https://en.wikipedia.org/wiki/Prime-counting_function>`_

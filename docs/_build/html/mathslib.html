@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>mathslib package &#8212; mathslib 2.4.0 documentation</title>
+    <title>mathslib package &#8212; mathslib 3.0.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/classic.css" />
     
@@ -32,7 +32,7 @@
         <li class="right" >
           <a href="modules.html" title="mathslib"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.4.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 3.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>
@@ -52,89 +52,6 @@
 <span id="mathslib-numtheory-module"></span><h2>mathslib.numtheory module<a class="headerlink" href="#module-mathslib.numtheory" title="Permalink to this heading">¶</a></h2>
 <p>Various Number Theory functions</p>
 <p>Author: Igor van Loo</p>
-<dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.divisors_of">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisors_of</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisors_of"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisors_of" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds all the divisors of x</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> – Integer to be checked</p></li>
-<li><p><strong>include_x</strong> – Optional boolean value, If true it will include x as a divisor of x</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list which contains all divisors of x</p>
-</dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span> <span class="c1">#[1, 3, 5, 15]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">divisors_of</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">include_x</span> <span class="o">=</span> <span class="kc">False</span><span class="p">))</span> <span class="c1">#[1, 3, 5]</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.divisor">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">divisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#divisor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.divisor" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> sigma(x, n)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> – An integer, denotes the power till which the divisors will be summed</p></li>
-<li><p><strong>n</strong> – An integer, denotes the number to find the divisors of</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>An integer</p>
-</dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#3</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#13</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#91</span>
-</pre></div>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.continued_fraction">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">continued_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#continued_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.continued_fraction" title="Permalink to this definition">¶</a></dt>
-<dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Continued_fraction">continued Fraction</a> of the sqrt(x)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>x</strong> – An integer</p>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>A list containing the continued fraction of x</p>
-</dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">continued_fraction</span><span class="p">(</span><span class="mi">19</span><span class="p">))</span> <span class="c1">#[4, 2, 1, 3, 1, 2, 8]</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The continued fraction may repeat forever, the code stops once it repeats, otherwise once we find the 100th number in the continued fraction</p>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.overall_fraction">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">overall_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#overall_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.overall_fraction" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>cf</strong> – A list, this list represents the continued fraction of a number</p>
-</dd>
-<dt class="field-even">Returns numerator<span class="colon">:</span></dt>
-<dd class="field-even"><p>An integer, the numerator of the fraction</p>
-</dd>
-<dt class="field-odd">Returns denominator<span class="colon">:</span></dt>
-<dd class="field-odd"><p>An integer, the denominator of the fraction</p>
-</dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">overall_fraction</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]))</span> <span class="c1">#(415, 93)</span>
-</pre></div>
-</div>
-</dd></dl>
-
 <dl class="py function">
 <dt class="sig sig-object py" id="mathslib.numtheory.phi">
 <span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">phi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#phi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.phi" title="Permalink to this definition">¶</a></dt>
@@ -264,8 +181,8 @@ The mechanics of this function come from this <a class="reference external" href
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="mathslib.numtheory.ppt">
-<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">ppt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_primitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#ppt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.ppt" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="mathslib.numtheory.pythagoren_triples">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">pythagoren_triples</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">limit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">non_primitive</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#pythagoren_triples"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.pythagoren_triples" title="Permalink to this definition">¶</a></dt>
 <dd><p>Generates all <a class="reference external" href="https://en.wikipedia.org/wiki/Pythagorean_triple">Pythagorean Triplets</a> up to the limit</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -474,6 +391,46 @@ specifically, this is an implementation of their Breadth-First Method which you 
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.continued_fraction">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">continued_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#continued_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.continued_fraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the <a class="reference external" href="https://en.wikipedia.org/wiki/Continued_fraction">continued Fraction</a> of the sqrt(x)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list containing the continued fraction of x</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">continued_fraction</span><span class="p">(</span><span class="mi">19</span><span class="p">))</span> <span class="c1">#[4, 2, 1, 3, 1, 2, 8]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The continued fraction may repeat forever, the code stops once it repeats, otherwise once we find the 100th number in the continued fraction</p>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.numtheory.overall_fraction">
+<span class="sig-prename descclassname"><span class="pre">mathslib.numtheory.</span></span><span class="sig-name descname"><span class="pre">overall_fraction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cf</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/numtheory.html#overall_fraction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.numtheory.overall_fraction" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cf</strong> – A list, this list represents the continued fraction of a number</p>
+</dd>
+<dt class="field-even">Returns numerator<span class="colon">:</span></dt>
+<dd class="field-even"><p>An integer, the numerator of the fraction</p>
+</dd>
+<dt class="field-odd">Returns denominator<span class="colon">:</span></dt>
+<dd class="field-odd"><p>An integer, the denominator of the fraction</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">overall_fraction</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]))</span> <span class="c1">#(415, 93)</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </section>
 <section id="module-mathslib.primes">
 <span id="mathslib-primes-module"></span><h2>mathslib.primes module<a class="headerlink" href="#module-mathslib.primes" title="Permalink to this heading">¶</a></h2>
@@ -535,6 +492,23 @@ specifically, this is an implementation of their Breadth-First Method which you 
 </dl>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">prime_factors</span><span class="p">(</span><span class="mi">123123</span><span class="p">))</span> <span class="c1">#{3: 1, 7: 1, 11: 1, 13: 1, 41: 1}</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">prime_factors</span><span class="p">(</span><span class="mi">1123619623</span><span class="p">))</span> <span class="c1">#{7: 1, 160517089: 1}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.primes.spf_sieve">
+<span class="sig-prename descclassname"><span class="pre">mathslib.primes.</span></span><span class="sig-name descname"><span class="pre">spf_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/primes.html#spf_sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.primes.spf_sieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>A smallest prime factor sieve.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>N</strong> – An integer</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An array such that array[x] = smallest prime factor of x</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">spf_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span> <span class="c1">#[0, 1, 2, 3, 2, 5, 2, 7, 2, 3, 2]</span>
 </pre></div>
 </div>
 </dd></dl>
@@ -655,6 +629,78 @@ with the option to use the <a class="reference external" href="https://en.wikipe
 <p>Automatically uses the Miller Primality Test to get an exact an answer if n &lt; 3317044064679887385961981 and swaps
 to using the first 17 primes, but no longer guarantees a correct answer. You may optionally use a regular miller-rabin test
 with a specified number of tests</p>
+</div>
+</dd></dl>
+
+</section>
+<section id="module-mathslib.divisors">
+<span id="mathslib-divisors-module"></span><h2>mathslib.divisors module<a class="headerlink" href="#module-mathslib.divisors" title="Permalink to this heading">¶</a></h2>
+<p>Divisor related functions</p>
+<p>Author: Igor van Loo</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.divisors.divisors">
+<span class="sig-prename descclassname"><span class="pre">mathslib.divisors.</span></span><span class="sig-name descname"><span class="pre">divisors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">proper</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/divisors.html#divisors"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.divisors.divisors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds all the divisors of n using the prime factorisation of n and recursion to find all divisors. 
+<a class="reference external" href="https://numericalrecipes.wordpress.com/tag/divisors/">Blog by numericalrecipes</a> is an excellent article explaining the algorithm and even faster versions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – Integer</p></li>
+<li><p><strong>proper</strong> – Optional boolean value, If true it will output all proper divisors of n</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>A list which contains all divisors of n</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">divisors</span><span class="p">(</span><span class="mi">15</span><span class="p">))</span> <span class="c1">#[1, 3, 5, 15]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisors</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="n">proper</span> <span class="o">=</span> <span class="kc">True</span><span class="p">))</span> <span class="c1">#[1, 3, 5]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.divisors.divisor">
+<span class="sig-prename descclassname"><span class="pre">mathslib.divisors.</span></span><span class="sig-name descname"><span class="pre">divisor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/divisors.html#divisor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.divisors.divisor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> sigma(x, n)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – An integer, denotes the power till which the divisors will be summed</p></li>
+<li><p><strong>n</strong> – An integer, denotes the number to find the divisors of</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An integer</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#3, 9 has 3 divisors [1, 3, 9]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#13 = 1 + 3 + 9</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisor</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span> <span class="c1">#91 = 1*1 + 3*3 + 9*9</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="mathslib.divisors.divisor_sieve">
+<span class="sig-prename descclassname"><span class="pre">mathslib.divisors.</span></span><span class="sig-name descname"><span class="pre">divisor_sieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">N</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/mathslib/divisors.html#divisor_sieve"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#mathslib.divisors.divisor_sieve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implementation of <a class="reference external" href="https://en.wikipedia.org/wiki/Divisor_function#Definition">Divisor function</a> sigma(x, n) sieve. 
+It returns an array such that array[x] = sigma(x, n)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – An integer</p></li>
+<li><p><strong>n</strong> – An integer, denotes the length of the array</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>An integer</p>
+</dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">divisors_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="c1">#[0, 1, 2, 2, 3, 2, 4, 2, 4, 3, 4]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisors_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="c1">#[0, 1, 3, 4, 7, 6, 12, 8, 15, 13, 18]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">divisors_sieve</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1">#[0, 1, 5, 10, 21, 26, 50, 50, 85, 91, 130]</span>
+</pre></div>
 </div>
 </dd></dl>
 
@@ -1380,6 +1426,7 @@ hull algorithm</p>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-mathslib.numtheory">mathslib.numtheory module</a></li>
 <li><a class="reference internal" href="#module-mathslib.primes">mathslib.primes module</a></li>
+<li><a class="reference internal" href="#module-mathslib.divisors">mathslib.divisors module</a></li>
 <li><a class="reference internal" href="#module-mathslib.linalg">mathslib.linalg module</a></li>
 <li><a class="reference internal" href="#module-mathslib.fib">mathslib.fib module</a></li>
 <li><a class="reference internal" href="#module-mathslib.algorithms">mathslib.algorithms module</a></li>
@@ -1428,13 +1475,13 @@ hull algorithm</p>
         <li class="right" >
           <a href="modules.html" title="mathslib"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">mathslib 2.4.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="index.html">mathslib 3.0.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="modules.html" >mathslib</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib package</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Igor van Loo.
+        &#169; Copyright 2023, Igor van Loo.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

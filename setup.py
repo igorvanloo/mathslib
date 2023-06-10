@@ -9,7 +9,7 @@ long_description = (here / "README.rst").read_text(encoding="utf-8")
 
 setup(
     name = "mathslib",  # Required
-    version="2.9.0",  # Required
+    version="3.0.0",  # Required
     description="Library of Mathematical functions and Algorithms",  # Optional
     long_description=long_description,  # Optional
     long_description_content_type="text/x-rst",  # Optional
