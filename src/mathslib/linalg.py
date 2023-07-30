@@ -348,3 +348,31 @@ def matrix_mul(A, B):
               matrix[row][col] += A[row][elt] * B[elt][col]
     return matrix
 
+def matrix_pow(A, n):
+    '''
+    Matrix exponentiation. Uses the `Exponentiation by squaring <https://en.wikipedia.org/wiki/Exponentiation_by_squaring>`_ method 
+
+    :param A: Matrix
+    :param n: exponenent
+
+    :returns: Matrix A^n
+    
+    .. code-block:: python
+    
+        A = [[1, 1], 
+             [1, 0]]
+        print(matrix_pow(A, 10)) #[[89, 55], [55, 34]]
+        
+    .. note::
+        
+        Seem familiar? These are fibonacci numbers! 
+        This is nearly identical to my fibonacci generation function as it uses the same method, 
+        however the fibonacci is slightly more optimized due to it's properties
+        
+    '''
+    A_res = A
+    for bit in bin(n)[3:]:
+        A_res = matrix_mul(A_res, A_res)
+        if bit == "1":
+            A_res = matrix_mul(A_res, A)
+    return A_res

@@ -28,28 +28,43 @@ Fibonacci related functions
 Author: Igor van Loo
 '''
 
-def fibonacci(n):
+def fibonacci(n, m = None):
     '''
-    Finds the n-th Fibonacci using matrix exponentiation
-    Method is outlined `here <https://stackoverflow.com/questions/18172257/efficient-calculation-of-fibonacci-series/23462371#23462371>`__
+    Finds the n-th Fibonacci using matrix exponentiation by squaring
+    Method is outlined `here <http://homepages.math.uic.edu/~leon/cs-mcs401-s08/handouts/fastexp.pdf>`__
+    Specifically, this is an implementation of the third algorithm.
+    
+    Also includes an option to calculate with a given modulus
 
     :param n: An integer
+    :param m: An integer, default is None, if specificed will find F(n) (mod m)
 
-    :returns: The n-th Fibonacci number
+    :returns: The n-th Fibonacci number (modulus m if specified)
     
     .. code-block:: python
     
         print(fibonacci(100)) #354224848179261915075
+        print(fibonacci(100, 10**7 + 9)) #5475613
+        
     '''
     if type(n) != int:
         return "n must be an integer"
-    v1, v2, v3 = 1, 1, 0    # initialise a matrix [[1,1],[1,0]]
-    for rec in bin(n)[3:]:  # perform fast exponentiation of the matrix (quickly raise it to the nth power)
-        calc = v2*v2
-        v1, v2, v3 = v1*v1+calc, (v1+v3)*v2, calc+v3*v3
-        if rec=='1':
-            v1, v2, v3 = v1+v2, v1, v2  
-    return v2
+    
+    if m != None:
+        f2, f1, f0 = 1, 1, 0
+        for bit in bin(n)[3:]:
+            v = (f1*f1) % m
+            f2, f1, f0 = (f2 * f2 + v) % m, ((f2 + f0) * f1) % m, (v + f0 * f0) % m
+            if bit == '1':
+                f2, f1, f0 = f2 + f1, f2, f1 
+    else:
+        f2, f1, f0 = 1, 1, 0
+        for bit in bin(n)[3:]:
+            v = f1*f1
+            f2, f1, f0 = f2 * f2 + v, (f2 + f0) * f1, v + f0 * f0
+            if bit == '1':
+                f2, f1, f0 = f2 + f1, f2, f1   
+    return f1
 
 def fib_till(limit):
     '''

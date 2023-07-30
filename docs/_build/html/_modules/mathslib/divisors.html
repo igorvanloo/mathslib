@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.divisors &#8212; mathslib 3.0.0 documentation</title>
+    <title>mathslib.divisors &#8212; mathslib 3.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.divisors</a></li> 
       </ul>
@@ -157,13 +157,16 @@
 <span class="sd">    :param x: An integer</span>
 <span class="sd">    :param n: An integer, denotes the length of the array</span>
 <span class="sd">    </span>
-<span class="sd">    :returns: An integer</span>
+<span class="sd">    :returns: An array such that array[x] = sigma(x, n)</span>
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        print(divisors_sieve(10, 0)) #[0, 1, 2, 2, 3, 2, 4, 2, 4, 3, 4]</span>
-<span class="sd">        print(divisors_sieve(10, 1)) #[0, 1, 3, 4, 7, 6, 12, 8, 15, 13, 18]</span>
-<span class="sd">        print(divisors_sieve(10, 2)) #[0, 1, 5, 10, 21, 26, 50, 50, 85, 91, 130]</span>
+<span class="sd">        print(divisors_sieve(0, 10)) #[0, 1, 2, 2, 3, 2, 4, 2, 4, 3, 4]</span>
+<span class="sd">        print(divisors_sieve(1, 10)) #[0, 1, 3, 4, 7, 6, 12, 8, 15, 13, 18]</span>
+<span class="sd">        print(divisors_sieve(2, 10)) #[0, 1, 5, 10, 21, 26, 50, 50, 85, 91, 130]</span>
+<span class="sd">    </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        The case x = 0 is especially useful as it gives an array such that array[x] = number of divisors of x</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">spf</span> <span class="o">=</span> <span class="n">spf_sieve</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
@@ -221,7 +224,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.divisors</a></li> 
       </ul>

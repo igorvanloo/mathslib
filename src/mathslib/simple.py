@@ -31,26 +31,43 @@ Author: Igor van Loo
 '''
 import math
 
-def n_choose_r(n, r):
+def bin_exp(a, b, c, n, m = None):
     '''
-    n choose r function
+    If (a + b√(c))^n (mod m) = x + y√(c), then this function finds x, y by using binary exponentiation.
 
-    :param n: An integer
-    :param r: An integer
+    :param a: An integer, coefficient of nonsqrt term
+    :param b: An integer, coefficient of sqrt
+    :param c: An integer, inside the sqrt
+    :param n: An integer, exponent
+    :param m: An integer, the modulus
 
-    :returns: n choose r
-    
+    :returns: x, y such that (a + b√(c))^n (mod m) = x + y√(c)
+        
     .. code-block:: python
-    
-        print(n_choose_r(50, 30)) #47129212243960
+        #Using fibonacci relation to golden ratio we know
+        #(((1 + sqrt(5))/2)^n - ((1 + sqrt(5))/2)^n)/sqrt(5) = F(n)
+        
+        x = bin_exp(1/2, 1/2, 5, 10)  #x = (61.5, 27.5) represents 61.5 + 27.5*sqrt(5)
+        y = bin_exp(1/2, -1/2, 5, 10) #y = (61.5, -27.5) represents 61.5 - 27.5*sqrt(5)
+        
+        #Therefore, F(10) = (61.5 + 27.5*sqrt(5) - (61.5 - 27.5*sqrt(5)))/sqrt(5)) = 55
+        
+        print(x[1] - y[1]) #55.0
         
     '''
-    if (type(n) != int) or (type(r) != int):
-        return "n and r must be an integers"
-    if r > n:
-        return "n must be greter than r"
+    if m == None:
+        a_res, b_res = a, b
+        for bit in bin(n)[3:]:
+            a_res, b_res = (a_res*a_res + c*b_res*b_res), 2*a_res*b_res
+            if bit == "1":
+                a_res, b_res = (a*a_res + b*c*b_res), (b*a_res + a*b_res)
     else:
-        return int(math.factorial(n) / (math.factorial(r) * math.factorial(n-r)))
+        a_res, b_res = a, b
+        for bit in bin(n)[3:]:
+            a_res, b_res = (a_res*a_res + c*b_res*b_res) % m, 2*a_res*b_res % m
+            if bit == "1":
+                a_res, b_res = (a*a_res + b*c*b_res) % m, (b*a_res + a*b_res) % m
+    return a_res, b_res
     
 def number_to_base(n, b):
     '''

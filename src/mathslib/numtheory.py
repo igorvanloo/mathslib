@@ -179,20 +179,21 @@ def mobius(n):
             break
     return pow(-1, num_of_primes)
 
-def mobius_k_sieve(limit, k):
+def mobius_k_sieve(limit, k = 2):
     '''
     A sieve for the Generalized `Mobius function
     <https://en.wikipedia.org/wiki/M%C3%B6bius_function>`_, the mathematics of this function can be read
     in the following `PDF <https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-32/issue-1/M%C3%B6bius-functions-of-order-k/pjm/1102977519.pdf>`_
-
+    Note that when k = 2 we get the normal mobius function shown above.
+    
     :param limit: An integer
-    :param k: An integer
+    :param k: Optional integer, default value is 2 which gives a regular mobius sieve
 
     :returns: An array where array[x] = μ(k, x)
     
     .. code-block:: python
     
-        print(mobius_k_sieve(10, 2)) #[0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1]
+        print(mobius_k_sieve(10)) #[0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1]
         print(mobius_k_sieve(10, 3)) #[0, 1, -1, -1, -1, -1, 1, -1, 0, -1, 1]
     
     '''
@@ -230,10 +231,10 @@ def count_k_free(n, k):
         
     '''
     sq = math.floor(n**(1/k))
-    mobius_k = mobius_k_sieve(sq, 2)
+    mobius_k = mobius_k_sieve(sq)
     return sum([mobius_k[i]*(n//pow(i, k)) for i in range(1, sq + 1)])
 
-def pythagoren_triples(limit, non_primitive = True):
+def pythagorean_triples(limit, non_primitive = True):
     '''
     Generates all `Pythagorean Triplets 
     <https://en.wikipedia.org/wiki/Pythagorean_triple>`_ up to the limit
@@ -245,28 +246,79 @@ def pythagoren_triples(limit, non_primitive = True):
     
     .. code-block:: python
         
-        print(ppt(20)) #[[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]
-        print(ppt(20, False)) #[[3, 4, 5], [5, 12, 13], [15, 8, 17]]
-        print(len(ppt(100, False))) #16
+        print(pythagorean_triples(20)) #[[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]
+        print(pythagorean_triples(20, False)) #[[3, 4, 5], [5, 12, 13], [15, 8, 17]]
+        print(len(pythagorean_triples(100, False))) #16
     
     '''
     if (type(limit) != int):
         return "All values must be integers"
     triples = []
     for m in range(2,int(math.sqrt(limit))+1):
-        for n in range(1,m):
-            if (m+n) % 2 == 1 and math.gcd(m,n) == 1:
+        for n in range(1 + m % 2, m, 2):
+            if math.gcd(m,n) == 1:
                 a = m**2 + n**2
                 b = m**2 - n**2
                 c = 2*m*n
-                p = max(a,b,c)
-                if p < limit:
+                if a < limit:
                     if non_primitive:
-                        for k in range(1,int(limit/p)+1):
+                        for k in range(1,int(limit/a)+1):
                             triples.append([k*b,k*c,k*a])
                     else:
                         triples.append([b,c,a])
     return triples
+
+def count_primitive_pythagorean_triples(n):
+    '''
+    Function counts the number of primitive `Pythagorean Triplets 
+    <https://en.wikipedia.org/wiki/Pythagorean_triple>`_ with hypotenuse less than n.
+    Algorithm is adapted from the following paper `Pythagorean triangles with legs less than n <https://www.sciencedirect.com/science/article/pii/S0377042701004964#aep-abstract-id6>`_
+
+    :param n: An integer
+
+    :returns: Number of primitive Pythagorean triplets with hypotenuse less than n
+    
+    .. code-block:: python
+        
+        print(count_primitive_pythagorean_triples(10**10)) #1591549475
+        print(count_primitive_pythagorean_triples(10**8)) #15915493
+        
+    .. note::
+        Due to some precision errors the answer can somtimes be a few numbers off for example the correct answer
+        for n = 10^8 is actually 15915492, one less than what my function gives.
+    
+    '''
+    if (type(n) != int):
+        return "All values must be integers"
+    mu = mobius_k_sieve(int(math.sqrt(n)) + 1)
+    
+    R_cache = {}
+    def R(n):
+        if n in R_cache:
+            return R_cache[n]
+        c = 0 
+        for x in range(int(math.sqrt(n)) + 1):
+            min_y, max_y = x + 1, int(math.sqrt(n - x*x))
+            if max_y < min_y:
+                break
+            c += max_y - min_y + 1
+        R_cache[n] = c
+        return c
+    
+    def Q(n):
+        total = 0
+        m = math.sqrt(n)
+        for d in range(1, int(m) + 1):
+            total += mu[d] * R(n // (d*d))
+        return total
+    
+    c = 0
+    k = 0
+    while 2**k <= n:
+        x = Q(n // pow(2, k))
+        c += pow(-1, k) * x
+        k += 1
+    return c
 
 def legendre_factorial(x):
     '''

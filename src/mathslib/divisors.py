@@ -116,7 +116,7 @@ def divisor_sieve(x, N):
     :param x: An integer
     :param n: An integer, denotes the length of the array
     
-    :returns: An integer
+    :returns: An array such that array[x] = sigma(x, n)
     
     .. code-block:: python
     

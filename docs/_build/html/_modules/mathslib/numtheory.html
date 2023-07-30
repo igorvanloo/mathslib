@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.numtheory &#8212; mathslib 3.0.0 documentation</title>
+    <title>mathslib.numtheory &#8212; mathslib 3.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.numtheory</a></li> 
       </ul>
@@ -220,20 +220,21 @@
             <span class="k">break</span>
     <span class="k">return</span> <span class="nb">pow</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_of_primes</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="mobius_k_sieve"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.mobius_k_sieve">[docs]</a><span class="k">def</span> <span class="nf">mobius_k_sieve</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<div class="viewcode-block" id="mobius_k_sieve"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.mobius_k_sieve">[docs]</a><span class="k">def</span> <span class="nf">mobius_k_sieve</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    A sieve for the Generalized `Mobius function</span>
 <span class="sd">    &lt;https://en.wikipedia.org/wiki/M%C3%B6bius_function&gt;`_, the mathematics of this function can be read</span>
 <span class="sd">    in the following `PDF &lt;https://projecteuclid.org/journals/pacific-journal-of-mathematics/volume-32/issue-1/M%C3%B6bius-functions-of-order-k/pjm/1102977519.pdf&gt;`_</span>
-
+<span class="sd">    Note that when k = 2 we get the normal mobius function shown above.</span>
+<span class="sd">    </span>
 <span class="sd">    :param limit: An integer</span>
-<span class="sd">    :param k: An integer</span>
+<span class="sd">    :param k: Optional integer, default value is 2 which gives a regular mobius sieve</span>
 
 <span class="sd">    :returns: An array where array[x] = μ(k, x)</span>
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">    </span>
-<span class="sd">        print(mobius_k_sieve(10, 2)) #[0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1]</span>
+<span class="sd">        print(mobius_k_sieve(10)) #[0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1]</span>
 <span class="sd">        print(mobius_k_sieve(10, 3)) #[0, 1, -1, -1, -1, -1, 1, -1, 0, -1, 1]</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
@@ -271,10 +272,10 @@
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">sq</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">n</span><span class="o">**</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">k</span><span class="p">))</span>
-    <span class="n">mobius_k</span> <span class="o">=</span> <span class="n">mobius_k_sieve</span><span class="p">(</span><span class="n">sq</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">mobius_k</span> <span class="o">=</span> <span class="n">mobius_k_sieve</span><span class="p">(</span><span class="n">sq</span><span class="p">)</span>
     <span class="k">return</span> <span class="nb">sum</span><span class="p">([</span><span class="n">mobius_k</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">n</span><span class="o">//</span><span class="nb">pow</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">sq</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span></div>
 
-<div class="viewcode-block" id="pythagoren_triples"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.pythagoren_triples">[docs]</a><span class="k">def</span> <span class="nf">pythagoren_triples</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">non_primitive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="pythagorean_triples"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.pythagorean_triples">[docs]</a><span class="k">def</span> <span class="nf">pythagorean_triples</span><span class="p">(</span><span class="n">limit</span><span class="p">,</span> <span class="n">non_primitive</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Generates all `Pythagorean Triplets </span>
 <span class="sd">    &lt;https://en.wikipedia.org/wiki/Pythagorean_triple&gt;`_ up to the limit</span>
@@ -286,28 +287,79 @@
 <span class="sd">    </span>
 <span class="sd">    .. code-block:: python</span>
 <span class="sd">        </span>
-<span class="sd">        print(ppt(20)) #[[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]</span>
-<span class="sd">        print(ppt(20, False)) #[[3, 4, 5], [5, 12, 13], [15, 8, 17]]</span>
-<span class="sd">        print(len(ppt(100, False))) #16</span>
+<span class="sd">        print(pythagorean_triples(20)) #[[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]]</span>
+<span class="sd">        print(pythagorean_triples(20, False)) #[[3, 4, 5], [5, 12, 13], [15, 8, 17]]</span>
+<span class="sd">        print(len(pythagorean_triples(100, False))) #16</span>
 <span class="sd">    </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">limit</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
     <span class="n">triples</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">limit</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="p">):</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">m</span><span class="o">+</span><span class="n">n</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">m</span> <span class="o">%</span> <span class="mi">2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">math</span><span class="o">.</span><span class="n">gcd</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">n</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="n">a</span> <span class="o">=</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
                 <span class="n">b</span> <span class="o">=</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
                 <span class="n">c</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">m</span><span class="o">*</span><span class="n">n</span>
-                <span class="n">p</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">p</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">limit</span><span class="p">:</span>
                     <span class="k">if</span> <span class="n">non_primitive</span><span class="p">:</span>
-                        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">limit</span><span class="o">/</span><span class="n">p</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+                        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">int</span><span class="p">(</span><span class="n">limit</span><span class="o">/</span><span class="n">a</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
                             <span class="n">triples</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">k</span><span class="o">*</span><span class="n">b</span><span class="p">,</span><span class="n">k</span><span class="o">*</span><span class="n">c</span><span class="p">,</span><span class="n">k</span><span class="o">*</span><span class="n">a</span><span class="p">])</span>
                     <span class="k">else</span><span class="p">:</span>
                         <span class="n">triples</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">b</span><span class="p">,</span><span class="n">c</span><span class="p">,</span><span class="n">a</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">triples</span></div>
+
+<div class="viewcode-block" id="count_primitive_pythagorean_triples"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.count_primitive_pythagorean_triples">[docs]</a><span class="k">def</span> <span class="nf">count_primitive_pythagorean_triples</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Function counts the number of primitive `Pythagorean Triplets </span>
+<span class="sd">    &lt;https://en.wikipedia.org/wiki/Pythagorean_triple&gt;`_ with hypotenuse less than n.</span>
+<span class="sd">    Algorithm is adapted from the following paper `Pythagorean triangles with legs less than n &lt;https://www.sciencedirect.com/science/article/pii/S0377042701004964#aep-abstract-id6&gt;`_</span>
+
+<span class="sd">    :param n: An integer</span>
+
+<span class="sd">    :returns: Number of primitive Pythagorean triplets with hypotenuse less than n</span>
+<span class="sd">    </span>
+<span class="sd">    .. code-block:: python</span>
+<span class="sd">        </span>
+<span class="sd">        print(count_primitive_pythagorean_triples(10**10)) #1591549475</span>
+<span class="sd">        print(count_primitive_pythagorean_triples(10**8)) #15915493</span>
+<span class="sd">        </span>
+<span class="sd">    .. note::</span>
+<span class="sd">        Due to some precision errors the answer can somtimes be a few numbers off for example the correct answer</span>
+<span class="sd">        for n = 10^8 is actually 15915492, one less than what my function gives.</span>
+<span class="sd">    </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;All values must be integers&quot;</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">mobius_k_sieve</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">R_cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">def</span> <span class="nf">R</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">R_cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">R_cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span> 
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">min_y</span><span class="p">,</span> <span class="n">max_y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">max_y</span> <span class="o">&lt;</span> <span class="n">min_y</span><span class="p">:</span>
+                <span class="k">break</span>
+            <span class="n">c</span> <span class="o">+=</span> <span class="n">max_y</span> <span class="o">-</span> <span class="n">min_y</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">R_cache</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="k">return</span> <span class="n">c</span>
+    
+    <span class="k">def</span> <span class="nf">Q</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">mu</span><span class="p">[</span><span class="n">d</span><span class="p">]</span> <span class="o">*</span> <span class="n">R</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="p">(</span><span class="n">d</span><span class="o">*</span><span class="n">d</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">total</span>
+    
+    <span class="n">c</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="mi">2</span><span class="o">**</span><span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">Q</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+        <span class="n">c</span> <span class="o">+=</span> <span class="nb">pow</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span>
+        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">c</span></div>
 
 <div class="viewcode-block" id="legendre_factorial"><a class="viewcode-back" href="../../mathslib.html#mathslib.numtheory.legendre_factorial">[docs]</a><span class="k">def</span> <span class="nf">legendre_factorial</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -716,7 +768,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.0.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.numtheory</a></li> 
       </ul>

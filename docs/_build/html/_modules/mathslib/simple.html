@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mathslib.simple &#8212; mathslib 2.4.0 documentation</title>
+    <title>mathslib.simple &#8212; mathslib 3.1.0 documentation</title>
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/classic.css" />
     
@@ -27,7 +27,7 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.simple</a></li> 
       </ul>
@@ -72,26 +72,43 @@
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="kn">import</span> <span class="nn">math</span>
 
-<div class="viewcode-block" id="n_choose_r"><a class="viewcode-back" href="../../mathslib.html#mathslib.simple.n_choose_r">[docs]</a><span class="k">def</span> <span class="nf">n_choose_r</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">r</span><span class="p">):</span>
+<div class="viewcode-block" id="bin_exp"><a class="viewcode-back" href="../../mathslib.html#mathslib.simple.bin_exp">[docs]</a><span class="k">def</span> <span class="nf">bin_exp</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    n choose r function</span>
+<span class="sd">    If (a + b√(c))^n (mod m) = x + y√(c), then this function finds x, y by using binary exponentiation.</span>
 
-<span class="sd">    :param n: An integer</span>
-<span class="sd">    :param r: An integer</span>
+<span class="sd">    :param a: An integer, coefficient of nonsqrt term</span>
+<span class="sd">    :param b: An integer, coefficient of sqrt</span>
+<span class="sd">    :param c: An integer, inside the sqrt</span>
+<span class="sd">    :param n: An integer, exponent</span>
+<span class="sd">    :param m: An integer, the modulus</span>
 
-<span class="sd">    :returns: n choose r</span>
-<span class="sd">    </span>
+<span class="sd">    :returns: x, y such that (a + b√(c))^n (mod m) = x + y√(c)</span>
+<span class="sd">        </span>
 <span class="sd">    .. code-block:: python</span>
-<span class="sd">    </span>
-<span class="sd">        print(n_choose_r(50, 30)) #47129212243960</span>
+<span class="sd">        #Using fibonacci relation to golden ratio we know</span>
+<span class="sd">        #(((1 + sqrt(5))/2)^n - ((1 + sqrt(5))/2)^n)/sqrt(5) = F(n)</span>
+<span class="sd">        </span>
+<span class="sd">        x = bin_exp(1/2, 1/2, 5, 10)  #x = (61.5, 27.5) represents 61.5 + 27.5*sqrt(5)</span>
+<span class="sd">        y = bin_exp(1/2, -1/2, 5, 10) #y = (61.5, -27.5) represents 61.5 - 27.5*sqrt(5)</span>
+<span class="sd">        </span>
+<span class="sd">        #Therefore, F(10) = (61.5 + 27.5*sqrt(5) - (61.5 - 27.5*sqrt(5)))/sqrt(5)) = 55</span>
+<span class="sd">        </span>
+<span class="sd">        print(x[1] - y[1]) #55.0</span>
 <span class="sd">        </span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">int</span><span class="p">):</span>
-        <span class="k">return</span> <span class="s2">&quot;n and r must be an integers&quot;</span>
-    <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="n">n</span><span class="p">:</span>
-        <span class="k">return</span> <span class="s2">&quot;n must be greter than r&quot;</span>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">a_res</span><span class="p">,</span> <span class="n">b_res</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+        <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">3</span><span class="p">:]:</span>
+            <span class="n">a_res</span><span class="p">,</span> <span class="n">b_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_res</span><span class="o">*</span><span class="n">a_res</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">b_res</span><span class="o">*</span><span class="n">b_res</span><span class="p">),</span> <span class="mi">2</span><span class="o">*</span><span class="n">a_res</span><span class="o">*</span><span class="n">b_res</span>
+            <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                <span class="n">a_res</span><span class="p">,</span> <span class="n">b_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a_res</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="n">b_res</span><span class="p">),</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">a_res</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">b_res</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="n">r</span><span class="p">)))</span></div>
+        <span class="n">a_res</span><span class="p">,</span> <span class="n">b_res</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+        <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">bin</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">3</span><span class="p">:]:</span>
+            <span class="n">a_res</span><span class="p">,</span> <span class="n">b_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_res</span><span class="o">*</span><span class="n">a_res</span> <span class="o">+</span> <span class="n">c</span><span class="o">*</span><span class="n">b_res</span><span class="o">*</span><span class="n">b_res</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">a_res</span><span class="o">*</span><span class="n">b_res</span> <span class="o">%</span> <span class="n">m</span>
+            <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span><span class="p">:</span>
+                <span class="n">a_res</span><span class="p">,</span> <span class="n">b_res</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">a_res</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">c</span><span class="o">*</span><span class="n">b_res</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span><span class="p">,</span> <span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">a_res</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">b_res</span><span class="p">)</span> <span class="o">%</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="n">a_res</span><span class="p">,</span> <span class="n">b_res</span></div>
     
 <div class="viewcode-block" id="number_to_base"><a class="viewcode-back" href="../../mathslib.html#mathslib.simple.number_to_base">[docs]</a><span class="k">def</span> <span class="nf">number_to_base</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="sd">&#39;&#39;&#39;</span>
@@ -269,13 +286,13 @@
         <li class="right" >
           <a href="../../py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
-        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 2.4.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">mathslib 3.1.0 documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">mathslib.simple</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Igor van Loo.
+        &#169; Copyright 2023, Igor van Loo.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
   </body>

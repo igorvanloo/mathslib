@@ -35,7 +35,7 @@ class TestNumberTheory(unittest.TestCase):
         self.assertEqual(NT.mobius(7), -1)
     
     def test_mobius_k_sieve(self):
-        self.assertEqual(NT.mobius_k_sieve(10, 2), [0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1])
+        self.assertEqual(NT.mobius_k_sieve(10), [0, 1, -1, -1, 0, -1, 1, -1, 0, 0, 1])
         self.assertEqual(NT.mobius_k_sieve(10, 3), [0, 1, -1, -1, -1, -1, 1, -1, 0, -1, 1])
     
     def test_count_k_free(self):
@@ -43,9 +43,13 @@ class TestNumberTheory(unittest.TestCase):
         self.assertEqual(NT.count_k_free(1000, 3), 832)
         
     def test_pythagoren_triples(self):
-        self.assertEqual(NT.pythagoren_triples(20), [[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]])
-        self.assertEqual(NT.pythagoren_triples(20, False), [[3, 4, 5], [5, 12, 13], [15, 8, 17]])
-        self.assertEqual(len(NT.pythagoren_triples(100, False)), 16)
+        self.assertEqual(NT.pythagorean_triples(20), [[3, 4, 5], [6, 8, 10], [9, 12, 15], [12, 16, 20], [5, 12, 13], [15, 8, 17]])
+        self.assertEqual(NT.pythagorean_triples(20, False), [[3, 4, 5], [5, 12, 13], [15, 8, 17]])
+        self.assertEqual(len(NT.pythagorean_triples(100, False)), 16)
+    
+    def test_count_primitive_pythagorean_triples(self):
+        self.assertEqual(NT.count_primitive_pythagorean_triples(10**10), 1591549475)
+        self.assertEqual(NT.count_primitive_pythagorean_triples(10**8), 15915493)
         
     def test_legendre_factorial(self):
         self.assertEqual(NT.legendre_factorial(6), {2: 4, 3: 2, 5: 1})
@@ -143,9 +147,9 @@ class TestDivisors(unittest.TestCase):
         self.assertEqual(DIV.divisor(2, 9), 91)
     
     def test_divisor_sieve(self):
-        self.assertEqual(DIV.divisors_sieve(0, 10), [0, 1, 2, 2, 3, 2, 4, 2, 4, 3, 4])
-        self.assertEqual(DIV.divisors_sieve(1, 10), [0, 1, 3, 4, 7, 6, 12, 8, 15, 13, 18])
-        self.assertEqual(DIV.divisors_sieve(2, 10), [0, 1, 5, 10, 21, 26, 50, 50, 85, 91, 130])
+        self.assertEqual(DIV.divisor_sieve(0, 10), [0, 1, 2, 2, 3, 2, 4, 2, 4, 3, 4])
+        self.assertEqual(DIV.divisor_sieve(1, 10), [0, 1, 3, 4, 7, 6, 12, 8, 15, 13, 18])
+        self.assertEqual(DIV.divisor_sieve(2, 10), [0, 1, 5, 10, 21, 26, 50, 50, 85, 91, 130])
         
 class TestLinearAlgebra(unittest.TestCase):
     
@@ -205,11 +209,17 @@ class TestLinearAlgebra(unittest.TestCase):
         B = [[1, 2], 
              [3, 1]]
         self.assertEqual(LA.matrix_mul(A, B), [[2, 4], [6, 2]])
+    
+    def test_matrix_pow(self):
+        A = [[1, 1], 
+             [1, 0]]
+        self.assertEqual(LA.matrix_pow(A, 10), [[89, 55], [55, 34]])
 
 class TestFib(unittest.TestCase):
     
     def test_fibonacci(self):
         self.assertEqual(FIB.fibonacci(100), 354224848179261915075)
+        self.assertEqual(FIB.fibonacci(100, 10**7 + 9), 5475613)
         
     def test_fibtill(self):
         self.assertEqual(FIB.fib_till(100)[-1], 89)
@@ -295,8 +305,10 @@ class TestAlgorithms(unittest.TestCase):
 
 class TestSimple(unittest.TestCase):
     
-    def test_n_choose_r(self):
-        self.assertEqual(S.n_choose_r(50, 30), 47129212243960)
+    def test_bin_exp(self):
+        x = S.bin_exp(1/2, 1/2, 5, 10)  
+        y = S.bin_exp(1/2, -1/2, 5, 10)
+        self.assertEqual(x[1] - y[1], 55.0)
         
     def test_numbertobase(self):
         self.assertEqual(S.number_to_base(10, 2), [1, 0, 1, 0])

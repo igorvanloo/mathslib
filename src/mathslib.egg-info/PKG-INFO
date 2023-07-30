@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: mathslib
-Version: 3.0.0
+Version: 3.1.0
 Summary: Library of Mathematical functions and Algorithms
 Home-page: https://github.com/igorvanloo/mathslib
 Author: Igor van Loo
@@ -48,7 +48,8 @@ Breakdown
 |                | * mobius(x)                                                |
 |                | * mobius_k_sieve(limit, k)                                 |
 |                | * count_k_free(n, k)                                       |
-|                | * ppt(limit, non_primitive)                                |
+|                | * pythagorean_triples(limit, non_primitive)                |
+|                | * count_primitive_pythagorean_triples(n)                   |
 |                | * k_smooth_numbers(max_prime, limit)                       |
 |                | * k_powerful(k, limit, count)                              |
 |                | * legendre_factorial(x)                                    |
@@ -83,8 +84,9 @@ Breakdown
 |                | * argmax(alist)                                            |
 |                | * fillmatrix(size, val)                                    |
 |                | * matrix_mul(A, B)                                         |
+|                | * matrix_pow(A, n)                                         |
 +----------------+------------------------------------------------------------+
-|fib.py          | * fibonacci(n)                                             |
+|fib.py          | * fibonacci(n, m)                                          |
 |                | * fib_till(limit)                                          |
 |                | * zeckendorf_representation(x)                             |
 +----------------+------------------------------------------------------------+
@@ -98,7 +100,7 @@ Breakdown
 |                | * convex_hull_gift_wrapping(pts)                           |
 |                | * convex_hull_DC(pts)                                      |
 +----------------+------------------------------------------------------------+
-|simple.py       | * n_choose_r(n, r)                                         | 
+|simple.py       | * bin_exp(a, b, c, n, m)                                   | 
 |                | * number_to_base(n, b)                                     |
 |                | * extended_euclidean_algorithm(n, b)                       |
 |                | * lcm(a_list)                                              |
