@@ -44,6 +44,7 @@ def bin_exp(a, b, c, n, m = None):
     :returns: x, y such that (a + b√(c))^n (mod m) = x + y√(c)
         
     .. code-block:: python
+    
         #Using fibonacci relation to golden ratio we know
         #(((1 + sqrt(5))/2)^n - ((1 + sqrt(5))/2)^n)/sqrt(5) = F(n)
         

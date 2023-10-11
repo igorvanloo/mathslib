@@ -30,8 +30,8 @@ Author: Igor van Loo
 
 def fibonacci(n, m = None):
     '''
-    Finds the n-th Fibonacci using matrix exponentiation by squaring
-    Method is outlined `here <http://homepages.math.uic.edu/~leon/cs-mcs401-s08/handouts/fastexp.pdf>`__
+    Finds the n-th Fibonacci using matrix exponentiation by squaring.
+    The method is outlined `here <http://homepages.math.uic.edu/~leon/cs-mcs401-s08/handouts/fastexp.pdf>`__
     Specifically, this is an implementation of the third algorithm.
     
     Also includes an option to calculate with a given modulus

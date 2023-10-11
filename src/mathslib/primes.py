@@ -189,7 +189,8 @@ def spf_sieve(N):
     for i in range(2, int(math.sqrt(N)) + 1):
         if spf[i] == i:
             for j in range(i*i, N + 1, i):
-                spf[j] = i
+                if spf[j] == j:
+                    spf[j] = i
     return spf
 
 def primepi(x):
