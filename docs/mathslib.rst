@@ -1,9 +1,6 @@
 mathslib package
 ====================
 
-Submodules
-----------
-
 mathslib.numtheory module
 -------------------------
 

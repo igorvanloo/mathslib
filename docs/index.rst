@@ -13,7 +13,7 @@ Welcome to mathslib's documentation!
    readme
    installation
    usage
-   modules
+   mathslib
 
 
 
