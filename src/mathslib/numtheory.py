@@ -702,7 +702,7 @@ def partition(x, L, show = True):
     :param L: List of numbers allowed to use to form partition
     :param show: Optional, default is True and it will show all the partitions, if False it will simply output how many there are.
 
-    :returns numerator: An integer, the numerator of the fraction
+    :returns numerator: Number of partitions or the actual partitions based on value of "show"
     
     .. code-block:: python
     
