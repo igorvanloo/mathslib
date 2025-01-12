@@ -65,7 +65,7 @@ def fibonacci(n, m = None):
             if bit == '1':
                 f2, f1, f0 = f2 + f1, f2, f1   
     return f1
-
+    
 def fib_till(limit):
     '''
     Finds all Fibonacci number up till a limit

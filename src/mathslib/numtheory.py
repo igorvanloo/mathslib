@@ -696,3 +696,36 @@ def overall_fraction(cf):
         numerator, denominator = cf[x]*numerator + denominator, numerator
     return numerator, denominator
 
+def partition(x, L, show = True):
+    '''
+    :param x: The number we wish to find partitions of
+    :param L: List of numbers allowed to use to form partition
+    :param show: Optional, default is True and it will show all the partitions, if False it will simply output how many there are.
+
+    :returns numerator: An integer, the numerator of the fraction
+    
+    .. code-block:: python
+    
+        print(partition(40, [i for i in range(1, 41)], False)) #37338
+        print(partition(4, [1,2,3,4])) #[(1, 1, 1, 1), (2, 1, 1), (2, 2), (3, 1), (4,)]
+        print(partition(71, prime_sieve(71), False)) #5007, From Project Euler Problem 77
+        print(partition(100, [i for i in range(1, 101)], False) - 1) #190569291, From Project Euler Problem 76
+
+    '''
+    if 0 in L:
+        return "0 cannot be part of L"
+    A = [0] * (x + 1)
+    A[0] = 1
+    P = [[] for _ in range(x + 1)]
+    P[0] = [()]
+    for y in L:
+        for i in range(len(P) - y):
+            if show:
+                for z in P[i]:
+                    P[i + y].append((y,) + z)
+            else:
+                A[i + y] += A[i]
+    if show:
+        return P[-1]
+    else:
+        return A[-1]

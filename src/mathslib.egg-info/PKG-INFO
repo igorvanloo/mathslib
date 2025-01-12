@@ -1,6 +1,6 @@
-Metadata-Version: 2.1
+Metadata-Version: 2.2
 Name: mathslib
-Version: 3.1.0
+Version: 3.2.0
 Summary: Library of Mathematical functions and Algorithms
 Home-page: https://github.com/igorvanloo/mathslib
 Author: Igor van Loo
@@ -18,6 +18,16 @@ Classifier: Programming Language :: Python :: 3.9
 Requires-Python: >=3.7, <4
 Description-Content-Type: text/x-rst
 License-File: LICENSE.txt
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: home-page
+Dynamic: keywords
+Dynamic: project-url
+Dynamic: requires-python
+Dynamic: summary
 
 ========
 Overview
@@ -59,6 +69,7 @@ Breakdown
 |                | * frobenius_number(\*integers)                             |
 |                | * continued_fraction(x)                                    |
 |                | * overall_fraction(x)                                      |
+|                | * partition(x, L, show)                                    |
 +----------------+------------------------------------------------------------+
 |primes.py       | * prime_sieve(limit, block_size, segment, values)          |
 |                | * is_prime(x)                                              |

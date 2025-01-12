@@ -89,6 +89,12 @@ class TestNumberTheory(unittest.TestCase):
         
     def test_overall_fraction(self):
         self.assertEqual(NT.overall_fraction([4, 2, 6, 7]), (415, 93))
+        
+    def test_partition(self):
+        self.assertEqual(NT.partition(40, [i for i in range(1, 41)], False), 37338)
+        self.assertEqual(NT.partition(4, [1,2,3,4]), [(1, 1, 1, 1), (2, 1, 1), (2, 2), (3, 1), (4,)])
+        self.assertEqual(NT.partition(71, P.prime_sieve(71), False), 5007)
+        self.assertEqual(NT.partition(100, [i for i in range(1, 101)], False) - 1, 190569291)
 
 class TestPrimes(unittest.TestCase):
     

@@ -38,6 +38,7 @@ Breakdown
 |                | * frobenius_number(\*integers)                             |
 |                | * continued_fraction(x)                                    |
 |                | * overall_fraction(x)                                      |
+|                | * partition(x, L, show)                                    |
 +----------------+------------------------------------------------------------+
 |primes.py       | * prime_sieve(limit, block_size, segment, values)          |
 |                | * is_prime(x)                                              |
