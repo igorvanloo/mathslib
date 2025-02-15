@@ -102,6 +102,39 @@ def prime_sieve(limit, segment = False, values = True):
         else:
             return result
 
+def prime_sieve_in_range(low_limit, upp_limit, values = True):
+    '''
+    Finds all the primes within a range. It is essentially my prime sieve function but saves memory by only storing the needed range
+
+    :param low_limit: An integer, lower limit of range
+    :param upp_limit: An integer, upper limit of range
+    :param values: Optional boolean value, if values == False, it will return an array such that array[x] = True if x + low_limit is prime
+        
+    :returns: All primes between low_limit and upp_limit (if values == True)
+    
+    .. code-block:: python
+        primes = prime_sieve(10**7)
+        primes_greater = [p for p in primes if p > 10**6]
+        print(prime_sieve_in_range(10**6, 10**7) == primes_greater) #True
+        
+    '''
+    if (type(low_limit) != int) or (type(upp_limit) != int) or (type(values) != bool):
+        return "n must be an integer"
+    
+    primes = prime_sieve(int(math.sqrt(upp_limit)) + 1)
+    result = [1 for _ in range(low_limit, upp_limit + 1)]
+    for p in primes:
+        S = p * (low_limit//p) - low_limit
+        if S < 0:
+            S += p
+        for j in range(S, len(result), p):
+            result[j] = 0
+            
+    if values:
+        return [i + low_limit for (i, isprime) in enumerate(result) if isprime]
+    else:
+        return result
+    
 def is_prime(x):
     '''
     A simple is prime function, checks if a number is prime

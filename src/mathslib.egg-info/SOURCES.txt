@@ -7,6 +7,7 @@ src/mathslib/__init__.py
 src/mathslib/algorithms.py
 src/mathslib/divisors.py
 src/mathslib/fib.py
+src/mathslib/gaussianint.py
 src/mathslib/linalg.py
 src/mathslib/numtheory.py
 src/mathslib/primes.py

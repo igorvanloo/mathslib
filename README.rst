@@ -41,6 +41,7 @@ Breakdown
 |                | * partition(x, L, show)                                    |
 +----------------+------------------------------------------------------------+
 |primes.py       | * prime_sieve(limit, block_size, segment, values)          |
+|                | * prime_sieve_in_range(low_limit, upp_limit, values)       |
 |                | * is_prime(x)                                              |
 |                | * prime_factors(x)                                         |
 |                | * spf_sieve(x)                                             |
@@ -80,11 +81,19 @@ Breakdown
 |                | * convex_hull_gift_wrapping(pts)                           |
 |                | * convex_hull_DC(pts)                                      |
 +----------------+------------------------------------------------------------+
+|gaussianint.py  | * GI                                                       |
+|                |  * conj(self)                                              |
+|                |  * norm_sq(self)                                           |
+|                |  * prime_fac(self)                                         |
+|                | * rem(x, y)                                                |
+|                | * gcd(x, y)                                                |
++----------------+------------------------------------------------------------+
 |simple.py       | * bin_exp(a, b, c, n, m)                                   | 
 |                | * number_to_base(n, b)                                     |
 |                | * extended_euclidean_algorithm(n, b)                       |
 |                | * lcm(a_list)                                              |
 |                | * mod_division(a, b, m)                                    |
+|                | * binom(n, k, p)                                           |
 |                | * bisect(alist, goal)                                      |
 |                | * is_clockwise(a, b, c)                                    |
 +----------------+------------------------------------------------------------+

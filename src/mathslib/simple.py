@@ -30,6 +30,7 @@ Various simple functions
 Author: Igor van Loo
 '''
 import math
+from .primes import is_prime
 
 def bin_exp(a, b, c, n, m = None):
     '''
@@ -172,6 +173,40 @@ def mod_division(a, b, m):
         a = a % m
         answer = (inv * a) % m
     return answer
+
+def binom(n, k, p):
+    '''
+    Finds n choose k (mod p)
+
+    :param n: An integer
+    :param k: An integer
+    :param p: A prime integer
+
+    :returns: nCk (mod p)
+    
+    .. code-block:: python
+    
+        print(binom(297, 99, 10**9 + 7)) #547879028
+        
+    '''
+    if (type(n) != int) or (type(k) != int) or (type(p) != int):
+        return "n, k, p must be integers"
+    if is_prime(p) == False:
+        return "p must be a prime"
+    
+    if k > n:
+        return 0
+    
+    num = 1
+    for i in range(n - k + 1, n + 1):
+        num *= i
+        num %= p
+    
+    den = 1
+    for i in range(1, k + 1):
+        den *= i
+        den %= p
+    return (num * pow(den, p - 2, p)) % p
 
 def bisect(alist, goal):
     '''

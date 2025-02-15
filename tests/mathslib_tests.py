@@ -104,6 +104,11 @@ class TestPrimes(unittest.TestCase):
         self.assertEqual(test_prime[-1], 97)
         test_prime2 = P.prime_sieve(10, values = False)
         self.assertEqual(test_prime2, [False, False, True, True, False, True, False, True, False, False, False])
+        
+    def test_prime_sieve_in_range(self):
+        primes = P.prime_sieve(10**7)
+        primes_greater = [p for p in primes if p > 10**6]
+        self.assertEqual(P.prime_sieve_in_range(10**6, 10**7) == primes_greater, True)
     
     def test_is_prime(self):
         self.assertEqual(P.is_prime(10), False)

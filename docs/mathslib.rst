@@ -49,6 +49,14 @@ mathslib.algorithms module
     :undoc-members:
     :show-inheritance:
     
+mathslib.gaussianint module
+--------------------------
+
+.. automodule:: mathslib.gaussianint
+    :members:
+    :undoc-members:
+    :show-inheritance:
+    
 mathslib.simple module
 ----------------------
 
